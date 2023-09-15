@@ -8,5 +8,6 @@
 </head>
 <body>
 이지원
+<jsp:forward page="detail.do"/>
 </body>
 </html>
