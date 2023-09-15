@@ -15074,7 +15074,7 @@ html:not(.layout-menu-fixed) .menu-inner-shadow {
 .menu-vertical .menu-inner > .menu-item,
 .menu-vertical .menu-inner > .menu-header {
   width: 16.25rem;
-  height: 125px;
+  /*height: 125px;*/
 }
 .menu-vertical .menu-inner {
   flex-direction: column;
