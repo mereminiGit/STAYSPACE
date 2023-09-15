@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
- 테스트 ~~~ 테스트 222222ㄴㄷㅇㅈㄹㅈㄹㄷㅈㄹ
- 다시 테스트
+
 </body>
 </html>
