@@ -53,7 +53,7 @@ class Menu {
 
   _bindEvents() {
     // Click Event
-    this._evntElClick = e => {
+    /*this._evntElClick = e => {
       // Find top parent element
       if (e.target.closest('ul') && e.target.closest('ul').classList.contains('menu-inner')) {
         const menuItem = Menu._findParent(e.target, 'menu-item', false)
@@ -73,7 +73,7 @@ class Menu {
           this.toggle(toggleLink)
         }
       }
-    }
+    }*/
     if (window.Helpers.isMobileDevice) this._el.addEventListener('click', this._evntElClick)
 
     this._evntWindowResize = () => {
@@ -172,7 +172,7 @@ class Menu {
     return found
   }
 
-  static _findMenu(item) {
+  /*static _findMenu(item) {
     let curEl = item.childNodes[0]
     let menu = null
 
@@ -185,7 +185,7 @@ class Menu {
 
     return menu
   }
-
+*/
   // Has class
   static _hasClass(cls, el = window.Helpers.ROOT_EL) {
     let result = false
@@ -197,7 +197,7 @@ class Menu {
     return result
   }
 
-  open(el, closeChildren = this._closeChildren) {
+/*  open(el, closeChildren = this._closeChildren) {
     const item = this._findUnopenedParent(Menu._getItem(el, true), closeChildren)
 
     if (!item) return
@@ -225,7 +225,7 @@ class Menu {
         }
       })
       .catch(() => {})
-  }
+  }*/
 
   close(el, closeChildren = this._closeChildren, _autoClose = false) {
     const item = Menu._getItem(el, true)

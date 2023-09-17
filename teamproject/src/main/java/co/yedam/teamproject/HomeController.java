@@ -24,6 +24,7 @@ public class HomeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		String path = "layouts/membermenu.jsp";
 		String path = "management/memberhome2.jsp";
+		//String path = "management/membermodify.jsp";
 		ViewResolve.forward(request, response, path);
 	}
 
