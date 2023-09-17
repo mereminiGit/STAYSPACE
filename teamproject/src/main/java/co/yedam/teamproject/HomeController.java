@@ -23,7 +23,7 @@ public class HomeController extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String path = "main/main.jsp";
+		String path = "main/main";
 		ViewResolve.forward(request, response, path);
 	}
 
