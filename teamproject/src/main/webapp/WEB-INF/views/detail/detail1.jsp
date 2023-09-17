@@ -12,9 +12,9 @@
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <link rel="stylesheet" type="text/css" href="vaso-html-template/css/vendor.css">
-    <link rel="stylesheet" type="text/css" href="vaso-html-template/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="vaso-html-template/style.css">
+    <link rel="stylesheet" type="text/css" href="vaso-html-template/css/vendor.css?ver=1">
+    <link rel="stylesheet" type="text/css" href="vaso-html-template/css/bootstrap.min.css?ver=1">
+    <link rel="stylesheet" type="text/css" href="vaso-html-template/style.css?ver=1">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -119,28 +119,28 @@
           <div class="col-lg-6">
             <div class="row product-preview">
               <div class="swiper thumb-swiper col-3">
-                <div class="swiper-wrapper d-flex flex-wrap align-content-start">
-                  <div class="swiper-slide">
-                    <img src="vaso-html-template/images/product-thumbnail-1.jpg" alt="" class="img-fluid">
-                  </div>
-                  <div class="swiper-slide">
-                    <img src="vaso-html-template/images/product-thumbnail-2.jpg" alt="" class="img-fluid">
-                  </div>
-                  <div class="swiper-slide">
-                    <img src="vaso-html-template/images/product-thumbnail-3.jpg" alt="" class="img-fluid">
-                  </div>
-                </div>
+                <ul class="swiper-wrapper d-flex flex-wrap align-content-start">
+                  <li class="swiper-slide">
+                    <img src="vaso-html-template/images/bakeryroom1.jpg" alt="" class="img-fluid">
+                  </li>
+                  <li class="swiper-slide">
+                    <img src="vaso-html-template/images/bakeryroom2.jpg" alt="" class="img-fluid">
+                  </li>
+                  <li class="swiper-slide">
+                    <img src="vaso-html-template/images/bakeryroom3.jpg" alt="" class="img-fluid">
+                  </li>
+                </ul>
               </div>
               <div class="swiper large-swiper overflow-hidden col-9">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
-                    <img src="vaso-html-template/images/product-large-1.jpg" alt="single-product" class="img-fluid">
+                    <img src="vaso-html-template/images/bakeryroom1.jpg" alt="single-product" class="img-fluid">
                   </div>
                   <div class="swiper-slide">
-                    <img src="vaso-html-template/images/product-large-2.jpg" alt="single-product" class="img-fluid">
+                    <img src="vaso-html-template/images/bakeryroom2.jpg" alt="single-product" class="img-fluid">
                   </div>
                   <div class="swiper-slide">
-                    <img src="vaso-html-template/images/product-large-3.jpg" alt="single-product" class="img-fluid">
+                    <img src="vaso-html-template/images/bakeryroom3.jpg" alt="single-product" class="img-fluid">
                   </div>
                 </div>
               </div>
@@ -149,7 +149,7 @@
           <div class="col-lg-6">
             <div class="product-info">
               <div class="element-header">
-                <h3 class="product-title my-3">Shiny Black Pot</h3>
+                <h3 class="product-title my-3">스튜디오시크릿</h3>
                 <div class="rating-container d-flex align-items-center my-3">
                   <div class="rating" data-rating="1" onclick=rate(1)>
                     <svg class="bi" width="16" height="16"><use xlink:href="#star-fill"></use></svg>
@@ -170,103 +170,30 @@
                 </div>
               </div>
               <div class="product-price my-3">
-                <span class="fs-1 text-primary">$126.00</span>
+                <span class="fs-1 text-primary">13000/1시간</span>
                 <del>$54.00</del>
               </div>
-              <p>Tristique ullamcorper nunc egestas non. Justo, cum feugiat imperdiet nulla molestie ac vulputate scelerisque amet. Bibendum adipiscing platea blandit sit rhoncus.</p>
+              <p>바리스타, 제과제빵 실기 연습이 가능한 프리미엄 스튜디오</p>
               <hr>
-              <div class="cart-wrap">
-                <div class="color-options product-select my-3">
-                  <div class="color-toggle" data-option-index="0">
-                    <h4 class="item-title text-decoration-underline text-uppercase">Color:</h4>
-                    <ul class="select-list list-unstyled d-flex mb-0">
-                      <li class="select-item me-3" data-val="Green" title="Green">
-                        <a href="#">Green</a>
-                      </li>
-                      <li class="select-item me-3" data-val="Orange" title="Orange">
-                        <a href="#">Orange</a>
-                      </li>
-                      <li class="select-item me-3" data-val="Red" title="Red">
-                        <a href="#">Red</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="swatch product-select" data-option-index="1">
-                  <h4 class="item-title text-decoration-underline text-uppercase">Size:</h4>
-                  <ul class="select-list list-unstyled d-flex mb-0">
-                    <li data-value="S" class="select-item me-3">
-                      <a href="#">S</a>
-                    </li>
-                    <li data-value="M" class="select-item me-3">
-                      <a href="#">M</a>
-                    </li>
-                    <li data-value="L" class="select-item me-3">
-                      <a href="#">L</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="product-quantity my-3">
-                  <div class="item-title">
-                    <l>2 in stock</l>
-                  </div>
-                  <div class="stock-button-wrap d-flex flex-wrap align-items-center">
-                    <div class="product-quantity">
-                      <div class="input-group product-qty" style="max-width: 150px;">
-                        <span class="input-group-btn">
-                          <button type="button" class="quantity-left-minus" data-type="minus" data-field="">
-                            <svg width="16" height="16"><use xlink:href="#minus"></use></svg>
-                          </button>
-                        </span>
-                        <input type="text" id="quantity" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100" required>
-                        <span class="input-group-btn">
-                          <button type="button" class="quantity-right-plus" data-type="plus" data-field="">
-                            <svg width="16" height="16"><use xlink:href="#plus"></use></svg>
-                          </button>
-                        </span>
-                      </div>                          
-                    </div>
-                  </div>
-                </div>
+                <h5 class="widget-title text-decoration-underline text-uppercase">Date <input type="text" id="datepicker"></h5>
                 <div class="action-buttons my-4 d-flex flex-wrap">
                   <a href="#" class="btn btn-dark me-2 mb-1">Buy now</a>
                   <a href="#" class="btn btn-dark">Add to cart</a>
                 </div>
               </div>
               <hr>
+                <div class="meta-item d-flex mb-1">
+                  <span class="text-uppercase me-2">공간유형:</span>
+                  <ul class="select-list list-unstyled d-flex mb-0">
+                    <li data-value="S" class="select-item">
+                      <a href="#">공유주방</a>
+                  </ul>
+                </div>
               <div class="meta-product">
                 <div class="meta-item d-flex mb-1">
-                  <span class="text-uppercase me-2">SKU:</span>
+                  <span class="text-uppercase me-2">공간면적:</span>
                   <ul class="select-list list-unstyled d-flex mb-0">
-                    <li data-value="S" class="select-item">1223</li>
-                  </ul>
-                </div>
-                <div class="meta-item d-flex mb-1">
-                  <span class="text-uppercase me-2">Category:</span>
-                  <ul class="select-list list-unstyled d-flex mb-0">
-                    <li data-value="S" class="select-item">
-                      <a href="#">Toy</a>,
-                    </li>
-                    <li data-value="S" class="select-item">
-                      <a href="#">Robot</a>,
-                    </li>
-                    <li data-value="S" class="select-item">
-                      <a href="#">Tech</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="meta-item d-flex mb-1">
-                  <span class="text-uppercase me-2">Tags:</span>
-                  <ul class="select-list list-unstyled d-flex mb-0">
-                    <li data-value="S" class="select-item">
-                      <a href="#">Toy</a>,
-                    </li>
-                    <li data-value="S" class="select-item">
-                      <a href="#">Small</a>,
-                    </li>
-                    <li data-value="S" class="select-item">
-                      <a href="#">Strong</a>
-                    </li>
+                    <li data-value="S" class="select-item">33m<sup>2</sup></li>
                   </ul>
                 </div>
               </div>
@@ -501,5 +428,16 @@
     <script type="text/javascript" src="vaso-html-template/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="vaso-html-template/js/plugins.js"></script>
     <script type="text/javascript" src="vaso-html-template/js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+    $( function() {
+      $( "#datepicker" ).datepicker({
+        dateFormat:'yy-mm-dd',
+        minDate:0
+      });
+    } );
+    </script>
   </body>
 </html>
