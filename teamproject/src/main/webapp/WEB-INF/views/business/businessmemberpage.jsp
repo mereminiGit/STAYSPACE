@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 
 <!-- beautify ignore:start -->
@@ -47,6 +48,8 @@
 <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
 <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
 <script src="sneat/assets/js/config.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -55,8 +58,8 @@
 		<!-- Content -->
 
 		<div class="container-xxl flex-grow-1 container-p-y">
-			<h4 class="fw-bold py-3 mb-4">MY ACCOUNT
-				<span class="text-muted fw-light">SETTINGS</span>
+			<h4 class="fw-bold py-3 mb-4">My Account
+				<span class="text-muted fw-light">Settings</span>
 			</h4>
 
 			<div class="row">
@@ -130,10 +133,12 @@
 						<div class="card-body">
 							<div class="mb-3 col-12 mb-0">
 								<div class="alert alert-warning" style="background-color: #eee; width: 80%; border-radius: 10px">
-									<h6 class="alert-heading fw-bold mb-1" style="color: #aaa">정말로
+									<br>
+									<h6 class="alert-heading fw-bold mb-1" style="color: #aaa">※ 정말로
 										계정을 삭제하시겠습니까?</h6>
 									<br>
-									<p class="mb-0" style="color: #aaa">계정을 삭제하면 되돌릴 수 없습니다.</p>
+									<p class="mb-0" style="color: #aaa">&nbsp;계정을 삭제하면 되돌릴 수 없습니다.</p>
+									<br>
 								</div>
 							</div>
 							<form id="formAccountDeactivation" onsubmit="return false">
@@ -141,14 +146,13 @@
 									<input class="form-check-input" type="checkbox"
 										name="accountActivation" id="accountActivation" /> <label
 										class="form-check-label" for="accountActivation">내 계정
-										탈퇴에 동의합니다.</label>
+										삭제에 동의합니다.</label>
 								</div>
 								<button type="submit" class="btn btn-dark deactivate-account"
 									data-bs-toggle="modal" data-bs-target="#modalToggle">탈퇴하기</button>
 							</form>
 						</div>
 					</div>
-
 					<!-- Modal 1-->
 					<div class="modal fade" id="modalToggle"
 						aria-labelledby="modalToggleLabel" tabindex="-1"
@@ -160,7 +164,7 @@
 									<button type="button" class="btn-close" data-bs-dismiss="modal"
 										aria-label="Close"></button>
 								</div>
-								<div class="modal-body" align="center">정상적으로 계정 삭제되었습니다.</div>
+								<div class="modal-body" align="center">정상적으로 회원 탈퇴되었습니다.</div>
 								<div class="modal-footer">
 									<button class="btn btn-secondary"
 										data-bs-target="#modalToggle2" data-bs-toggle="modal"

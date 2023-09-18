@@ -4,18 +4,18 @@ $(function() {
    * Data and config for chartjs
    */
   'use strict';
-  var data = {
+  var Monthdata = {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     datasets: [{
       label: '# of Votes',
-      data: [10, 19, 3, 5, 2, 3, 20, 15, 6, 8, 11, 18],
+      data: [10, 19, 3, 5, 2, 3, 20, 8, 6, 14, 11, 18],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
         'rgba(255, 206, 86, 0.2)',
         'rgba(75, 192, 192, 0.2)',
         'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)'
+        'rgba(255, 159, 64, 0.2)',
       ],
       borderColor: [
         'rgba(255,99,132,1)',
@@ -24,6 +24,35 @@ $(function() {
         'rgba(75, 192, 192, 1)',
         'rgba(153, 102, 255, 1)',
         'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1,
+      fill: false
+    }]
+  };
+   var Spacedata = {
+    labels: ["Seoul", "Busan", "Daugu", "Ulsan", "Guangju", "Daejeon", "Incheon"],
+    datasets: [{
+      label: '# of Votes',
+      data: [10, 19, 3, 5, 2, 3, 15],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(201, 203, 207, 0.2)'
+        
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(201, 203, 207, 1)'
+        
       ],
       borderWidth: 1,
       fill: false
@@ -273,7 +302,7 @@ $(function() {
     // This will get the first returned node in the jQuery collection.
     var barChart = new Chart(barChartCanvas, {
       type: 'bar',
-      data: data,
+      data: Spacedata,
       options: options
     });
   }
@@ -282,7 +311,7 @@ $(function() {
     var lineChartCanvas = $("#lineChart").get(0).getContext("2d");
     var lineChart = new Chart(lineChartCanvas, {
       type: 'line',
-      data: data,
+      data: Monthdata,
       options: options
     });
   }

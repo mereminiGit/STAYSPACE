@@ -66,39 +66,70 @@
 
 </head>
 <body>
-<div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Sale </span> Chart</h4>
-	<!-- Content wrapper -->
+	<div class="container-xxl flex-grow-1 container-p-y">
+		<h4 class="fw-bold py-3 mb-4">
+			<span class="text-muted fw-light">Sale </span> Chart
+		</h4>
+		<!-- Content wrapper -->
 
-	<div class="content-wrapper">
-		<div class="container-xxl flex-grow-1 container-p-y">
+		<div class="col-xl-6">
+			<h6 class="text-muted">Click the tap</h6>
+			<div class="nav-align-top mb-4">
+				<ul class="nav nav-tabs nav-fill" role="tablist">
+					<li class="nav-item">
+						<button type="button" class="nav-link active" role="tab"
+							data-bs-toggle="tab" data-bs-target="#navs-justified-home"
+							aria-controls="navs-justified-home" aria-selected="true">
+							<i class="tf-icons bx bx-message-square"></i> 월별 매출 차트
+						</button>
+					</li>
+					<li class="nav-item">
+						<button type="button" class="nav-link" role="tab"
+							data-bs-toggle="tab" data-bs-target="#navs-justified-profile"
+							aria-controls="navs-justified-profile" aria-selected="false">
+							<i class="tf-icons bx bx-home"></i> 공간별 매출 차트
+						</button>
+					</li>
 
-			<div class="col-lg-6 grid-margin stretch-card">
-				<div class="card">
-					<div class="card-body">
-						<h4 class="card-title">Line chart</h4>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane fade show active" id="navs-justified-home"
+						role="tabpanel">
+						<h4 class="fw-bold py-3 mb-4">Monthly Sales</h4>
 						<canvas id="lineChart"></canvas>
 					</div>
-				</div>
-			</div>
-
-			<br>
-
-			<div class="col-lg-6 grid-margin stretch-card">
-				<div class="card">
-					<div class="card-body">
-						<h4 class="card-title">Bar chart</h4>
-						<canvas id="barChart"></canvas>
+					<div class="tab-pane fade" id="navs-justified-profile"
+						role="tabpanel">
+						<h4 class="fw-bold py-3 mb-4">Sales by location</h4>
+						<canvas id="barChart"></canvas> 
 					</div>
 				</div>
 			</div>
-
 		</div>
+			
+		<!-- <div class="col-lg-6 grid-margin stretch-card">
+					<div class="card">
+						<div class="card-body">
+							<h4 class="fw-bold py-3 mb-4">Monthly Sales</h4>
+							<canvas id="lineChart"></canvas>
+						</div>
+					</div>
+					
+				</div> 
+
+				<div class="col-lg-6 grid-margin stretch-card">
+					<div class="card">
+						<div class="card-body">
+							<h4 class="fw-bold py-3 mb-4">Sales by location</h4>
+							<canvas id="barChart"></canvas>
+						</div>
+					</div>
+				</div> -->
+				
 	</div>
 	<!-- Core JS -->
 	<!-- Custom js for this page-->
-	<script src="js/chartLine.js"></script>
-	<script src="js/chartBar.js"></script>
+	<script src="js/chart.js"></script>
 	<script src="js/Chart.min.js"></script>
 	<!-- build:js assets/vendor/js/core.js -->
 	<script src="sneat/assets/vendor/libs/jquery/jquery.js"></script>

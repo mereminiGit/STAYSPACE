@@ -21,7 +21,7 @@
 					<div class="card mb-4">
 						<div
 							class="card-header d-flex justify-content-between align-items-center">
-							<h5 class="mb-0">새 대여공간 정보</h5>
+							<h5 class="mb-0">새 대여공간 등록</h5>
 							<small class="text-muted float-end">space register</small>
 						</div>
 						<div class="card-body">
