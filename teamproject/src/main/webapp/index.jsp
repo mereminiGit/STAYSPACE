@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-이지원
-<jsp:forward page="menu.do"></jsp:forward>
+<jsp:forward page="adminhome.do"></jsp:forward>
 </body>
 </html>

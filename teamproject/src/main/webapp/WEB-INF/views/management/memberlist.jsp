@@ -29,12 +29,16 @@
 
     <!-- Page CSS -->
 
+	
+	
     <!-- Helpers -->
     <script src="sneat/assets/vendor/js/helpers.js"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="sneat/assets/js/config.js"></script>
+    
+  
 </head>
 <body>
 <!-- Content wrapper -->
@@ -45,8 +49,9 @@
               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Member </span> management</h4>
               <!-- Hoverable Table rows -->
               <div class="card">
-                <h5 class="card-header">Member Information</h5>
+                <h5 class="card-header">전체 회원 목록</h5>
                 <div class="table-responsive text-nowrap">
+                
                   <table class="table table-hover">
                     <thead>
                       <tr>

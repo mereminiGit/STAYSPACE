@@ -80,12 +80,6 @@
 									aria-controls="navs-tabs-line-card-income" aria-selected="true">
 									Income</button>
 							</li>
-							<li class="nav-item">
-								<button type="button" class="nav-link" role="tab">Expenses</button>
-							</li>
-							<li class="nav-item">
-								<button type="button" class="nav-link" role="tab">Profit</button>
-							</li>
 						</ul>
 					</div>
 					<div class="card-body px-0">
@@ -98,9 +92,9 @@
 											alt="User" />
 									</div>
 									<div>
-										<small class="text-muted d-block">Total Balance</small>
+										<small class="text-muted d-block">총 매출액</small>
 										<div class="d-flex align-items-center">
-											<h6 class="mb-0 me-1">$459.10</h6>
+											<h6 class="mb-0 me-1">4,590,000원</h6>
 											<small class="text-success fw-semibold"> <i
 												class="bx bx-chevron-up"></i> 42.9%
 											</small>
@@ -113,7 +107,7 @@
 										<div id="expensesOfWeek"></div>
 									</div>
 									<div>
-										<p class="mb-n1 mt-1">Expenses This Week</p>
+										<p class="mb-n1 mt-1">월별 매출</p>
 										<small class="text-muted">$39 less than last week</small>
 									</div>
 								</div>

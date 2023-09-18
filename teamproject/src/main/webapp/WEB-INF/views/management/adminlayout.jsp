@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <!DOCTYPE html>
 
 <!-- =========================================================
@@ -24,9 +25,12 @@
 >
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
 
-    <title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title><tiles:getAsString name="title"/> </title>
 
     <meta name="description" content="" />
 
@@ -65,59 +69,39 @@
   </head>
 
   <body>
-   
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
         <!-- Menu -->
-
-        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" style="height: 100%">
-          <!-- <div class="app-brand demo">
-            <a href="adminhome.do" class="app-brand-link">
-              <span class="app-brand-logo demo">
-              </span>
-              <span class="app-brand-text demo menu-text fw-bolder ms-2">Stay Space</span>
-            </a>
-
-            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
-              <i class="bx bx-chevron-left bx-sm align-middle"></i>
-            </a>
-          </div> -->
-
-          <div class="menu-inner-shadow"></div>
-
-          <ul class="menu-inner py-1">
-          
-          <!-- MEMBERS 
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">MEMBERS</span></li>
-            <!-- Member Management -->
-            <li class="menu-item">
-              <a href="memberlist.do" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Basic">회원 관리</div>
-              </a>
-            </li> 
-
-            
-            <!-- SPACES 
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">SPACES</span></li>
-            <!-- Space Management -->
-            <li class="menu-item">
-              <a href="totalspacelist.do" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Basic">대여공간 관리</div>
-              </a>
-            </li> 
-            
-            <!-- RESERVATIONS 
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">RESERVATIONS</span></li>
-            <!-- Reservation Management -->
-            <li class="menu-item">
-              <a href="totalreservelist.do" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-detail"></i>
-                <div data-i18n="Form Elements">예약 관리</div>
-              </a>
-             </li>
-          </ul>
-        </aside>
+		<tiles:insertAttribute name="menu"></tiles:insertAttribute>
         <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+
+          <!-- / Navbar -->
+
+          <!-- Content wrapper -->
+          
+            <!-- Content -->
+			<tiles:insertAttribute name="body"/>
+            <!-- / Content -->
+
+            <!-- Footer -->
+            
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    <!-- / Layout wrapper -->
 
 
     <!-- Core JS -->

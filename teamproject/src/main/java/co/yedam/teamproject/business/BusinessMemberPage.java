@@ -1,4 +1,4 @@
-package co.yedam.teamproject;
+package co.yedam.teamproject.business;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -9,17 +9,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.teamproject.common.ViewResolve;
 
-@WebServlet("/menu.do")
-public class testHomeController extends HttpServlet {
+@WebServlet("/businessmemberpage.do")
+public class BusinessMemberPage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public testHomeController() {
+    public BusinessMemberPage() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String path = "management/totalspacelist.jsp";
-		ViewResolve.forward(request, response, path);
+		String page = "business/business/businessmemberpage";
+		ViewResolve.forward(request, response, page);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
