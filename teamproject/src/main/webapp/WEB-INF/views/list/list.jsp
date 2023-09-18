@@ -70,7 +70,7 @@
                     <img src="vaso-html-template/images/StaySpace_commercial_1(1).jpg" alt="product-item" class="img-fluid zoom-in">
                     <div class="cart-concern position-absolute">
                       <div class="cart-button">
-                        <a href="#" class="btn">Add to Cart</a>
+                        <a href="cart.do" class="btn">찜하기</a>
                       </div>
                     </div>
                   </div>
@@ -78,14 +78,14 @@
                     <h5 class="card-title fs-3 text-capitalize">
                       <a href="detail.do">[분당/판교] 미드센츄리모던 빈티지 가구들로 꾸며진 카페</a>
                     </h5>
-                    <span class="item-price text-primary fs-3 fw-light">89,000원~127,000원/시간</span>
+                    <span class="item-price text-primary fs-3 fw-light">89,000원~127,000원<small>/시간</small></span>
                   </div>
                 </div>
               </div>
               <div class="col-lg-4 col-md-6">
                 <div class="product-card position-relative mb-3">
                   <div class="image-holder zoom-effect">
-                    <img src="vaso-html-template/images/product-item2.jpg" alt="product-item" class="img-fluid zoom-in">
+                    <img src="vaso-html-template/images/StaySpace_house_2(1).jpg" alt="product-item" class="img-fluid zoom-in">
                     <div class="cart-concern position-absolute">
                       <div class="cart-button">
                         <a href="#" class="btn">Add to Cart</a>
@@ -103,7 +103,7 @@
               <div class="col-lg-4 col-md-6">
                 <div class="product-card position-relative mb-3">
                   <div class="image-holder zoom-effect">
-                    <img src="vaso-html-template/images/product-item3.jpg" alt="product-item" class="img-fluid zoom-in">
+                    <img src="vaso-html-template/images/StaySpace_studio_2(1).jpg" alt="product-item" class="img-fluid zoom-in">
                     <div class="cart-concern position-absolute">
                       <div class="cart-button">
                         <a href="#" class="btn">Add to Cart</a>
@@ -121,7 +121,7 @@
               <div class="col-lg-4 col-md-6">
                 <div class="product-card position-relative mb-3">
                   <div class="image-holder zoom-effect">
-                    <img src="vaso-html-template/images/product-item4.jpg" alt="product-item" class="img-fluid zoom-in">
+                    <img src="vaso-html-template/images/StaySpace_commercial_2(1).jpg" alt="product-item" class="img-fluid zoom-in">
                     <div class="cart-concern position-absolute">
                       <div class="cart-button">
                         <a href="#" class="btn">Add to Cart</a>
@@ -139,7 +139,7 @@
               <div class="col-lg-4 col-md-6">
                 <div class="product-card position-relative mb-3">
                   <div class="image-holder zoom-effect">
-                    <img src="vaso-html-template/images/product-item5.jpg" alt="product-item" class="img-fluid zoom-in">
+                    <img src="vaso-html-template/images/StaySpace_house_3(1).jpg" alt="product-item" class="img-fluid zoom-in">
                     <div class="cart-concern position-absolute">
                       <div class="cart-button">
                         <a href="#" class="btn">Add to Cart</a>
@@ -157,7 +157,7 @@
               <div class="col-lg-4 col-md-6">
                 <div class="product-card position-relative mb-3">
                   <div class="image-holder zoom-effect">
-                    <img src="vaso-html-template/images/product-item1.jpg" alt="product-item" class="img-fluid zoom-in">
+                    <img src="vaso-html-template/images/StaySpace_house_4(1).jpg" alt="product-item" class="img-fluid zoom-in">
                     <div class="cart-concern position-absolute">
                       <div class="cart-button">
                         <a href="#" class="btn">Add to Cart</a>
@@ -175,7 +175,7 @@
               <div class="col-lg-4 col-md-6">
                 <div class="product-card position-relative mb-3">
                   <div class="image-holder zoom-effect">
-                    <img src="vaso-html-template/images/product-item2.jpg" alt="product-item" class="img-fluid zoom-in">
+                    <img src="vaso-html-template/images/StaySpace_commercial_3(1).jpg" alt="product-item" class="img-fluid zoom-in">
                     <div class="cart-concern position-absolute">
                       <div class="cart-button">
                         <a href="#" class="btn">Add to Cart</a>
@@ -193,7 +193,7 @@
               <div class="col-lg-4 col-md-6">
                 <div class="product-card position-relative mb-3">
                   <div class="image-holder zoom-effect">
-                    <img src="vaso-html-template/images/product-item1.jpg" alt="product-item" class="img-fluid zoom-in">
+                    <img src="vaso-html-template/images/StaySpace_studio_3(1).jpeg" alt="product-item" class="img-fluid zoom-in">
                     <div class="cart-concern position-absolute">
                       <div class="cart-button">
                         <a href="#" class="btn">Add to Cart</a>
@@ -211,7 +211,7 @@
               <div class="col-lg-4 col-md-6">
                 <div class="product-card position-relative mb-3">
                   <div class="image-holder zoom-effect">
-                    <img src="vaso-html-template/images/product-item4.jpg" alt="product-item" class="img-fluid zoom-in">
+                    <img src="vaso-html-template/images/StaySpace_studio_4(1).jpg" alt="product-item" class="img-fluid zoom-in">
                     <div class="cart-concern position-absolute">
                       <div class="cart-button">
                         <a href="#" class="btn">Add to Cart</a>

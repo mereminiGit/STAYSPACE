@@ -15,7 +15,7 @@
 <link rel="stylesheet" type="text/css"
 	href="vaso-html-template/css/vendor.css">
 <link rel="stylesheet" type="text/css"
-	href="vaso-html-template/css/bootstrap.min.css">
+	href="vaso-html-template/css/bootstrap.min.css?ver=1">
 <link rel="stylesheet" type="text/css"
 	href="vaso-html-template/style.css">
 
@@ -24,9 +24,26 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Italiana&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap"
 	rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <style>
+        .slider {
+            margin: 0 auto;
+        }
+
+        .slick-dots {
+            bottom: 10px;
+        }
+
+        .slick-dots li button:before {
+            font-size: 10px;
+            line-height: 10px;
+            color: #fff;
+        }
+    </style>
 <!-- script
     ================================================== -->
-<script src="js/modernizr.js"></script>
+<script src="vaso-html-template/js/modernizr.js"></script>
 </head>
 <body>
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -147,12 +164,12 @@
 	</div>
 	<section
 		class="hero-section jarallax d-flex align-items-center justify-content-center padding-medium pb-5"
-		style="background: url(vaso-html-template/images/hero-img.jpg) no-repeat;">
+		style="background: url(vaso-html-template/images/hero-img.jpg) no-repeat;background-size:cover;">
 		<div class="hero-content">
 			<div class="container">
 				<div class="row">
 					<div class="text-center padding-large no-padding-bottom">
-						<h1>[분당/판교] 미드센츄리모던 빈티지 가구들로 꾸며진 카페</h1>
+						<h1>카페 · 경기</h1>
 						<div class="breadcrumbs">
 							<span class="item"> <a href="index.html">Home ></a>
 							</span> <span class="item">카페 · 경기</span>
@@ -167,41 +184,22 @@
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="row product-preview">
-						<div class="swiper thumb-swiper col-3">
-							<div class="swiper-wrapper d-flex flex-wrap align-content-start">
+						<div class="swiper large-swiper overflow-hidden">
+							<div class="swiper-wrapper slider">
 								<div class="swiper-slide">
 									<img
 										src="vaso-html-template/images/StaySpace_commercial_1(1).jpg"
-										alt="" class="img-fluid">
+										alt="single-product" class="img-fluid"onclick="window.open(this.src)">
 								</div>
 								<div class="swiper-slide">
 									<img
-										src="vaso-html-template/images/StaySpace_commercial_1(2).jpg"
-										alt="" class="img-fluid">
+										src="vaso-html-template/images/StaySpace_commercial_2(2).jpg"
+										alt="single-product" class="img-fluid"onclick="window.open(this.src)">
 								</div>
 								<div class="swiper-slide">
 									<img
-										src="vaso-html-template/images/StaySpace_commercial_1(3).jpg"
-										alt="" class="img-fluid">
-								</div>
-							</div>
-						</div>
-						<div class="swiper large-swiper overflow-hidden col-9">
-							<div class="swiper-wrapper">
-								<div class="swiper-slide">
-									<img
-										src="vaso-html-template/images/StaySpace_commercial_1(1).jpg"
-										alt="single-product" class="img-fluid">
-								</div>
-								<div class="swiper-slide">
-									<img
-										src="vaso-html-template/images/StaySpace_commercial_1(2).jpg"
-										alt="single-product" class="img-fluid">
-								</div>
-								<div class="swiper-slide">
-									<img
-										src="vaso-html-template/images/StaySpace_commercial_1(3).jpg"
-										alt="single-product" class="img-fluid">
+										src="vaso-html-template/images/StaySpace_commercial_2(3).jpg"
+										alt="single-product" class="img-fluid"onclick="window.open(this.src)">
 								</div>
 							</div>
 						</div>
@@ -210,7 +208,7 @@
 				<div class="col-lg-6">
 					<div class="product-info">
 						<div class="element-header">
-							<h3 class="product-title my-3"></h3>
+							<h3 class="product-title my-3">[분당/판교] 미드센츄리모던 빈티지 가구들로 꾸며진 카페</h3>
 							<div class="rating-container d-flex align-items-center my-3">
 								<div class="rating" data-rating="1" onclick=rate(1)>
 									<svg class="bi" width="16" height="16">
@@ -245,8 +243,8 @@
 							<input type="text" id="datepicker">
 						</h5>
 						<div class="action-buttons my-4 d-flex flex-wrap">
-							<a href="#" class="btn btn-dark me-2 mb-1">Buy now</a> <a
-								href="#" class="btn btn-dark">Add to cart</a>
+							<a href="#" class="btn btn-dark me-2 mb-1">예약하기</a> <a
+								href="cart.do" class="btn btn-dark">찜하기</a>
 						</div>
 					</div>
 					<hr>
@@ -289,29 +287,23 @@
 								data-bs-toggle="tab" data-bs-target="#nav-information"
 								type="button" role="tab" aria-controls="nav-information"
 								aria-selected="false">이용규칙</button>
-							<button class="nav-link text-uppercase" id="nav-shipping-tab"
-								data-bs-toggle="tab" data-bs-target="#nav-shipping"
-								type="button" role="tab" aria-controls="nav-shipping"
-								aria-selected="false">위치</button>
 							<button class="nav-link text-uppercase" id="nav-review-tab"
 								data-bs-toggle="tab" data-bs-target="#nav-review" type="button"
-								role="tab" aria-controls="nav-review" aria-selected="false">리뷰</button>
+								role="tab" aria-controls="nav-review" aria-selected="false">후기</button>
 						</div>
 					</nav>
 					<div class="tab-content" id="nav-tabContent">
 						<div class="tab-pane fade active show" id="nav-home"
 							role="tabpanel" aria-labelledby="nav-home-tab">
-							<p>디저트 카페와 꽃집을 같이 하고 있는 공간입니다. 깔끔하고 모던한 느낌으로 빈티지 가구들을 수집하여
-								인테리어에 신경을 많이 썼어요- 해가 워낙 예쁘게 잘 들어와서 조명없이 촬영해야하시는 분들께서 자주 찾아주십니다 !
-								채광 맛집이에요 😊 촬영하시는 동안 음료도 주문 다 가능하세요:) 
-								<br>*반려견 동반 가능* 
-								<br>*꽃장식 가능*<br>
-								*대관이용중 음료주문 가능*
-							<ul class="fw-light">
-								<li>반려견 동반 가능</li>
-								<li>꽃장식 가능</li>
-								<li>대관이용중 음료주문 가능</li>
-							</ul>
+							<pre>디저트 카페와 꽃집을 같이 하고 있는 공간입니다.
+깔끔하고 모던한 느낌으로 빈티지 가구들을 수집하여 인테리어에 신경을 많이 썼어요-
+해가 워낙 예쁘게 잘 들어와서 조명없이 촬영해야하시는 분들께서 자주 찾아주십니다 ! 채광 맛집이에요 😊
+촬영하시는 동안 음료도 주문 다 가능하세요:)
+
+*반려견 동반 가능*
+*꽃장식 가능*
+*대관이용중 음료주문 가능*</pre>
+							<div id="map" style="width:100%;height:350px;"></div>
 						</div>
 						<div class="tab-pane fade" id="nav-information" role="tabpanel"
 							aria-labelledby="nav-information-tab">
@@ -338,11 +330,6 @@
 - 주차는 안내된 주차대수만 제공됩니다.
 - 기존의 가구 세팅 및 구조를 필요에 의해 변경하신 경우 마감 시간 전에 원상복구 해주셔야 합니다.
 - 꽃냉장고와 모든 생화는 판매용이니 눈으로만 봐주세요</pre>
-						</div>
-						<div class="tab-pane fade" id="nav-shipping" role="tabpanel"
-							aria-labelledby="nav-shipping-tab">
-							<p>자세한 주소는 호스트 승인 후, 메시지로 문의 가능합니다.</p>
-							<div id="staticMap" style="width:100%;height:350px;"></div>    
 						</div>
 						<div class="tab-pane fade" id="nav-review" role="tabpanel"
 							aria-labelledby="nav-review-tab">
@@ -424,11 +411,9 @@
 								</div>
 							</div>
 							<div class="add-review margin-small">
-								<h3>Add a review</h3>
-								<p>Your email address will not be published. Required fields
-									are marked *</p>
+								<h3>후기작성</h3>
 								<div class="review-rating py-2">
-									<span class="my-2">Your rating *</span>
+									<span class="my-2">Your rating</span>
 									<div class="rating-container d-flex align-items-center">
 										<div class="rating">
 											<svg class="bi" width="16" height="16">
@@ -456,38 +441,27 @@
 									data-text="Choose your file">
 								<form id="form">
 									<div class="py-3">
-										<label>Your Name *</label> <input type="text" name="name"
-											placeholder="Write your name here" class="w-100">
-									</div>
-									<div class="py-3">
-										<label>Your Email *</label> <input type="text" name="email"
-											placeholder="Write your email here" class="w-100">
-									</div>
-									<div class="py-3">
-										<label>Your Review *</label>
+										<label>후기쓰기</label>
 										<textarea placeholder="Write your review here" class="w-100"></textarea>
 									</div>
-									<label class="py-3"> <input type="checkbox" required=""
-										class="d-inline"> <span>Save my name, email,
-											and website in this browser for the next time.</span>
-									</label>
 									<button type="submit" name="submit"
 										class="btn btn-dark w-100 my-3">Submit</button>
 								</form>
 							</div>
 						</div>
+							
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 	<section id="products" class="product-store padding-xlarge"
-		data-aos="fade" data-aos-easing="ease-in" data-aos-duration="1000"
+		 data-aos-easing="ease-in" data-aos-duration="1000"
 		data-aos-once="true">
 		<div class="container">
 			<div
 				class="display-header d-flex flex-wrap justify-content-between align-items-center pb-4">
-				<h3 class="mt-3">Related Products</h3>
+				<h3 class="mt-3">연관상품</h3>
 				<a href="shop.html" class="btn">View all items</a>
 			</div>
 			<div class="row">
@@ -566,8 +540,46 @@
 	<script src="vaso-html-template/js/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript"
 		src="vaso-html-template/js/bootstrap.bundle.min.js"></script>
-	<script type="text/javascript" src="vaso-html-template/js/plugins.js"></script>
+	<script type="text/javascript" src="vaso-html-template/js/plugins.js?ver=1"></script>
 	<script type="text/javascript" src="vaso-html-template/js/script.js"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7fabb4647805e005839c9dad15111de3"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+    $('.slider').slick({
+        autoplay: true,
+        autoplaySpeed: 2000,
+        dots: true,
+        infinite: true,
+        speed: 500,
+        fade: true,
+        cssEase: 'linear',
+        adaptiveHeight: true
+    });
+</script>
+    <script>
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+// 마커가 표시될 위치입니다 
+var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
+
+// 마커를 생성합니다
+var marker = new kakao.maps.Marker({
+    position: markerPosition
+});
+
+// 마커가 지도 위에 표시되도록 설정합니다
+marker.setMap(map);
+
+// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
+// marker.setMap(null);    
+    </script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
 		integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
@@ -581,6 +593,7 @@
 		integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ=="
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<script>
+	
     $( function() {
       $( "#datepicker" ).datepicker({
         dateFormat:'yy-mm-dd',
@@ -588,26 +601,5 @@
       });
     } );
     </script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7fabb4647805e005839c9dad15111de3"></script>
-<script>
-// 이미지 지도에서 마커가 표시될 위치입니다 
-var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
-
-// 이미지 지도에 표시할 마커입니다
-// 이미지 지도에 표시할 마커는 Object 형태입니다
-var marker = {
-    position: markerPosition
-};
-
-var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를 표시할 div  
-    staticMapOption = { 
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 이미지 지도의 중심좌표
-        level: 3, // 이미지 지도의 확대 레벨
-        marker: marker // 이미지 지도에 표시할 마커 
-    };    
-
-// 이미지 지도를 생성합니다
-var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
-</script>
 </body>
 </html>

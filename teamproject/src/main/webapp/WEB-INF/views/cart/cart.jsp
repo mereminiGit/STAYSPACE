@@ -12,16 +12,16 @@
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <link rel="stylesheet" type="text/css" href="css/vendor.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="vaso-html-template/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="vaso-html-template/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="vaso-html-template/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap" rel="stylesheet">
     <!-- script
     ================================================== -->
-    <script src="js/modernizr.js"></script>
+    <script src="vaso-html-template/js/modernizr.js"></script>
   </head>
   <body>
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -100,7 +100,7 @@
       <div id="loader"></div>
     </div>
    
-    <section class="hero-section jarallax d-flex align-items-center justify-content-center padding-medium pb-5" style="background: url(images/hero-img.jpg) no-repeat;">
+    <section class="hero-section jarallax d-flex align-items-center justify-content-center padding-medium pb-5" style="background: url(vaso-html-template/images/hero-img.jpg) no-repeat;">
       <div class="hero-content">
         <div class="container">
           <div class="row">
@@ -135,7 +135,7 @@
                   <td class="align-middle border-0" scope="row">
                     <div class="cart-product-detail d-flex align-items-center">
                       <div class="card-image">
-                        <img src="images/cart-img1.jpg" alt="cloth" class="img-fluid">
+                        <img src="vaso-html-template/images/cart-img1.jpg" alt="cloth" class="img-fluid">
                       </div>
                       <div class="card-detail ps-3">
                         <h5 class="card-title fs-3 text-capitalize">
@@ -174,7 +174,7 @@
                   <td class="align-middle border-0" scope="row">
                     <div class="cart-product-detail d-flex align-items-center">
                       <div class="card-image">
-                        <img src="images/cart-img2.jpg" alt="cloth" class="img-fluid">
+                        <img src="vaso-html-template/images/cart-img2.jpg" alt="cloth" class="img-fluid">
                       </div>
                       <div class="card-detail ps-3">
                         <h5 class="card-title fs-3 text-capitalize">
@@ -210,13 +210,6 @@
                 </tr>
               </tbody>
             </table>
-            <div class="cart-bottom d-flex flex-wrap justify-content-between align-items-center pt-2">
-              <form action="#" class="d-flex flex-wrap justify-content-between">
-                <input type="text" class="border border-dark p-2 me-1 mb-2" required="" placeholder="Coupon Code">
-                <a href="#" class="btn btn-dark mb-2" type="submit">Apply Coupon</a>
-              </form>
-              <a href="#" class="btn btn-dark mb-2">Update cart</a>
-            </div>
           </div>
           <div class="cart-totals padding-medium">
             <h3 class="pb-4">Cart Total</h3>
@@ -246,144 +239,18 @@
               </table>
             </div>
             <div class="button-wrap">
-              <button class="btn btn-dark me-2 mb-2">Update Cart</button>
-              <button class="btn btn-dark me-2 mb-2">Continue Shopping</button>
-              <button class="btn btn-primary me-2 mb-2">Proceed to checkout</button>
+              <button class="btn btn-dark me-2 mb-2">메뉴로 돌아가기</button>
+              <button class="btn btn-primary me-2 mb-2">결제하기</button>
             </div>
           </div>
         </div>
       </div>
     </section> 
-    <section id="newsletter" class="bg-light padding-medium" style="background-image: url(images/hero-img.jpg);">
-      <div class="container">
-        <div class="newsletter">
-          <div class="row">
-            <div class="col-lg-6 col-md-12 title mb-4">
-              <h2>Subscribe to Our Newsletter</h2>
-              <p>Get latest news, updates and deals directly mailed to your inbox</p> 				
-            </div>
-            <form class="col-lg-6 col-md-12 d-flex align-items-center">
-              <div class="d-flex w-75 border-bottom border-dark py-2">
-                <input id="newsletter1" type="text" class="form-control border-0 p-0" placeholder="Your email address here">
-                <button class="btn border-0 p-0" type="button">Subscribe</button>
-              </div>
-            </form>
-          </div> 			
-        </div>
-      </div>
-    </section>
-    <footer id="footer" class="overflow-hidden padding-xlarge pb-0">
-      <div class="container">
-        <div class="row">
-          <div class="footer-top-area pb-5">
-            <div class="row d-flex flex-wrap justify-content-between">
-              <div class="col-lg-3 col-sm-6 pb-3" data-aos="fade" data-aos-easing="ease-in" data-aos-duration="1000" data-aos-once="true">
-                <div class="footer-menu">
-                  <img src="images/main-logo.png" alt="logo" class="mb-2">
-                  <p>Nunc tristique facilisis consectetur vivamus ut porta porta aliquam vitae vehicula leo nullam urna lectus.</p>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6 pb-3" data-aos="fade" data-aos-easing="ease-in" data-aos-duration="1200" data-aos-once="true">
-                <div class="footer-menu">
-                  <h4 class="widget-title pb-2">Quick Links</h4>
-                  <ul class="menu-list list-unstyled">
-                    <li class="menu-item pb-2">
-                      <a href="about.html">About</a>
-                    </li>
-                    <li class="menu-item pb-2">
-                      <a href="shop.html">Shop</a>
-                    </li>
-                    <li class="menu-item pb-2">
-                      <a href="contact.html">Contact</a>
-                    </li>
-                    <li class="menu-item pb-2">
-                      <a href="login.html">Account</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="col-lg-3 col-sm-6 pb-3" data-aos="fade" data-aos-easing="ease-in" data-aos-duration="1400" data-aos-once="true">
-                <div class="footer-menu contact-item">
-                  <h4 class="widget-title pb-2">Contact info</h4>
-                  <ul class="menu-list list-unstyled">
-                    <li class="menu-item pb-2">
-                      <a href="#">Tea Berry, Marinette, USA</a>
-                    </li>
-                    <li class="menu-item pb-2">
-                      <a href="#">+55 111 222 333 44</a>
-                    </li>
-                    <li class="menu-item pb-2">
-                      <a href="mailto:">yourinfo@gmail.com</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="col-lg-3 col-sm-6 pb-3" data-aos="fade" data-aos-easing="ease-in" data-aos-duration="1600" data-aos-once="true">
-                <div class="footer-menu">
-                  <h4 class="widget-title pb-2">Social info</h4>
-                  <p>You can follow us on our social platforms to get updates.</p>
-                  <div class="social-links">
-                    <ul class="d-flex list-unstyled">
-                      <li>
-                        <a href="#">
-                          <svg class="facebook">
-                            <use xlink:href="#facebook">
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <svg class="instagram">
-                            <use xlink:href="#instagram">
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <svg class="twitter">
-                            <use xlink:href="#twitter">
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <svg class="linkedin">
-                            <use xlink:href="#linkedin">
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <svg class="youtube">
-                            <use xlink:href="#youtube">
-                          </svg>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr>
-      </div>
-    </footer>
-    <div id="footer-bottom">
-      <div class="container">
-        <div class="row d-flex flex-wrap justify-content-between">
-          <div class="col-12">
-            <div class="copyright">
-              <p>© Copyright 2023 Vaso. Design by <a href="https://templatesjungle.com/" target="_blank"><b>TemplatesJungle</b></a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     
-    <script src="js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="js/plugins.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
+    
+    <script src="vaso-html-template/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="vaso-html-template/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="vaso-html-template/js/plugins.js"></script>
+    <script type="text/javascript" src="vaso-html-template/js/script.js"></script>
   </body>
 </html>
