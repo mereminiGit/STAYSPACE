@@ -331,6 +331,12 @@
 - 기존의 가구 세팅 및 구조를 필요에 의해 변경하신 경우 마감 시간 전에 원상복구 해주셔야 합니다.
 - 꽃냉장고와 모든 생화는 판매용이니 눈으로만 봐주세요</pre>
 						</div>
+
+						<div class="tab-pane fade" id="nav-shipping" role="tabpanel"
+							aria-labelledby="nav-shipping-tab">
+							<p>자세한 주소는 호스트 승인 후, 메시지로 문의 가능합니다.</p>
+							<div id="staticMap" style="width:100%;height:350px;"></div>
+						</div>
 						<div class="tab-pane fade" id="nav-review" role="tabpanel"
 							aria-labelledby="nav-review-tab">
 							<div
@@ -601,5 +607,27 @@ marker.setMap(map);
       });
     } );
     </script>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7fabb4647805e005839c9dad15111de3"></script>
+<script>
+// 이미지 지도에서 마커가 표시될 위치입니다
+var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667);
+
+// 이미지 지도에 표시할 마커입니다
+// 이미지 지도에 표시할 마커는 Object 형태입니다
+var marker = {
+    position: markerPosition
+};
+
+var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를 표시할 div
+    staticMapOption = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 이미지 지도의 중심좌표
+        level: 3, // 이미지 지도의 확대 레벨
+        marker: marker // 이미지 지도에 표시할 마커
+    };
+
+// 이미지 지도를 생성합니다
+var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
+</script>
 </body>
 </html>
