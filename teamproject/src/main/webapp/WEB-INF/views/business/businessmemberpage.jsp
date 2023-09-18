@@ -2,17 +2,6 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-<!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
-==============================================================
-
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
-* Created by: ThemeSelection
-* License: You must have a valid license purchased in order to legally use the theme for your project.
-* Copyright ThemeSelection (https://themeselection.com)
-
-=========================================================
- -->
 <!-- beautify ignore:start -->
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr"
 	data-theme="theme-default" data-assets-path="sneat/assets/"
@@ -66,8 +55,8 @@
 		<!-- Content -->
 
 		<div class="container-xxl flex-grow-1 container-p-y">
-			<h4 class="fw-bold py-3 mb-4">
-				<span class="text-muted fw-light">MY PAGE</span>
+			<h4 class="fw-bold py-3 mb-4">MY ACCOUNT
+				<span class="text-muted fw-light">SETTINGS</span>
 			</h4>
 
 			<div class="row">
@@ -77,12 +66,13 @@
 						<!-- Account -->
 						<div class="card-body">
 							<div class="d-flex align-items-start align-items-sm-center gap-4">
-								<img src="sneat/assets/img/avatars/1.png" alt="user-avatar"
-									class="d-block rounded" height="100" width="100"
-									id="uploadedAvatar" />
+								<img src="sneat/assets/img/avatars/defaultimg.png"
+									alt="user-avatar" class="d-block rounded" height="100"
+									width="100" id="uploadedAvatar" />
 								<div class="button-wrapper">
-									<label for="upload" class="btn btn-primary me-2 mb-4"
-										tabindex="0"> <span class="d-none d-sm-block">이미지 등록</span> <i class="bx bx-upload d-block d-sm-none"></i> <input
+									<label for="upload" class="btn btn-secondary me-2 mb-4"
+										tabindex="0"> <span class="d-none d-sm-block">이미지
+											등록</span> <i class="bx bx-upload d-block d-sm-none"></i> <input
 										type="file" id="upload" class="account-file-input" hidden
 										accept="image/png, image/jpeg" />
 									</label>
@@ -105,7 +95,7 @@
 									<div class="mb-3 col-md-6">
 										<label for="lastName" class="form-label">PASSWORD</label> <input
 											class="form-control" type="password" name="lastName"
-											id="lastName" placeholder="비밀번호를 입력하세요." />
+											id="lastName" placeholder="비밀번호를 입력하세요."/>
 									</div>
 									<div class="mb-3 col-md-6">
 										<label for="firstName" class="form-label">Name</label> <input
@@ -121,13 +111,12 @@
 										<label class="form-label" for="phoneNumber">Phone
 											Number</label>
 										<div class="input-group input-group-merge">
-											<input
-												type="text" id="phoneNumber" name="phoneNumber"
+											<input type="text" id="phoneNumber" name="phoneNumber"
 												class="form-control" placeholder="010-0000-1111" />
 										</div>
 									</div>
 									<div class="mt-2">
-										<button type="submit" class="btn btn-primary me-2">수정하기</button>
+										<button type="submit" class="btn btn-secondary me-2">수정하기</button>
 										<button type="reset" class="btn btn-outline-secondary">취소하기</button>
 									</div>
 								</div>
@@ -140,21 +129,44 @@
 						<h5 class="card-header">회원 탈퇴</h5>
 						<div class="card-body">
 							<div class="mb-3 col-12 mb-0">
-								<div class="alert alert-warning">
-									<h6 class="alert-heading fw-bold mb-1">정말로 계정을 삭제하시겠습니까?</h6>
+								<div class="alert alert-warning" style="background-color: #eee; width: 80%; border-radius: 10px">
+									<h6 class="alert-heading fw-bold mb-1" style="color: #aaa">정말로
+										계정을 삭제하시겠습니까?</h6>
 									<br>
-									<p class="mb-0">계정을 삭제하면 되돌릴 수 없습니다.</p>
+									<p class="mb-0" style="color: #aaa">계정을 삭제하면 되돌릴 수 없습니다.</p>
 								</div>
 							</div>
 							<form id="formAccountDeactivation" onsubmit="return false">
 								<div class="form-check mb-3">
 									<input class="form-check-input" type="checkbox"
-										name="accountActivation" id="accountActivation" />
-									<label class="form-check-label" for="accountActivation">내
-										계정 탈퇴에 동의합니다.</label>
+										name="accountActivation" id="accountActivation" /> <label
+										class="form-check-label" for="accountActivation">내 계정
+										탈퇴에 동의합니다.</label>
 								</div>
-								<button type="submit" class="btn btn-danger deactivate-account">탈퇴하기</button>
+								<button type="submit" class="btn btn-dark deactivate-account"
+									data-bs-toggle="modal" data-bs-target="#modalToggle">탈퇴하기</button>
 							</form>
+						</div>
+					</div>
+
+					<!-- Modal 1-->
+					<div class="modal fade" id="modalToggle"
+						aria-labelledby="modalToggleLabel" tabindex="-1"
+						style="display: none" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="modalToggleLabel"></h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"
+										aria-label="Close"></button>
+								</div>
+								<div class="modal-body" align="center">정상적으로 계정 삭제되었습니다.</div>
+								<div class="modal-footer">
+									<button class="btn btn-secondary"
+										data-bs-target="#modalToggle2" data-bs-toggle="modal"
+										data-bs-dismiss="modal">확인</button>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -162,6 +174,7 @@
 		</div>
 		<!-- / Content -->
 	</div>
+	
 	<!-- Core JS -->
 	<!-- build:js assets/vendor/js/core.js -->
 	<script src="sneat/assets/vendor/libs/jquery/jquery.js"></script>

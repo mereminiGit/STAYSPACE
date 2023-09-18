@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:forward page="adminhome.do"></jsp:forward>
+<jsp:forward page="businesshome.do"></jsp:forward>
 </body>
 </html>

@@ -26,47 +26,61 @@
 						</div>
 						<div class="card-body">
 							<form>
-								<div class="mb-3">
+								<div class="mb-3" style="width: 50%">
 									<label class="form-label" for="basic-default-fullname">Space Name</label> <input type="text" class="form-control"
-										id="basic-default-fullname" placeholder="Studio" />
+										id="basic-default-fullname" placeholder="Studio" required/>
 								</div>
-								<div class="mb-3">
+								<div class="mb-3" style="width: 50%">
 									<label class="form-label" for="basic-default">Price</label>
 									<input type="text" class="form-control"
-										id="basic-default" placeholder="20000" />
+										id="basic-default" placeholder="20000" required/>
 								</div>
-								<div class="mb-3">
+								<div class="mb-3" style="width: 50%">
 									
 										<label class="form-label" for="country">Country</label> <select
-											id="country" class="select2 form-select">
+											id="country" class="select2 form-select" required>
 											<option value="">선택</option>
-											<option value="Australia">서울</option>
-											<option value="Bangladesh">부산</option>
-											<option value="Belarus">대구</option>
-											<option value="Brazil">울산</option>
-											<option value="Canada">광주</option>
-											<option value="China">대전</option>
-											<option value="France">인천</option>
+											<option value="Australia">서울특별시</option>
+											<option value="Bangladesh">부산광역시</option>
+											<option value="Belarus">대구광역시</option>
+											<option value="Brazil">울산광역시</option>
+											<option value="Canada">광주광역시</option>
+											<option value="China">대전광역시</option>
+											<option value="France">인천광역시</option>
+											<option value="France">경상남도</option>
+											<option value="France">경상북도</option>
+											<option value="France">충청남도</option>
+											<option value="France">충청북도</option>
+											<option value="France">전라남도</option>
+											<option value="France">전라북도</option>
+											<option value="France">경기도</option>
+											<option value="France">강원도</option>
+											<option value="France">제주도</option>
 										</select>
 								</div>
-								<div class="mb-3">
+								<div class="mb-3" style="width: 80%">
 									<label class="form-label" for="basic-default">Address</label> <input
 										type="text" id="address" class="form-control"
-										placeholder="주소를 입력하세요." />
+										placeholder="주소를 입력하세요." required/>
 								</div>
-								<div class="mb-3">
+								<div class="mb-3" style="width: 80%;">
 									<label class="form-label" for="basic-default-message">Content</label>
 									<textarea id="basic-default-message" class="form-control"
-										placeholder="대여공간에 대한 설명을 입력하세요."></textarea>
+										placeholder="대여공간에 대한 설명을 입력하세요." style="height: 200px" required></textarea>
 								</div>
 
 								<!-- File input -->
-								<div class="mb-3">
+								<div class="mb-3" style="width: 60%">
+								
 									<label for="formFileMultiple" class="form-label">이미지 파일
-										선택</label> <input class="form-control" type="file"
-										id="formFileMultiple" multiple />
+										선택 (다중선택 가능)</label> <input class="form-control" type="file"
+										id="formFileMultiple" multiple required/>
 								</div>
-								<button type="submit" class="btn btn-primary">등록</button>
+								<br>
+								<div align="center">
+								<button type="submit" class="btn btn-secondary me-2">등록하기</button>
+								<button type="reset" class="btn btn-outline-secondary">취소하기</button>
+								</div>
 							</form>
 						</div>
 					</div>

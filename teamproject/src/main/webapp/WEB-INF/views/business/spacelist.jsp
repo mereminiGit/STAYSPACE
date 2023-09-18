@@ -34,6 +34,18 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="sneat/assets/js/config.js"></script>
+    
+    
+    <!-- img css -->
+    <style>
+    img#stayimg{
+    	width: 200px;
+    	height: 120px;
+    	border-radius: 10px;
+    }
+    </style>
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 </head>
 <body>
 <!-- Content wrapper -->
@@ -42,6 +54,7 @@
 
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Space </span> Management</h4>
+              
               <!-- Hoverable Table rows -->
               <div class="card">
                 <h5 class="card-header">대여공간 목록</h5>
@@ -60,22 +73,23 @@
                     <tbody class="table-border-bottom-0">
                     <!-- 1번 공간 -->
                       <tr>
-                      	<td><img src="sneat/assets/img/avatars/6.png" alt="space1" class="rounded-circle"></td>
+                      	<td><img id="stayimg" src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>촬영 스튜디오</strong></td>
                         <td>서울</td>
-                        <td>서울시 강동구 ...</td>
-                        <td>50000</td>
+                        <td>서울특별시 강남구 테헤란로19</td>
+                        <td>50000<span> 원</span></td>
                         <td>
                           <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                               <i class="bx bx-dots-vertical-rounded"></i>
                             </button>
                             <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-edit-alt me-1"></i> 수정</a
+                              <button type="button" class="dropdown-item spaceedit"
+                              data-bs-toggle="modal" data-bs-target="#modalCenter"
+                                ><i class="bx bx-edit-alt me-1"></i> 수정</button
                               >
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-trash me-1"></i> 삭제</a
+                              <button type="button" class="dropdown-item spacedelete"
+                                ><i class="bx bx-trash me-1"></i> 삭제</button
                               >
                             </div>
                           </div>
@@ -83,22 +97,23 @@
                       </tr>
                       <!-- 2번 공간 -->
                       <tr>
-                        <td><img src="sneat/assets/img/avatars/6.png" alt="space1" class="rounded-circle"></td>
+                        <td><img id="stayimg" src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>파티룸</strong></td>
                         <td>서울</td>
-                        <td>서울시 강동구 ...</td>
-                        <td>60000</td>
+                        <td>서울특별시 강남구 테헤란로19</td>
+                        <td>60000<span> 원</span></td>
                         <td>
                           <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                               <i class="bx bx-dots-vertical-rounded"></i>
                             </button>
                             <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-edit-alt me-1"></i> 수정</a
+                              <button type="button" class="dropdown-item spaceedit"
+                              data-bs-toggle="modal" data-bs-target="#modalCenter"
+                                ><i class="bx bx-edit-alt me-1"></i> 수정</button
                               >
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-trash me-1"></i> 삭제</a
+                              <button type="button" class="dropdown-item spacedelete"
+                                ><i class="bx bx-trash me-1"></i> 삭제</button
                               >
                             </div>
                           </div>
@@ -106,22 +121,23 @@
                       </tr>
                       <!-- 3번 공간 -->
                       <tr>
-                        <td><img src="sneat/assets/img/avatars/6.png" alt="space1" class="rounded-circle"></td>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>촬영 스튜디오</strong></td>
+                        <td><img id="stayimg" src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i><strong>촬영 스튜디오</strong></td>
                         <td>서울</td>
-                        <td>서울시 강동구 ...</td>
-                        <td>50000</td>
+                        <td>서울특별시 강남구 테헤란로19</td>
+                        <td>50000<span> 원</span></td>
                         <td>
                           <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                               <i class="bx bx-dots-vertical-rounded"></i>
                             </button>
                             <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-edit-alt me-1"></i> 수정</a
+                              <button type="button" class="dropdown-item spaceedit"
+                              data-bs-toggle="modal" data-bs-target="#modalCenter"
+                                ><i class="bx bx-edit-alt me-1"></i> 수정</button
                               >
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-trash me-1"></i> 삭제</a
+                              <button type="button" class="dropdown-item spacedelete"
+                                ><i class="bx bx-trash me-1"></i> 삭제</button
                               >
                             </div>
                           </div>
@@ -129,36 +145,133 @@
                       </tr>
                       <!-- 4번 공간 -->
                       <tr>
-                        <td><img src="sneat/assets/img/avatars/6.png" alt="space1" class="rounded-circle"></td>
+                        <td><img id="stayimg" src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>파티룸</strong></td>
                         <td>서울</td>
-                        <td>서울시 강동구 ...</td>
-                        <td>60000</td>
+                        <td>서울특별시 강남구 테헤란로19</td>
+                        <td>60000<span> 원</span></td>
                         <td>
                           <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                               <i class="bx bx-dots-vertical-rounded"></i>
                             </button>
                             <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-edit-alt me-1"></i> 수정</a
+                              <button type="button" class="dropdown-item spaceedit"
+                              data-bs-toggle="modal" data-bs-target="#modalCenter"
+                                ><i class="bx bx-edit-alt me-1"></i> 수정
+                                </button
                               >
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-trash me-1"></i> 삭제</a
+                              <button type="button" class="dropdown-item spacedelete"
+                                ><i class="bx bx-trash me-1"></i> 삭제</button
                               >
                             </div>
                           </div>
                         </td>
                       </tr>
                     </tbody>
-                    <caption style="padding-left: 20px"><b>Total: </b>(Seoul: ,Busan: ,Daegu: )</caption>
+                    <caption style="padding-left: 20px"><b>Total: </b></caption>
                   </table>
                 </div>
               </div>
               <!--/ Hoverable Table rows -->
               
+              
               </div>
               </div>
+              
+						<!-- Modal -->
+                        <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+	                            
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="modalCenterTitle">대여공간 수정항목</h5>
+                                <button
+                                  type="button"
+                                  class="btn-close"
+                                  data-bs-dismiss="modal"
+                                  aria-label="Close"
+                                ></button>
+                              </div>
+                              <div class="modal-body">
+                              <div class="row">
+                              <div class="mb-3">
+									
+										<label for="formFileMultiple" class="form-label">이미지 파일
+											선택 (다중선택 가능)</label> <input class="form-control" type="file"
+											id="formFileMultiple" multiple required/>
+								</div>
+								</div>
+                                <div class="row">
+                                  <div class="col mb-3">
+                                    <label for="nameWithTitle" class="form-label">Name</label>
+                                    <input
+                                      type="text"
+                                      id="nameWithTitle"
+                                      class="form-control"
+                                      placeholder="이름을 입력하세요."
+                                    />
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col mb-3">
+                                    <label for="cityWithTitle" class="form-label">City</label>
+                                    <input
+                                      type="text"
+                                      id="cityWithTitle"
+                                      class="form-control"
+                                      placeholder="지역을 입력하세요."
+                                    />
+                                  </div>
+                                 </div>
+                                 <div class="row">
+                                  <div class="col mb-3">
+                                    <label for="AddressWithTitle" class="form-label">Address</label>
+                                    <input
+                                      type="text"
+                                      id="AddressWithTitle"
+                                      class="form-control"
+                                      placeholder="주소를 입력하세요."
+                                    />
+                                  </div>
+                                 </div>
+                                 <div class="row">
+                                  <div class="col mb-3">
+                                    <label for="PriceWithTitle" class="form-label">Price</label>
+                                    <input
+                                      type="text"
+                                      id="PriceWithTitle"
+                                      class="form-control"
+                                      placeholder="가격을 입력하세요."
+                                    />
+                                  </div>
+                                 </div>
+                                </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                  취소하기
+                                </button>
+                                <button type="button" class="btn btn-dark">변경하기</button>
+                              </div>
+                              </div>
+                            </div>
+                          </div>
+                        
+              <script>
+              //삭제 이벤트 
+              $('.spacedelete').on('click', function(e){
+      			e.target.parentElement.parentElement.parentElement.parentElement.remove();
+              })
+              //수정 이벤트
+              $('.spaceedit').on('click', function(e){
+	              let img = $('#formFileMultiple');
+	              let Name = $('#nameWithTitle');
+            	  let city = $('#cityWithTitle');
+            	  let address = $('#AddressWithTitle');
+            	  let price = $('#PriceWithTitle');
+            	  e.target.parentElement.parentElement.parentElement.parentElement.children('')
+              })
+              </script>
               <!-- build:js assets/vendor/js/core.js -->
     <script src="sneat/assets/vendor/libs/jquery/jquery.js"></script>
     <script src="sneat/assets/vendor/libs/popper/popper.js"></script>

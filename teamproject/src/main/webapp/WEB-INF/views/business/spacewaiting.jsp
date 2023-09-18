@@ -34,6 +34,14 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="sneat/assets/js/config.js"></script>
+    
+    <style>
+    img#stayimg{
+    	width: 200px;
+    	height: 120px;
+    	border-radius: 10px;
+    }
+    </style>
 </head>
 <body>
 <!-- Content wrapper -->
@@ -61,54 +69,54 @@
                     <tbody class="table-border-bottom-0">
                     <!-- 1번 공간 -->
                       <tr>
-                      	<td><img src="sneat/assets/img/avatars/6.png" alt="space1" class="rounded-circle"></td>
+                      	<td><img id="stayimg" src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>촬영 스튜디오</strong></td>
                         <td>50000</td>
                         <td>홍길동</td>
                         <td>2023-09-01</td>
                         <td>2023-09-02</td>
                         <td>
-                        <button type="button" class="btn btn-warning">승인</button>
-                        <button type="button" class="btn btn-secondary">거부</button>
+                        <button type="button" class="btn btn-outline-warning">승인</button>
+                        <button type="button" class="btn btn-outline-secondary">거부</button>
                         </td>
                       </tr>
                       <!-- 2번 공간 -->
                       <tr>
-                        <td><img src="sneat/assets/img/avatars/6.png" alt="space1" class="rounded-circle"></td>
+                        <td><img id="stayimg" src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>촬영 스튜디오</strong></td>
                         <td>50000</td>
                         <td>홍길동</td>
                         <td>2023-09-01</td>
                         <td>2023-09-02</td>
                         <td>
-                        <button type="button" class="btn btn-warning">승인</button>
-                        <button type="button" class="btn btn-secondary">거부</button>
+                        <button type="button" class="btn btn-outline-warning">승인</button>
+                        <button type="button" class="btn btn-outline-secondary">거부</button>
                         </td>
                       </tr>
                       <!-- 3번 공간 -->
                       <tr>
-                        <td><img src="sneat/assets/img/avatars/6.png" alt="space1" class="rounded-circle"></td>
+                        <td><img id="stayimg" src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>촬영 스튜디오</strong></td>
                         <td>50000</td>
                         <td>홍길동</td>
                         <td>2023-09-01</td>
                         <td>2023-09-02</td>
                         <td>
-                        <button type="button" class="btn btn-warning">승인</button>
-                        <button type="button" class="btn btn-secondary">거부</button>
+                        <button type="button" class="btn btn-outline-warning">승인</button>
+                        <button type="button" class="btn btn-outline-secondary">거부</button>
                         </td>
                       </tr>
                       <!-- 4번 공간 -->
                       <tr>
-                        <td><img src="sneat/assets/img/avatars/6.png" alt="space1" class="rounded-circle"></td>
+                        <td><img id="stayimg" src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>촬영 스튜디오</strong></td>
                         <td>50000</td>
                         <td>홍길동</td>
                         <td>2023-09-01</td>
                         <td>2023-09-02</td>
                         <td>
-                        <button type="button" class="btn btn-warning">승인</button>
-                        <button type="button" class="btn btn-secondary">거부</button>
+                        <button type="button" class="btn btn-outline-warning">승인</button>
+                        <button type="button" class="btn btn-outline-secondary">거부</button>
                         </td>
                       </tr>
                     </tbody>
