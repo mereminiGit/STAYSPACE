@@ -84,7 +84,7 @@
           </a>
         </li>
         <li class="menu-item">
-          <a href="membermodify.do" class="menu-link menu-toggle">
+          <a href="memberedit.do" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons bx bx-detail"></i>
             <div data-i18n="Form Elements">회원정보수정</div>
           </a>

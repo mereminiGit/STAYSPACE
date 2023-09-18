@@ -85,9 +85,9 @@
 
                 <div class="col-xl-6">
                   <!-- HTML5 Inputs -->
-                  <div class="card mb-4">
-                    <h5 class="card-header">HTML5 Inputs</h5>
-                    <div class="card-body">
+                  <div class="card mb-4" id="memberinfo">
+                    <h5 class="card-header">회원정보</h5>
+                    <div class="card-body" id="modifybox">
                       <div class="mb-3 row">
                         <label for="html5-text-input" class="col-md-2 col-form-label">Name</label>
                         <div class="col-md-10">
@@ -95,15 +95,15 @@
                         </div>
                       </div>
                       <div class="mb-3 row">
-                        <label for="html5-search-input" class="col-md-2 col-form-label">ID</label>
-                        <div class="col-md-10">
-                          <input class="form-control" type="search" value="" placeholder="ID" id="html5-search-input" />
-                        </div>
-                      </div>
-                      <div class="mb-3 row">
                         <label for="html5-password-input" class="col-md-2 col-form-label">Password</label>
                         <div class="col-md-10">
-                          <input class="form-control" type="password" value="" placeholder="Password" id="html5-password-input" />
+                          <input class="form-control" type="password" value="" placeholder="Password" id="password" />
+                        </div>
+                      </div>
+                          <div class="mb-3 row">
+                        <label for="html5-password-input" class="col-md-2 col-form-label">Password check</label>
+                        <div class="col-md-10">
+                          <input class="form-control" type="password" name="passwordCheck" value="" placeholder="Password" id="passwordCheck" />
                         </div>
                       </div>
                       <div class="mb-3 row">
@@ -118,10 +118,8 @@
                           <input class="form-control" type="tel" value="" placeholder="010-1234-5678" id="html5-tel-input" />
                         </div>
                       </div>
-                       <button type="submit" class="btn btn-outline-dark">수정</button>
-                       <button type="reset" class="btn btn-outline-dark" type="reset">취소</button>
-                       <button type="submit" class="btn btn-dark" type="submit">수정</button>
-                       <button type="reset" class="btn btn-dark" type="reset">취소</button>
+                       <button type="reset" class="btn btn-outline-secondary"><strong>취소</strong></button>
+                       <button type="submit" class="btn btn-outline-secondary" onclick="test()"><strong>수정</strong></button>
                     </div>
                   </div>
 
@@ -171,6 +169,26 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script type="text/javascript">
+    
+    function test() {
+        var p1 = document.getElementById('password').value;
+        var p2 = document.getElementById('passwordCheck').value;
+        
+        if(p1.length < 6) {
+                alert('비밀번호는 6글자 이상이어야 합니다.');
+                return false;
+            }
+            
+            if( p1 != p2 ) {
+              alert("비밀번호불일치");
+              return false;
+            } else{
+              alert("비밀번호가 일치합니다");
+              return true;
+            }
+      }
+	</script>
   </body>
 </html>
     
