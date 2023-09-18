@@ -13,15 +13,14 @@
 			<div class="swiper-wrapper">
 				<!-- image slide 1 -->
 				<div class="swiper-slide"
-					style="background-image: url(vaso-html/images/banner-image.jpg); background-size: cover; background-repeat: no-repeat; height: 100vh; background-position: center;">
+					style="background-image: url(vaso-html/images/banner_image1.png); background-size: cover; background-repeat: no-repeat; height: 100vh; background-position: center;">
 					<div class="container ">
 						<div class="row">
 							<div class="offset-md-1 col-md-6">
 								<div class="banner-content">
 									<!-- image slide 1 공간 네임 & 소개 글 -->
-									<h2>House Space</h2>
-									<p class="fs-3">This ceramic soft pot is specially designed
-										by concept of traditional designs.</p>
+									<h2 style="text-shadow: 1px 1px 5px rgb(255, 255, 255, 0.5);">Studio Space</h2>
+									<p class="fs-3" style="font-weight: bold; text-shadow: 1px 1px 5px rgb(255, 255, 255, 0.5);">패션 촬영, 자연광으로 사진 잘 나오는 스튜디오는?</p>
 									<!-- image slide 1 상세 페이지 링크 (SpaceItem.do?name=\${space.spaceName}) -->
 									<a href="single-product.html" class="btn">Space Now</a>
 								</div>
@@ -32,15 +31,14 @@
 				</div>
 				<!-- image slide 2 -->
 				<div class="swiper-slide"
-					style="background-image: url(vaso-html/images/banner_image1.png); background-size: cover; background-repeat: no-repeat; height: 100vh; background-position: center;">
+					style="background-image: url(vaso-html/images/banner_image.jpg); background-size: cover; background-repeat: no-repeat; height: 100vh; background-position: center;">
 					<div class="container">
 						<div class="row">
 							<div class="offset-md-1 col-md-6">
 								<div class="banner-content">
 									<!-- image slide 2 공간 네임 & 소개 글 -->
-									<h2>Studio Space</h2>
-									<p class="fs-3">Beautiful shiny black pot is designed for
-										minimalist decors.</p>
+									<h2 style="text-shadow: 1px 1px 5px rgb(255, 255, 255, 0.5);">House Space</h2>
+									<p class="fs-3" style="font-weight: bold; text-shadow: 1px 1px 5px rgb(255, 255, 255, 0.5);">제품 촬영, 가구 배치 가능한 스튜디오는 없을까?</p>
 									<!-- image slide 2 상세 페이지 링크 -->
 									<a href="single-product.html" class="btn">Space Now</a>
 								</div>
@@ -51,15 +49,14 @@
 				</div>
 				<!-- image slide 3 -->
 				<div class="swiper-slide"
-					style="background-image: url(vaso-html/images/banner-image2.jpg); background-size: cover; background-repeat: no-repeat; height: 100vh; background-position: center;">
+					style="background-image: url(vaso-html/images/banner_image2.jpg); background-size: cover; background-repeat: no-repeat; height: 100vh; background-position: center;">
 					<div class="container">
 						<div class="row">
-							<div class="offset-md-1 col-md-6">
+							<div class="offset-md-6 col-md-6">
 								<div class="banner-content">
 									<!-- image slide 3 공간 네임 & 소개 글 -->
-									<h2>Shell Shape Decor</h2>
-									<p class="fs-3">Buy this beautiful unique pieces of shell
-										shape vase decors for your plants of room.</p>
+									<h2 style="text-shadow: 1px 1px 5px rgb(255, 255, 255, 0.5);">Commercial Space</h2>
+									<p class="fs-3" style="font-weight: bold; text-shadow: 1px 1px 5px rgb(255, 255, 255, 0.5);">유튜브 콘텐츠 찍기 좋은 감성 카페는?</p>
 									<!-- image slide 3 상세 페이지 링크 -->
 									<a href="single-product.html" class="btn">Space Now</a>
 								</div>
@@ -86,17 +83,14 @@
 						data-aos-once="true">About us</span>
 					<!-- 플랫폼 소개 타이틀 -->
 					<h3 class="py-3" data-aos="fade" data-aos-easing="ease-in"
-						data-aos-duration="1500" data-aos-once="true">Vaso is the
-						only best online store for varieties of collection of clean and
-						beautiful vases.</h3>
+						data-aos-duration="1500" data-aos-once="true" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 600">잠깐 머무는 장소,
+						좋은 경험을 선사하기 위해 STAY를 큐레이팅합니다.</h3>
 					<!-- 플랫폼 소개 상세 글 -->
 					<p data-aos="fade" data-aos-easing="ease-in"
-						data-aos-duration="1800" data-aos-once="true">Et id sapien id
-						enim, sit tempor cursus elit, fusce. Nunc tristique facilisis
-						consectetur at vivamus ut porta porta. Ut nisl, tortor, aliquam
-						blandit vitae vehicula vivamus leo nullam urna, scelerisque unc
-						lectus phasellus adipiscing arcu. Tristique facilisis nunc
-						consectetur at tempor cursusut porta.</p>
+						data-aos-duration="1800" data-aos-once="true" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 300">
+						좋은 장소, 공간을 만들어가려는 사람들과 이를 소비하는 실제 게스트를 위한 정보의 교류 및 소통의 장이 되어<br>
+						지역과 사람, 장소에 대한 가치를 보다 높여주는 스테이에 대한 관심과 이러한 장소를 만들고자 하는<br>
+						열망을 일깨울 수 있는 의미 있는 채널로 자리매김하고자 합니다.</p>
 				</div>
 			</div>
 		</div>
@@ -389,7 +383,7 @@
 	<section id="our-video">
 		<div
 			class="video-section jarallax d-flex align-items-center justify-content-center"
-			style="background: url(vaso-html/images/video-image.jpg) no-repeat;">
+			style="background: url(vaso-html/images/video_image.jpg) no-repeat;">
 			<!-- 위에 플랫폼 소개 이미지 -->
 			<div class="video-player text-center">
 				<!-- 동영상 링크 -->
@@ -420,96 +414,95 @@
 						data-aos-once="true">
 						<!-- Q&A 1 -->
 						<div class="accordion-item">
-							<h4 class="accordion-header" id="flush-headingOne3">
+							<h5 class="accordion-header" id="flush-headingOne3" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 700">
 								<button class="accordion-button collapsed" type="button"
 									data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
 									aria-expanded="true" aria-controls="flush-collapseOne">
-									I got my vase but some items are broken, what to do?</button>
-							</h4>
+									모르겠어요! 아이디 / 비밀번호는 어떻게 찾을 수 있나요?</button>
+							</h5>
 							<div id="flush-collapseOne" class="accordion-collapse collapse"
 								aria-labelledby="flush-headingOne"
 								data-bs-parent="#accordionFlushExample">
 								<div class="accordion-body">
-									<p>Et id sapien id enim, sit tempor cursus elit, fusce.
-										Nunc tristique facilisis consectetur at vivamus ut porta porta
-										aliquam blandit vitae vehicula leo nullam urna, scelerisque
-										unc lectus.</p>
+									<p style="font-family: 'Noto Sans KR', sans-serif; font-weight: 300">
+									   상단 메뉴에서 Account 클릭하면 Find Id, Find Password 메뉴를 볼 수 있어요.<br>
+									   Find Id, Find Password 메뉴에서 요구하는 정보를 입력하면,
+									   회원가입시 등록한 사용자의 이메일로<br>아이디와 초기화된 패스워드를 받을 수 있어요</p>
 								</div>
 							</div>
 						</div>
 						<!-- Q&A 2 -->
 						<div class="accordion-item">
-							<h4 class="accordion-header" id="flush-headingTwo3">
+							<h5 class="accordion-header" id="flush-headingTwo3" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 700">
 								<button class="accordion-button collapsed" type="button"
 									data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
 									aria-expanded="true" aria-controls="flush-collapseTwo">
-									Can i return them if I don't like the items I bought?</button>
-							</h4>
+									예약하고 싶어요! 공간은 어떻게 예약하나요?</button>
+							</h5>
 							<div id="flush-collapseTwo" class="accordion-collapse collapse"
 								aria-labelledby="flush-headingTwo"
 								data-bs-parent="#accordionFlushExample">
 								<div class="accordion-body">
-									<p>Et id sapien id enim, sit tempor cursus elit, fusce.
-										Nunc tristique facilisis consectetur at vivamus ut porta porta
-										aliquam blandit vitae vehicula leo nullam urna, scelerisque
-										unc lectus.</p>
+									<p style="font-family: 'Noto Sans KR', sans-serif; font-weight: 300">
+										상단 메뉴에서 Find Day · Find Location · Find Space 클릭하면
+										원하는 지역 혹은 날짜를 입력를 선택할 수 있어요. 
+										선택하면, 공간 목록페이지에서 원하는 공간을 클릭 후 가능한 날짜를 선택해서 결제버튼을 누르면<br>예약 신청이 가능해요.
+   										예약 신청 후, 호스트가 승인을 하면 공간예약이 확정됩니다.</p>
 								</div>
 							</div>
 						</div>
 						<!-- Q&A 3 -->
 						<div class="accordion-item">
-							<h4 class="accordion-header" id="flush-headingThree3">
+							<h5 class="accordion-header" id="flush-headingThree3" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 700">
 								<button class="accordion-button collapsed" type="button"
 									data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
 									aria-expanded="true" aria-controls="flush-collapseThree">
-									Will we get discount if we will order many vase?</button>
-							</h4>
+									궁금해요! 공간에 대한 문의는 어디로 해야하나요?</button>
+							</h5>
 							<div id="flush-collapseThree" class="accordion-collapse collapse"
 								aria-labelledby="flush-headingThree"
 								data-bs-parent="#accordionFlushExample">
 								<div class="accordion-body">
-									<p>Et id sapien id enim, sit tempor cursus elit, fusce.
-										Nunc tristique facilisis consectetur at vivamus ut porta porta
-										aliquam blandit vitae vehicula leo nullam urna, scelerisque
-										unc lectus.</p>
+									<p style="font-family: 'Noto Sans KR', sans-serif; font-weight: 300">
+										상단 메뉴에서 공간 목록페이지로 이동 후, 문의를 원하시는 공간 상세페이지로 이동하면 공간 상세 정보에서 호스트의 전화번호를 알 수 있어요.
+    									해당 번호로 호스테에게 문의가 가능합니다.</p>
 								</div>
 							</div>
 						</div>
 						<!-- Q&A 4 -->
 						<div class="accordion-item">
-							<h4 class="accordion-header" id="flush-headingFour3">
+							<h5 class="accordion-header" id="flush-headingFour3" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 700">
 								<button class="accordion-button collapsed" type="button"
 									data-bs-toggle="collapse" data-bs-target="#flush-collapseFour"
 									aria-expanded="true" aria-controls="flush-collapseFour">
-									Are there refunds for sale items or some special orders?</button>
-							</h4>
+									알리고 싶어요! 이용후기는 어떻게 작성하나요?</button>
+							</h5>
 							<div id="flush-collapseFour" class="accordion-collapse collapse"
 								aria-labelledby="flush-headingFour"
 								data-bs-parent="#accordionFlushExample">
 								<div class="accordion-body">
-									<p>Et id sapien id enim, sit tempor cursus elit, fusce.
-										Nunc tristique facilisis consectetur at vivamus ut porta porta
-										aliquam blandit vitae vehicula leo nullam urna, scelerisque
-										unc lectus.</p>
+									<p style="font-family: 'Noto Sans KR', sans-serif; font-weight: 300">
+										이용후기는 게스트가 이용한 공간에 대해 이용후기를 작성할 수 있어요.<br>
+   										로그인 후, 상단 메뉴에서 마이페이지로 이동하여 예약목록 중 후기를 작성하고 싶은 공간을 클릭해요.<br>
+   										상세페이지로 이동 후, 밑으로 이동하면 이용후기 작성 공간을 볼 수 있어요.</p>
 								</div>
 							</div>
 						</div>
 						<!-- Q&A 5 -->
 						<div class="accordion-item">
-							<h4 class="accordion-header" id="flush-headingFive3">
+							<h5 class="accordion-header" id="flush-headingFive3" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 700">
 								<button class="accordion-button collapsed" type="button"
 									data-bs-toggle="collapse" data-bs-target="#flush-collapseFive"
 									aria-expanded="true" aria-controls="flush-collapseFive">
-									How long will it take to get my first order?</button>
-							</h4>
+									일정이 생겼어요! 예약은 어떻게 취소하나요?</button>
+							</h5>
 							<div id="flush-collapseFive" class="accordion-collapse collapse"
 								aria-labelledby="flush-headingFive"
 								data-bs-parent="#accordionFlushExample">
 								<div class="accordion-body">
-									<p>Et id sapien id enim, sit tempor cursus elit, fusce.
-										Nunc tristique facilisis consectetur at vivamus ut porta porta
-										aliquam blandit vitae vehicula leo nullam urna, scelerisque
-										unc lectus.</p>
+									<p style="font-family: 'Noto Sans KR', sans-serif; font-weight: 300">
+										로그인 후, 상단 메뉴에서 마이페이지로 이동하여 예약목록을 클릭해요.
+										예약목록에서 취소하실 공간의<br>마지막 부분에 메뉴 버튼을 클릭하면 취소버튼을 확인 할 수 있어요.</p>
 								</div>
 							</div>
 						</div>
@@ -525,7 +518,7 @@
 	<section id="banner" data-aos="fade" data-aos-once="true">
 		
 		<div class="banner-content-1 position-relative"
-			style="background: url('vaso-html/images/banner-img1.jpg') no-repeat left; background-size: cover; height: 100%;">
+			style="background: url('vaso-html/images/banner_img1.jpg') no-repeat left; background-size: cover; height: 100%;">
 			<!-- 가정집 카테고리 사진 -->
 			<div class="banner-content-text position-absolute" data-aos="fade"
 				data-aos-delay="1000" data-aos-easing="ease-in"
@@ -536,7 +529,7 @@
 		</div>
 
 		<div class="banner-content-2 position-relative"
-			style="background: url('vaso-html/images/banner-img2.jpg') no-repeat left; background-size: cover; height: 100%;">
+			style="background: url('vaso-html/images/banner_img2.jpg') no-repeat left; background-size: cover; height: 100%;">
 			<!-- 스튜디오 카테고리 사진 -->
 			<div class="banner-content-text position-absolute" data-aos="fade"
 				data-aos-delay="1000" data-aos-easing="ease-in"
@@ -547,7 +540,7 @@
 		</div>
 		
 		<div class="banner-content-3 position-relative"
-			style="background: url('vaso-html/images/banner-img3.jpg') no-repeat left; background-size: cover; height: 100%;">
+			style="background: url('vaso-html/images/banner_img3.jpg') no-repeat left; background-size: cover; height: 100%;">
 			<!-- 상업공간 카테고리 사진 -->
 			<div class="banner-content-text position-absolute" data-aos="fade"
 				data-aos-delay="1000" data-aos-easing="ease-in"

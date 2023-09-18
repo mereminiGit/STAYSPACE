@@ -38,14 +38,14 @@
 								class="list-unstyled d-lg-flex justify-content-md-between align-items-center">
 								<!-- About NAV -->
 								<li class="nav-item"><a class="nav-link ms-0"
-									href="about.html">About</a></li>
+									href="about.do">About</a></li>
 								<!-- Shop NAV -->
 								<li class="nav-item"><a class="nav-link ms-0"
 									href="shop.html">Shop</a></li>
 								<!-- pages NAV -->
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle ms-0" data-bs-toggle="dropdown"
-									href="#" role="button" aria-expanded="false">Pages<svg
+									href="home.do" role="button" aria-expanded="false">Pages<svg
 											class="bi" width="18" height="18">
 											<use xlink:href="#chevron-down"></use></svg></a>
 									<ul class="dropdown-menu">
@@ -80,7 +80,7 @@
 							</ul>
 
 							<!-- LOGO NAV -->
-							<a class="navbar-brand d-none d-lg-block me-0" href="index.html">
+							<a class="navbar-brand d-none d-lg-block me-0" href="home.do">
 								<img src="vaso-html/images/main-logo.png" class="logo">
 							</a>
 
@@ -100,7 +100,7 @@
 
 								<!-- Account NAV -->
 								<li class="nav-item"><a class="nav-link me-0"
-									href="login.html">Account</a></li>
+									href="account.do">Account</a></li>
 								<!-- Cart NAV -->									
 								<li class="cart-dropdown nav-item dropdown"><a
 									class="nav-link dropdown-toggle me-0" data-bs-toggle="dropdown"
