@@ -57,7 +57,8 @@
               </g>
             </svg>
           </span>
-          <span class="app-brand-text demo menu-text fw-bolder ms-2">Stay Space</span>
+         <!--  <span class="app-brand-text demo menu-text fw-bolder ms-2">Stay Space</span> -->
+         <img alt="logo" src="member/image/로고5.png" width="120px">
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">

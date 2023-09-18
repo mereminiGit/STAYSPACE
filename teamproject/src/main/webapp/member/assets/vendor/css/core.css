@@ -2768,6 +2768,10 @@ textarea.form-control-lg {
   border-bottom-left-radius: 0;
 }
 
+#deletecenter{
+	filter: invert(48%) sepia(18%) saturate(439%) hue-rotate(171deg) brightness(93%) contrast(94%);
+}
+
 .btn {
   display: inline-block;
   font-weight: 400;
@@ -2871,9 +2875,6 @@ textarea.form-control-lg {
   position: relative;
 }
 
-#deletecenter{
-	position: fixed;
-}
 #modifybox{
 	margin-top: 20px;
 }
@@ -5906,8 +5907,9 @@ input:-internal-autofill-selected {
 }
 
 .bg-label-success {
-  background-color: #e8fadf !important;
-  color: #71dd37 !important;
+  background-color: #ffe5de !important;
+  color: #eb7e1e !important;
+  font-weight: bold;
 }
 
 .border-label-success {
