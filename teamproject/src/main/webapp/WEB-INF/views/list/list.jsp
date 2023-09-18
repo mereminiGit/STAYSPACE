@@ -67,7 +67,7 @@
               <div class="col-lg-4 col-md-6">
                 <div class="product-card mb-3 position-relative">
                   <div class="image-holder zoom-effect">
-                    <img src="vaso-html-template/images/product-item1.jpg" alt="product-item" class="img-fluid zoom-in">
+                    <img src="vaso-html-template/images/StaySpace_commercial_1(1).jpg" alt="product-item" class="img-fluid zoom-in">
                     <div class="cart-concern position-absolute">
                       <div class="cart-button">
                         <a href="#" class="btn">Add to Cart</a>
@@ -76,9 +76,9 @@
                   </div>
                   <div class="card-detail text-center pt-3 pb-2">
                     <h5 class="card-title fs-3 text-capitalize">
-                      <a href="#">Matt Black</a>
+                      <a href="detail.do">[분당/판교] 미드센츄리모던 빈티지 가구들로 꾸며진 카페</a>
                     </h5>
-                    <span class="item-price text-primary fs-3 fw-light">$750</span>
+                    <span class="item-price text-primary fs-3 fw-light">89,000원~127,000원/시간</span>
                   </div>
                 </div>
               </div>
@@ -282,19 +282,16 @@
 
               <h5 class="widget-title text-decoration-underline text-uppercase">Date <input type="text" id="datepicker"></h5>
               <div class="widget-product-tags pt-3">
-                <h5 class="widget-title text-decoration-underline text-uppercase">Events</h5>
+                <h5 class="widget-title text-decoration-underline text-uppercase">Space</h5>
                 <ul class="product-tags sidebar-list list-unstyled">
                   <li class="tags-item">
-                    <a href="">Photo Studios</a>
+                    <a href="">Commercial</a>
                   </li>
                   <li class="tags-item">
-                    <a href="">Workspaces</a>
+                    <a href="">House</a>
                   </li>
                   <li class="tags-item">
-                    <a href="">Parties</a>
-                  </li>
-                  <li class="tags-item">
-                    <a href="">Conference Room</a>
+                    <a href="">Studio</a>
                   </li>
                 </ul>
               </div>
