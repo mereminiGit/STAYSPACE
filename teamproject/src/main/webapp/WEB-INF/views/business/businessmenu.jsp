@@ -90,7 +90,7 @@
             <li class="menu-item">
               <a href="businessmemberpage.do" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">내 계정 관리</div>
+                <div data-i18n="Account Settings">My Account Settings</div>
               </a>
             </li>
 
@@ -101,22 +101,22 @@
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-detail"></i>
-                <div data-i18n="Form Elements">대여 공간 관리</div>
+                <div data-i18n="Form Elements">Space Management</div>
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
                   <a href="spacelist.do" class="menu-link">
-                    <div data-i18n="Basic Inputs">스튜디오 목록</div>
+                    <div data-i18n="Basic Inputs">Space List</div>
                   </a>
                 </li>
                 <li class="menu-item">
                   <a href="registerspace.do" class="menu-link">
-                    <div data-i18n="Input groups">새 스튜디오 등록</div>
+                    <div data-i18n="Input groups">Register Space</div>
                   </a>
                 </li>
                 <li class="menu-item">
                   <a href="spacewaiting.do" class="menu-link">
-                    <div data-i18n="Basic Inputs">스튜디오 예약대기</div>
+                    <div data-i18n="Basic Inputs">Reservation Waiting</div>
                   </a>
                 </li>
               </ul>
@@ -128,7 +128,7 @@
             <li class="menu-item">
               <a href="reservelist.do" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-detail"></i>
-                <div data-i18n="Form Elements">예약 관리</div>
+                <div data-i18n="Form Elements">Reservation List</div>
               </a>
              </li>
              
@@ -138,7 +138,7 @@
             <li class="menu-item">
               <a href="sale.do" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-detail"></i>
-                <div data-i18n="Form Elements">매출 관리</div>
+                <div data-i18n="Form Elements">Sales Chart</div>
               </a>
              </li>
           </ul>
@@ -167,5 +167,6 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    
   </body>
 </html>

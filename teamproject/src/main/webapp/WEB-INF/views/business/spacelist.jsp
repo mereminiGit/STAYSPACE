@@ -4,37 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="sneat/assets/img/favicon/favicon.ico" />
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="sneat/assets/vendor/fonts/boxicons.css" />
-
-    <!-- Core CSS -->
-    <link rel="stylesheet" href="sneat/assets/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="sneat/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="sneat/assets/css/demo.css" />
-
-    <!-- Vendors CSS -->
-    <link rel="stylesheet" href="sneat/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-
-    <!-- Page CSS -->
-
-    <!-- Helpers -->
-    <script src="sneat/assets/vendor/js/helpers.js"></script>
-
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="sneat/assets/js/config.js"></script>
-    
     
     <!-- img css -->
     <style>
@@ -77,7 +46,7 @@
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>촬영 스튜디오</strong></td>
                         <td>서울</td>
                         <td>서울특별시 강남구 테헤란로19</td>
-                        <td>50000<span> 원</span></td>
+                        <td><span>50000</span> 원</td>
                         <td>
                           <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -101,7 +70,7 @@
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>파티룸</strong></td>
                         <td>서울</td>
                         <td>서울특별시 강남구 테헤란로19</td>
-                        <td>60000<span> 원</span></td>
+                        <td><span>60000</span> 원</td>
                         <td>
                           <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -125,7 +94,7 @@
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i><strong>촬영 스튜디오</strong></td>
                         <td>서울</td>
                         <td>서울특별시 강남구 테헤란로19</td>
-                        <td>50000<span> 원</span></td>
+                        <td><span>50000</span> 원</td>
                         <td>
                           <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -149,7 +118,7 @@
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>파티룸</strong></td>
                         <td>서울</td>
                         <td>서울특별시 강남구 테헤란로19</td>
-                        <td>60000<span> 원</span></td>
+                        <td><span>60000</span> 원</td>
                         <td>
                           <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -194,14 +163,14 @@
                                 ></button>
                               </div>
                               <div class="modal-body">
-                              <div class="row">
+                              <!-- <div class="row">
                               <div class="mb-3">
 									
 										<label for="formFileMultiple" class="form-label">이미지 파일
 											선택 (다중선택 가능)</label> <input class="form-control" type="file"
 											id="formFileMultiple" multiple required/>
 								</div>
-								</div>
+								</div>  -->
                                 <div class="row">
                                   <div class="col mb-3">
                                     <label for="nameWithTitle" class="form-label">Name</label>
@@ -209,6 +178,7 @@
                                       type="text"
                                       id="nameWithTitle"
                                       class="form-control"
+                                      name = "modalName"
                                       placeholder="이름을 입력하세요."
                                     />
                                   </div>
@@ -220,6 +190,7 @@
                                       type="text"
                                       id="cityWithTitle"
                                       class="form-control"
+                                      name = "modalCity"
                                       placeholder="지역을 입력하세요."
                                     />
                                   </div>
@@ -231,6 +202,7 @@
                                       type="text"
                                       id="AddressWithTitle"
                                       class="form-control"
+                                      name = "modalAddress"
                                       placeholder="주소를 입력하세요."
                                     />
                                   </div>
@@ -242,6 +214,7 @@
                                       type="text"
                                       id="PriceWithTitle"
                                       class="form-control"
+                                      name = "modalPrice"
                                       placeholder="가격을 입력하세요."
                                     />
                                   </div>
@@ -251,7 +224,7 @@
                                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                                   취소하기
                                 </button>
-                                <button type="button" class="btn btn-dark">변경하기</button>
+                                <button type="button" class="btn btn-dark change" data-bs-dismiss="modal">변경하기</button>
                               </div>
                               </div>
                             </div>
@@ -263,16 +236,27 @@
       			e.target.parentElement.parentElement.parentElement.parentElement.remove();
               })
               //수정 이벤트
-              $('.spaceedit').on('click', function(e){
-	              let img = $('#formFileMultiple');
-	              let Name = $('#nameWithTitle');
-            	  let city = $('#cityWithTitle');
-            	  let address = $('#AddressWithTitle');
-            	  let price = $('#PriceWithTitle');
-            	  e.target.parentElement.parentElement.parentElement.parentElement.children('')
+              $('.spaceedit').on('click',function(e){
+            	  console.log(e.target.parentElement.parentElement.parentElement.parentElement.children[0]);
+            	  let name = e.target.parentElement.parentElement.parentElement.parentElement.children[1];
+            	  let city = e.target.parentElement.parentElement.parentElement.parentElement.children[2];
+            	  let address = e.target.parentElement.parentElement.parentElement.parentElement.children[3];
+            	  let price = e.target.parentElement.parentElement.parentElement.parentElement.children[4];
+            	  $('input[name=modalName]').val(e.target.parentElement.parentElement.parentElement.parentElement.children[1].innerText);
+            	  $('input[name=modalCity]').val(e.target.parentElement.parentElement.parentElement.parentElement.children[2].innerText);
+            	  $('input[name=modalAddress]').val(e.target.parentElement.parentElement.parentElement.parentElement.children[3].innerText);
+            	  $('input[name=modalPrice]').val(e.target.parentElement.parentElement.parentElement.parentElement.children[4].innerText);
+	              $('.change').on('click', function(e){
+		              name.innerText = $('input[name=modalName]').val();
+	            	  city.innerText = $('input[name=modalCity]').val();
+	            	  address.innerText = $('input[name=modalAddress]').val();
+	            	  price.children[0].innerText = $('input[name=modalPrice]').val();
+	              })
               })
               </script>
-              <!-- build:js assets/vendor/js/core.js -->
+              
+              <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
     <script src="sneat/assets/vendor/libs/jquery/jquery.js"></script>
     <script src="sneat/assets/vendor/libs/popper/popper.js"></script>
     <script src="sneat/assets/vendor/js/bootstrap.js"></script>
@@ -282,13 +266,16 @@
     <!-- endbuild -->
 
     <!-- Vendors JS -->
+    <script src="sneat/assets/vendor/libs/apex-charts/apexcharts.js"></script>
 
     <!-- Main JS -->
     <script src="sneat/assets/js/main.js"></script>
 
-    <!-- Page JS -->
+    <!-- Page JS 
+    <script src="sneat/assets/js/dashboards-analytics.js"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+              
 </body>
 </html>

@@ -15,41 +15,13 @@
 
 <meta name="description" content="" />
 
-<!-- Favicon -->
-<link rel="icon" type="image/x-icon"
-	href="sneat/assets/img/favicon/favicon.ico" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-	href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-	rel="stylesheet" />
+<!-- 모달 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<!-- Icons. Uncomment required icon fonts -->
-<link rel="stylesheet" href="sneat/assets/vendor/fonts/boxicons.css" />
 
-<!-- Core CSS -->
-<link rel="stylesheet" href="sneat/assets/vendor/css/core.css"
-	class="template-customizer-core-css" />
-<link rel="stylesheet" href="sneat/assets/vendor/css/theme-default.css"
-	class="template-customizer-theme-css" />
-<link rel="stylesheet" href="sneat/assets/css/demo.css" />
-
-<!-- Vendors CSS -->
-<link rel="stylesheet"
-	href="sneat/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-
-<!-- Page CSS -->
-
-<!-- Helpers -->
-<script src="sneat/assets/vendor/js/helpers.js"></script>
-
-<!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-<!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-<script src="sneat/assets/js/config.js"></script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -58,8 +30,8 @@
 		<!-- Content -->
 
 		<div class="container-xxl flex-grow-1 container-p-y">
-			<h4 class="fw-bold py-3 mb-4">My Account
-				<span class="text-muted fw-light">Settings</span>
+			<h4 class="fw-bold py-3 mb-4">
+				My Account <span class="text-muted fw-light">Settings</span>
 			</h4>
 
 			<div class="row">
@@ -96,9 +68,15 @@
 								onsubmit="return false">
 								<div class="row">
 									<div class="mb-3 col-md-6">
-										<label for="lastName" class="form-label">PASSWORD</label> <input
-											class="form-control" type="password" name="lastName"
-											id="lastName" placeholder="비밀번호를 입력하세요."/>
+										<label for="password" class="form-label">PASSWORD</label> <input
+											class="form-control" type="password" name="password"
+											id="password" placeholder="비밀번호를 입력하세요." />
+									</div>
+									<div class="mb-3 col-md-6">
+										<label for="checkPassword" class="form-label">CHECK
+											PASSWORD</label> <input class="form-control" type="password"
+											name="checkPassword" id="checkPassword"
+											placeholder="비밀번호를 다시 입력하세요." />
 									</div>
 									<div class="mb-3 col-md-6">
 										<label for="firstName" class="form-label">Name</label> <input
@@ -119,7 +97,7 @@
 										</div>
 									</div>
 									<div class="mt-2">
-										<button type="submit" class="btn btn-secondary me-2">수정하기</button>
+										<button type="submit" id="edit" class="btn btn-secondary me-2">수정하기</button>
 										<button type="reset" class="btn btn-outline-secondary">취소하기</button>
 									</div>
 								</div>
@@ -132,12 +110,14 @@
 						<h5 class="card-header">회원 탈퇴</h5>
 						<div class="card-body">
 							<div class="mb-3 col-12 mb-0">
-								<div class="alert alert-warning" style="background-color: #eee; width: 80%; border-radius: 10px">
+								<div class="alert alert-warning"
+									style="background-color: #eee; width: 80%; border-radius: 10px">
 									<br>
-									<h6 class="alert-heading fw-bold mb-1" style="color: #aaa">※ 정말로
-										계정을 삭제하시겠습니까?</h6>
+									<h6 class="alert-heading fw-bold mb-1"
+										style="color: rgba(0, 0, 0, 0.6)">※ 정말로 계정을 삭제하시겠습니까?</h6>
 									<br>
-									<p class="mb-0" style="color: #aaa">&nbsp;계정을 삭제하면 되돌릴 수 없습니다.</p>
+									<p class="mb-0" style="color: #aaa">&nbsp;계정을 삭제하면 되돌릴 수
+										없습니다.</p>
 									<br>
 								</div>
 							</div>
@@ -148,8 +128,8 @@
 										class="form-check-label" for="accountActivation">내 계정
 										삭제에 동의합니다.</label>
 								</div>
-								<button type="submit" class="btn btn-dark deactivate-account"
-									data-bs-toggle="modal" data-bs-target="#modalToggle">탈퇴하기</button>
+								<button type="submit" id="delete"
+									class="btn btn-dark deactivate-account">탈퇴하기</button>
 							</form>
 						</div>
 					</div>
@@ -178,27 +158,47 @@
 		</div>
 		<!-- / Content -->
 	</div>
+	<script>
+		
+		//수정하기 버튼 클릭시 이벤트
+		$('#edit').on('click',function(e){
+			let password = $('input[name=password]').val();
+			let checkPassword = $('input[name=checkPassword]').val();
+			if(password.length<6){
+				alert('비밀번호 6자리 이상 입력하세요');
+				password = '';
+			}else{
+				if(password != checkPassword){
+					alert('비밀번호가 일치하지 않습니다.');
+					password='';
+					checkPassword='';
+				}
+			}
+			let emailFormat = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+			let email = $('input[name=email]').val();
+	        if (!emailFormat.test(email)){
+	        	alert('잘못된 이메일 형식입니다.');
+	        	email='';
+	        }
+	        
+		})
+		
+		//회원탈퇴 동의 체크시 탈퇴
+		
+		$('#delete').on('click',function(e){
+			let accountActivation = $('input[name=accountActivation]').is(':checked');
+			console.log(accountActivation);
+			if(accountActivation){
+				<!--data-bs-toggle="modal" data-bs-target="#modalToggle"-->
+				$('#delete').attr('data-bs-toggle','modal');
+				$('#delete').attr('data-bs-target','#modalToggle');
+				$('#modalToggle').modal('show');
+			}else{
+				alert('회원탈퇴 동의에 체크해주세요.');
+			}
+		})
+		
+	</script>
 	
-	<!-- Core JS -->
-	<!-- build:js assets/vendor/js/core.js -->
-	<script src="sneat/assets/vendor/libs/jquery/jquery.js"></script>
-	<script src="sneat/assets/vendor/libs/popper/popper.js"></script>
-	<script src="sneat/assets/vendor/js/bootstrap.js"></script>
-	<script
-		src="sneat/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-
-	<script src="sneat/assets/vendor/js/menu.js"></script>
-	<!-- endbuild -->
-
-	<!-- Vendors JS -->
-
-	<!-- Main JS -->
-	<script src="sneat/assets/js/main.js"></script>
-
-	<!-- Page JS -->
-	<script src="sneat/assets/js/pages-account-settings-account.js"></script>
-
-	<!-- Place this tag in your head or just before your close body tag. -->
-	<script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html>

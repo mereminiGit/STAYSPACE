@@ -1,19 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
-<!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
-==============================================================
-
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
-* Created by: ThemeSelection
-* License: You must have a valid license purchased in order to legally use the theme for your project.
-* Copyright ThemeSelection (https://themeselection.com)
-
-=========================================================
- -->
-<!-- beautify ignore:start -->
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr"
 	data-theme="theme-default" data-assets-path="sneat/assets/"
 	data-template="vertical-menu-template-free">
@@ -21,58 +8,358 @@
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
-
-<title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin
-	Template - Pro</title>
-
 <meta name="description" content="" />
-
-<!-- Favicon -->
-<link rel="icon" type="image/x-icon"
-	href="sneat/assets/img/favicon/favicon.ico" />
-
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-	href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-	rel="stylesheet" />
-
-<!-- Icons. Uncomment required icon fonts -->
-<link rel="stylesheet" href="sneat/assets/vendor/fonts/boxicons.css" />
-
-<!-- Core CSS -->
-<link rel="stylesheet" href="sneat/assets/vendor/css/core.css"
-	class="template-customizer-core-css" />
-<link rel="stylesheet" href="sneat/assets/vendor/css/theme-default.css"
-	class="template-customizer-theme-css" />
-<link rel="stylesheet" href="sneat/assets/css/demo.css" />
-
-<!-- Vendors CSS -->
-<link rel="stylesheet"
-	href="sneat/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-
-<link rel="stylesheet"
-	href="sneat/assets/vendor/libs/apex-charts/apex-charts.css" />
-
-<!-- Page CSS -->
-
-<!-- Helpers -->
-<script src="sneat/assets/vendor/js/helpers.js"></script>
-
-<!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-<!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-<script src="sneat/assets/js/config.js"></script>
-
+<style>
+img#stayimg {
+	width: 120px;
+	height: 80px;
+	border-radius: 10px;
+}
+</style>
 </head>
 <body>
 	<div class="container-xxl flex-grow-1 container-p-y">
 		<h4 class="fw-bold py-3 mb-4">
 			<span class="text-muted fw-light">Sale </span> Chart
 		</h4>
+
+		<!-- Content wrapper -->
+		<div class="content-wrapper">
+			<!-- Content -->
+			<div class="row">
+
+				<!-- Expense Overview -->
+				<div class="col-md-6 col-lg-4 order-1 mb-4">
+					<div class="card h-100">
+						<div class="card-header">
+							<ul class="nav nav-pills" role="tablist">
+								<li class="nav-item">
+									<button type="button" class="btn btn-outline-secondary active"
+										style="border: none" role="tab" data-bs-toggle="tab"
+										data-bs-target="#navs-tabs-line-card-income"
+										aria-controls="navs-tabs-line-card-income"
+										aria-selected="true">Monthly</button>
+								</li> &nbsp;&nbsp;
+								<li class="nav-item">
+									<button type="button" class="btn btn-outline-secondary"
+										style="border: none" role="tab" data-bs-toggle="tab"
+										data-bs-target="#navs-tabs-line-card-space"
+										aria-controls="navs-tabs-line-card-space"
+										aria-selected="false">by location</button>
+								</li>
+							</ul>
+						</div>
+						<div class="card-body px-0">
+							<div class="tab-content">
+								<div class="tab-pane fade show active"
+									id="navs-tabs-line-card-income" role="tabpanel">
+									<div class="d-flex p-4 pt-3">
+										<div class="avatar flex-shrink-0 me-3">
+											<img src="sneat/assets/img/icons/unicons/total.png"
+												alt="User" />
+										</div>
+										<div>
+											<small class="text-muted d-block">Total Sales</small>
+											<div class="d-flex align-items-center">
+												<h6 class="mb-0 me-1">4591000원</h6>
+												<small class="text-success fw-semibold"> <i
+													class="bx bx-chevron-up"></i> 42.9%
+												</small>
+											</div>
+										</div>
+									</div>
+									<!-- 수정 
+									<div id="incomeChart"></div> -->
+									<canvas id="lineChart"></canvas>
+
+									<div class="d-flex justify-content-center pt-4 gap-2">
+										<div>
+											<p class="mb-n1 mt-1">Highest Sales</p>
+											<small class="text-muted">Month: Jul</small>
+										</div>
+									</div>
+								</div>
+
+								<div class="tab-pane" id="navs-tabs-line-card-space"
+									role="tabpane1">
+									<div class="d-flex p-4 pt-3">
+										<div class="avatar flex-shrink-0 me-3">
+											<img src="sneat/assets/img/icons/unicons/cc-warning.png"
+												alt="User" />
+										</div>
+										<div>
+											<small class="text-muted d-block">Total Sales</small>
+											<div class="d-flex align-items-center">
+												<h6 class="mb-0 me-1">4591000원</h6>
+												<small class="text-success fw-semibold"> <i
+													class="bx bx-chevron-up"></i> 42.9%
+												</small>
+											</div>
+										</div>
+									</div>
+									<!-- 수정 
+									<div id="incomeChart"></div> -->
+									<canvas id="barChart"></canvas>
+
+									<div class="d-flex justify-content-center pt-4 gap-2">
+										<div>
+											<p class="mb-n1 mt-1">Highest Sales</p>
+											<small class="text-muted">Space: Studio</small>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--/ Expense Overview -->
+
+				<!-- Transactions -->
+				<div class="col-md-6 col-lg-4 order-2 mb-4">
+					<div class="card h-100">
+						<div
+							class="card-header d-flex align-items-center justify-content-between">
+							<h5 class="card-title m-0 me-2">
+								The First Half Sales<span class="text-muted fw-light"><small>
+										(상반기 매출액)</small></span>
+							</h5>
+						</div>
+						<div class="card-body">
+							<ul class="p-0 m-0">
+								<li class="d-flex mb-4 pb-1">
+									<div class="avatar flex-shrink-0 me-3">
+										<img src="sneat/assets/img/icons/unicons/1.png" alt="User"
+											class="rounded" />
+									</div>
+									<div
+										class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+										<div class="me-2">
+											<small class="text-muted d-block mb-1">January</small>
+											<h6 class="mb-0">Studio</h6>
+										</div>
+										<div class="user-progress d-flex align-items-center gap-1">
+											<h6 class="mb-0">100000원</h6>
+											<span class="text-muted">KRW</span>
+										</div>
+									</div>
+								</li>
+								<li class="d-flex mb-4 pb-1">
+									<div class="avatar flex-shrink-0 me-3">
+										<img src="sneat/assets/img/icons/unicons/2.png" alt="User"
+											class="rounded" />
+									</div>
+									<div
+										class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+										<div class="me-2">
+											<small class="text-muted d-block mb-1">February</small>
+											<h6 class="mb-0">Party Room</h6>
+										</div>
+										<div class="user-progress d-flex align-items-center gap-1">
+											<h6 class="mb-0">200000원</h6>
+											<span class="text-muted">KRW</span>
+										</div>
+									</div>
+								</li>
+								<li class="d-flex mb-4 pb-1">
+									<div class="avatar flex-shrink-0 me-3">
+										<img src="sneat/assets/img/icons/unicons/3.png" alt="User"
+											class="rounded" />
+									</div>
+									<div
+										class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+										<div class="me-2">
+											<small class="text-muted d-block mb-1">March</small>
+											<h6 class="mb-0">Studio</h6>
+										</div>
+										<div class="user-progress d-flex align-items-center gap-1">
+											<h6 class="mb-0">300000원</h6>
+											<span class="text-muted">KRW</span>
+										</div>
+									</div>
+								</li>
+								<li class="d-flex mb-4 pb-1">
+									<div class="avatar flex-shrink-0 me-3">
+										<img src="sneat/assets/img/icons/unicons/4.png" alt="User"
+											class="rounded" />
+									</div>
+									<div
+										class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+										<div class="me-2">
+											<small class="text-muted d-block mb-1">April</small>
+											<h6 class="mb-0">Studio</h6>
+										</div>
+										<div class="user-progress d-flex align-items-center gap-1">
+											<h6 class="mb-0">400000원</h6>
+											<span class="text-muted">KRW</span>
+										</div>
+									</div>
+								</li>
+								<li class="d-flex mb-4 pb-1">
+									<div class="avatar flex-shrink-0 me-3">
+										<img src="sneat/assets/img/icons/unicons/5.png" alt="User"
+											class="rounded" />
+									</div>
+									<div
+										class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+										<div class="me-2">
+											<small class="text-muted d-block mb-1">May</small>
+											<h6 class="mb-0">Studio</h6>
+										</div>
+										<div class="user-progress d-flex align-items-center gap-1">
+											<h6 class="mb-0">500000원</h6>
+											<span class="text-muted">KRW</span>
+										</div>
+									</div>
+								</li>
+								<li class="d-flex">
+									<div class="avatar flex-shrink-0 me-3">
+										<img src="sneat/assets/img/icons/unicons/6.png" alt="User"
+											class="rounded" />
+									</div>
+									<div
+										class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+										<div class="me-2">
+											<small class="text-muted d-block mb-1">June</small>
+											<h6 class="mb-0">Studio</h6>
+										</div>
+										<div class="user-progress d-flex align-items-center gap-1">
+											<h6 class="mb-0">600000원</h6>
+											<span class="text-muted">KRW</span>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!--/ Transactions -->
+
+				<!-- Transactions -->
+				<div class="col-md-6 col-lg-4 order-2 mb-4">
+					<div class="card h-100">
+						<div
+							class="card-header d-flex align-items-center justify-content-between">
+							<h5 class="card-title m-0 me-2">
+								Second Half Sales<span class="text-muted fw-light"><small>
+										(하반기 매출액)</small></span>
+							</h5>
+						</div>
+						<div class="card-body">
+							<ul class="p-0 m-0">
+								<li class="d-flex mb-4 pb-1">
+									<div class="avatar flex-shrink-0 me-3">
+										<img src="sneat/assets/img/icons/unicons/7.png" alt="User"
+											class="rounded" />
+									</div>
+									<div
+										class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+										<div class="me-2">
+											<small class="text-muted d-block mb-1">July</small>
+											<h6 class="mb-0">Studio</h6>
+										</div>
+										<div class="user-progress d-flex align-items-center gap-1">
+											<h6 class="mb-0">700000원</h6>
+											<span class="text-muted">KRW</span>
+										</div>
+									</div>
+								</li>
+								<li class="d-flex mb-4 pb-1">
+									<div class="avatar flex-shrink-0 me-3">
+										<img src="sneat/assets/img/icons/unicons/8.png" alt="User"
+											class="rounded" />
+									</div>
+									<div
+										class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+										<div class="me-2">
+											<small class="text-muted d-block mb-1">August</small>
+											<h6 class="mb-0">Studio</h6>
+										</div>
+										<div class="user-progress d-flex align-items-center gap-1">
+											<h6 class="mb-0">800000원</h6>
+											<span class="text-muted">KRW</span>
+										</div>
+									</div>
+								</li>
+								<li class="d-flex mb-4 pb-1">
+									<div class="avatar flex-shrink-0 me-3">
+										<img src="sneat/assets/img/icons/unicons/9.png" alt="User"
+											class="rounded" />
+									</div>
+									<div
+										class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+										<div class="me-2">
+											<small class="text-muted d-block mb-1">September</small>
+											<h6 class="mb-0">Studio</h6>
+										</div>
+										<div class="user-progress d-flex align-items-center gap-1">
+											<h6 class="mb-0">900000원</h6>
+											<span class="text-muted">KRW</span>
+										</div>
+									</div>
+								</li>
+								<li class="d-flex mb-4 pb-1">
+									<div class="avatar flex-shrink-0 me-3">
+										<img src="sneat/assets/img/icons/unicons/10.png" alt="User"
+											class="rounded" />
+									</div>
+									<div
+										class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+										<div class="me-2">
+											<small class="text-muted d-block mb-1">October</small>
+											<h6 class="mb-0">Studio</h6>
+										</div>
+										<div class="user-progress d-flex align-items-center gap-1">
+											<h6 class="mb-0">1000000원</h6>
+											<span class="text-muted">KRW</span>
+										</div>
+									</div>
+								</li>
+								<li class="d-flex mb-4 pb-1">
+									<div class="avatar flex-shrink-0 me-3">
+										<img src="sneat/assets/img/icons/unicons/11.png" alt="User"
+											class="rounded" />
+									</div>
+									<div
+										class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+										<div class="me-2">
+											<small class="text-muted d-block mb-1">November</small>
+											<h6 class="mb-0">Studio</h6>
+										</div>
+										<div class="user-progress d-flex align-items-center gap-1">
+											<h6 class="mb-0">1100000원</h6>
+											<span class="text-muted">KRW</span>
+										</div>
+									</div>
+								</li>
+								<li class="d-flex">
+									<div class="avatar flex-shrink-0 me-3">
+										<img src="sneat/assets/img/icons/unicons/12.png" alt="User"
+											class="rounded" />
+									</div>
+									<div
+										class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+										<div class="me-2">
+											<small class="text-muted d-block mb-1">December</small>
+											<h6 class="mb-0">Studio</h6>
+										</div>
+										<div class="user-progress d-flex align-items-center gap-1">
+											<h6 class="mb-0">1200000원</h6>
+											<span class="text-muted">KRW</span>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!--/ Transactions -->
+			</div>
+		</div>
+		<!-- / Content -->
+
 		<!-- Content wrapper -->
 
-		<div class="col-xl-6">
+		<div class="col-xl-6" style="width: 100%">
 			<h6 class="text-muted">Click the tap</h6>
 			<div class="nav-align-top mb-4">
 				<ul class="nav nav-tabs nav-fill" role="tablist">
@@ -80,14 +367,14 @@
 						<button type="button" class="nav-link active" role="tab"
 							data-bs-toggle="tab" data-bs-target="#navs-justified-home"
 							aria-controls="navs-justified-home" aria-selected="true">
-							<i class="tf-icons bx bx-message-square"></i> 월별 매출 차트
+							<i class="tf-icons bx bx-message-square"></i> 이번달 매출 순위
 						</button>
 					</li>
 					<li class="nav-item">
 						<button type="button" class="nav-link" role="tab"
 							data-bs-toggle="tab" data-bs-target="#navs-justified-profile"
 							aria-controls="navs-justified-profile" aria-selected="false">
-							<i class="tf-icons bx bx-home"></i> 공간별 매출 차트
+							<i class="tf-icons bx bx-home"></i> 총 매출 순위
 						</button>
 					</li>
 
@@ -95,38 +382,120 @@
 				<div class="tab-content">
 					<div class="tab-pane fade show active" id="navs-justified-home"
 						role="tabpanel">
-						<h4 class="fw-bold py-3 mb-4">Monthly Sales</h4>
-						<canvas id="lineChart"></canvas>
+						<!-- Bootstrap Dark Table -->
+						<div class="card">
+							<h5 class="card-header">Top 3 Sales by location</h5>
+							<div class="table-responsive text-nowrap"
+								style="border-radius: 10px">
+								<table class="table">
+									<thead>
+										<tr>
+											<th>No</th>
+											<th>Space Img</th>
+											<th>Name</th>
+											<th>City</th>
+											<th>Address</th>
+											<th>Total Price</th>
+										</tr>
+									</thead>
+									<tbody class="table-border-bottom-0">
+										<tr>
+											<td>1.</td>
+											<td><img id="stayimg"
+												src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
+											<td><i class="fab fa-angular fa-lg text-danger me-3"></i>
+												<strong>촬영 스튜디오</strong></td>
+											<td>서울</td>
+											<td>서울특별시 강남구 테헤란로19</td>
+											<td><span>50000</span> 원</td>
+										</tr>
+										<tr>
+											<td>2.</td>
+											<td><img id="stayimg"
+												src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
+											<td><i class="fab fa-angular fa-lg text-danger me-3"></i>
+												<strong>촬영 스튜디오</strong></td>
+											<td>서울</td>
+											<td>서울특별시 강남구 테헤란로19</td>
+											<td><span>50000</span> 원</td>
+										</tr>
+										<tr>
+											<td>3.</td>
+											<td><img id="stayimg"
+												src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
+											<td><i class="fab fa-angular fa-lg text-danger me-3"></i>
+												<strong>촬영 스튜디오</strong></td>
+											<td>서울</td>
+											<td>서울특별시 강남구 테헤란로19</td>
+											<td><span>50000</span> 원</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!--/ Bootstrap Dark Table -->
 					</div>
 					<div class="tab-pane fade" id="navs-justified-profile"
 						role="tabpanel">
-						<h4 class="fw-bold py-3 mb-4">Sales by location</h4>
-						<canvas id="barChart"></canvas> 
+						<!-- Bootstrap Dark Table -->
+						<div class="card">
+							<h5 class="card-header">Top 3 Sales by location</h5>
+							<div class="table-responsive text-nowrap"
+								style="border-radius: 10px">
+								<table class="table">
+									<thead>
+										<tr>
+											<th>No</th>
+											<th>Space Img</th>
+											<th>Name</th>
+											<th>City</th>
+											<th>Address</th>
+											<th>Total Price</th>
+										</tr>
+									</thead>
+									<tbody class="table-border-bottom-0">
+										<tr>
+											<td>1.</td>
+											<td><img id="stayimg"
+												src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
+											<td><i class="fab fa-angular fa-lg text-danger me-3"></i>
+												<strong>촬영 스튜디오</strong></td>
+											<td>서울</td>
+											<td>서울특별시 강남구 테헤란로19</td>
+											<td><span>50000</span> 원</td>
+										</tr>
+										<tr>
+											<td>2.</td>
+											<td><img id="stayimg"
+												src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
+											<td><i class="fab fa-angular fa-lg text-danger me-3"></i>
+												<strong>촬영 스튜디오</strong></td>
+											<td>서울</td>
+											<td>서울특별시 강남구 테헤란로19</td>
+											<td><span>50000</span> 원</td>
+										</tr>
+										<tr>
+											<td>3.</td>
+											<td><img id="stayimg"
+												src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
+											<td><i class="fab fa-angular fa-lg text-danger me-3"></i>
+												<strong>촬영 스튜디오</strong></td>
+											<td>서울</td>
+											<td>서울특별시 강남구 테헤란로19</td>
+											<td><span>50000</span> 원</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!--/ Bootstrap Dark Table -->
 					</div>
 				</div>
 			</div>
 		</div>
-			
-		<!-- <div class="col-lg-6 grid-margin stretch-card">
-					<div class="card">
-						<div class="card-body">
-							<h4 class="fw-bold py-3 mb-4">Monthly Sales</h4>
-							<canvas id="lineChart"></canvas>
-						</div>
-					</div>
-					
-				</div> 
-
-				<div class="col-lg-6 grid-margin stretch-card">
-					<div class="card">
-						<div class="card-body">
-							<h4 class="fw-bold py-3 mb-4">Sales by location</h4>
-							<canvas id="barChart"></canvas>
-						</div>
-					</div>
-				</div> -->
-				
 	</div>
+
+
 	<!-- Core JS -->
 	<!-- Custom js for this page-->
 	<script src="js/chart.js"></script>
