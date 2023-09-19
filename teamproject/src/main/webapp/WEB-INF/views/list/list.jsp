@@ -29,12 +29,12 @@
         <div class="container">
           <div class="row">
             <div class="text-center padding-large no-padding-bottom">
-              <h1>Space</h1>
+              <h1>Spaces</h1>
               <div class="breadcrumbs">
                 <span class="item">
                   <a href="index.html">Home ></a>
                 </span>
-                <span class="item">Space</span>
+                <span class="item">Spaces</span>
               </div>
             </div>
           </div>
@@ -282,7 +282,7 @@
 
               <h5 class="widget-title text-decoration-underline text-uppercase">Date <input type="text" id="datepicker"></h5>
               <div class="widget-product-tags pt-3">
-                <h5 class="widget-title text-decoration-underline text-uppercase">Space</h5>
+                <h5 class="widget-title text-decoration-underline text-uppercase">Space for</h5>
                 <ul class="product-tags sidebar-list list-unstyled">
                   <li class="tags-item">
                     <a href="">Commercial</a>

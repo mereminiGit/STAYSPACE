@@ -18,6 +18,8 @@
 	href="vaso-html-template/css/bootstrap.min.css?ver=1">
 <link rel="stylesheet" type="text/css"
 	href="vaso-html-template/style.css">
+<link rel="stylesheet" type="text/css"
+	href="vaso-html-template/css/star.css?ver=1">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -287,7 +289,8 @@
 							id="nav-tab" role="tablist">
 							<button class="nav-link text-uppercase active" id="nav-home-tab"
 								data-bs-toggle="tab" data-bs-target="#nav-home" type="button"
-								role="tab" aria-controls="nav-home" aria-selected="true">Space Description</button>
+								role="tab" aria-controls="nav-home" aria-selected="true">Space
+								Description</button>
 							<button class="nav-link text-uppercase" id="nav-information-tab"
 								data-bs-toggle="tab" data-bs-target="#nav-information"
 								type="button" role="tab" aria-controls="nav-information"
@@ -422,23 +425,24 @@
 								</div>
 							</div>
 							<div class="add-review margin-small">
-								<h3>review</h3>
+								<h3>Add a review</h3>
 								<div class="review-rating py-2">
 									<span class="my-2">Your rating</span>
-									<div class="rating-container d-flex align-items-center" id="yourRating">
+									<div class="rating-container d-flex align-items-center"
+										id="yourRating">
+									<div class="star-rating space-x-4" style="float:left">
+										<input type="radio" id="5-stars" name="rating" value="5"
+											v-model="ratings" /> <label for="5-stars" class="star pr-4">★</label>
+										<input type="radio" id="4-stars" name="rating" value="4"
+											v-model="ratings" /> <label for="4-stars" class="star">★</label>
+										<input type="radio" id="3-stars" name="rating" value="3"
+											v-model="ratings" /> <label for="3-stars" class="star">★</label>
+										<input type="radio" id="2-stars" name="rating" value="2"
+											v-model="ratings" /> <label for="2-stars" class="star">★</label>
+										<input type="radio" id="1-star" name="rating" value="1"
+											v-model="ratings" /> <label for="1-star" class="star">★</label>
 									</div>
-									<div class="myrate">
-										☆☆☆☆☆
-									</div>
-									<select name="star" id="stars" onchange="ratingStars(this.value)">
-										<option value="">Your rating</option>
-										<option value="0">0</option>
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5</option>
-									</select>
+										</div>
 								</div>
 								<input type="file" class="jfilestyle py-2 border-0"
 									data-text="Choose your file">
@@ -541,9 +545,8 @@
 	</section>
 
 	<script src="vaso-html-template/js/jquery-1.11.0.min.js"></script>
-	<script src="vaso-html-template/js/stars.js"></script>
 	<script type="text/javascript"
-		src="vaso-html-template/js/bootstrap.bundle.min.js"></script>
+		src="vaso-html-template/js/bootstrap.bundle.min.js?ver=1"></script>
 	<script type="text/javascript"
 		src="vaso-html-template/js/plugins.js?ver=1"></script>
 	<script type="text/javascript" src="vaso-html-template/js/script.js"></script>
