@@ -5,8 +5,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
-  		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css">
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<style>
 		#cityBox {
 		/* float: left; */
@@ -66,200 +66,18 @@
 		padding-left: 15px;
 		padding-right: 15px;
 		}
-		.ui-datepicker {
+		/* .ui-datepicker {
 		    margin: 0 auto;
+		} */
+		.ui-datepicker {
+			margin-left: 230px;
+    		z-index: 999999 !important;
 		}
+
 		/* #datepicker > div {
 			display: inline-block;
 		} */
 		</style>
-		<!-- <style>
-			.ui-widget-header {
-				border: 0px solid #dddddd;
-				background: #fff;
-			}
-
-			.ui-datepicker-calendar>thead>tr>th {
-				font-size: 14px !important;
-			}
-
-			.ui-datepicker .ui-datepicker-header {
-				position: relative;
-				padding: 10px 0;
-			}
-
-			.ui-state-default,
-			.ui-widget-content .ui-state-default,
-			.ui-widget-header .ui-state-default,
-			.ui-button,
-			html .ui-button.ui-state-disabled:hover,
-			html .ui-button.ui-state-disabled:active {
-				border: 0px solid #c5c5c5;
-				background-color: transparent;
-				font-weight: normal;
-				color: #454545;
-				text-align: center;
-			}
-
-			.ui-datepicker .ui-datepicker-title {
-				margin: 0 0em;
-				line-height: 16px;
-				text-align: center;
-				font-size: 14px;
-				padding: 0px;
-				font-weight: bold;
-			}
-
-			.ui-datepicker {
-				display: none;
-				background-color: #fff;
-				border-radius: 4px;
-				margin-top: 10px;
-				margin-left: 0px;
-				margin-right: 0px;
-				padding: 20px;
-				padding-bottom: 10px;
-				width: 300px;
-				box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.1);
-			}
-
-			.ui-widget.ui-widget-content {
-				border: 1px solid #eee;
-			}
-
-			#datepicker:focus>.ui-datepicker {
-				display: block;
-			}
-
-			.ui-datepicker-prev,
-			.ui-datepicker-next {
-				cursor: pointer;
-			}
-
-			.ui-datepicker-next {
-				float: right;
-			}
-
-			.ui-state-disabled {
-				cursor: auto;
-				color: hsla(0, 0%, 80%, 1);
-			}
-
-			.ui-datepicker-title {
-				text-align: center;
-				padding: 10px;
-				font-weight: 100;
-				font-size: 20px;
-			}
-
-			.ui-datepicker-calendar {
-				width: 100%;
-			}
-
-			.ui-datepicker-calendar>thead>tr>th {
-				padding: 5px;
-				font-size: 20px;
-				font-weight: 400;
-			}
-
-
-			.ui-datepicker-calendar>tbody>tr>td>a {
-				color: #000;
-				font-size: 12px !important;
-				font-weight: bold !important;
-				text-decoration: none;
-
-			}
-
-
-			.ui-datepicker-calendar>tbody>tr>.ui-state-disabled:hover {
-				cursor: auto;
-				background-color: #fff;
-			}
-
-			.ui-datepicker-calendar>tbody>tr>td {
-				border-radius: 100%;
-				width: 44px;
-				height: 30px;
-				cursor: pointer;
-				padding: 5px;
-				font-weight: 100;
-				text-align: center;
-				font-size: 12px;
-			}
-
-			.ui-datepicker-calendar>tbody>tr>td:hover {
-				background-color: transparent;
-				opacity: 0.6;
-			}
-
-			.ui-state-hover,
-			.ui-widget-content .ui-state-hover,
-			.ui-widget-header .ui-state-hover,
-			.ui-state-focus,
-			.ui-widget-content .ui-state-focus,
-			.ui-widget-header .ui-state-focus,
-			.ui-button:hover,
-			.ui-button:focus {
-				border: 0px solid #cccccc;
-				background-color: transparent;
-				font-weight: normal;
-				color: #2b2b2b;
-			}
-
-			.ui-widget-header .ui-icon {
-				background-image: url('vaso-html/images/btns.png');
-			}
-
-			.ui-icon-circle-triangle-e {
-				background-position: -20px 0px;
-				background-size: 36px;
-			}
-
-			.ui-icon-circle-triangle-w {
-				background-position: -0px -0px;
-				background-size: 36px;
-			}
-
-			.ui-datepicker-calendar>tbody>tr>td:first-child a {
-				color: red !important;
-			}
-
-			.ui-datepicker-calendar>tbody>tr>td:last-child a {
-				color: #0099ff !important;
-			}
-
-			.ui-datepicker-calendar>thead>tr>th:first-child {
-				color: red !important;
-			}
-
-			.ui-datepicker-calendar>thead>tr>th:last-child {
-				color: #0099ff !important;
-			}
-
-			.ui-state-highlight,
-			.ui-widget-content .ui-state-highlight,
-			.ui-widget-header .ui-state-highlight {
-				border: 0px;
-				background: #f1f1f1;
-				border-radius: 50%;
-				padding-top: 10px;
-				padding-bottom: 10px;
-			}
-
-
-			.inp {
-				padding: 10px 10px;
-				background-color: #f1f1f1;
-				border-radius: 4px;
-				border: 0px;
-			}
-
-			.inp:focus {
-				outline: none;
-				background-color: #eee;
-			}
-		</style> -->
 	</head>
 
 	<body>
@@ -518,11 +336,11 @@
 				<!-- Find When 모달 -->
 				<form id="findWhenForm" action="spacelist.do" method="get">
 					<div class="modal fade" id="findWhenModal" tabindex="-1" role="dialog" aria-hidden="true">
-						<div class="modal-dialog">
+						<div class="modal-dialog" role="document">
 							<div class="modal-content">
 
 								<!-- Modal Header -->
-								<div class="modal-header" style="margin: 0 15px;">
+								<div class="modal-header">
 									<h4 class="modal-title"
 										style="font-family: 'Noto Sans KR', sans-serif; font-weight: 600;  margin: 10px 0;">
 										언제 떠날까요?</h4>
@@ -531,9 +349,16 @@
 
 								<!-- Modal body -->
 								<div class="modal-body">
-									<div class="form-group py-3" style="margin: 20px 0;">
-										<label>Date:</label><input type="text" >
+									<!-- <div class="form-group py-3" style="margin: 20px 0;">
+										<label>Date:</label><input type="text" class="datepicker">
 										<div id="datepicker" style="margin: 0"></div>
+									</div> -->
+									<!-- <input type="text" class="form-control"> -->
+									<!-- <b>Date:</b> <input type="" name="" id="txtDate" runat="server" /> -->
+									<!-- <p>Date: <input type="text" id="datepicker"></p> -->
+									<!--   <input type="text" class="form-control" data-toggle="datepicker"> -->
+									<div class="form-group py-3">						
+										<input type="text" class="form-control" style="display: inline-block; text-align: center;">
 									</div>
 								</div>
 								<!-- Modal footer -->
@@ -548,11 +373,19 @@
 
 			</nav>
 		</header>
-
-		<script>
-			$('#datepicker').datepicker();
+		
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+    	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    	<input class="datepicker">
+		<script type="text/javascript">
+			$('.modal-body input').datepicker({
+			  format: 'yyyy-mm-dd'
+			}).on('hide', function(event) {
+			  event.preventDefault();
+			  event.stopPropagation();
+			});
 		</script>
-	
 	</body>
 
 	</html>
