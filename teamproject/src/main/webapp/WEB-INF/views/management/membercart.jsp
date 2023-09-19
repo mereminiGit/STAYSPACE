@@ -16,7 +16,9 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Cards basic - UI elements | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Stay Space / 관심 목록</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+ 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <meta name="description" content="" />
 
@@ -82,52 +84,71 @@
               <div class="row mb-5">
                 <div class="col-md-6 col-lg-4 mb-3">
                   <div class="card h-100">
-                    <img class="card-img-top" src="member/image/숙소2.jpg" alt="Card image cap" />
+                    <img class="card-img-top" src="member/image/숙소2.jpg" alt="Card image cap" id="hoverImg" />
                     <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
+                      <h5 class="card-title">탭아파트먼트</h5>
                       <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the card's content.
+                        다채로운 컨셉과 음악 속에서의 하루
                       </p>
-                      <a href="javascript:void(0)" class="btn btn-outline-primary">Go somewhere</a>
+                      <button type="button" class="btn btn-outline-secondary">Detailed page</button>
+                       <button type="button" class="btn btn-outline-danger" id="dangerBtn">Delete</button>
+                      <!-- <a href="javascript:void(0)" class="btn btn-outline-primary">Detailed page</a> -->
                     </div>
                   </div>
                 </div>
                 
                    <div class="col-md-6 col-lg-4 mb-3">
                   <div class="card h-100">
-                    <img class="card-img-top" src="member/image/숙소2.jpg" alt="Card image cap" />
+                    <img class="card-img-top" src="member/image/숙소2.jpg" alt="Card image cap" id="hoverImg" />
+                    <p class="hoverText">2023 09 17 ~ 2023 09 18 <br> 120,000원</p> 
                     <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
+                      <h5 class="card-title">호미양양</h5>
                       <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the card's content.
+                        취향의 아름다움(好美)이 가득 담긴 공간(洋洋)
                       </p>
-                      <a href="javascript:void(0)" class="btn btn-outline-primary">Go somewhere</a>
+                     <!--  <a href="javascript:void(0)" class="btn btn-outline-primary">Detailed page</a> -->
+                       <button type="button" class="btn btn-outline-secondary">Detailed page</button>
+                       <button type="button" class="btn btn-outline-danger" id="dangerBtn">Delete</button>
                     </div>
                   </div>
                 </div>
                 
                   <div class="col-md-6 col-lg-4 mb-3">
                   <div class="card h-100">
-                    <img class="card-img-top" src="member/image/숙소3.jpg" alt="Card image cap" />
+                    <img class="card-img-top" src="member/image/숙소3.jpg" alt="Card image cap" id="hoverImg"/>
                     <div class="card-body">
                       <h5 class="card-title">소게</h5>
                       <p class="card-text">
                         잠시 기대어 쉬는 느슨한 시간
+						<br>
+						<br>
+						2023/09/18 - 2023/09/19
+						<br>
+						<br>
+						₩120,000                        
                       </p>
-                      <a href="javascript:void(0)" class="btn btn-outline-primary">Go somewhere</a>
+                      <!-- <a href="javascript:void(0)" class="btn btn-outline-primary">Detailed page</a> -->
+                       <button type="button" class="btn btn-outline-secondary">Detailed page</button>
+                       <button type="button" class="btn btn-outline-danger" id="dangerBtn">Delete</button>
                     </div>
                   </div>
                 </div>
                 
                   <div class="col-md-6 col-lg-4 mb-3">
                   <div class="card h-100">
-                    <img class="card-img-top" src="member/image/숙소3.jpg" alt="Card image cap" />
+                  
+                    <img class="card-img-top" src="member/image/숙소3.jpg" alt="Card image cap" id="hoverImg" />
+                    <p class="hoverText">2023 09 17 ~ 2023 09 18 <br> 120,000원</p> 
+                  
+                    <!-- <a href="#;" class="banner_bg">
+ 				     <p class="hover_text">이미지에 마우스를 올리면 나타나는 텍스트입니다.</p></a> -->
                     <div class="card-body">
                       <h5 class="card-title">소게</h5>
                       <p class="card-text">
                         잠시 기대어 쉬는 느슨한 시간
                       </p>
-                      <a href="javascript:void(0)" class="btn btn-outline-primary">Go somewhere</a>
+                      <button type="button" class="btn btn-outline-secondary">Detailed page</button>
+                       <button type="button" class="btn btn-outline-danger" id="dangerBtn">Delete</button>
                     </div>
                   </div>
                 </div>
@@ -208,5 +229,8 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script>
+
+    </script>
   </body>
 </html>

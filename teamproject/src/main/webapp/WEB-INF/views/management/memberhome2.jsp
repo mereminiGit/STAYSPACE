@@ -10,6 +10,7 @@
 
 		<title>Stay Space/ 예약내역</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+	 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 		<meta name="description" content="" />
@@ -68,7 +69,7 @@
 
 							<!-- Basic Bootstrap Table -->
 							<div class="card">
-								<h5 class="card-header">예약내역</h5>
+								<h5 class="card-header">Reservation details</h5>
 								<div class="table-responsive text-nowrap">
 									<table class="table">
 										<thead>
@@ -77,6 +78,7 @@
 												<th>NAME</th>
 												<th>RESERVATION DATE</th>
 												<th>PAYMENT DATE</th>
+												<th>PRICE</th>
 												<th>APPROVAL</th>
 												<th>DELETE LIST</th>
 											</tr>
@@ -89,7 +91,8 @@
 												<td>고도</td>
 												<td>2023/09/17</td>
 												<td>2023/09/17</td>
-												<td><span class="badge bg-label-primary me-1"><strong>예약완료</strong></span></td>
+												<td>120,000원</td>
+												<td><span class="badge bg-label-primary me-1"><strong>예약확정</strong></span></td>
 												<td>
 													<div class="dropdown" id="deletecenter">
 														<div class="deletebtn">
@@ -105,6 +108,7 @@
 												<td>소게</td>
 												<td>2023/09/17</td>
 												<td>2023/09/17</td>
+												<td>120,000원</td>
 												<td><span class="badge bg-label-success me-1">예약승인대기</span></td>
 												<td>
 													<div class="dropdown" id="deletecenter">
@@ -121,7 +125,8 @@
 												<td>Trevor Baker</td>
 												<td>2023/09/17</td>
 												<td>2023/09/17</td>
-												<td><span class="badge bg-label-primary me-1"><strong>예약완료</strong></span></td>
+												<td>120,000원</td>
+												<td><span class="badge bg-label-primary me-1"><strong>예약확정</strong></span></td>
 												<td>
 													<div class="dropdown" id="deletecenter">
 														<div class="deletebtn">
@@ -137,6 +142,7 @@
 												<td>Jerry Milton</td>
 												<td>2023/09/17</td>
 												<td>2023/09/17</td>
+												<td>120,000원</td>
 												<td><span class="badge bg-label-success me-1">예약승인대기</span></td>
 												<td>
 													<div class="dropdown" id="deletecenter">
@@ -189,6 +195,30 @@
 		<script async defer src="https://buttons.github.io/buttons.js"></script>
 		<script type="text/javascript">
 
+		</script>
+		<script type="text/javascript">
+	
+		</script>
+		<script>
+		$('.deletebtn').on('click',function(){
+			Swal.fire({
+				  title: '목록에서 삭제하시겠습니까?',
+				  text: "삭제시 복구 불가",
+				  icon: 'warning',
+				  showCancelButton: true,
+				  confirmButtonColor: '#3085d6',
+				  cancelButtonColor: '#d33',
+				  confirmButtonText: 'Yes, delete it!'
+				}).then((result) => {
+				  if (result.isConfirmed) {
+				    Swal.fire(
+				      'Deleted!',
+				      'Your list has been deleted.',
+				      'success'
+				    )
+				  }
+				})
+		})
 		</script>
 	</body>
 

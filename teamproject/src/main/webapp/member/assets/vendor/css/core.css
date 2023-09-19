@@ -3959,7 +3959,23 @@ p.card-text{
   padding: 1.5rem;
   border-radius: 0.5rem;
 }
+#hoverImg:hover+.hoverText{
+opacity:0.8;
+}
 
+.hoverText{
+ background-color:#fff;
+ width: 100%;
+ height: 60px;
+ color: rgb(64, 0, 0);
+ position: absolute;
+ opacity: 0;
+ /*transition: all ease 0.5s;*/
+ text-align:center;
+ padding-top: 5px;
+ margin-top: 80px;
+ }
+ 
 .card-img,
 .card-img-top,
 .card-img-bottom {
@@ -6675,7 +6691,10 @@ label.btn {
 .btn-danger.disabled, .btn-danger:disabled {
   box-shadow: none;
 }
-
+#dangerBtn{
+	float:left;
+	margin : 0;
+}
 .btn-outline-danger {
   color: #ff3e1d;
   border-color: #ff3e1d;
@@ -7541,7 +7560,11 @@ button:focus {
 .card .alert-info hr {
   background-color: #03c3ec !important;
 }
-
+#alertwarning{
+	background-color: #f5f5f9;
+    border-color: #33312d;
+    color: #718193;
+}
 .alert-warning {
   background-color: #fff2d6;
   border-color: #ffe6b3;
@@ -9932,7 +9955,7 @@ button.list-group-item-gray.active {
 }
 
 .fw-bold {
-  font-weight: 700 !important;
+  font-weight: 600 !important;
    font-size: xx-large;
 }
 

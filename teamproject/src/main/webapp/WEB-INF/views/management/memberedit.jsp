@@ -1,37 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-    <!DOCTYPE html>
+  <!DOCTYPE html>
 
-    <!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
-==============================================================
+  <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default"
+    data-assets-path="member/assets/" data-template="vertical-menu-template-free">
 
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
-* Created by: ThemeSelection
-* License: You must have a valid license purchased in order to legally use the theme for your project.
-* Copyright ThemeSelection (https://themeselection.com)
-
-=========================================================
- -->
-    <!-- beautify ignore:start -->
-<html
-  lang="en"
-  class="light-style layout-menu-fixed"
-  dir="ltr"
-  data-theme="theme-default"
-  data-assets-path="member/assets/"
-  data-template="vertical-menu-template-free"
->
   <head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
-    />
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
     <title>Stay Space / 회원정보수정</title>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    
+
 
     <meta name="description" content="" />
 
@@ -43,8 +25,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
 
     <!-- Icons. Uncomment required icon fonts -->
     <link rel="stylesheet" href="member/assets/vendor/fonts/boxicons.css" />
@@ -72,7 +53,7 @@
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <!-- Menu -->
-			<jsp:include page="../layouts/membermenu2.jsp" />
+        <jsp:include page="../layouts/membermenu2.jsp" />
         <!-- / Menu -->
 
         <!-- Layout container -->
@@ -91,29 +72,18 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="card mb-4">
-                    <h5 class="card-header">회원정보</h5>
+                    <h5 class="card-header">Profile</h5>
                     <!-- Account -->
                     <div class="card-body">
                       <div class="d-flex align-items-start align-items-sm-center gap-4">
-                        <img
-                          src="member/assets/img/avatars/1.png"
-                          alt="user-avatar"
-                          class="d-block rounded"
-                          height="100"
-                          width="100"
-                          id="uploadedAvatar"
-                        />
+                        <img src="member/assets/img/avatars/1.png" alt="user-avatar" class="d-block rounded"
+                          height="100" width="100" id="uploadedAvatar" />
                         <div class="button-wrapper">
                           <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
                             <span class="d-none d-sm-block">Upload new photo</span>
                             <i class="bx bx-upload d-block d-sm-none"></i>
-                            <input
-                              type="file"
-                              id="upload"
-                              class="account-file-input"
-                              hidden
-                              accept="image/png, image/jpeg"
-                            />
+                            <input type="file" id="upload" class="account-file-input" hidden
+                              accept="image/png, image/jpeg" />
                           </label>
                           <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
                             <i class="bx bx-reset d-block d-sm-none"></i>
@@ -130,59 +100,28 @@
                         <div class="row">
                           <div class="mb-3 col-md-6">
                             <label for="firstName" class="form-label">Name</label>
-                            <input
-                              class="form-control"
-                              type="text"
-                              id="Name"
-                              name="Name"
-                              value=""
-                              placeholder="Name"
-                              autofocus
-                            />
+                            <input class="form-control" type="text" id="Name" name="Name" value="" placeholder="Name"
+                              autofocus />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="organization" class="form-label">Password</label>
-                            <input
-                              type="password"
-                              class="form-control"
-                              id="password"
-                              name="password"
-                              value=""
-                              placeholder="password"
-                            />
+                            <input type="password" class="form-control" id="password" name="password" value=""
+                              placeholder="password" />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="email" class="form-label">E-mail</label>
-                            <input
-                              class="form-control"
-                              type="text"
-                              id="email"
-                              name="email"
-                              value=""
-                              placeholder="john.doe@example.com"
-                            />
+                            <input class="form-control" type="text" id="email" name="email" value=""
+                              placeholder="john.doe@example.com" />
                           </div>
-                              <div class="mb-3 col-md-6">
+                          <div class="mb-3 col-md-6">
                             <label for="organization" class="form-label">Password Check</label>
-                            <input
-                              type="password"
-                              class="form-control"
-                              id="passwordcheck"
-                              name="passwordcheck"
-                              value=""
-                              placeholder="password"
-                            />
+                            <input type="password" class="form-control" id="passwordcheck" name="passwordcheck" value=""
+                              placeholder="password" />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label class="form-label" for="phoneNumber">Phone Number</label>
                             <div class="input-group input-group-merge">
-                              <input
-                                type="tel"
-                                id="tel"
-                                name="tel"
-                                class="form-control"
-                                placeholder="010-1234-4567"
-                              />
+                              <input type="tel" id="tel" name="tel" class="form-control" placeholder="010-1234-4567" />
                             </div>
                           </div>
                         </div>
@@ -198,7 +137,7 @@
                     <h5 class="card-header">회원 탈퇴</h5>
                     <div class="card-body">
                       <div class="mb-3 col-12 mb-0">
-                        <div class="alert alert-warning">
+                        <div class="alert alert-warning" id="alertwarning">
                           <h6 class="alert-heading fw-bold mb-1">정말로 탈퇴하시겠습니까?</h6>
                           <br>
                           <p class="mb-0">탈퇴시 계정을 복구할 수 없습니다.</p>
@@ -206,17 +145,11 @@
                       </div>
                       <form id="formAccountDeactivation" onsubmit="return false">
                         <div class="form-check mb-3">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            name="chkSelect"
-                            id="accountActivation"
-                          />
-                          <label class="form-check-label" for="accountActivation"
-                            >회원 탈퇴에 동의합니다.</label
-                          >
+                          <input class="form-check-input" type="checkbox" name="chkSelect" id="accountActivation" />
+                          <label class="form-check-label" for="accountActivation">회원 탈퇴에 동의합니다.</label>
                         </div>
-                        <button type="submit" class="btn btn-danger deactivate-account" onclick="return CheckTest();">회원 탈퇴</button>
+                        <button type="submit" id="delete" class="btn btn-danger deactivate-account"
+                          onclick="checkTest()">회원 탈퇴</button>
                       </form>
                     </div>
                   </div>
@@ -262,55 +195,120 @@
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script type="text/javascript">
-        function test() {
-            var p1 = document.getElementById('password').value;
-            var p2 = document.getElementById('passwordcheck').value;
 
-            if (p1.length < 6) {
-                alert('비밀번호는 6글자 이상이어야 합니다.');
-                return false;
-            }
 
-            if (p1 != p2) {
-                alert("비밀번호불일치");
-                return false;
-            } else {
-                alert("비밀번호가 일치합니다");
-                return true;
-            }
+      var regEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+      function test() {
+
+        if (document.getElementById("Name").value == "") {
+          Swal.fire({
+            icon: 'error',
+            text: 'name을 입력하세요!'
+          })
+          return false;
+
+        } else if (document.getElementById("password").value == "") {
+          Swal.fire({
+            icon: 'error',
+            text: 'password를 입력하세요!'
+          })
+          return false;
+        } else if (document.getElementById("passwordcheck").value == "") {
+          Swal.fire({
+            icon: 'error',
+            text: 'password check를 입력하세요!'
+          })
+          return false;
+        } else if (!regEmail.test(document.getElementById("email").value)) {
+          Swal.fire({
+            icon: 'error',
+            text: 'email을 형식에 맞게 입력하세요! ex) june@example.com'
+          })
+          return false;
+
+        } else if (document.getElementById("email").value == "") {
+          Swal.fire({
+            icon: 'error',
+            text: 'email을 입력하세요! ex) june@example.com'
+          })
+          return false;
+
+        }
+        else if (document.getElementById("tel").value == "") {
+          Swal.fire({
+            icon: 'error',
+            text: 'tel을 입력하세요!'
+          })
+          return false;
         }
 
-        function CheckTest() {
-            let arrSelect = document.getElementByName("chkSelect");
-            for (let i = 0; i < arrSelect.length; i++) {
-                if (arrSelect[i].checked){
-                    return true;
-                }
-            }
-            alert("회원 탈퇴 동의에 체크하세요.");
-            return false;
+        var p1 = document.getElementById('password').value;
+        var p2 = document.getElementById('passwordcheck').value;
+        if (p1.length < 8) {
+          Swal.fire({ text: '비밀번호는 8자 이상이어야 합니다.' })
+          return false;
         }
+
+        if (p1 != p2) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '비밀번호가 일치하지 않습니다.',
+          })
+          return false;
+        } else {
+          return true;
+        }
+      }
+
     </script>
     <script>
-    var chk = $('input[name="chkSelect"]:checked').length;
+      function checkTest() {
 
+        var chk = $('input[name=chkSelect]:checked').length;
 
-
-    if(chk == 0){    
-
-
-
-     //체크박스 선택안함
-
-
-
-    alert("체크박스 선택해주세요");
-
-    return false;
-
-
-
-    }
+        if (chk == 0) {
+          //체크박스 선택안함
+          /* alert("회원 탈퇴 동의 해주세요."); */
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '회원 탈퇴에 동의 해주세요!',
+          })
+          return false;
+        } else {
+          Swal.fire({
+            title: '정말로 탈퇴하시겠어요?',
+            text: "탈퇴시 계정은 삭제되며 복구할 수 없습니다",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire(
+                'Deleted!',
+                '계정이 탈퇴되었습니다.',
+                'success'
+              )
+            }
+          })
+          return true;
+        }
+      }
+      /*    // 이메일 input value
+            var email = document.getElementById('email').value;
+      
+            // 이메일에 값이 있으면
+            if(email) {
+                var regEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+                if (!regEmail.test(email)) {
+                    alert('이메일 형식에 맞춰주세요.');
+                    return false;
+                }
+            } */
     </script>
   </body>
-</html>
+
+  </html>
