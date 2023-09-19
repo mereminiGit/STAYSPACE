@@ -80,7 +80,7 @@
 												<th>PAYMENT DATE</th>
 												<th>PRICE</th>
 												<th>APPROVAL</th>
-												<th>DELETE LIST</th>
+												<th>CANCEL A RESERVATION</th>
 											</tr>
 										</thead>
 										<tbody class="table-border-bottom-0">
@@ -97,7 +97,7 @@
 													<div class="dropdown" id="deletecenter">
 														<div class="deletebtn">
 															<a class="" href="javascript:void(0);">
-																<i class="bx bx-trash me-2"></i> Delete</a>
+																<i class="bx bx-trash me-2"></i> Cancel</a>
 														</div>
 													</div>
 												</td>
@@ -109,12 +109,12 @@
 												<td>2023/09/17</td>
 												<td>2023/09/17</td>
 												<td>120,000원</td>
-												<td><span class="badge bg-label-success me-1">예약승인대기</span></td>
+												<td><span class="badge bg-label-success me-1">예약취소</span></td>
 												<td>
 													<div class="dropdown" id="deletecenter">
 														<div class="deletebtn">
 															<a class="" href="javascript:void(0);">
-																<i class="bx bx-trash me-2"></i> Delete</a>
+																<i class="bx bx-trash me-2"></i> Cancel</a>
 														</div>
 													</div>
 												</td>
@@ -131,7 +131,7 @@
 													<div class="dropdown" id="deletecenter">
 														<div class="deletebtn">
 															<a class="" href="javascript:void(0);">
-																<i class="bx bx-trash me-2"></i> Delete</a>
+																<i class="bx bx-trash me-2"></i> Cancel</a>
 														</div>
 													</div>
 												</td>
@@ -143,12 +143,12 @@
 												<td>2023/09/17</td>
 												<td>2023/09/17</td>
 												<td>120,000원</td>
-												<td><span class="badge bg-label-success me-1">예약승인대기</span></td>
+												<td><span class="badge bg-label-info me-1"><strong>예약승인대기</strong></span></td>
 												<td>
 													<div class="dropdown" id="deletecenter">
 														<div class="deletebtn">
 															<a class="" href="javascript:void(0);">
-																<i class="bx bx-trash me-2"></i> Delete</a>
+																<i class="bx bx-trash me-2"></i> Cancel</a>
 														</div>
 													</div>
 												</td>
@@ -202,22 +202,25 @@
 		<script>
 		$('.deletebtn').on('click',function(){
 			Swal.fire({
-				  title: '목록에서 삭제하시겠습니까?',
-				  text: "삭제시 복구 불가",
+				  title: '예약을 취소하시겠습니까?',
+				  text: '해당 상품의 취소정책에 따라 고객님이 선택하신 결제방식으로 환불이 진행됩니다.',
 				  icon: 'warning',
 				  showCancelButton: true,
 				  confirmButtonColor: '#3085d6',
 				  cancelButtonColor: '#d33',
-				  confirmButtonText: 'Yes, delete it!'
+				  confirmButtonText: 'Yes'
 				}).then((result) => {
 				  if (result.isConfirmed) {
 				    Swal.fire(
-				      'Deleted!',
-				      'Your list has been deleted.',
+				      'Cancelled!',
+				      '예약이 취소되었습니다.',
 				      'success'
 				    )
 				  }
 				})
+		})
+		$('.deletebtn').on('click',function(){
+			
 		})
 		</script>
 	</body>
