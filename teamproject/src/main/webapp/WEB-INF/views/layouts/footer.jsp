@@ -19,7 +19,7 @@
 							<!-- footer 1st -->
 							<div class="footer-menu">
 								<!-- 로고 이미지 -->
-								<img src="vaso-html/images/main-logo.png" alt="logo" class="mb-2">
+								<img src="vaso-html/images/STAYSPACE_logo_footer.png" class="logo" style="width: 103px; height: 70px;" alt="logo" class="mb-2">
 								<!-- 플랫폼 간단 설명 -->
 								<p style="font-family: 'Noto Sans KR', sans-serif; font-weight: 300; font-size: 19px;">
 									장소는 누구에게나 추억을 선사합니다.<br>
@@ -31,7 +31,7 @@
 							data-aos-easing="ease-in" data-aos-duration="1200"
 							data-aos-once="true">
 							<!-- footer 2nd -->
-							<div class="footer-menu">
+							<div class="footer-menu" style="margin-top: 7px">
 								<!-- 링크 4개 -->
 								<h4 class="widget-title pb-2">Quick Links</h4>
 								<ul class="menu-list list-unstyled">
@@ -49,7 +49,7 @@
 							data-aos-easing="ease-in" data-aos-duration="1400"
 							data-aos-once="true">
 							<!-- footer 3rd -->
-							<div class="footer-menu contact-item">
+							<div class="footer-menu contact-item" style="margin-top: 7px">
 								<!-- 플랫폼 정보 -->
 								<h4 class="widget-title pb-2">Contact info</h4>
 								<ul class="menu-list list-unstyled">
@@ -125,7 +125,7 @@
 						<div class="col-lg-3 col-sm-6 pb-3" data-aos="fade"
 							data-aos-easing="ease-in" data-aos-duration="1600"
 							data-aos-once="true">
-							<div class="footer-menu">
+							<div class="footer-menu" style="margin-top: 7px">
 								<!-- footer 4th -->
 								<h4 class="widget-title pb-2">Social info</h4>
 								<p>You can follow us on our social platforms to get updates.</p>

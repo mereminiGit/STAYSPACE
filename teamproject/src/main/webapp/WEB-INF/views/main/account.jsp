@@ -92,7 +92,7 @@
 							<!-- 회원가입 -->
 							<div class="tab-pane fade" id="nav-register" role="tabpanel"
 								aria-labelledby="nav-register-tab">
-								<form action="memberRegister.do" method="post">
+								<form action="memberRegister.do" method="post" id="registerJoin">
 									<div class="form-group py-3">
 										<label for="register">ID *</label> <input type="text"
 											minlength="2" name="registerId" placeholder="Your Id" class="w-100" required>
@@ -116,14 +116,14 @@
 									<label class="py-3"> <input type="checkbox" name="registerCheck" class="d-inline"> <span
 											class="label-body">&nbsp;Do you want to sign up as a host?</span>
 									</label>
-									<button type="submit" name="submit" class="btn btn-dark w-100 my-3">Register</button>
+									<button type="submit" name="registersubmit" class="btn btn-dark w-100 my-3">Register</button>
 								</form>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
+			
 			<!-- 아이디 모달 -->
 			<form id="findId">
 				<div class="modal fade" id="forgotIdModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -193,11 +193,12 @@
 			</form>
 
 		</section>
-		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.all.min.js"></script>
 		<script type="text/javascript">
-			<!-- 아이디 찾기 모달 이벤트 -->
+			<!-- 아이디 찾기 모달 이벤트(알람창) -->
 			$('#findId').on('submit', function () {
+				event.preventDefault(); // Prevent the page from redirecting
 				Swal.fire({
 					title: '아이디 전송',
 					text: "이메일을 확인해주세요",
@@ -210,20 +211,38 @@
 			});
 
 
-		< !--비밀번호 찾기 모달 이벤트-- >
+			<!-- 비밀번호 찾기 모달 이벤트(알람창) -->
 				$('#findPassword').on('submit', function () {
 					/* alert("초기화된 비밀번호가 이메일로 전송되었습니다!"); */
-					/* swal("비밀번호 초기화","이메일을 확인해주세요", "suc"); */
+					/* swal("비밀번호 초기화","이메일을 확인해주세요", "suc"); */				
+					event.preventDefault(); // Prevent the page from redirecting
 					Swal.fire({
 						title: '비밀번호 초기화',
 						text: "이메일을 확인해주세요",
 						icon: 'success',
 						confirmButtonColor: '#87826E',
 						confirmButtonText: 'OK',
-					}).then(function () {
+					}) 
+					.then(function () {
 						location.reload();
 					});
 				});
+				
+				/* 회원가입 알람 */
+				$('#registerJoin').on('submit', function () {
+					let joinEvent = event.preventDefault();
+					Swal.fire({
+						title: '회원가입',
+						text: "회원가입을 축하합니다",
+						icon: 'info',
+						confirmButtonColor: '#87826E',
+						confirmButtonText: 'OK',
+					}) 
+					.then(function () {
+						// 다시 폼 실행
+						$('#registerJoin').submit();
+					});
+				})
 		</script>
 	</body>
 

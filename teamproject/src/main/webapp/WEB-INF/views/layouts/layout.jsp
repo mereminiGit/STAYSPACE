@@ -16,7 +16,7 @@
 <meta name="keywords" content="">
 <meta name="description" content="">
 
-<link href="vaso-html/images/logo-512.png" rel="shortcut icon" type="image/x-icon">
+<link href="vaso-html/images/STAYSPACE_logo.png" rel="shortcut icon" type="image/x-icon">
 <title><tiles:getAsString name = "title" /></title>
 
 <link rel="stylesheet" type="text/css" href="vaso-html/css/vendor.css">
