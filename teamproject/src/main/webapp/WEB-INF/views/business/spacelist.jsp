@@ -28,12 +28,11 @@
               <div class="card">
                 <h5 class="card-header">대여공간 목록</h5>
                 <div class="table-responsive text-nowrap">
-                  <table class="table table-hover">
+                  <table class="table table-hover table table-striped" id="example">
                     <thead>
                       <tr>
                       	<th>Space Img</th>
                         <th>Name</th>
-                        <th>City</th>
                         <th>Address</th>
                         <th>Price</th>
                         <th>Action</th>
@@ -43,8 +42,7 @@
                     <!-- 1번 공간 -->
                       <tr>
                       	<td><img id="stayimg" src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>촬영 스튜디오</strong></td>
-                        <td>서울</td>
+                        <td>촬영 스튜디오</td>
                         <td>서울특별시 강남구 테헤란로19</td>
                         <td><span>50000</span> 원</td>
                         <td>
@@ -67,8 +65,7 @@
                       <!-- 2번 공간 -->
                       <tr>
                         <td><img id="stayimg" src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>파티룸</strong></td>
-                        <td>서울</td>
+                        <td>파티룸</td>
                         <td>서울특별시 강남구 테헤란로19</td>
                         <td><span>60000</span> 원</td>
                         <td>
@@ -91,8 +88,7 @@
                       <!-- 3번 공간 -->
                       <tr>
                         <td><img id="stayimg" src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i><strong>촬영 스튜디오</strong></td>
-                        <td>서울</td>
+                        <td>촬영 스튜디오</td>
                         <td>서울특별시 강남구 테헤란로19</td>
                         <td><span>50000</span> 원</td>
                         <td>
@@ -115,8 +111,7 @@
                       <!-- 4번 공간 -->
                       <tr>
                         <td><img id="stayimg" src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>파티룸</strong></td>
-                        <td>서울</td>
+                        <td>파티룸</td>
                         <td>서울특별시 강남구 테헤란로19</td>
                         <td><span>60000</span> 원</td>
                         <td>
@@ -163,14 +158,14 @@
                                 ></button>
                               </div>
                               <div class="modal-body">
-                              <!-- <div class="row">
+                               <div class="row">
                               <div class="mb-3">
 									
 										<label for="formFileMultiple" class="form-label">이미지 파일
 											선택 (다중선택 가능)</label> <input class="form-control" type="file"
 											id="formFileMultiple" multiple required/>
 								</div>
-								</div>  -->
+								</div>  
                                 <div class="row">
                                   <div class="col mb-3">
                                     <label for="nameWithTitle" class="form-label">Name</label>
@@ -183,18 +178,6 @@
                                     />
                                   </div>
                                 </div>
-                                <div class="row">
-                                  <div class="col mb-3">
-                                    <label for="cityWithTitle" class="form-label">City</label>
-                                    <input
-                                      type="text"
-                                      id="cityWithTitle"
-                                      class="form-control"
-                                      name = "modalCity"
-                                      placeholder="지역을 입력하세요."
-                                    />
-                                  </div>
-                                 </div>
                                  <div class="row">
                                   <div class="col mb-3">
                                     <label for="AddressWithTitle" class="form-label">Address</label>
@@ -239,16 +222,13 @@
               $('.spaceedit').on('click',function(e){
             	  console.log(e.target.parentElement.parentElement.parentElement.parentElement.children[0]);
             	  let name = e.target.parentElement.parentElement.parentElement.parentElement.children[1];
-            	  let city = e.target.parentElement.parentElement.parentElement.parentElement.children[2];
-            	  let address = e.target.parentElement.parentElement.parentElement.parentElement.children[3];
-            	  let price = e.target.parentElement.parentElement.parentElement.parentElement.children[4];
+            	  let address = e.target.parentElement.parentElement.parentElement.parentElement.children[2];
+            	  let price = e.target.parentElement.parentElement.parentElement.parentElement.children[3];
             	  $('input[name=modalName]').val(e.target.parentElement.parentElement.parentElement.parentElement.children[1].innerText);
-            	  $('input[name=modalCity]').val(e.target.parentElement.parentElement.parentElement.parentElement.children[2].innerText);
-            	  $('input[name=modalAddress]').val(e.target.parentElement.parentElement.parentElement.parentElement.children[3].innerText);
-            	  $('input[name=modalPrice]').val(e.target.parentElement.parentElement.parentElement.parentElement.children[4].innerText);
+            	  $('input[name=modalAddress]').val(e.target.parentElement.parentElement.parentElement.parentElement.children[2].innerText);
+            	  $('input[name=modalPrice]').val(e.target.parentElement.parentElement.parentElement.parentElement.children[3].children[0].innerText);
 	              $('.change').on('click', function(e){
 		              name.innerText = $('input[name=modalName]').val();
-	            	  city.innerText = $('input[name=modalCity]').val();
 	            	  address.innerText = $('input[name=modalAddress]').val();
 	            	  price.children[0].innerText = $('input[name=modalPrice]').val();
 	              })

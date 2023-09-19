@@ -4,6 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 </head>
 <body>
 	<!-- Content wrapper -->
@@ -28,18 +30,17 @@
 							<form>
 								<div class="mb-3" style="width: 50%">
 									<label class="form-label" for="basic-default-fullname">Space Name</label> <input type="text" class="form-control"
-										id="basic-default-fullname" placeholder="Studio" required/>
+										id="basic-default-fullname" name="name" placeholder="Studio" required/>
 								</div>
 								<div class="mb-3" style="width: 50%">
 									<label class="form-label" for="basic-default">Price</label>
 									<input type="text" class="form-control"
-										id="basic-default" placeholder="20000" required/>
+										id="basic-default" name="price" placeholder="20000" required/>
 								</div>
 								<div class="mb-3" style="width: 50%">
 									
 										<label class="form-label" for="country">Country</label> <select
-											id="country" class="select2 form-select" required>
-											<option value="">선택</option>
+											id="country" name="country" class="select2 form-select" required>
 											<option value="Australia">서울특별시</option>
 											<option value="Bangladesh">부산광역시</option>
 											<option value="Belarus">대구광역시</option>
@@ -60,12 +61,12 @@
 								</div>
 								<div class="mb-3" style="width: 80%">
 									<label class="form-label" for="basic-default">Address</label> <input
-										type="text" id="address" class="form-control"
+										type="text" id="address" name="address" class="form-control"
 										placeholder="주소를 입력하세요." required/>
 								</div>
 								<div class="mb-3" style="width: 80%;">
 									<label class="form-label" for="basic-default-message">Content</label>
-									<textarea id="basic-default-message" class="form-control"
+									<textarea id="basic-default-message" name="content" class="form-control"
 										placeholder="대여공간에 대한 설명을 입력하세요." style="height: 200px" required></textarea>
 								</div>
 
@@ -78,7 +79,7 @@
 								</div>
 								<br>
 								<div align="center">
-								<button type="submit" class="btn btn-secondary me-2">등록하기</button>
+								<button type="submit" id="register" class="btn btn-secondary me-2">등록하기</button>
 								<button type="reset" class="btn btn-outline-secondary">취소하기</button>
 								</div>
 							</form>

@@ -91,7 +91,7 @@
             <li class="menu-item">
               <a href="memberlist.do" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Basic">회원 관리</div>
+                <div data-i18n="Basic">Member List</div>
               </a>
             </li> 
 
@@ -102,7 +102,7 @@
             <li class="menu-item">
               <a href="totalspacelist.do" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Basic">대여공간 관리</div>
+                <div data-i18n="Basic">Total Space List</div>
               </a>
             </li> 
             
@@ -112,7 +112,13 @@
             <li class="menu-item">
               <a href="totalreservelist.do" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-detail"></i>
-                <div data-i18n="Form Elements">예약 관리</div>
+                <div data-i18n="Form Elements">Total Reservation List</div>
+              </a>
+             </li>
+             <li class="menu-item">
+              <a href="totalsaleschart.do" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-detail"></i>
+                <div data-i18n="Form Elements">Total Sales Chart</div>
               </a>
              </li>
           </ul>

@@ -61,7 +61,7 @@ img#stayimg {
 										<div>
 											<small class="text-muted d-block">Total Sales</small>
 											<div class="d-flex align-items-center">
-												<h6 class="mb-0 me-1">4591000원</h6>
+												<h6 class="mb-0 me-1">4591000 </h6>
 												<small class="text-success fw-semibold"> <i
 													class="bx bx-chevron-up"></i> 42.9%
 												</small>
@@ -90,7 +90,7 @@ img#stayimg {
 										<div>
 											<small class="text-muted d-block">Total Sales</small>
 											<div class="d-flex align-items-center">
-												<h6 class="mb-0 me-1">4591000원</h6>
+												<h6 class="mb-0 me-1">4591000 </h6>
 												<small class="text-success fw-semibold"> <i
 													class="bx bx-chevron-up"></i> 42.9%
 												</small>
@@ -138,8 +138,8 @@ img#stayimg {
 											<h6 class="mb-0">Studio</h6>
 										</div>
 										<div class="user-progress d-flex align-items-center gap-1">
-											<h6 class="mb-0">100000원</h6>
-											<span class="text-muted">KRW</span>
+											<h6 class="mb-0">100000 </h6>
+											<span class="text-muted">원</span>
 										</div>
 									</div>
 								</li>
@@ -155,8 +155,8 @@ img#stayimg {
 											<h6 class="mb-0">Party Room</h6>
 										</div>
 										<div class="user-progress d-flex align-items-center gap-1">
-											<h6 class="mb-0">200000원</h6>
-											<span class="text-muted">KRW</span>
+											<h6 class="mb-0">200000 </h6>
+											<span class="text-muted">원</span>
 										</div>
 									</div>
 								</li>
@@ -172,8 +172,8 @@ img#stayimg {
 											<h6 class="mb-0">Studio</h6>
 										</div>
 										<div class="user-progress d-flex align-items-center gap-1">
-											<h6 class="mb-0">300000원</h6>
-											<span class="text-muted">KRW</span>
+											<h6 class="mb-0">300000 </h6>
+											<span class="text-muted">원</span>
 										</div>
 									</div>
 								</li>
@@ -189,8 +189,8 @@ img#stayimg {
 											<h6 class="mb-0">Studio</h6>
 										</div>
 										<div class="user-progress d-flex align-items-center gap-1">
-											<h6 class="mb-0">400000원</h6>
-											<span class="text-muted">KRW</span>
+											<h6 class="mb-0">400000 </h6>
+											<span class="text-muted">원</span>
 										</div>
 									</div>
 								</li>
@@ -206,8 +206,8 @@ img#stayimg {
 											<h6 class="mb-0">Studio</h6>
 										</div>
 										<div class="user-progress d-flex align-items-center gap-1">
-											<h6 class="mb-0">500000원</h6>
-											<span class="text-muted">KRW</span>
+											<h6 class="mb-0">500000 </h6>
+											<span class="text-muted">원</span>
 										</div>
 									</div>
 								</li>
@@ -223,8 +223,8 @@ img#stayimg {
 											<h6 class="mb-0">Studio</h6>
 										</div>
 										<div class="user-progress d-flex align-items-center gap-1">
-											<h6 class="mb-0">600000원</h6>
-											<span class="text-muted">KRW</span>
+											<h6 class="mb-0">600000 </h6>
+											<span class="text-muted">원</span>
 										</div>
 									</div>
 								</li>
@@ -258,8 +258,8 @@ img#stayimg {
 											<h6 class="mb-0">Studio</h6>
 										</div>
 										<div class="user-progress d-flex align-items-center gap-1">
-											<h6 class="mb-0">700000원</h6>
-											<span class="text-muted">KRW</span>
+											<h6 class="mb-0">700000 </h6>
+											<span class="text-muted">원</span>
 										</div>
 									</div>
 								</li>
@@ -275,8 +275,8 @@ img#stayimg {
 											<h6 class="mb-0">Studio</h6>
 										</div>
 										<div class="user-progress d-flex align-items-center gap-1">
-											<h6 class="mb-0">800000원</h6>
-											<span class="text-muted">KRW</span>
+											<h6 class="mb-0">800000 </h6>
+											<span class="text-muted">원</span>
 										</div>
 									</div>
 								</li>
@@ -292,8 +292,8 @@ img#stayimg {
 											<h6 class="mb-0">Studio</h6>
 										</div>
 										<div class="user-progress d-flex align-items-center gap-1">
-											<h6 class="mb-0">900000원</h6>
-											<span class="text-muted">KRW</span>
+											<h6 class="mb-0">900000 </h6>
+											<span class="text-muted">원</span>
 										</div>
 									</div>
 								</li>
@@ -309,8 +309,8 @@ img#stayimg {
 											<h6 class="mb-0">Studio</h6>
 										</div>
 										<div class="user-progress d-flex align-items-center gap-1">
-											<h6 class="mb-0">1000000원</h6>
-											<span class="text-muted">KRW</span>
+											<h6 class="mb-0">1000000 </h6>
+											<span class="text-muted">원</span>
 										</div>
 									</div>
 								</li>
@@ -326,8 +326,8 @@ img#stayimg {
 											<h6 class="mb-0">Studio</h6>
 										</div>
 										<div class="user-progress d-flex align-items-center gap-1">
-											<h6 class="mb-0">1100000원</h6>
-											<span class="text-muted">KRW</span>
+											<h6 class="mb-0">1100000 </h6>
+											<span class="text-muted">원</span>
 										</div>
 									</div>
 								</li>
@@ -343,8 +343,8 @@ img#stayimg {
 											<h6 class="mb-0">Studio</h6>
 										</div>
 										<div class="user-progress d-flex align-items-center gap-1">
-											<h6 class="mb-0">1200000원</h6>
-											<span class="text-muted">KRW</span>
+											<h6 class="mb-0">1200000 </h6>
+											<span class="text-muted">원</span>
 										</div>
 									</div>
 								</li>
@@ -393,7 +393,6 @@ img#stayimg {
 											<th>No</th>
 											<th>Space Img</th>
 											<th>Name</th>
-											<th>City</th>
 											<th>Address</th>
 											<th>Total Price</th>
 										</tr>
@@ -403,31 +402,25 @@ img#stayimg {
 											<td>1.</td>
 											<td><img id="stayimg"
 												src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
-											<td><i class="fab fa-angular fa-lg text-danger me-3"></i>
-												<strong>촬영 스튜디오</strong></td>
-											<td>서울</td>
+											<td>촬영 스튜디오</td>
 											<td>서울특별시 강남구 테헤란로19</td>
-											<td><span>50000</span> 원</td>
+											<td><span>50000</span>  </td>
 										</tr>
 										<tr>
 											<td>2.</td>
 											<td><img id="stayimg"
 												src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
-											<td><i class="fab fa-angular fa-lg text-danger me-3"></i>
-												<strong>촬영 스튜디오</strong></td>
-											<td>서울</td>
+											<td>촬영 스튜디오</td>
 											<td>서울특별시 강남구 테헤란로19</td>
-											<td><span>50000</span> 원</td>
+											<td><span>50000</span>  </td>
 										</tr>
 										<tr>
 											<td>3.</td>
 											<td><img id="stayimg"
 												src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
-											<td><i class="fab fa-angular fa-lg text-danger me-3"></i>
-												<strong>촬영 스튜디오</strong></td>
-											<td>서울</td>
+											<td>촬영 스튜디오</td>
 											<td>서울특별시 강남구 테헤란로19</td>
-											<td><span>50000</span> 원</td>
+											<td><span>50000</span>  </td>
 										</tr>
 									</tbody>
 								</table>
@@ -448,7 +441,6 @@ img#stayimg {
 											<th>No</th>
 											<th>Space Img</th>
 											<th>Name</th>
-											<th>City</th>
 											<th>Address</th>
 											<th>Total Price</th>
 										</tr>
@@ -458,31 +450,25 @@ img#stayimg {
 											<td>1.</td>
 											<td><img id="stayimg"
 												src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
-											<td><i class="fab fa-angular fa-lg text-danger me-3"></i>
-												<strong>촬영 스튜디오</strong></td>
-											<td>서울</td>
+											<td>촬영 스튜디오</td>
 											<td>서울특별시 강남구 테헤란로19</td>
-											<td><span>50000</span> 원</td>
+											<td><span>50000</span>  </td>
 										</tr>
 										<tr>
 											<td>2.</td>
 											<td><img id="stayimg"
 												src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
-											<td><i class="fab fa-angular fa-lg text-danger me-3"></i>
-												<strong>촬영 스튜디오</strong></td>
-											<td>서울</td>
+											<td>촬영 스튜디오</td>
 											<td>서울특별시 강남구 테헤란로19</td>
-											<td><span>50000</span> 원</td>
+											<td><span>50000</span>  </td>
 										</tr>
 										<tr>
 											<td>3.</td>
 											<td><img id="stayimg"
 												src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
-											<td><i class="fab fa-angular fa-lg text-danger me-3"></i>
-												<strong>촬영 스튜디오</strong></td>
-											<td>서울</td>
+											<td>촬영 스튜디오</td>
 											<td>서울특별시 강남구 테헤란로19</td>
-											<td><span>50000</span> 원</td>
+											<td><span>50000</span>  </td>
 										</tr>
 									</tbody>
 								</table>

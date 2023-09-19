@@ -46,8 +46,8 @@ img#stayimg {
 							<tr>
 								<td><img id="stayimg"
 									src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
-								<td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>촬영
-										스튜디오</strong></td>
+								<td>촬영
+										스튜디오</td>
 								<td>50000</td>
 								<td>홍길동</td>
 								<td>2023-09-01</td>
@@ -62,8 +62,8 @@ img#stayimg {
 							<tr>
 								<td><img id="stayimg"
 									src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
-								<td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>촬영
-										스튜디오</strong></td>
+								<td>촬영
+										스튜디오</td>
 								<td>50000</td>
 								<td>홍길동</td>
 								<td>2023-09-01</td>
@@ -78,8 +78,8 @@ img#stayimg {
 							<tr>
 								<td><img id="stayimg"
 									src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
-								<td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>촬영
-										스튜디오</strong></td>
+								<td>촬영
+										스튜디오</td>
 								<td>50000</td>
 								<td>홍길동</td>
 								<td>2023-09-01</td>
@@ -94,8 +94,8 @@ img#stayimg {
 							<tr>
 								<td><img id="stayimg"
 									src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
-								<td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>촬영
-										스튜디오</strong></td>
+								<td>촬영
+										스튜디오</td>
 								<td>50000</td>
 								<td>홍길동</td>
 								<td>2023-09-01</td>

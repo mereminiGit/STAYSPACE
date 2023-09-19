@@ -97,8 +97,8 @@
 										</div>
 									</div>
 									<div class="mt-2">
-										<button type="submit" id="edit" class="btn btn-secondary me-2">수정하기</button>
-										<button type="reset" class="btn btn-outline-secondary">취소하기</button>
+										<button type="submit" id="edit" class="btn btn-dark me-2">수정하기</button>
+										<button type="reset" class="btn btn-outline-dark">취소하기</button>
 									</div>
 								</div>
 							</form>
@@ -133,7 +133,7 @@
 							</form>
 						</div>
 					</div>
-					<!-- Modal 1-->
+					<!-- Modal 1-
 					<div class="modal fade" id="modalToggle"
 						aria-labelledby="modalToggleLabel" tabindex="-1"
 						style="display: none" aria-hidden="true">
@@ -152,7 +152,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div>-->
 				</div>
 			</div>
 		</div>
@@ -164,22 +164,49 @@
 		$('#edit').on('click',function(e){
 			let password = $('input[name=password]').val();
 			let checkPassword = $('input[name=checkPassword]').val();
-			if(password.length<6){
-				alert('비밀번호 6자리 이상 입력하세요');
+			let emailFormat = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+			let email = $('input[name=email]').val();
+			if(password.length<8){
+				Swal.fire({
+					  icon: 'error',
+					  text: '비밀번호 8자리 이상 입력하세요.',
+					})
 				password = '';
 			}else{
 				if(password != checkPassword){
-					alert('비밀번호가 일치하지 않습니다.');
+					Swal.fire({
+						  icon: 'error',
+						  text: '비밀번호가 일치하지 않습니다.',
+						})
 					password='';
 					checkPassword='';
+				}else{
+					if(!emailFormat.test(email)){
+			        	Swal.fire({
+							  icon: 'error',
+							  text: '잘못된 이메일 형식입니다.',
+							})
+			        	email='';
+			        }else{
+			        	Swal.fire({
+			        		  icon: 'question',
+			        		  text: '변경하시겠습니까?',
+			        		  showDenyButton: true,
+			        		  showCancelButton: true,
+			        		  confirmButtonText: 'Yes',
+			        		  denyButtonText: 'No'
+			        		}).then((result) => {
+			        		  /* Read more about isConfirmed, isDenied below */
+			        		  if (result.isConfirmed) {
+			        		    Swal.fire('', '변경되었습니다.', 'success')
+			        		  } else if (result.isDenied) {
+			        		    Swal.fire('', '변경 취소되었습니다.', 'info')
+			        		  }
+			        		})
+			        }
 				}
 			}
-			let emailFormat = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
-			let email = $('input[name=email]').val();
-	        if (!emailFormat.test(email)){
-	        	alert('잘못된 이메일 형식입니다.');
-	        	email='';
-	        }
+			
 	        
 		})
 		
@@ -189,16 +216,32 @@
 			let accountActivation = $('input[name=accountActivation]').is(':checked');
 			console.log(accountActivation);
 			if(accountActivation){
-				<!--data-bs-toggle="modal" data-bs-target="#modalToggle"-->
-				$('#delete').attr('data-bs-toggle','modal');
-				$('#delete').attr('data-bs-target','#modalToggle');
-				$('#modalToggle').modal('show');
+				
+				Swal.fire({
+					  text: "회원 탈퇴하시겠습니까?",
+					  icon: 'warning',
+					  showCancelButton: true,
+					  confirmButtonColor: '#3085d6',
+					  cancelButtonColor: '#d33',
+					  confirmButtonText: 'Yes'
+					}).then((result) => {
+					  if (result.isConfirmed) {
+					    Swal.fire(
+					      '',
+					      '탈퇴되었습니다.',
+					      'success'
+					    )
+					  }
+					})
 			}else{
-				alert('회원탈퇴 동의에 체크해주세요.');
+				Swal.fire({
+					  icon: 'error',
+					  text: '회원탈퇴 동의에 체크해주세요.',
+					})
 			}
 		})
 		
 	</script>
-	
+
 </body>
 </html>
