@@ -297,17 +297,7 @@
           return true;
         }
       }
-      /*    // 이메일 input value
-            var email = document.getElementById('email').value;
-      
-            // 이메일에 값이 있으면
-            if(email) {
-                var regEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
-                if (!regEmail.test(email)) {
-                    alert('이메일 형식에 맞춰주세요.');
-                    return false;
-                }
-            } */
+
     </script>
   </body>
 
