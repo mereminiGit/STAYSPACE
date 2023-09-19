@@ -24,23 +24,25 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Italiana&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap"
 	rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-    <style>
-        .slider {
-            margin: 0 auto;
-        }
+<link rel="stylesheet" type="text/css"
+	href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<link rel="stylesheet" type="text/css"
+	href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+<style>
+.slider {
+	margin: 0 auto;
+}
 
-        .slick-dots {
-            bottom: 10px;
-        }
+.slick-dots {
+	bottom: 10px;
+}
 
-        .slick-dots li button:before {
-            font-size: 10px;
-            line-height: 10px;
-            color: #fff;
-        }
-    </style>
+.slick-dots li button:before {
+	font-size: 10px;
+	line-height: 10px;
+	color: #fff;
+}
+</style>
 <!-- script
     ================================================== -->
 <script src="vaso-html-template/js/modernizr.js"></script>
@@ -164,15 +166,15 @@
 	</div>
 	<section
 		class="hero-section jarallax d-flex align-items-center justify-content-center padding-medium pb-5"
-		style="background: url(vaso-html-template/images/hero-img.jpg) no-repeat;background-size:cover;">
+		style="background: url(vaso-html-template/images/hero-img.jpg) no-repeat; background-size: cover;">
 		<div class="hero-content">
 			<div class="container">
 				<div class="row">
 					<div class="text-center padding-large no-padding-bottom">
-						<h1>카페 · 경기</h1>
+						<h1>cafe</h1>
 						<div class="breadcrumbs">
 							<span class="item"> <a href="index.html">Home ></a>
-							</span> <span class="item">카페 · 경기</span>
+							</span> <span class="item">cafe</span>
 						</div>
 					</div>
 				</div>
@@ -189,17 +191,20 @@
 								<div class="swiper-slide">
 									<img
 										src="vaso-html-template/images/StaySpace_commercial_1(1).jpg"
-										alt="single-product" class="img-fluid"onclick="window.open(this.src)">
+										alt="single-product" class="img-fluid"
+										onclick="window.open(this.src)">
 								</div>
 								<div class="swiper-slide">
 									<img
 										src="vaso-html-template/images/StaySpace_commercial_2(2).jpg"
-										alt="single-product" class="img-fluid"onclick="window.open(this.src)">
+										alt="single-product" class="img-fluid"
+										onclick="window.open(this.src)">
 								</div>
 								<div class="swiper-slide">
 									<img
 										src="vaso-html-template/images/StaySpace_commercial_2(3).jpg"
-										alt="single-product" class="img-fluid"onclick="window.open(this.src)">
+										alt="single-product" class="img-fluid"
+										onclick="window.open(this.src)">
 								</div>
 							</div>
 						</div>
@@ -208,7 +213,8 @@
 				<div class="col-lg-6">
 					<div class="product-info">
 						<div class="element-header">
-							<h3 class="product-title my-3">[분당/판교] 미드센츄리모던 빈티지 가구들로 꾸며진 카페</h3>
+							<h3 class="product-title my-3">[분당/판교] 미드센츄리모던 빈티지 가구들로 꾸며진
+								카페</h3>
 							<div class="rating-container d-flex align-items-center my-3">
 								<div class="rating" data-rating="1" onclick=rate(1)>
 									<svg class="bi" width="16" height="16">
@@ -239,12 +245,11 @@
 						<p>[분당/판교] 미드센츄리모던 빈티지 가구들로 꾸며진 카페 / 방송, 유튜브, 쇼핑몰 촬영 다수</p>
 						<hr>
 						<h5 class="widget-title text-decoration-underline text-uppercase">
-							Date <br>
-							<input type="text" id="datepicker">
+							Date <br> <input type="text" id="datepicker">
 						</h5>
 						<div class="action-buttons my-4 d-flex flex-wrap">
-							<a href="#" class="btn btn-dark me-2 mb-1">예약하기</a> <a
-								href="cart.do" class="btn btn-dark">찜하기</a>
+							<a href="checkout.do" class="btn btn-dark me-2 mb-1">Checkout</a>
+							<a href="cart.do" class="btn btn-dark">Add To Cart</a>
 						</div>
 					</div>
 					<hr>
@@ -282,14 +287,14 @@
 							id="nav-tab" role="tablist">
 							<button class="nav-link text-uppercase active" id="nav-home-tab"
 								data-bs-toggle="tab" data-bs-target="#nav-home" type="button"
-								role="tab" aria-controls="nav-home" aria-selected="true">공간소개</button>
+								role="tab" aria-controls="nav-home" aria-selected="true">Space Description</button>
 							<button class="nav-link text-uppercase" id="nav-information-tab"
 								data-bs-toggle="tab" data-bs-target="#nav-information"
 								type="button" role="tab" aria-controls="nav-information"
-								aria-selected="false">이용규칙</button>
+								aria-selected="false">Rules</button>
 							<button class="nav-link text-uppercase" id="nav-review-tab"
 								data-bs-toggle="tab" data-bs-target="#nav-review" type="button"
-								role="tab" aria-controls="nav-review" aria-selected="false">후기</button>
+								role="tab" aria-controls="nav-review" aria-selected="false">Reviews</button>
 						</div>
 					</nav>
 					<div class="tab-content" id="nav-tabContent">
@@ -303,7 +308,7 @@
 *반려견 동반 가능*
 *꽃장식 가능*
 *대관이용중 음료주문 가능*</pre>
-							<div id="map" style="width:100%;height:350px;"></div>
+							<div id="map" style="width: 100%; height: 350px;"></div>
 						</div>
 						<div class="tab-pane fade" id="nav-information" role="tabpanel"
 							aria-labelledby="nav-information-tab">
@@ -335,7 +340,7 @@
 						<div class="tab-pane fade" id="nav-shipping" role="tabpanel"
 							aria-labelledby="nav-shipping-tab">
 							<p>자세한 주소는 호스트 승인 후, 메시지로 문의 가능합니다.</p>
-							<div id="staticMap" style="width:100%;height:350px;"></div>
+							<div id="staticMap" style="width: 100%; height: 350px;"></div>
 						</div>
 						<div class="tab-pane fade" id="nav-review" role="tabpanel"
 							aria-labelledby="nav-review-tab">
@@ -417,37 +422,29 @@
 								</div>
 							</div>
 							<div class="add-review margin-small">
-								<h3>후기작성</h3>
+								<h3>review</h3>
 								<div class="review-rating py-2">
 									<span class="my-2">Your rating</span>
-									<div class="rating-container d-flex align-items-center">
-										<div class="rating">
-											<svg class="bi" width="16" height="16">
-												<use xlink:href="#star-empty"></use></svg>
-										</div>
-										<div class="rating">
-											<svg class="bi" width="16" height="16">
-												<use xlink:href="#star-empty"></use></svg>
-										</div>
-										<div class="rating">
-											<svg class="bi" width="16" height="16">
-												<use xlink:href="#star-empty"></use></svg>
-										</div>
-										<div class="rating">
-											<svg class="bi" width="16" height="16">
-												<use xlink:href="#star-empty"></use></svg>
-										</div>
-										<div class="rating">
-											<svg class="bi" width="16" height="16">
-												<use xlink:href="#star-empty"></use></svg>
-										</div>
+									<div class="rating-container d-flex align-items-center" id="yourRating">
 									</div>
+									<div class="myrate">
+										☆☆☆☆☆
+									</div>
+									<select name="star" id="stars" onchange="ratingStars(this.value)">
+										<option value="">Your rating</option>
+										<option value="0">0</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
 								</div>
 								<input type="file" class="jfilestyle py-2 border-0"
 									data-text="Choose your file">
 								<form id="form">
 									<div class="py-3">
-										<label>후기쓰기</label>
+										<label>Your Review</label>
 										<textarea placeholder="Write your review here" class="w-100"></textarea>
 									</div>
 									<button type="submit" name="submit"
@@ -455,19 +452,19 @@
 								</form>
 							</div>
 						</div>
-							
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 	<section id="products" class="product-store padding-xlarge"
-		 data-aos-easing="ease-in" data-aos-duration="1000"
+		data-aos-easing="ease-in" data-aos-duration="1000"
 		data-aos-once="true">
 		<div class="container">
 			<div
 				class="display-header d-flex flex-wrap justify-content-between align-items-center pb-4">
-				<h3 class="mt-3">연관상품</h3>
+				<h3 class="mt-3">Related Products</h3>
 				<a href="shop.html" class="btn">View all items</a>
 			</div>
 			<div class="row">
@@ -544,14 +541,18 @@
 	</section>
 
 	<script src="vaso-html-template/js/jquery-1.11.0.min.js"></script>
+	<script src="vaso-html-template/js/stars.js"></script>
 	<script type="text/javascript"
 		src="vaso-html-template/js/bootstrap.bundle.min.js"></script>
-	<script type="text/javascript" src="vaso-html-template/js/plugins.js?ver=1"></script>
+	<script type="text/javascript"
+		src="vaso-html-template/js/plugins.js?ver=1"></script>
 	<script type="text/javascript" src="vaso-html-template/js/script.js"></script>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7fabb4647805e005839c9dad15111de3"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<script>
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7fabb4647805e005839c9dad15111de3"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript"
+		src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+	<script>
     $('.slider').slick({
         autoplay: true,
         autoplaySpeed: 2000,
@@ -563,7 +564,7 @@
         adaptiveHeight: true
     });
 </script>
-    <script>
+	<script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -608,8 +609,9 @@ marker.setMap(map);
     } );
     </script>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7fabb4647805e005839c9dad15111de3"></script>
-<script>
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7fabb4647805e005839c9dad15111de3"></script>
+	<script>
 // 이미지 지도에서 마커가 표시될 위치입니다
 var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667);
 

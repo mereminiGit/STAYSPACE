@@ -105,12 +105,12 @@
         <div class="container">
           <div class="row">
             <div class="text-center padding-large no-padding-bottom">
-              <h1>Cart</h1>
+              <h1>cart</h1>
               <div class="breadcrumbs">
                 <span class="item">
                   <a href="index.html">Home ></a>
                 </span>
-                <span class="item">Cart</span>
+                <span class="item">cart</span>
               </div>
             </div>
           </div>
@@ -125,7 +125,7 @@
               <thead class="text-uppercase">
                 <tr>
                   <th scope="col">Product</th>
-                  <th scope="col">Quantity</th>
+                  <th scope="col">Date</th>
                   <th scope="col">Subtotal</th>
                   <th scope="col"></th>
                 </tr>
@@ -145,21 +145,7 @@
                       </div>
                     </div>
                   </td>
-                  <td class="align-middle border-0">
-                    <div class="input-group product-qty" style="max-width: 150px;">
-                      <span class="input-group-btn">
-                        <button type="button" class="quantity-left-minus" data-type="minus" data-field="">
-                          <svg width="16" height="16"><use xlink:href="#minus"></use></svg>
-                        </button>
-                      </span>
-                      <input type="text" id="quantity" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100" required>
-                      <span class="input-group-btn">
-                        <button type="button" class="quantity-right-plus" data-type="plus" data-field="">
-                          <svg width="16" height="16"><use xlink:href="#plus"></use></svg>
-                        </button>
-                      </span>
-                    </div>
-                  </td>
+                  <td class="align-middle border-0"><span class="item-price text-primary fs-3 fw-medium">2023-09-19<br> 16:00-17:00</span></td>
                   <td class="align-middle border-0"><span class="item-price text-primary fs-3 fw-medium">$750</span></td>
                   <td class="align-middle border-0 cart-remove">
                     <a href="#">
@@ -184,21 +170,7 @@
                       </div>
                     </div>
                   </td>
-                  <td class="align-middle border-0">
-                    <div class="input-group product-qty" style="max-width: 150px;">
-                      <span class="input-group-btn">
-                        <button type="button" class="quantity-left-minus" data-type="minus" data-field="">
-                          <svg width="16" height="16"><use xlink:href="#minus"></use></svg>
-                        </button>
-                      </span>
-                      <input type="text" id="quantity" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100" required>
-                      <span class="input-group-btn">
-                        <button type="button" class="quantity-right-plus" data-type="plus" data-field="">
-                          <svg width="16" height="16"><use xlink:href="#plus"></use></svg>
-                        </button>
-                      </span>
-                    </div>
-                  </td>
+                  <td class="align-middle border-0"><span class="item-price text-primary fs-3 fw-medium">2023-09-19<br> 16:00-17:00</span></td>
                   <td class="align-middle border-0"><span class="item-price text-primary fs-3 fw-medium">$750</span></td>
                   <td class="align-middle border-0 cart-remove">
                     <a href="#">
@@ -239,8 +211,8 @@
               </table>
             </div>
             <div class="button-wrap">
-              <button class="btn btn-dark me-2 mb-2">메뉴로 돌아가기</button>
-              <button class="btn btn-primary me-2 mb-2">결제하기</button>
+              <button class="btn btn-dark me-2 mb-2" onclick="location.href='list.do'">Continue Shopping</button>
+              <button class="btn btn-primary me-2 mb-2" onclick="location.href='checkout.do'">Proceed To Checkout</button>
             </div>
           </div>
         </div>

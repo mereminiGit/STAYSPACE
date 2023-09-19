@@ -70,7 +70,7 @@
                     <img src="vaso-html-template/images/StaySpace_commercial_1(1).jpg" alt="product-item" class="img-fluid zoom-in">
                     <div class="cart-concern position-absolute">
                       <div class="cart-button">
-                        <a href="cart.do" class="btn">찜하기</a>
+                        <a href="cart.do" class="btn">Add To Cart</a>
                       </div>
                     </div>
                   </div>
@@ -88,13 +88,13 @@
                     <img src="vaso-html-template/images/StaySpace_house_2(1).jpg" alt="product-item" class="img-fluid zoom-in">
                     <div class="cart-concern position-absolute">
                       <div class="cart-button">
-                        <a href="#" class="btn">Add to Cart</a>
+                        <a href="cart.do" class="btn">Add to Cart</a>
                       </div>
                     </div>
                   </div>
                   <div class="card-detail text-center pt-3 pb-2">
                     <h5 class="card-title fs-3 text-capitalize">
-                      <a href="#">Oldie Off-White</a>
+                      <a href="#">[분당/판교] 미드센츄리모던 빈티지 가구들로 꾸며진 카페</a>
                     </h5>
                     <span class="item-price text-primary fs-3 fw-light">$750</span>
                   </div>
@@ -292,40 +292,6 @@
                   </li>
                   <li class="tags-item">
                     <a href="">Studio</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="widget-product-brands pt-3">
-                <h5 class="widget-title text-decoration-underline text-uppercase">Other Products</h5>
-                <ul class="product-tags sidebar-list list-unstyled">
-                  <li class="tags-item">
-                    <a href="">Bowls</a>
-                  </li>
-                  <li class="tags-item">
-                    <a href="">Anchora</a>
-                  </li>
-                  <li class="tags-item">
-                    <a href="">Plates</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="widget-price-filter pt-3">
-                <h5 class="widget-title text-decoration-underline text-uppercase">Filter By Price</h5>
-                <ul class="product-tags sidebar-list list-unstyled">
-                  <li class="tags-item">
-                    <a href="">Less than $100</a>
-                  </li>
-                  <li class="tags-item">
-                    <a href="">$100 - $200</a>
-                  </li>
-                  <li class="tags-item">
-                    <a href="">$200 - $300</a>
-                  </li>
-                  <li class="tags-item">
-                    <a href="">$300 - $400</a>
-                  </li>
-                  <li class="tags-item">
-                    <a href="">$400 - $500</a>
                   </li>
                 </ul>
               </div>

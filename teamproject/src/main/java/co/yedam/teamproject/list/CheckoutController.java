@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.yedam.teamproject.common.ViewResolve;
+
 @WebServlet("/checkout.do")
 public class CheckoutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -16,7 +18,8 @@ public class CheckoutController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		String path = "checkout/checkout.jsp";
+		ViewResolve.forward(request, response, path);	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
