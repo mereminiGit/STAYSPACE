@@ -24,7 +24,7 @@ public class MemberEdit extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String path = "management/memberedit.jsp";
+		String path = "member/member/memberedit";
 		ViewResolve.forward(request, response, path);
 		
 	}

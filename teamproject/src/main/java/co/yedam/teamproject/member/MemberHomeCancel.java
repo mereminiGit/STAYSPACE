@@ -12,7 +12,7 @@ import co.yedam.teamproject.common.ViewResolve;
 /**
  * Servlet implementation class MemberHomeCancel
  */
-@WebServlet("/memberHomecancel.do")
+@WebServlet("/memberhomecancel.do")
 public class MemberHomeCancel extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -22,7 +22,7 @@ public class MemberHomeCancel extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String path = "management/memberhomecancel.jsp";
+		String path = "member/membert/memberhomecancel";
 		ViewResolve.forward(request, response, path);
 	}
 

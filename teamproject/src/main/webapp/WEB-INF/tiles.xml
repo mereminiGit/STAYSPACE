@@ -14,18 +14,30 @@
 	</definition>
 
 	<definition name="adminhome"
-		template="/WEB-INF/views/management/adminlayout.jsp">
-		<put-attribute name="title" value="admin page" />
-		<put-attribute name="menu"
-			value="/WEB-INF/views/management/adminmenu.jsp" />
+		template="/WEB-INF/views/admin/adminlayout.jsp">
+		<put-attribute name="title" value="스테이스페이스_admin" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="menu" value="/WEB-INF/views/admin/adminmenu.jsp" />
 		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="" />
 	</definition>
 
 	<definition name="businesshome"
 		template="/WEB-INF/views/business/businesslayout.jsp">
-		<put-attribute name="title" value="business page" />
+		<put-attribute name="title" value="스테이스페이스_business" />
+		<put-attribute name="header" value="" />
 		<put-attribute name="menu" value="/WEB-INF/views/business/businessmenu.jsp" />
 		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+	
+	<definition name="memberhome"
+		template="/WEB-INF/views/member/memberlayout.jsp">
+		<put-attribute name="title" value="스테이스페이스_member" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="menu" value="/WEB-INF/views/member/membermenu.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="" />
 	</definition>
 
 	<definition name="WILDCARD:*/*" extends="homepage">
@@ -37,6 +49,10 @@
 	</definition>
 
 	<definition name="WILDCARD:business/*/*" extends="businesshome">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+	
+	<definition name="WILDCARD:member/*/*" extends="memberhome">
 		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
 	</definition>
 	

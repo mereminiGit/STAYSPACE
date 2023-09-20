@@ -18,7 +18,7 @@ public class MemberList extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String path = "admin/management/memberlist";
+		String path = "admin/admin/memberlist";
 		ViewResolve.forward(request, response, path);
 	}
 

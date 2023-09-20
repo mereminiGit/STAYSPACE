@@ -18,7 +18,7 @@ public class TotalSalesChart extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String page = "admin/management/totalsale";
+		String page = "admin/admin/totalsale";
 		ViewResolve.forward(request, response, page);
 	}
 

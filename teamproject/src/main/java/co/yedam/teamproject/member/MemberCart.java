@@ -22,7 +22,7 @@ public class MemberCart extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String path = "management/membercart.jsp";
+		String path = "member/member/membercart";
 		ViewResolve.forward(request, response, path);
 	}
 
