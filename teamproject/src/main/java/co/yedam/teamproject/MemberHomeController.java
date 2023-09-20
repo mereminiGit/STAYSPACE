@@ -22,9 +22,9 @@ public class MemberHomeController extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		String path = "layouts/membermenu.jsp";
-		String path = "management/memberhome2.jsp";
-		//String path = "management/membermodify.jsp";
+
+		String path = "member/member/memberhome";
+
 		ViewResolve.forward(request, response, path);
 	}
 

@@ -31,10 +31,10 @@ public class MemberHome extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ReservationService dao = new ReservationServiceImpl();
 		ReservationVO vo = new ReservationVO();
-		vo.setSpaceName(request.getParameter("spaceId"));
-		
+		String spn = request.getParameter("spaceName");
+		vo.setSpaceName(spn);
 		vo= dao.reservationSelect(vo);
-		request.setAttribute("r", vo);
+		request.setAttribute("reservation", vo);
 		
 		String path = "member/member/memberhome";
 		ViewResolve.forward(request, response, path);
