@@ -13,8 +13,8 @@
 </select>
 
 <insert id="memberInsert" parameterType="co.yedam.teamproject.member.service.MemberVO">
-	insert into member(member_id, member_password, member_email,member_name,member_tel,member_check)
-	values(#{memberId},#{memberPassword},#{memberName},#{memberTel},#{memberCheck})
+	insert into member(member_id, member_password, member_name, member_email,member_name,member_tel,member_check)
+	values(#{memberId},#{memberPassword},#{memberName},#{memberName},#{memberTel},#{memberCheck})
 </insert>
 
 <update id="memberUpdate" parameterType="co.yedam.teamproject.member.service.MemberVO">

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,11 +32,7 @@
                       </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                    
-                    		<tr>
-                    			<td colspan="6" align="center">데이터가 존재하지 않습니다.</td>
-                    		</tr>
-                    	
+                    	<c:forEach items="${members }" var="m">
                     			<tr>
                     				<td>${m.memberId }</td>
                     				<td>${m.memberName }</td>
@@ -50,7 +47,7 @@
                             			</div>
 									</td>
                     			</tr>
-                    		
+                    	</c:forEach>
                     <!-- 1번 회원 
                       <tr>
                         <td>Angular Project</td>
@@ -80,9 +77,12 @@
               
                         
               <script>
+              let memberList = new 
               //삭제 이벤트 
               $('.memberdelete').on('click', function(e){
-      			e.target.parentElement.parentElement.parentElement.remove();
+      			//e.target.parentElement.parentElement.parentElement.remove();
+      			let tr = e.target.parentElement.parentElement.parentElement;
+      			
               })
               </script>
               

@@ -12,10 +12,11 @@ public class SpaceVO {
 	private String spaceAddress;
 	private String spaceImageMain;
 	private String spaceContent;
-	private LocalDate spaceStartDate;
-	private LocalDate spaceEndDate;
 	private String memberId;
 	private int spaceStar;
 	private String spaceImageSub1;
 	private String spaceImageSub2;
+	private String spaceHit;
+	private String spaceLat;
+	private String spaceLng;
 }

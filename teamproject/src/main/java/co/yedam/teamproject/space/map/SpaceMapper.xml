@@ -12,8 +12,8 @@
 	<insert id="spaceInsert"
 		parameterType="co.yedam.teamproject.space.service.SpaceVO">
 		INSERT INTO SPACE
-		(SPACE_NAME,SPACE_PRICE,SPACE_CITY,SPACE_ADDRESS,SPACE_IMAGE_MAIN,SPACE_CONTENT,SPACE_START_DATE,SPACE_END_DATE,MEMBER_ID,SPACE_IMAGE_SUB1,SPACE_IMAGE_SUB2)
-		VALUES(#{spaceName},#{spacePrice},#{spaceCity},#{spaceAddress},#{spaceImageMain},#{spaceContent},#{spaceStartDate},#{spaceEndDate},#{memberId},#{spaceImageSub1},#{spaceImageSub2})
+		(SPACE_NAME,SPACE_PRICE,SPACE_CITY,SPACE_ADDRESS,SPACE_IMAGE_MAIN,SPACE_CONTENT,MEMBER_ID,SPACE_IMAGE_SUB1,SPACE_IMAGE_SUB2)
+		VALUES(#{spaceName},#{spacePrice},#{spaceCity},#{spaceAddress},#{spaceImageMain},#{spaceContent},#{memberId},#{spaceImageSub1},#{spaceImageSub2})
 	</insert>
 	<update id="spaceUpdate"
 		parameterType="co.yedam.teamproject.space.service.SpaceVO">
@@ -25,11 +25,12 @@
 			<if test="spaceAddress !==null">SPACE_ADDRESS=#{spaceAddress}</if>
 			<if test="spaceImageMain !==null">SPACE_IMAGE_MAIN=#{spaceImageMain}</if>
 			<if test="spaceContent !==null">SPACE_CONTENT=#{spaceContent}</if>
-			<if test="spaceStartDate !==null">SPACE_START_DATE=#{spaceStartDate}</if>
-			<if test="spaceEndDate !==null">SPACE_END_DATE=#{spaceEndDate}</if>
 			<if test="spacePrice !==null">SPACE_PRICE=#{spacePrice}</if>
 			<if test="spaceImageSub1 !==null">SPACE_IMAGE_SUB1=#{spaceImageSub1}</if>
 			<if test="spaceImageSub2 !==null">SPACE_IMAGE_SUB2=#{spaceImageSub2}</if>
+			<if test="spaceHit !==null">SPACE_HIT=#{spaceHit}</if>
+			<if test="spaceLat !==null">SPACE_LAT=#{spaceLat}</if>
+			<if test="spaceLng !==null">SPACE_LNG=#{spaceLng}</if>
 		</set>
 	</update>
 	<delete id="spaceDelete"
