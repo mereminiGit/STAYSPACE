@@ -7,7 +7,8 @@
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-
+<!-- alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
 img#stayimg {
 	width: 200px;
@@ -120,10 +121,18 @@ img#stayimg {
 	<script>
 		$('.approved').on('click', function(e) {
 			e.target.parentElement.innerText = 'Approved';
+			Swal.fire({
+				  icon: 'success',
+				  text: '승인되었습니다.',
+				})
 			return approved;
 		})
 		$('.rejected').on('click', function(e) {
 			e.target.parentElement.innerText = 'Rejected';
+			Swal.fire({
+				  icon: 'success',
+				  text: '거부되었습니다.',
+				})
 			return rejected;
 		})
 	</script>
