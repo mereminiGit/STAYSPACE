@@ -147,7 +147,7 @@
 												<td>
 													<div class="dropdown" id="deletecenter">
 														<div class="deletebtn">
-															<a class="" href="javascript:void(0);">
+															<a class="" href="memberHomecancel.do">
 																<i class="bx bx-trash me-2"></i> Cancel</a>
 														</div>
 													</div>
