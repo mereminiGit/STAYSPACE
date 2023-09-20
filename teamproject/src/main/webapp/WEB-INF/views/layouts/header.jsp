@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css">
+		<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css"> -->
 		<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<style>
 		#cityBox {
@@ -74,9 +74,6 @@
     		z-index: 999999 !important;
 		}
 
-		/* #datepicker > div {
-			display: inline-block;
-		} */
 		</style>
 	</head>
 
@@ -358,7 +355,7 @@
 									<!-- <p>Date: <input type="text" id="datepicker"></p> -->
 									<!--   <input type="text" class="form-control" data-toggle="datepicker"> -->
 									<div class="form-group py-3">						
-										<input type="text" class="form-control" style="display: inline-block; text-align: center;">
+										<input type="text" class="form-control" style="display: inline-block; text-align: center;" placeholder="날짜를 선택하세요">
 									</div>
 								</div>
 								<!-- Modal footer -->
@@ -377,7 +374,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"></script>
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
     	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    	<input class="datepicker">
+    	<!-- <input class="datepicker"> -->
 		<script type="text/javascript">
 			$('.modal-body input').datepicker({
 			  format: 'yyyy-mm-dd'
