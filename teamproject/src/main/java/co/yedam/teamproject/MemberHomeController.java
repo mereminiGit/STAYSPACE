@@ -11,11 +11,11 @@ import co.yedam.teamproject.common.ViewResolve;
 
 
 @WebServlet("/menu.do")
-public class HomeController extends HttpServlet {
+public class MemberHomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
   
-    public HomeController() {
+    public MemberHomeController() {
         super();
         // TODO Auto-generated constructor stub
     }
