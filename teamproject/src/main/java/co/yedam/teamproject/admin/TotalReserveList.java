@@ -18,7 +18,7 @@ public class TotalReserveList extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String page = "admin/management/totalreservelist";
+		String page = "admin/admin/totalreservelist";
 		ViewResolve.forward(request, response, page);
 		
 	}

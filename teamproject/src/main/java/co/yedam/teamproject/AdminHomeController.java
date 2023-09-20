@@ -18,7 +18,7 @@ public class AdminHomeController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String path = "admin/management/totalsale";
+		String path = "admin/admin/totalsale";
 		ViewResolve.forward(request, response, path);
 	}
 
