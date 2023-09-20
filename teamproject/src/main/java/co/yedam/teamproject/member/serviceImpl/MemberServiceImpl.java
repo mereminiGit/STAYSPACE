@@ -11,8 +11,8 @@ import co.yedam.teamproject.member.service.MemberVO;
 
 public class MemberServiceImpl implements MemberService {
 	
-	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
-	private MemberMapper map = sqlSession.getMapper(MemberMapper.class);
+	SqlSession sqlSession = DataSource.getInstance().openSession(true);
+	MemberMapper map = sqlSession.getMapper(MemberMapper.class);
 	
 	@Override
 	public List<MemberVO> memberSelectList() {
