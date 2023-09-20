@@ -31,7 +31,7 @@
 							<small class="text-muted float-end">space register</small>
 						</div>
 						<div class="card-body">
-							<form>
+							<form onsubmit="test()">
 								<div class="mb-3" style="width: 50%">
 									<label class="form-label" for="basic-default-fullname">Space Name</label> <input type="text" class="form-control"
 										id="basic-default-fullname" name="name" placeholder="Studio" required/>
@@ -83,7 +83,7 @@
 								</div>
 								<br>
 								<div align="center">
-								<button type="submit" id="register" class="btn btn-secondary me-2">등록하기</button>
+								<button type="submit" class="btn btn-secondary me-2">등록하기</button>
 								<button type="reset" class="btn btn-outline-secondary">취소하기</button>
 								</div>
 							</form>
@@ -94,5 +94,13 @@
 		</div>
 		<!-- / Content -->
 	</div>
+	<script>
+	function test(){
+		Swal.fire({
+			  icon: 'success',
+			  text: '등록되었습니다.',
+			})
+	})
+	</script>
 </body>
 </html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.yedam.teamproject.reservation.map.ReservationMapper">
+	<select id="reservationSelectList" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
+		SELECT * FROM RESERVATION
+	</select>
+	<select id="reservationSelect" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
+		SELECT * FROM RESERVATION WHERE SPACE_NAME = #{spaceName}
+	</select>
+	<insert id="reservationInsert" parameterType="co.yedam.teamproject.reservation.service.ReservationVO">
+		<selectKey keyProperty="reserveId" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(RESERVE_ID),0) + 1 AS ID
+			FROM RESERVATION
+		</selectKey>
+		INSERT INTO RESERVATION
+		VALUES (#{memberId}, #{spaceName}, #{reserveStartDate}, #{reserveEndDate}, #{reservePrice}, #{reserveCheck})
+	</insert>
+	<delete id="reservationDelete" parameterType="co.yedam.teamproject.reservation.service.ReservationVO">
+		DELETE FROM RESERVATION
+		WHERE MEMBER_ID = #{memberId}
+		AND SPACE_NAME = #{spaceName}
+	</delete>
+</mapper>
