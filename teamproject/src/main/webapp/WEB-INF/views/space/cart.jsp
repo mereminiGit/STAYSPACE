@@ -12,16 +12,16 @@
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <link rel="stylesheet" type="text/css" href="vaso-html-template/css/vendor.css">
-    <link rel="stylesheet" type="text/css" href="vaso-html-template/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="vaso-html-template/style.css">
+    <link rel="stylesheet" type="text/css" href="vaso-html/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="vaso-html/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="vaso-html/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap" rel="stylesheet">
     <!-- script
     ================================================== -->
-    <script src="vaso-html-template/js/modernizr.js"></script>
+    <script src="vaso-html/js/modernizr.js"></script>
   </head>
   <body>
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -95,12 +95,8 @@
         <path fill="currentColor" d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"/>
       </symbol>
     </svg>
-    
-    <div id="preloader">
-      <div id="loader"></div>
-    </div>
    
-    <section class="hero-section jarallax d-flex align-items-center justify-content-center padding-medium pb-5" style="background: url(vaso-html-template/images/hero-img.jpg) no-repeat;">
+    <section class="hero-section jarallax d-flex align-items-center justify-content-center padding-medium pb-5" style="background: url(vaso-html/images/hero-img.jpg) no-repeat;">
       <div class="hero-content">
         <div class="container">
           <div class="row">
@@ -135,7 +131,7 @@
                   <td class="align-middle border-0" scope="row">
                     <div class="cart-product-detail d-flex align-items-center">
                       <div class="card-image">
-                        <img src="vaso-html-template/images/cart-img1.jpg" alt="cloth" class="img-fluid">
+                        <img src="vaso-html/images/cart-img1.jpg" alt="cloth" class="img-fluid">
                       </div>
                       <div class="card-detail ps-3">
                         <h5 class="card-title fs-3 text-capitalize">
@@ -160,7 +156,7 @@
                   <td class="align-middle border-0" scope="row">
                     <div class="cart-product-detail d-flex align-items-center">
                       <div class="card-image">
-                        <img src="vaso-html-template/images/cart-img2.jpg" alt="cloth" class="img-fluid">
+                        <img src="vaso-html/images/cart-img2.jpg" alt="cloth" class="img-fluid">
                       </div>
                       <div class="card-detail ps-3">
                         <h5 class="card-title fs-3 text-capitalize">
@@ -221,8 +217,8 @@
     
     
     <script src="vaso-html-template/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="vaso-html-template/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="vaso-html-template/js/plugins.js"></script>
-    <script type="text/javascript" src="vaso-html-template/js/script.js"></script>
+    <script type="text/javascript" src="vaso-html/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="vaso-html/js/plugins.js"></script>
+    <script type="text/javascript" src="vaso-html/js/script.js"></script>
   </body>
 </html>

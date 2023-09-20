@@ -1,4 +1,4 @@
-package co.yedam.teamproject.member.web;
+package co.yedam.teamproject.space;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -9,29 +9,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.teamproject.common.ViewResolve;
 
-/**
- * Servlet implementation class MemberModify
- */
-@WebServlet("/memberedit.do")
-public class MemberEdit extends HttpServlet {
+@WebServlet("/cart.do")
+public class CartController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-   
-    public MemberEdit() {
+    public CartController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String path = "management/memberedit.jsp";
+		String path = "space/cart";
 		ViewResolve.forward(request, response, path);
-		
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

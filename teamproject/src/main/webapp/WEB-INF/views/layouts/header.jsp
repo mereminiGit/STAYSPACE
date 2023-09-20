@@ -70,7 +70,7 @@
 		    margin: 0 auto;
 		} */
 		.ui-datepicker {
-			margin-left: 230px;
+			/* margin-left: 230px; */
     		z-index: 999999 !important;
 		}
 
@@ -115,8 +115,8 @@
 											data-bs-target="#findWhenModal" id="findWhen">
 											Find When</a></li>
 									<!-- pages NAV -->
-									<!-- 
-								<li class="nav-item dropdown"><a
+								<!-- 
+									<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle ms-0" data-bs-toggle="dropdown"
 									href="home.do" role="button" aria-expanded="false">Pages<svg
 											class="bi" width="18" height="18">
@@ -149,11 +149,11 @@
 										<li><a href="contact.html"
 											class="dropdown-item fs-5 fw-medium">Contact <span
 												class="text-primary">(PRO)</span></a></li>
-									</ul></li>
-							</ul>
-							 -->
+									</ul></li> 
+								
+								-->
 
-									<!-- LOGO NAV -->
+								<!-- LOGO NAV -->
 									<a class="navbar-brand d-none d-lg-block me-0" href="home.do">
 										<img src="vaso-html/images/STAYSPACE_logo.png" class="logo"
 											style="width: 103px; height: 100px;">
@@ -161,7 +161,9 @@
 
 									<!-- Right NAV start -->
 									<ul class="list-unstyled d-lg-flex justify-content-between align-items-center">
-										<!-- Search NAV -->
+									
+									<!-- 
+										Search NAV
 										<li class="nav-item search-item">
 											<div id="search-bar" class="border-right d-none d-lg-block">
 												<form action="" autocomplete="on">
@@ -171,10 +173,30 @@
 												</form>
 											</div>
 										</li>
-
+										Search NAV end
+									-->
+									
+										<!-- Space NAV start -->
+										<li class="nav-item"><a class="nav-link me-0" href="shoplist.do">Space</a></li>
+										<!-- Space NAV end -->
+										
 										<!-- Account NAV -->
 										<li class="nav-item"><a class="nav-link me-0" href="account.do">Account</a></li>
-										<!-- Cart NAV -->
+								
+										<!-- Search NAV start -->
+										<li class="nav-item search-item">
+											<div id="search-bar" class="border-right d-none d-lg-block">
+												<form action="" autocomplete="off">
+													<input id="search" class="text-dark" name="search" type="text"
+														placeholder="Search Here..."> <a type="submit"
+														class="nav-link me-0" href="about.do">Search</a>
+												</form>
+											</div>
+										</li>
+										<!-- Search NAV end -->
+										
+								<!-- 		
+										Cart NAV
 										<li class="cart-dropdown nav-item dropdown"><a
 												class="nav-link dropdown-toggle me-0" data-bs-toggle="dropdown" href="#"
 												role="button" aria-expanded="false">Cart(2)</a>
@@ -217,7 +239,8 @@
 												</div>
 											</div>
 										</li>
-										<!-- Cart NAV end-->
+										Cart NAV end
+									-->			
 									</ul>
 								</ul>
 						</div>
@@ -372,7 +395,8 @@
 		</header>
 		
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"></script>
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+    	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.12.1/js/bootstrap-datepicker.min.js"></script> -->
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     	<!-- <input class="datepicker"> -->
 		<script type="text/javascript">

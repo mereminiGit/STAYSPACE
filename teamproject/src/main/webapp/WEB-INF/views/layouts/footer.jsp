@@ -38,7 +38,7 @@
 									<!-- about 링크 -->
 									<li class="menu-item pb-2"><a href="about.do">About</a></li>
 									<!-- space 목록 링크 -->
-									<li class="menu-item pb-2"><a href="shop.html">Space</a></li>
+									<li class="menu-item pb-2"><a href="spaceshop.do">Space</a></li>
 									<!-- Account 링크 -->
 									<li class="menu-item pb-2"><a href="account.do">Account</a></li>
 								</ul>
