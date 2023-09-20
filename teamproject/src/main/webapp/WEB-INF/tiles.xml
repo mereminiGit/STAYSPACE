@@ -3,6 +3,8 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
+
+
   <definition name="myapp.homepage" template="/layouts/classic.jsp">
     <put-attribute name="title" value="Tiles tutorial homepage" />
     <put-attribute name="header" value="/tiles/banner.jsp" />
@@ -10,4 +12,26 @@
     <put-attribute name="body" value="" />
     <put-attribute name="footer" value="/tiles/credits.jsp" />
   </definition>
+
+  
+  <definition name="adminhome" template="/WEB-INF/views/management/adminlayout.jsp">
+  	<put-attribute name="title" value="admin page"/>
+  	<put-attribute name="menu" value="/WEB-INF/views/management/adminmenu.jsp"/>
+  	<put-attribute name="body" value=""/>
+  </definition>
+  
+  <definition name="WILDCARD:admin/*/*" extends="adminhome">
+  	<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"></put-attribute>
+  </definition>
+  
+  <definition name="businesshome" template="/WEB-INF/views/business/businesslayout.jsp">
+  	<put-attribute name="title" value="business page"/>
+  	<put-attribute name="menu" value="/WEB-INF/views/business/businessmenu.jsp"/>
+  	<put-attribute name="body" value=""/>
+  </definition>
+  
+  <definition name="WILDCARD:business/*/*" extends="businesshome">
+  	<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"></put-attribute>
+  </definition>
 </tiles-definitions>
+
