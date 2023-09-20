@@ -13,11 +13,11 @@
 <meta name="keywords" content="">
 <meta name="description" content="">
 <link rel="stylesheet" type="text/css"
-	href="vaso-html-template/css/vendor.css">
+	href="vaso-html/css/vendor.css">
 <link rel="stylesheet" type="text/css"
-	href="vaso-html-template/css/bootstrap.min.css">
+	href="vaso-html/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css"
-	href="vaso-html-template/style.css">
+	href="vaso-html/style.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,7 +26,7 @@
 	rel="stylesheet">
 <!-- script
     ================================================== -->
-<script src="vaso-html-template/js/modernizr.js"></script>
+<script src="vaso-html/js/modernizr.js"></script>
 
 </head>
 <body>
@@ -143,12 +143,9 @@
       </symbol>
     </svg>
 
-	<div id="preloader">
-		<div id="loader"></div>
-	</div>
 	<section
 		class="hero-section jarallax d-flex align-items-center justify-content-center padding-medium pb-5"
-		style="background: url(vaso-html-template/images/hero-img.jpg) no-repeat;">
+		style="background: url(vaso-html/images/hero-img.jpg) no-repeat;">
 		<div class="hero-content">
 			<div class="container">
 				<div class="row">
@@ -186,7 +183,7 @@
 					<h3 class="pb-4">Reservation Information</h3>
 					<div class="billing-details">
 					<a href="detail.do">
-					<img src="vaso-html-template/images/StaySpace_commercial_1(1).jpg" style="width:648px">
+					<img src="vaso-html/images/StaySpace_commercial_1(1).jpg" style="width:648px">
 						<label for="fname">[분당/판교] 미드센츄리모던 빈티지 가구들로 꾸며진 카페</label>
 					</a></div>
 					<div class="your-order mt-5">
@@ -261,12 +258,12 @@
 		</div>
 	</section>
 
-	<script src="vaso-html-template/js/jquery-1.11.0.min.js"></script>
+	<script src="vaso-html/js/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript"
-		src="vaso-html-template/js/bootstrap.bundle.min.js"></script>
-	<script type="text/javascript" src="vaso-html-template/js/plugins.js"></script>
-	<script type="text/javascript" src="vaso-html-template/js/script.js"></script>
-	<script type="text/javascript" src="vaso-html-template/js/checkout.js"></script>
+		src="vaso-html/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="vaso-html/js/plugins.js"></script>
+	<script type="text/javascript" src="vaso-html/js/script.js"></script>
+	<script type="text/javascript" src="vaso-html/js/checkout.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script>
 		function check() {
