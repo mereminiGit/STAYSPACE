@@ -4,7 +4,6 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 
-
   <definition name="myapp.homepage" template="/layouts/classic.jsp">
     <put-attribute name="title" value="Tiles tutorial homepage" />
     <put-attribute name="header" value="/tiles/banner.jsp" />
@@ -12,6 +11,7 @@
     <put-attribute name="body" value="" />
     <put-attribute name="footer" value="/tiles/credits.jsp" />
   </definition>
+
 
   
   <definition name="adminhome" template="/WEB-INF/views/management/adminlayout.jsp">
@@ -34,4 +34,5 @@
   	<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"></put-attribute>
   </definition>
 </tiles-definitions>
+
 

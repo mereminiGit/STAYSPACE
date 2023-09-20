@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<!-- slide section start -->
 	<section id="billboard" class="position-relative overflow-hidden">
 		<div class="swiper main-swiper">
@@ -550,5 +551,6 @@
 			</div>
 		</div>
 	</section>
+
 </body>
 </html>
