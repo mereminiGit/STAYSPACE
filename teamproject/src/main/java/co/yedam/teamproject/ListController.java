@@ -1,4 +1,4 @@
-package co.yedam.teamproject.list;
+package co.yedam.teamproject;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -9,16 +9,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.teamproject.common.ViewResolve;
 
-@WebServlet("/detail.do")
-public class DetailController extends HttpServlet {
+@WebServlet("/list.do")
+public class ListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public DetailController() {
+    public ListController() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String path = "detail/detail1.jsp";
+		String path = "list/list.jsp";
 		ViewResolve.forward(request, response, path);
 	}
 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.yedam.teamproject.space.map.SpaceMapper">
+	<select id="spaceSelectList"
+		resultType="co.yedam.teamproject.space.service.SpaceVO">
+		select * from space
+	</select>
+	<select id="spaceSelect"
+		resultType="co.yedam.teamproject.space.service.SpaceVO">
+		select * from space where space_name=#{spaceName}
+	</select>
+	<insert id="spaceInsert"
+		parameterType="co.yedam.teamproject.space.service.SpaceVO">
+		insert into space
+		(space_name,space_price,space_city,space_address,space_Image_main,space_content,space_start_date,space_end_date,member_id,space_image_sub1,space_image_sub2)
+		values(#{spaceName},#{spacePrice},#{spaceCity},#{spaceAddress},#{spaceImageMain},#{spaceContent},#{spaceStartDate},#{spaceEndDate},#{memberId},#{spaceImageSub1},#{spaceImageSub2})
+	</insert>
+
+</mapper>

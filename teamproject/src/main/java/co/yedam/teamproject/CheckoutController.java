@@ -1,4 +1,4 @@
-package co.yedam.teamproject.list;
+package co.yedam.teamproject;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

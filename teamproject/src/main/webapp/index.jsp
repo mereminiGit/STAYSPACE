@@ -8,8 +8,7 @@
 </head>
 <body>
 
-<jsp:forward page="list.do"/>
-=======
+<jsp:forward page="home.do"/>
 
 
 
