@@ -13,7 +13,7 @@ public class DataSource {
 	}
 
 	public static SqlSessionFactory getInstance() {
-		String resource = "mybats-config.xml";
+		String resource = "mybatis-config.xml";
 		try {
 			InputStream inputStream = Resources.getResourceAsStream(resource);
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);

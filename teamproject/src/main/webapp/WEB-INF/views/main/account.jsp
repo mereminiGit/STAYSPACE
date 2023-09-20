@@ -10,12 +10,10 @@
 				font-family: 'Noto Sans KR', sans-serif;
 				font-weight: 600;
 			}
-
 			#pwBtn {
 				margin: auto;
 				display: block;
 			}
-
 			#idBtn {
 				margin: auto;
 				display: block;
@@ -96,6 +94,7 @@
 									<div class="form-group py-3">
 										<label for="register">ID *</label> <input type="text"
 											minlength="2" name="registerId" placeholder="Your Id" class="w-100" required>
+											<button type="button">중복</button>
 									</div>
 									<div class="form-group py-3">
 										<label for="register">Password *</label> <input type="password" minlength="2"
@@ -210,7 +209,6 @@
 				});
 			});
 
-
 			<!-- 비밀번호 찾기 모달 이벤트(알람창) -->
 				$('#findPassword').on('submit', function () {
 					/* alert("초기화된 비밀번호가 이메일로 전송되었습니다!"); */
@@ -227,7 +225,7 @@
 						location.reload();
 					});
 				});
-				
+			
 				/* 회원가입 알람 */
 				$('#registerJoin').on('submit', function () {
 					let joinEvent = event.preventDefault();
@@ -244,6 +242,9 @@
 					});
 				})
 		</script>
+		
+		<script type="text/javascript">
+			
+		</script>
 	</body>
-
 	</html>
