@@ -8,6 +8,10 @@
 </head>
 <body>
 
+<jsp:forward page="list.do"/>
+=======
+
+
 
 </body>
 </html>
