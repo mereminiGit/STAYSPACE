@@ -12,6 +12,36 @@
     	height: 120px;
     	border-radius: 10px;
     }
+   
+   
+    	.center {
+		text-align: center;
+	}
+
+	.pagination {
+		display: inline-block;
+	}
+
+	.pagination a {
+		color: black;
+		float: left;
+		padding: 8px 16px;
+		text-decoration: none;
+		transition: background-color .3s;
+		border: 1px solid #ddd;
+		margin: 0 4px;
+	}
+
+	.pagination a.active {
+		background-color: #4CAF50;
+		color: white;
+		border: 1px solid #4CAF50;
+	}
+
+	.pagination a:hover:not(.active) {
+		background-color: #ddd;
+	}
+	
     </style>
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
@@ -264,6 +294,95 @@
 	            	  price.children[0].innerText = $('input[name=modalPrice]').val();
 	              })
               })
+              
+              
+              //Page Navigation
+              //tr 생성
+		function makeTr(center) {
+			let tr = document.createElement('tr');
+			['id', 'centerName', 'phoneNumber', 'address'].forEach(prop => {
+				let td = document.createElement('td');
+				if (prop == 'centerName') {
+					let atag = document.createElement('a');
+					atag.innerText = center[prop];
+					atag.setAttribute('href', 'map.jsp?lat=' + center.lat + '&lng=' + center.lng);
+					atag.setAttribute('target', '_blank');
+					td.appendChild(atag);
+				} else {
+					td.innerText = center[prop];
+				}
+				tr.appendChild(td);
+			})
+			// 삭제
+			let td = document.createElement('td');
+			let btn = document.createElement('button');
+			btn.innerText = '삭제';
+			td.appendChild(btn);
+			btn.addEventListener('click',function(e){
+				e.target.parentElement.parentElement.remove();
+			})
+			tr.appendChild(td);
+			return tr;
+		}
+
+		//page 정보를 매개값으로 가지는 페이지, 목록 보여주는 함수
+		function showPageList(page = 1, targetList = []) {
+			let totalCount = targetList.length; //284
+			// 페이지의 목록을 보여주기
+			document.querySelector('#list').innerHTML = '';
+			let start = (page - 1) * 10; //1페이지: 0
+			let end = page * 10; //10
+			end = end > totalCount ? totalCount : end;
+
+			for (let i = start; i < end; i++) {
+				let tr = makeTr(targetList[i]);
+				document.querySelector('#list').appendChild(tr);
+			}
+
+			// 페이지의 링크 생성
+			document.querySelector('.pagination').innerHTML = '';
+			let endPage = Math.ceil(totalCount / 10); // 예를들어 29개 -> 29/10 => 3, 35/10 => 4
+			endPage = Math.ceil(page / 10) * 10; //3page => 10
+			let realEndPage = Math.ceil(totalCount / 10);
+			let startPage = endPage - 9;
+			endPage = endPage > realEndPage ? realEndPage : endPage;
+			let next = endPage < Math.ceil(totalCount / 10); //29page
+			let prev = startPage > 1;
+
+			if (prev) {
+				let atag = document.createElement('a');
+				atag.addEventListener('click', function (e) {
+					e.preventDefault(); //링크의 기능을 차단
+					showPageList(startPage - 1, targetList);
+				})
+				atag.setAttribute('href', startPage - 1);
+				atag.innerHTML = '&laquo;';
+				document.querySelector('.pagination').appendChild(atag);
+			}
+			for (let i = startPage; i <= endPage; i++) {
+				let atag = document.createElement('a');
+				atag.addEventListener('click', function (e) {
+					e.preventDefault(); //링크의 기능을 차단
+					showPageList(i, targetList);
+				})
+				if (page == i) {
+					atag.setAttribute('class', 'active');
+				}
+				atag.setAttribute('href', i);
+				atag.innerHTML = i;
+				document.querySelector('.pagination').appendChild(atag);
+			}
+			if (next) {
+				let atag = document.createElement('a');
+				atag.addEventListener('click', function (e) {
+					e.preventDefault(); //링크의 기능을 차단
+					showPageList(endPage + 1, targetList);
+				})
+				atag.setAttribute('href', endPage + 1);
+				atag.innerHTML = '&raquo;';
+				document.querySelector('.pagination').appendChild(atag);
+			}
+		}
               </script>
               
 </body>
