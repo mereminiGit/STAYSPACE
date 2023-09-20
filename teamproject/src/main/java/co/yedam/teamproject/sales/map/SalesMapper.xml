@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.yedam.teamproject.sales.map.SalesMapper">
+	<select id="salesSelectList" resultType="co.yedam.teamproject.sales.service.SalesVO">
+		SELECT * FROM SALES
+	</select>
+	<select id="salesSelectList" resultType="co.yedam.teamproject.sales.service.SalesVO">
+		SELECT * FROM SALES WHERE MEMBER_ID=#{memberId}
+		<if test="spaceName != null">
+			AND SPACE_NAME=#{spaceName}
+		</if>
+		<if test="salesMonth != null">
+			AND SALES_MONTH=#{salesMonth}
+		</if>
+	</select>
+	<insert id="salesInsert" parameterType="co.yedam.teamproject.sales.service.SalesVO">
+		INSERT INTO SALES
+		VALUES(#{memberId},#{spaceName},#{salesMonthPrice},#{salesMonth})
+	</insert>
+	<update id="salesInsert" parameterType="co.yedam.teamproject.sales.service.SalesVO">
+		
+	</update>
+	<delete id="salesInsert" parameterType="co.yedam.teamproject.sales.service.SalesVO">
+		
+	</delete>
+</mapper>
