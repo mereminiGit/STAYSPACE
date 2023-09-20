@@ -109,40 +109,8 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
 	</section>
-	<section class="product-tabs">
-		<div class="container">
-			<div class="row">
-				<div class="tabs-listing">
-					<nav>
-						<div class="nav nav-tabs d-flex justify-content-center py-3"
-							id="nav-tab" role="tablist">
-							<button class="nav-link text-uppercase active" id="nav-home-tab"
-								data-bs-toggle="tab" data-bs-target="#nav-home" type="button"
-								role="tab" aria-controls="nav-home" aria-selected="true">Space
-								Description</button>
-							<button class="nav-link text-uppercase" id="nav-information-tab"
-								data-bs-toggle="tab" data-bs-target="#nav-information"
-								type="button" role="tab" aria-controls="nav-information"
-								aria-selected="false">Rules</button>
-							<button class="nav-link text-uppercase" id="nav-review-tab"
-								data-bs-toggle="tab" data-bs-target="#nav-review" type="button"
-								role="tab" aria-controls="nav-review" aria-selected="false">Reviews</button>
-						</div>
-					</nav>
-					<div class="tab-content" id="nav-tabContent">
-						<div class="tab-pane fade active show" id="nav-home"
-							role="tabpanel" aria-labelledby="nav-home-tab">
-							<pre>디저트 카페와 꽃집을 같이 하고 있는 공간입니다.
-깔끔하고 모던한 느낌으로 빈티지 가구들을 수집하여 인테리어에 신경을 많이 썼어요-
-해가 워낙 예쁘게 잘 들어와서 조명없이 촬영해야하시는 분들께서 자주 찾아주십니다 ! 채광 맛집이에요 😊
-촬영하시는 동안 음료도 주문 다 가능하세요:)
-
-		
-
-
 		<section class="product-tabs">
 			<div class="container">
 				<div class="row">
@@ -164,19 +132,19 @@
 						<div class="tab-content" id="nav-tabContent">
 							<div class="tab-pane fade active show" id="nav-home" role="tabpanel"
 								aria-labelledby="nav-home-tab">
-								<pre>디저트 카페와 꽃집을 같이 하고 있는 공간입니다.
+								<p>디저트 카페와 꽃집을 같이 하고 있는 공간입니다.
 										깔끔하고 모던한 느낌으로 빈티지 가구들을 수집하여 인테리어에 신경을 많이 썼어요-
 										해가 워낙 예쁘게 잘 들어와서 조명없이 촬영해야하시는 분들께서 자주 찾아주십니다 ! 채광 맛집이에요 😊
 										촬영하시는 동안 음료도 주문 다 가능하세요:)
 
 										*반려견 동반 가능*
 										*꽃장식 가능*
-										*대관이용중 음료주문 가능*</pre>
+										*대관이용중 음료주문 가능*</p>
 								<div id="map" style="width: 100%; height: 350px;"></div>
 							</div>
 							<div class="tab-pane fade" id="nav-information" role="tabpanel"
 								aria-labelledby="nav-information-tab">
-								<pre>[시간 엄수]
+								<p>[시간 엄수]
 									- 계약된 시간을 꼭 준수하여 주시기 바랍니다.
 									- 이용요금은 [시작 시간] 및 [종료 시간]으로 계약됩니다.
 									- 촬영 준비 및 세팅, 장비 철수 및 장소 원상복구 시간은 계약 시간에 포함 되어있습니다.
@@ -199,7 +167,7 @@
 									- 주차는 안내된 주차대수만 제공됩니다.
 									- 기존의 가구 세팅 및 구조를 필요에 의해 변경하신 경우 마감 시간 전에 원상복구 해주셔야 합니다.
 									- 꽃냉장고와 모든 생화는 판매용이니 눈으로만 봐주세요
-								</pre>
+								</p>
 							</div>
 
 							<div class="tab-pane fade" id="nav-shipping" role="tabpanel"
@@ -330,81 +298,80 @@
 			</div>
 		</section>
 
-		<section id="products" class="product-store padding-xlarge" data-aos-easing="ease-in" data-aos-duration="1000"
-			data-aos-once="true">
-			<div class="container">
-				<div class="display-header d-flex flex-wrap justify-content-between align-items-center pb-4">
-					<h3 class="mt-3">Related Products</h3>
-					<a href="shop.html" class="btn">View all items</a>
-				</div>
-				<div class="row">
-					<div class="col-md-3 product-card position-relative mb-3">
-						<div class="image-holder zoom-effect">
-							<img src="vaso-html/images/product-item1.jpg" alt="product-item" class="img-fluid zoom-in">
-							<div class="cart-concern position-absolute">
-								<div class="cart-button">
-									<a href="#" class="btn">Add to Cart</a>
-								</div>
-							</div>
-						</div>
-						<div class="card-detail text-center pt-3 pb-2">
-							<h5 class="card-title fs-3 text-capitalize">
-								<a href="single-product.html">Matt Black</a>
-							</h5>
-							<span class="item-price text-primary fs-3 fw-light">$870</span>
-						</div>
-					</div>
-					<div class="col-md-3 product-card position-relative mb-3">
-						<div class="image-holder zoom-effect">
-							<img src="vaso-html/images/product-item2.jpg" alt="product-item" class="img-fluid zoom-in">
-							<div class="cart-concern position-absolute">
-								<div class="cart-button">
-									<a href="#" class="btn">Add to Cart</a>
-								</div>
-							</div>
-						</div>
-						<div class="card-detail text-center pt-3 pb-2">
-							<h5 class="card-title fs-3 text-capitalize">
-								<a href="single-product.html">Oldie Off-White</a>
-							</h5>
-							<span class="item-price text-primary fs-3 fw-light">$680</span>
-						</div>
-					</div>
-					<div class="col-md-3 product-card position-relative mb-3">
-						<div class="image-holder zoom-effect">
-							<img src="vaso-html/images/product-item3.jpg" alt="product-item" class="img-fluid zoom-in">
-							<div class="cart-concern position-absolute">
-								<div class="cart-button">
-									<a href="#" class="btn">Add to Cart</a>
-								</div>
-							</div>
-						</div>
-						<div class="card-detail text-center pt-3 pb-2">
-							<h5 class="card-title fs-3 text-capitalize">
-								<a href="single-product.html">Vintage With Handle</a>
-							</h5>
-							<span class="item-price text-primary fs-3 fw-light">$750</span>
-						</div>
-					</div>
-					<div class="col-md-3 product-card position-relative mb-3">
-						<div class="image-holder zoom-effect">
-							<img src="vaso-html/images/product-item4.jpg" alt="product-item" class="img-fluid zoom-in">
-							<div class="cart-concern position-absolute">
-								<div class="cart-button">
-									<a href="#" class="btn">Add to Cart</a>
-								</div>
-							</div>
-						</div>
-						<div class="card-detail text-center pt-3 pb-2">
-							<h5 class="card-title fs-3 text-capitalize">
-								<a href="single-product.html">Opposite Pattern</a>
-							</h5>
-							<span class="item-price text-primary fs-3 fw-light">$650</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+		 <section id="products" class="product-store padding-xlarge" data-aos="fade" data-aos-easing="ease-in" data-aos-duration="1000" data-aos-once="true">
+      <div class="container">
+        <div class="display-header d-flex flex-wrap justify-content-between align-items-center pb-4">
+          <h3 class="mt-3">Related Products</h3>
+          <a href="shop.html" class="btn">View all items</a>
+        </div>
+        <div class="row">
+          <div class="col-md-3 product-card position-relative mb-3">
+            <div class="image-holder zoom-effect">
+              <img src="vaso-html/images/product-item1.jpg" alt="product-item" class="img-fluid zoom-in">
+              <div class="cart-concern position-absolute">
+                <div class="cart-button">
+                  <a href="#" class="btn">Add to Cart</a>
+                </div>
+              </div>
+            </div>
+            <div class="card-detail text-center pt-3 pb-2">
+              <h5 class="card-title fs-3 text-capitalize">
+                <a href="single-product.html">Matt Black</a>
+              </h5>
+              <span class="item-price text-primary fs-3 fw-light">$870</span>
+            </div>
+          </div>
+          <div class="col-md-3 product-card position-relative mb-3">
+            <div class="image-holder zoom-effect">
+              <img src="vaso-html/images/product-item2.jpg" alt="product-item" class="img-fluid zoom-in">
+              <div class="cart-concern position-absolute">
+                <div class="cart-button">
+                  <a href="#" class="btn">Add to Cart</a>
+                </div>
+              </div>
+            </div>
+            <div class="card-detail text-center pt-3 pb-2">
+              <h5 class="card-title fs-3 text-capitalize">
+                <a href="single-product.html">Oldie Off-White</a>
+              </h5>
+              <span class="item-price text-primary fs-3 fw-light">$680</span>
+            </div>
+          </div>
+          <div class="col-md-3 product-card position-relative mb-3">
+            <div class="image-holder zoom-effect">
+              <img src="vaso-html/images/product-item3.jpg" alt="product-item" class="img-fluid zoom-in">
+              <div class="cart-concern position-absolute">
+                <div class="cart-button">
+                  <a href="#" class="btn">Add to Cart</a>
+                </div>
+              </div>
+            </div>
+            <div class="card-detail text-center pt-3 pb-2">
+              <h5 class="card-title fs-3 text-capitalize">
+                <a href="single-product.html">Vintage With Handle</a>
+              </h5>
+              <span class="item-price text-primary fs-3 fw-light">$750</span>
+            </div>
+          </div>
+          <div class="col-md-3 product-card position-relative mb-3">
+            <div class="image-holder zoom-effect">
+              <img src="vaso-html/images/product-item4.jpg" alt="product-item" class="img-fluid zoom-in">
+              <div class="cart-concern position-absolute">
+                <div class="cart-button">
+                  <a href="#" class="btn">Add to Cart</a>
+                </div>
+              </div>
+            </div>
+            <div class="card-detail text-center pt-3 pb-2">
+              <h5 class="card-title fs-3 text-capitalize">
+                <a href="single-product.html">Opposite Pattern</a>
+              </h5>
+              <span class="item-price text-primary fs-3 fw-light">$650</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 		
 		<script type="text/javascript"
 			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7fabb4647805e005839c9dad15111de3"></script>
