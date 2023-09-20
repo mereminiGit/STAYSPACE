@@ -10,10 +10,12 @@
 				font-family: 'Noto Sans KR', sans-serif;
 				font-weight: 600;
 			}
+
 			#pwBtn {
 				margin: auto;
 				display: block;
 			}
+
 			#idBtn {
 				margin: auto;
 				display: block;
@@ -90,39 +92,41 @@
 							<!-- 회원가입 -->
 							<div class="tab-pane fade" id="nav-register" role="tabpanel"
 								aria-labelledby="nav-register-tab">
-								<form action="memberRegister.do" method="post" id="registerJoin">
+								<form action="memberregister.do" method="post" id="registerJoin" onsubmit="return formcheck()">
 									<div class="form-group py-3">
-										<label for="register">ID *</label> <input type="text"
-											minlength="2" name="registerId" placeholder="Your Id" class="w-100" required>
-											<button type="button">중복</button>
+										<label for="register">ID *</label> <input type="text" minlength="2"
+											name="registerId" placeholder="Your Id" class="w-100" required>
+										<button type="button" id="idcheck" onclick="memberIdCheck()" value="No">중복</button>
 									</div>
 									<div class="form-group py-3">
 										<label for="register">Password *</label> <input type="password" minlength="2"
 											name="registerPassword" placeholder="Your Password" class="w-100" required>
 									</div>
 									<div class="form-group py-3">
-										<label for="register">name *</label> <input type="text"
-											minlength="2" name="registerName" placeholder="Your Name" class="w-100" required>
+										<label for="register">name *</label> <input type="text" minlength="2"
+											name="registerName" placeholder="Your Name" class="w-100" required>
 									</div>
 									<div class="form-group py-3">
-										<label for="register">email *</label> <input
-											type="email" minlength="2" name="registerEmail" placeholder="Your Email Address" class="w-100" required>
+										<label for="register">email *</label> <input type="email" minlength="2"
+											name="registerEmail" placeholder="Your Email Address" class="w-100"
+											required>
 									</div>
 									<div class="form-group py-3">
-										<label for="register">phone *</label> <input
-											type="text" minlength="2" name="registerTel" placeholder="Your Phone Number" class="w-100" required>
+										<label for="register">phone *</label> <input type="text" minlength="2"
+											name="registerTel" placeholder="Your Phone Number" class="w-100" required>
 									</div>
-									<label class="py-3"> <input type="checkbox" name="registerCheck" class="d-inline"> <span
-											class="label-body">&nbsp;Do you want to sign up as a host?</span>
+									<label class="py-3"> <input type="checkbox" name="registerCheck" class="d-inline">
+										<span class="label-body">&nbsp;Do you want to sign up as a host?</span>
 									</label>
-									<button type="submit" name="registersubmit" class="btn btn-dark w-100 my-3">Register</button>
+									<button type="submit" name="registersubmit"
+										class="btn btn-dark w-100 my-3">Register</button>
 								</form>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			
+
 			<!-- 아이디 모달 -->
 			<form id="findId">
 				<div class="modal fade" id="forgotIdModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -195,7 +199,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.all.min.js"></script>
 		<script type="text/javascript">
-			<!-- 아이디 찾기 모달 이벤트(알람창) -->
+			// 아이디 찾기 모달 이벤트(알람창) 
 			$('#findId').on('submit', function () {
 				event.preventDefault(); // Prevent the page from redirecting
 				Swal.fire({
@@ -209,42 +213,77 @@
 				});
 			});
 
-			<!-- 비밀번호 찾기 모달 이벤트(알람창) -->
-				$('#findPassword').on('submit', function () {
-					/* alert("초기화된 비밀번호가 이메일로 전송되었습니다!"); */
-					/* swal("비밀번호 초기화","이메일을 확인해주세요", "suc"); */				
-					event.preventDefault(); // Prevent the page from redirecting
-					Swal.fire({
-						title: '비밀번호 초기화',
-						text: "이메일을 확인해주세요",
-						icon: 'success',
-						confirmButtonColor: '#87826E',
-						confirmButtonText: 'OK',
-					}) 
+			//  비밀번호 찾기 모달 이벤트(알람창)
+			$('#findPassword').on('submit', function () {
+				/* alert("초기화된 비밀번호가 이메일로 전송되었습니다!"); */
+				/* swal("비밀번호 초기화","이메일을 확인해주세요", "suc"); */
+				event.preventDefault(); // Prevent the page from redirecting
+				Swal.fire({
+					title: '비밀번호 초기화',
+					text: "이메일을 확인해주세요",
+					icon: 'success',
+					confirmButtonColor: '#87826E',
+					confirmButtonText: 'OK',
+				})
 					.then(function () {
 						location.reload();
 					});
-				});
-			
-				/* 회원가입 알람 */
-				$('#registerJoin').on('submit', function () {
-					let joinEvent = event.preventDefault();
-					Swal.fire({
-						title: '회원가입',
-						text: "회원가입을 축하합니다",
-						icon: 'info',
-						confirmButtonColor: '#87826E',
-						confirmButtonText: 'OK',
-					}) 
+			});
+
+			/* 회원가입 알람 */
+			$('#registerJoin').on('submit', function () {
+				let joinEvent = event.preventDefault();
+				Swal.fire({
+					title: '회원가입',
+					text: "회원가입을 축하합니다",
+					icon: 'info',
+					confirmButtonColor: '#87826E',
+					confirmButtonText: 'OK',
+				})
 					.then(function () {
 						// 다시 폼 실행
 						$('#registerJoin').submit();
 					});
-				})
+			})
 		</script>
-		
+
 		<script type="text/javascript">
+			// 아이디 중복 체크
+			function formcheck() {
+				if($('#idcheck').value == 'No'){
+					alert('아이디 중복체크 하세요');
+					// false면 form 실행 x
+					return false;
+				}
+				return true;
+			}
+
+			function memberIdCheck() {
+				//aJax 사용
+				let url = "memberidcheck.do";
+				let id = $('input[name = registerId]').val;
+
+				url = url+"?memberId="+id;
+
+				fetch(url)
+					.then(response => response.text())	// response 객체에 text로 받기
+					.then(text => membercheck(text));
+			}
+
+			function membercheck(check) {
+				if(check == 'Yes') {
+					alert("아이디 사용이 가능합니다.");
+					$('#idcheck').val = "Yes";
+					$('#idcheck').disabled = true;	// 버튼 비활성화
+				} else {
+					alert("이미 존재하는 아이디");
+					$('input[name = registerId]').val = "";
+					$('input[name = registerId]').focus();
+				}
+			}
+
 			
 		</script>
 	</body>
+
 	</html>
