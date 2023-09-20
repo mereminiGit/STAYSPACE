@@ -15,5 +15,18 @@
 		(space_name,space_price,space_city,space_address,space_Image_main,space_content,space_start_date,space_end_date,member_id,space_image_sub1,space_image_sub2)
 		values(#{spaceName},#{spacePrice},#{spaceCity},#{spaceAddress},#{spaceImageMain},#{spaceContent},#{spaceStartDate},#{spaceEndDate},#{memberId},#{spaceImageSub1},#{spaceImageSub2})
 	</insert>
-
+	<update id="spaceUpdate"
+		parameterType="co.yedam.teamproject.space.service.SpaceVO">
+		update space 
+		<set>
+			<if test="spaceName != null">
+				
+			</if>
+		
+		</set>
+	</update>
+	<delete id="spaceDelete"
+		parameterType="co.yedam.teamproject.space.service.SpaceVO">
+		delete * from space where space_name=#{spaceName}
+	</delete>
 </mapper>
