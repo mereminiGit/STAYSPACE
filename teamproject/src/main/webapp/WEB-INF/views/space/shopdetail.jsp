@@ -5,31 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Vaso Ecommerce Template</title>
-<link rel="stylesheet" type="text/css" href="/vaso-html/css/star.css?ver=1">
-<link rel="stylesheet" type="text/css"
-	href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-<link rel="stylesheet" type="text/css"
-	href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-<style>
-.slider {
-	margin: 0 auto;
-}
-
-.slick-dots {
-	bottom: 10px;
-}
-
-.slick-dots li button:before {
-	font-size: 10px;
-	line-height: 10px;
-	color: #fff;
-}
-</style>
-
+<link rel="stylesheet" type="text/css" href="vaso-html/css/star.css?ver=1">
 </head>
-
 <body>
-
 	<section
 		class="hero-section jarallax d-flex align-items-center justify-content-center padding-medium pb-5"
 		style="background: url(vaso-html/images/hero-img.jpg) no-repeat; background-size: cover;">
@@ -50,32 +28,36 @@
 	<section class="single-product padding-large">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-6">
-					<div class="row product-preview">
-						<div class="swiper large-swiper overflow-hidden">
-							<div class="swiper-wrapper slider">
-								<div class="swiper-slide">
-									<img
-										src="vaso-html/images/StaySpace_commercial_1(1).jpg"
-										alt="single-product" class="img-fluid"
-										onclick="window.open(this.src)">
-								</div>
-								<div class="swiper-slide">
-									<img
-										src="vaso-html/images/StaySpace_commercial_2(2).jpg"
-										alt="single-product" class="img-fluid"
-										onclick="window.open(this.src)">
-								</div>
-								<div class="swiper-slide">
-									<img
-										src="vaso-html/images/StaySpace_commercial_2(3).jpg"
-										alt="single-product" class="img-fluid"
-										onclick="window.open(this.src)">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+            <div class="col-lg-6">
+            <div class="row product-preview">
+              <div class="swiper thumb-swiper col-3">
+                <div class="swiper-wrapper d-flex flex-wrap align-content-start">
+                  <div class="swiper-slide">
+                    <img src="vaso-html/images/product-thumbnail-1.jpg" alt="" class="img-fluid">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="vaso-html/images/product-thumbnail-2.jpg" alt="" class="img-fluid">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="vaso-html/images/product-thumbnail-3.jpg" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+              <div class="swiper large-swiper overflow-hidden col-9">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img src="vaso-html/images/product-large-1.jpg" alt="single-product" class="img-fluid">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="vaso-html/images/product-large-2.jpg" alt="single-product" class="img-fluid">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="vaso-html/images/product-large-3.jpg" alt="single-product" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 				<div class="col-lg-6">
 					<div class="product-info">
 						<div class="element-header">
@@ -141,7 +123,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
 		</div>
 	</section>
 	<section class="product-tabs">
