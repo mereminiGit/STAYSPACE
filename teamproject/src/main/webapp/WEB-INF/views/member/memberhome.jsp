@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 	<!DOCTYPE html>
 	<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default"
 		data-assets-path="../assets/" data-template="vertical-menu-template-free">
@@ -50,7 +52,17 @@
 												<th>CANCEL A RESERVATION</th>
 											</tr>
 										</thead>
-										<tbody class="table-border-bottom-0">
+										<tbody class="table-border-bottom-0" id="tlist">
+										<c:choose>
+										<c:when test="${empty memberId }">
+										
+							<tr>
+								<td colspan="7" align="center">데이터가 존재하지 않습니다.</td>
+							</tr>
+						
+						
+										</c:when>
+										<c:otherwise>
 											<tr>
 												<td><i class="fab fa-angular fa-lg text-danger me-3"></i><a
 														href="#"><img id="stayimg" alt="stay"
@@ -119,7 +131,10 @@
 														</div>
 													</div>
 												</td>
+											
 											</tr>
+											</c:otherwise>
+											</c:choose>										
 										</tbody>
 									</table>
 								</div>
