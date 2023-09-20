@@ -59,7 +59,7 @@
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <!-- Menu -->
-    		<jsp:include page="../layouts/membermenu2.jsp" />
+    		<%-- <jsp:include page="./membermenu.jsp" /> --%>
         <!-- / Menu -->
 
         <!-- Layout container -->

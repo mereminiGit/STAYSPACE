@@ -23,7 +23,7 @@ public class MemberHome extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String path = "management/memberhome2.jsp";
+		String path = "member/member/memberhome";
 		ViewResolve.forward(request, response, path);
 	}
 

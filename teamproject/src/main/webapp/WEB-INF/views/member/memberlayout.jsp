@@ -29,13 +29,13 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
-
+	<link href="vaso-html/images/STAYSPACE_logo.png" rel="shortcut icon" type="image/x-icon">
     <title><tiles:getAsString name="title"/> </title>
 
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="sneat/assets/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="member/assets/img/favicon/favicon.ico" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -46,16 +46,17 @@
     />
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="sneat/assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="member/assets/vendor/fonts/boxicons.css" />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="sneat/assets/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="sneat/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="sneat/assets/css/demo.css" />
+    <link rel="stylesheet" href="member/assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="member/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="member/assets/css/demo.css" />
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="sneat/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-    <link rel="stylesheet" href="sneat/assets/vendor/libs/apex-charts/apex-charts.css" />
+    <link rel="stylesheet" href="member/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+    <link rel="stylesheet" href="member/assets/vendor/libs/apex-charts/apex-charts.css" />
 
     <!-- Page CSS -->
 
@@ -68,20 +69,15 @@
   </head>
 
   <body>
-  	
-  	<!-- header start -->
-		<tiles:insertAttribute name="header" />
-	<!-- header end -->
-	
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <!-- Menu -->
-		<tiles:insertAttribute name="menu" />
+		<tiles:insertAttribute name="menu"></tiles:insertAttribute>
         <!-- / Menu -->
 
         <!-- Layout container -->
-        <div class="layout-page">
+        <div class="layout-page" style="padding-left: 0">
           <!-- Navbar -->
 
           <!-- / Navbar -->
@@ -102,10 +98,6 @@
         </div>
         <!-- / Layout page -->
       </div>
-      
-      <!-- footer start -->
-		<tiles:insertAttribute name="footer" />
-	<!-- footer end -->
 
       <!-- Overlay -->
       <div class="layout-overlay layout-menu-toggle"></div>
@@ -114,22 +106,22 @@
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
-    <script src="sneat/assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="sneat/assets/vendor/libs/popper/popper.js"></script>
-    <script src="sneat/assets/vendor/js/bootstrap.js"></script>
-    <script src="sneat/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="member/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="member/assets/vendor/libs/popper/popper.js"></script>
+    <script src="member/assets/vendor/js/bootstrap.js"></script>
+    <script src="member/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-    <script src="sneat/assets/vendor/js/menu.js"></script>
+    <script src="member/assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->
-    <script src="sneat/assets/vendor/libs/apex-charts/apexcharts.js"></script>
+    <script src="member/assets/vendor/libs/apex-charts/apexcharts.js"></script>
 
     <!-- Main JS -->
-    <script src="sneat/assets/js/main.js"></script>
+    <script src="member/assets/js/main.js"></script>
 
-    <!-- Page JS 
-    <script src="sneat/assets/js/dashboards-analytics.js"></script>
+    <!-- Page JS -->
+    <script src="member/assets/js/dashboards-analytics.js"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
