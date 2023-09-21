@@ -39,8 +39,8 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 
 	@Override
-	public int resevaionUpdate(ReservationVO vo) {
-		return map.resevaionUpdate(vo);
+	public int reservationUpdate(ReservationVO vo) {
+		return map.reservationUpdate(vo);
 	}
 
 }

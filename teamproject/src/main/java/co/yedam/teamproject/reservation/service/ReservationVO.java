@@ -11,7 +11,7 @@ public class ReservationVO {
 	private LocalDate reserveStartDate;
 	private LocalDate reserveEndDate;
 	private int reservePrice;
-	private String reserveCheck;
+	private int reserveCheck;
 	private int reserveId;
 	private String reserveImg;
 	private LocalDate reserveCheckoutDate;

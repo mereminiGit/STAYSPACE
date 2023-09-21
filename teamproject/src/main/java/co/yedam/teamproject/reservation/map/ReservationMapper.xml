@@ -18,7 +18,7 @@
 		INSERT INTO RESERVATION
 		VALUES (#{memberId}, #{spaceName}, #{reserveStartDate}, #{reserveEndDate}, #{reservePrice}, #{reserveCheck})
 	</insert>
-	<update id="resevaionUpdate" parameterType="co.yedam.teamproject.reservation.service.ReservationVO">
+	<update id="reservationUpdate" parameterType="co.yedam.teamproject.reservation.service.ReservationVO">
 		UPDATE RESERVATION
 		<set>
 		<if test="reserveCheck != null">RESERVE_CHECK = #{reserveCheck}</if>

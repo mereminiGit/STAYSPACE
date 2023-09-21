@@ -1,40 +1,54 @@
 package co.yedam.teamproject.member;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class ajaxReservationCancel
- */
-@WebServlet("/ajaxReservationCancel")
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import co.yedam.teamproject.reservation.service.ReservationService;
+import co.yedam.teamproject.reservation.service.ReservationVO;
+import co.yedam.teamproject.reservation.serviceImpl.ReservationServiceImpl;
+
+
+@WebServlet("/ajaxReservationCancel.do")
 public class ajaxReservationCancel extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+   
     public ajaxReservationCancel() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String spaceName = request.getParameter("spaceName");
+		String memberId = request.getParameter("memberId");
+        ReservationService dao = new ReservationServiceImpl();
+        ReservationVO vo = new ReservationVO();
+        vo.setSpaceName(spaceName);
+        vo.setMemberId(memberId);
+        vo.setReserveCheck(2);
+        int result = dao.reservationUpdate(vo);
+        System.out.println("result 찍음!!!!!");
+        System.out.println(result);
+        
+       ObjectMapper objectMapper = new ObjectMapper();
+       
+       response.setCharacterEncoding("utf-8");
+		if(result==1) {
+			response.getWriter().write("Yes");
+		}else {
+			response.getWriter().write("No");
+		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

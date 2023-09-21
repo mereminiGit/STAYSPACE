@@ -8,7 +8,7 @@ public interface ReservationMapper {
 	List<ReservationVO> reservationSelectList();
 	ReservationVO reservationSelect(ReservationVO vo);
 	List<ReservationVO> reservationSelectMember(ReservationVO vo);
-	int resevaionUpdate(ReservationVO vo);
+	int reservationUpdate(ReservationVO vo);
 	int reservationInsert(ReservationVO vo);
 	int reservationDelete(ReservationVO vo);
 }

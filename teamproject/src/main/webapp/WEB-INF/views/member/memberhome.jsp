@@ -69,7 +69,7 @@
 																<td>${r.reserveStartDate }</td>
 																<td>${r.reserveCheckoutDate }</td>
 																<td>${r.reservePrice }</td>
-																<td id="reservation"><span class="badge bg-label-primary me-1"><strong>
+																<td ><span class="badge bg-label-primary me-1"><strong id="reservation_${r.reserveId }">
 																			<c:choose>
 																				<c:when test="${r.reserveCheck == 0}">
 																					예약대기
@@ -86,7 +86,7 @@
 																<td>
 																	<div class="dropdown" id="deletecenter">
 																		<div class="deletebtn">
-																			<a class="" href="#" onclick="cancelCall('${r.spaceName }');">
+																			<a class="" href="#" onclick="cancelCall('${r.spaceName }','${r.memberId}','${r.reserveId }');">
 																				<i class="bx bx-trash me-2"></i> Cancel</a>
 																		</div>
 																	</div>
@@ -120,8 +120,9 @@
 				</script>
 
 				<script>
-					function cancelCall(id) {
-						let url = "ajaxReservationCancel.do?spaceName="+id;
+					function cancelCall(name,id,rid) {
+						
+						let url = "ajaxReservationCancel.do?spaceName="+name+"&memberId="+id;
 						Swal.fire({
 							title: '예약을 취소하시겠습니까?',
 							text: '해당 상품의 취소정책에 따라 고객님이 선택하신 결제방식으로 환불이 진행됩니다.',
@@ -132,10 +133,13 @@
 							confirmButtonText: 'Yes'
 						}).then((result) => {
 							if (result.isConfirmed) {
-								fetch(url).then(response => response.text)
+								fetch(url).then(response => response.text())
 								  .then(text => {
+									  console.log("텍스트찍으러옴");
+									  console.log(text);
 										if(text == 'Yes') {
-												document.querySelector('#reservation').value = "예약취소";
+											console.log("Yes들어옴~~~~!");
+												document.querySelector('#reservation_'+rid).innerText = "예약취소";
 												Swal.fire(
 													'Cancelled!',
 													'예약이 취소되었습니다.',
