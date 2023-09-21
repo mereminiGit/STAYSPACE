@@ -18,4 +18,8 @@ public class SpaceVO {
 	private int spaceStar;
 	private String spaceImageSub1;
 	private String spaceImageSub2;
+	private int spaceHit;
+	private int spaceLat;
+	private int spaceLng;
+	private String spaceType;
 }

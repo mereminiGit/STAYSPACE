@@ -3,7 +3,7 @@ package co.yedam.teamproject.reply.service;
 import java.util.List;
 
 public interface ReplyService {
-	List<ReplyVO> replySelectList();
+	List<ReplyVO> replySelectList(String s);
 	ReplyVO replySelect(ReplyVO vo);
 	int replyInsert(ReplyVO vo);
 	int replyUpdate(ReplyVO vo);

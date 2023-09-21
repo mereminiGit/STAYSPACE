@@ -4,7 +4,7 @@ import java.util.List;
 import co.yedam.teamproject.space.service.SpaceVO;
 
 public interface SpaceMapper {
-	List<SpaceVO> spaceSelectList();
+	List<SpaceVO> spaceSelectList(SpaceVO vo);
 	SpaceVO spaceSelect(SpaceVO vo);
 	int spaceInsert(SpaceVO vo);
 	int spaceUpdate(SpaceVO vo);
