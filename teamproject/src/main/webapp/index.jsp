@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:forward page="menu.do" />
+	<jsp:forward page="reservespace.do" />
 </body>
 </html>

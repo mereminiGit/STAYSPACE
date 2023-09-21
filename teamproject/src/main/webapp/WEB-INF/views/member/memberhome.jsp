@@ -54,93 +54,44 @@
 											</thead>
 											<tbody class="table-border-bottom-0" id="tlist">
 												<c:choose>
-													<c:when test="${empty reservation}">
+													<c:when test="${empty reserve }">
 														<tr>
-															<td colspan="7" align="center">데이터가 존재하지 않습니다.</td>
+															<td colspan="7" align="center">예약 내역이 없습니다.</td>
 														</tr>
 													</c:when>
 													<c:otherwise>
-													<c:forEach items="${reservation}" var="r">
-														<tr>
-															<td><i class="fab fa-angular fa-lg text-danger me-3"></i><a
-																	href="#"><img id="stayimg" alt="stay"
-																		src="member/image/${r.reservationImage }"></a></td>
-															<td>${r.spaceName }</td>
-															<td>${r.reserveStartDate }</td>
-															<td>2023/09/17</td>
-															<td>${r.reservePrice }</td>
-															<td><span
-																	class="badge bg-label-primary me-1"><strong>예약확정</strong></span>
-															</td>
-															<td>
-																<div class="dropdown" id="deletecenter">
-																	<div class="deletebtn">
-																		<a class="" href="javascript:void(0);">
-																			<i class="bx bx-trash me-2"></i> Cancel</a>
-																	</div>
-																</div>
-															</td>
-														</tr>
-														<tr>
-															<td><i class="fab fa-react fa-lg text-info me-3"></i><a
-																	href="#"><img id="stayimg" alt="stay"
-																		src="member/image/숙소1.jpg"></a></td>
-															<td>소게</td>
-															<td>2023/09/17</td>
-															<td>2023/09/17</td>
-															<td>120,000원</td>
-															<td><span class="badge bg-label-success me-1">예약취소</span>
-															</td>
-															<td>
-																<div class="dropdown" id="deletecenter">
-																	<div class="deletebtn">
-																		<a class="" href="javascript:void(0);">
-																			<i class="bx bx-trash me-2"></i> Cancel</a>
-																	</div>
-																</div>
-															</td>
-														</tr>
-														<tr>
-															<td><i class="fab fa-vuejs fa-lg text-success me-3"></i><img
-																	id="stayimg" alt="시호" src="member/image/일일시호.jpg">
-															</td>
-															<td>Trevor Baker</td>
-															<td>2023/09/17</td>
-															<td>2023/09/17</td>
-															<td>120,000원</td>
-															<td><span
-																	class="badge bg-label-primary me-1"><strong>예약확정</strong></span>
-															</td>
-															<td>
-																<div class="dropdown" id="deletecenter">
-																	<div class="deletebtn">
-																		<a class="" href="javascript:void(0);">
-																			<i class="bx bx-trash me-2"></i> Cancel</a>
-																	</div>
-																</div>
-															</td>
-														</tr>
-														<tr>
-															<td><i class="fab fa-vuejs fa-lg text-success me-3"></i><img
-																	id="stayimg" alt="시호" src="member/image/일일시호.jpg">
-															</td>
-															<td>Jerry Milton</td>
-															<td>2023/09/17</td>
-															<td>2023/09/17</td>
-															<td>120,000원</td>
-															<td><span
-																	class="badge bg-label-info me-1"><strong>예약승인대기</strong></span>
-															</td>
-															<td>
-																<div class="dropdown" id="deletecenter">
-																	<div class="deletebtn">
-																		<a class="" href="memberHomecancel.do">
-																			<i class="bx bx-trash me-2"></i> Cancel</a>
-																	</div>
-																</div>
-															</td>
 
-														</tr>
+														<c:forEach items="${reserve}" var="r">
+															<tr>
+																<td><i class="fab fa-angular fa-lg text-danger me-3"></i><a href="#"><img id="stayimg"
+																			alt="stay" src="member/image/${r.reserveImg }"></a></td>
+																<td>${r.spaceName }</td>
+																<td>${r.reserveStartDate }</td>
+																<td>${r.reserveCheckoutDate }</td>
+																<td>${r.reservePrice }</td>
+																<td id="reservation"><span class="badge bg-label-primary me-1"><strong>
+																			<c:choose>
+																				<c:when test="${r.reserveCheck == 0}">
+																					예약대기
+																				</c:when>
+																				<c:when test="${r.reserveCheck == 1}">
+																					예약확정
+																				</c:when>
+																				<c:when test="${r.reserveCheck == 2}">
+																					예약취소
+																				</c:when>
+																			</c:choose>
+																		</strong></span>
+																</td>
+																<td>
+																	<div class="dropdown" id="deletecenter">
+																		<div class="deletebtn">
+																			<a class="" href="#" onclick="cancelCall('${r.spaceName }');">
+																				<i class="bx bx-trash me-2"></i> Cancel</a>
+																		</div>
+																	</div>
+																</td>
+															</tr>
 														</c:forEach>
 													</c:otherwise>
 												</c:choose>
@@ -156,9 +107,21 @@
 						</div>
 					</div>
 				</div>
+				<form id="sform" action="reservespace.do" method="post">
+					<input type="hidden" id="memberId" name="memberId">
+				</form>
+				<script>
+					function listClick(id) {
+						let form = document.getElementById("sform");
+						form.memberId.value = id;
+						form.submit();
+					}
+
+				</script>
 
 				<script>
-					$('.deletebtn').on('click', function () {
+					function cancelCall(id) {
+						let url = "ajaxReservationCancel.do?spaceName="+id;
 						Swal.fire({
 							title: '예약을 취소하시겠습니까?',
 							text: '해당 상품의 취소정책에 따라 고객님이 선택하신 결제방식으로 환불이 진행됩니다.',
@@ -169,17 +132,24 @@
 							confirmButtonText: 'Yes'
 						}).then((result) => {
 							if (result.isConfirmed) {
-								Swal.fire(
-									'Cancelled!',
-									'예약이 취소되었습니다.',
-									'success'
-								)
+								fetch(url).then(response => response.text)
+								  .then(text => {
+										if(text == 'Yes') {
+												document.querySelector('#reservation').value = "예약취소";
+												Swal.fire(
+													'Cancelled!',
+													'예약이 취소되었습니다.',
+													'success'
+												);
+										}
+									});
 							}
-						})
-					})
-					$('.deletebtn').on('click', function () {
+						});
+					}
+					
 
-					})
+					
+					
 				</script>
 		</body>
 

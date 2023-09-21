@@ -1,6 +1,9 @@
 package co.yedam.teamproject.member;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,12 +32,18 @@ public class MemberHome extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("mId", "jiwon");
+		
+
 		ReservationService dao = new ReservationServiceImpl();
+		List<ReservationVO> reserve = new ArrayList<ReservationVO>();
 		ReservationVO vo = new ReservationVO();
-		String spn = request.getParameter("spaceName");
-		vo.setSpaceName(spn);
-		vo= dao.reservationSelect(vo);
-		request.setAttribute("reservation", vo);
+		vo.setMemberId(request.getParameter("memberId"));
+		
+		reserve = dao.reservationSelectMember(vo);
+		request.setAttribute("reserve", reserve);
+		System.out.println("menuhome.do reserve 찍어봄");
+		System.out.println(reserve);
 		
 		String path = "member/member/memberhome";
 		ViewResolve.forward(request, response, path);

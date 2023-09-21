@@ -33,4 +33,14 @@ public class ReservationServiceImpl implements ReservationService {
 		return map.reservationDelete(vo);
 	}
 
+	@Override
+	public List<ReservationVO> reservationSelectMember(ReservationVO vo) { //Id 넘겨받는 select
+		return map.reservationSelectMember(vo);
+	}
+
+	@Override
+	public int resevaionUpdate(ReservationVO vo) {
+		return map.resevaionUpdate(vo);
+	}
+
 }

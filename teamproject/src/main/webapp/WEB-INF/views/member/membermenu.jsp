@@ -27,8 +27,8 @@
         <!-- Forms & Tables -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">My Page</span></li>
         <!-- Forms 시작점!! -->
-        <li class="menu-item">
-          <a href="memberhome.do" class="menu-link menu-toggle" onclick="listClick(${r.spaceName})">
+        <li class="menu-item" >
+          <a href="#" class="menu-link menu-toggle" onclick="listClick('jiwon');">
             <i class="menu-icon tf-icons bx bx-detail"></i>
             <div data-i18n="Form Elements">Reservation Details</div>
           </a>
@@ -52,13 +52,23 @@
 
       </ul>
     </aside>
-    <form id="sform" action="memberhome.do" method="post">
-    <input type= "hidden" id="spaceName" name="spaceName">
+    <form id="sform" action="reservespace.do" method="post">
+    <input type= "hidden" id="memberId" name="memberId">
+    </form>
+    <form id="aform" action="memberhome.do" method="post">
+    <input type= "hidden" id="memberId" name="memberId">
     </form>
     <script>
-    function listClick(name){
+    function listClick(id){
+        console.log(id);
     	let form = document.getElementById("sform");
-    	form.spaceName.value=name;
+    	form.memberId.value=id;
+    	form.submit();
+    }
+    function listhome(id){
+        console.log(id);
+    	let form = document.getElementById("aform");
+    	form.memberId.value=id;
     	form.submit();
     }
     </script>

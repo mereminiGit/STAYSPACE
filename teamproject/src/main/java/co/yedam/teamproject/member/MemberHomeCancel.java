@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.teamproject.common.ViewResolve;
+import co.yedam.teamproject.reservation.service.ReservationService;
+import co.yedam.teamproject.reservation.service.ReservationVO;
+import co.yedam.teamproject.reservation.serviceImpl.ReservationServiceImpl;
 
 /**
  * Servlet implementation class MemberHomeCancel
@@ -22,7 +25,17 @@ public class MemberHomeCancel extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String path = "member/membert/memberhomecancel";
+		int rCheck = Integer.valueOf(request.getParameter("rCheck"));
+		
+		ReservationService dao = new ReservationServiceImpl();
+		ReservationVO vo = new ReservationVO();
+		
+		
+		
+		
+		
+		
+		String path = "member/member/memberhome";
 		ViewResolve.forward(request, response, path);
 	}
 
