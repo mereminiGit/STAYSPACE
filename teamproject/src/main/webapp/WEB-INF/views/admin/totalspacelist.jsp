@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,14 +8,16 @@
     
     <!-- img css -->
     <style>
-    img#stayimg{
-    	width: 200px;
-    	height: 120px;
+    img.stayimg{
+    	width: 120px;
+    	height: 80px;
     	border-radius: 10px;
     }
     </style>
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <!-- 모달 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 <!-- Content wrapper -->
@@ -26,12 +29,13 @@
               
               <!-- Hoverable Table rows -->
               <div class="card">
-                <h5 class="card-header">전체 대여공간 목록</h5>
+                <h5 class="card-header">Total Space List</h5>
                 <div class="table-responsive text-nowrap">
                   <table class="table table-hover">
                     <thead>
                       <tr>
-                      	<th>Space Img</th>
+                      	<th>Space ID</th>
+                      	<th>Img</th>
                         <th>Name</th>
                         <th>Address</th>
                         <th>Price</th>
@@ -39,7 +43,32 @@
                       </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                    <!-- 1번 공간 -->
+                    	<c:forEach items="${spaces }" var="s">
+                    			<tr sn="${s.spaceName }">
+                    				<td>${s.spaceId }</td>
+                    				<td><img src="vaso-html/images/${s.spaceImageMain}" class="stayimg" alt="image"></td>
+                    				<td>${s.spaceName }</td>
+                    				<td>${s.spaceAddress }</td>
+                    				<td><span>${s.spacePrice }</span> 원</td>
+                    				<td>
+			                          <div class="dropdown">
+			                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+			                              <i class="bx bx-dots-vertical-rounded"></i>
+			                            </button>
+			                            <div class="dropdown-menu">
+			                              <button type="button" class="dropdown-item spaceedit"
+			                              data-bs-toggle="modal" data-bs-target="#modalCenter"
+			                                ><i class="bx bx-edit-alt me-1"></i> Edit</button
+			                              >
+			                              <button type="button" class="dropdown-item spacedelete"
+			                                ><i class="bx bx-trash me-1"></i> Delete</button
+			                              >
+			                            </div>
+			                          </div>
+			                        </td>
+                    			</tr>
+                    	</c:forEach>
+                    <!-- 1번 공간
                       <tr>
                       	<td><img id="stayimg" src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
                         <td>촬영 스튜디오</td>
@@ -61,77 +90,8 @@
                             </div>
                           </div>
                         </td>
-                      </tr>
-                      <!-- 2번 공간 -->
-                      <tr>
-                        <td><img id="stayimg" src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
-                        <td>파티룸</td>
-                        <td>서울특별시 강남구 테헤란로19</td>
-                        <td><span>60000</span> 원</td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                              <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                              <button type="button" class="dropdown-item spaceedit"
-                              data-bs-toggle="modal" data-bs-target="#modalCenter"
-                                ><i class="bx bx-edit-alt me-1"></i> 수정</button
-                              >
-                              <button type="button" class="dropdown-item spacedelete"
-                                ><i class="bx bx-trash me-1"></i> 삭제</button
-                              >
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <!-- 3번 공간 -->
-                      <tr>
-                        <td><img id="stayimg" src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
-                        <td>촬영 스튜디오</td>
-                        <td>서울특별시 강남구 테헤란로19</td>
-                        <td><span>50000</span> 원</td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                              <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                              <button type="button" class="dropdown-item spaceedit"
-                              data-bs-toggle="modal" data-bs-target="#modalCenter"
-                                ><i class="bx bx-edit-alt me-1"></i> 수정</button
-                              >
-                              <button type="button" class="dropdown-item spacedelete"
-                                ><i class="bx bx-trash me-1"></i> 삭제</button
-                              >
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <!-- 4번 공간 -->
-                      <tr>
-                        <td><img id="stayimg" src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
-                        <td>파티룸</td>
-                        <td>서울특별시 강남구 테헤란로19</td>
-                        <td><span>60000</span> 원</td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                              <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                              <button type="button" class="dropdown-item spaceedit"
-                              data-bs-toggle="modal" data-bs-target="#modalCenter"
-                                ><i class="bx bx-edit-alt me-1"></i> 수정
-                                </button
-                              >
-                              <button type="button" class="dropdown-item spacedelete"
-                                ><i class="bx bx-trash me-1"></i> 삭제</button
-                              >
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
+                      </tr> -->
+                      
                     </tbody>
                     <caption style="padding-left: 20px"><b>Total: </b></caption>
                   </table>
@@ -161,9 +121,9 @@
                                <div class="row">
                               <div class="mb-3">
 									
-										<label for="formFileMultiple" class="form-label">이미지 파일
-											선택 (다중선택 가능)</label> <input class="form-control" type="file"
-											id="formFileMultiple" multiple required/>
+								<label for="formFileMultiple" class="form-label">이미지 파일
+									선택 (다중선택 가능)</label> <input class="form-control" name="modalImg" type="file"
+									id="formFileMultiple" multiple required/>
 								</div>
 								</div>  
                                 <div class="row">
@@ -216,23 +176,90 @@
               <script>
               //삭제 이벤트 
               $('.spacedelete').on('click', function(e){
-      			e.target.parentElement.parentElement.parentElement.parentElement.remove();
+      			let sn = e.target.parentElement.parentElement.parentElement.parentElement.getAttribute('sn');
+      			spaceRemove(sn,function(result){
+      				if(result.retCode == 'Success'){
+      					e.target.parentElement.parentElement.parentElement.parentElement.remove();
+      					Swal.fire({
+							  icon: 'success',
+							  text: '삭제 성공',
+							})
+    				}else if(result.retCode == 'Fail'){
+ 						Swal.fire({
+						  icon: 'error',
+						  text: '처리 중 에러 발생',
+						})
+    				}else{
+    					Swal.fire({
+						  icon: 'error',
+						  text: '잘못된 코드 반환',
+						})
+    				}
+      			})
               })
+              function spaceRemove(spaceName, callback){
+            	  fetch('AjaxSpaceDelete.do?sname='+spaceName)
+            	  .then(resolve => resolve.json())
+            	  .then(result => callback(result))
+            	  .catch();
+              }
+              
               //수정 이벤트
               $('.spaceedit').on('click',function(e){
-            	  console.log(e.target.parentElement.parentElement.parentElement.parentElement.children[0]);
-            	  let name = e.target.parentElement.parentElement.parentElement.parentElement.children[1];
-            	  let address = e.target.parentElement.parentElement.parentElement.parentElement.children[2];
-            	  let price = e.target.parentElement.parentElement.parentElement.parentElement.children[3];
-            	  $('input[name=modalName]').val(e.target.parentElement.parentElement.parentElement.parentElement.children[1].innerText);
-            	  $('input[name=modalAddress]').val(e.target.parentElement.parentElement.parentElement.parentElement.children[2].innerText);
-            	  $('input[name=modalPrice]').val(e.target.parentElement.parentElement.parentElement.parentElement.children[3].children[0].innerText);
+            	  let tr = e.target.parentElement.parentElement.parentElement.parentElement;
+            	  console.log(e.target.parentElement.parentElement.parentElement.parentElement);
+            	  //
+            	  let spaceimg = tr.children[1].innerHTML;
+            	  
+            	  let spacename = tr.children[2].innerText;
+            	  let spaceaddress = tr.children[3].innerText;
+            	  let spaceprice = tr.children[4].children[0].innerText;
+            	
+            	  
+            	  $('input[name=modalName]').val(spacename);
+            	  $('input[name=modalAddress]').val(spaceaddress);
+            	  $('input[name=modalPrice]').val(spaceprice);
+            	  
+            	  let id = tr.children[0].innerText;
+            	  //변경하기 버튼 클릭 이벤트
 	              $('.change').on('click', function(e){
-		              name.innerText = $('input[name=modalName]').val();
-	            	  address.innerText = $('input[name=modalAddress]').val();
-	            	  price.children[0].innerText = $('input[name=modalPrice]').val();
+	            	  //
+	            	  let img = $('input[name=modalImg]').val();
+	            	  
+	            	  let name = $('input[name=modalName]').val();
+	            	  let address = $('input[name=modalAddress]').val();
+	            	  let price = $('input[name=modalPrice]').val();
+	            	  //
+            	  spaceModify({sid: id, modifyname:name,modifyaddress:address,modifyprice:price, modifyimg:img}, function(data){
+            		  if(data.retCode == 'Success'){
+		            	  Swal.fire({
+							  icon: 'success',
+							  text: '수정 성공',
+							}).then((result) => {
+	            			  location.reload();
+							})
+            		  }else{
+            			  Swal.fire({
+    						  icon: 'error',
+    						  text: '처리 중 오류 발생',
+    						})
+            		  }
+            	  	})
 	              })
               })
+              //
+              function spaceModify(space={sid:"0", modifyname:"studio",modifyaddress:"address",modifyprice:"10000", modifyimg:"space.jpg"}, callback){
+            	  fetch('AjaxSpaceModify.do',{
+            		  method: "POST",
+            		  headers: {
+            			  'Content-Type': 'application/x-www-form-urlencoded',
+            		  },
+            		  body: 'sid='+space.sid+'&sname='+space.modifyname+'&saddress='+space.modifyaddress+'&sprice='+space.modifyprice+'&simg='+space.modifyimg
+            	  })
+            	  .then(resolve => resolve.json())
+          		  .then(result => callback(result))
+          		  .catch();
+              }
               </script>
               
               <!-- Core JS -->

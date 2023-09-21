@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <!-- 모달 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 <!-- Content wrapper -->
@@ -17,13 +19,14 @@
               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Member </span> management</h4>
               <!-- Hoverable Table rows -->
               <div class="card">
-                <h5 class="card-header">전체 회원 목록</h5>
+                <h5 class="card-header">Total </h5>
                 <div class="table-responsive text-nowrap">
                 
                   <table class="table table-hover">
                     <thead>
                       <tr>
-                        <th>Member Id</th>
+                      	<th>Image
+                        <th>Id</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Tel</th>
@@ -33,7 +36,15 @@
                     </thead>
                     <tbody class="table-border-bottom-0">
                     	<c:forEach items="${members }" var="m">
-                    			<tr>
+                    			<tr mid="${m.memberId }">
+                    			<c:choose>
+                    				<c:when test="${m.memberImage eq null}">
+                    					<td><img src="sneat/assets/img/avatars/defaultimg.png" class="rounded-circle" alt="default" style="width: 30px"></td>
+                    				</c:when>
+                    				<c:otherwise>
+                    				<td><img src="vaso-html/images/"${m.memberImage } class="rounded-circle" alt="default" style="width: 30px"></td>
+                    				</c:otherwise>
+                    			</c:choose>
                     				<td>${m.memberId }</td>
                     				<td>${m.memberName }</td>
                     				<td>${m.memberEmail }</td>
@@ -77,13 +88,38 @@
               
                         
               <script>
-              let memberList = new 
+              
               //삭제 이벤트 
               $('.memberdelete').on('click', function(e){
       			//e.target.parentElement.parentElement.parentElement.remove();
-      			let tr = e.target.parentElement.parentElement.parentElement;
+      			let mid = e.target.parentElement.parentElement.parentElement.getAttribute('mid');
+      			memberRemove(mid,function(result){
+      				if(result.retCode == 'Success'){
+      					e.target.parentElement.parentElement.parentElement.remove();
+      					Swal.fire({
+							  icon: 'success',
+							  text: '삭제 성공',
+							})
+      				}else if(result.retCode == 'Fail'){
+   						Swal.fire({
+						  icon: 'error',
+						  text: '처리 중 에러 발생',
+						})
+      				}else{
+      					Swal.fire({
+  						  icon: 'error',
+  						  text: '잘못된 코드 반환',
+  						})
+      				}
+      			})
       			
               })
+              function memberRemove(memberId, callback){
+            	  fetch('AjaxMemberDelete.do?mid='+memberId)
+            	  .then(resolve => resolve.json())
+            	  .then(result => callback(result))
+            	  .catch();
+              }
               </script>
               
               <!-- build:js assets/vendor/js/core.js -->

@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SpaceVO {
+	private int spaceId;
 	private String spaceName;
 	private int spacePrice;
 	private String spaceCity;

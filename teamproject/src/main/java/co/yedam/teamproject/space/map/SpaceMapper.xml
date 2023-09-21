@@ -11,30 +11,35 @@
 	</select>
 	<insert id="spaceInsert"
 		parameterType="co.yedam.teamproject.space.service.SpaceVO">
+		<selectKey keyProperty="spaceId" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(SPACE_ID),0)+1
+			FROM SPACE
+		</selectKey>
 		INSERT INTO SPACE
-		(SPACE_NAME,SPACE_PRICE,SPACE_CITY,SPACE_ADDRESS,SPACE_IMAGE_MAIN,SPACE_CONTENT,MEMBER_ID,SPACE_IMAGE_SUB1,SPACE_IMAGE_SUB2)
-		VALUES(#{spaceName},#{spacePrice},#{spaceCity},#{spaceAddress},#{spaceImageMain},#{spaceContent},#{memberId},#{spaceImageSub1},#{spaceImageSub2})
+		(SPACE_ID, SPACE_NAME,SPACE_PRICE,SPACE_CITY,SPACE_ADDRESS,SPACE_IMAGE_MAIN,SPACE_CONTENT,MEMBER_ID,SPACE_IMAGE_SUB1,SPACE_IMAGE_SUB2)
+		VALUES(#{spaceId}, #{spaceName},#{spacePrice},#{spaceCity},#{spaceAddress},#{spaceImageMain},#{spaceContent},#{memberId},#{spaceImageSub1},#{spaceImageSub2})
 	</insert>
 	<update id="spaceUpdate"
 		parameterType="co.yedam.teamproject.space.service.SpaceVO">
 		UPDATE SPACE 
 		<set>
-			<if test="spaceName != null">SPACE_NAME=#{spaceName}</if>
-			<if test="spacePrice !==0">SPACE_PRICE=#{spacePrice}</if>
-			<if test="spaceCity !==null">SPACE_CITY=#{spaceCity}</if>
-			<if test="spaceAddress !==null">SPACE_ADDRESS=#{spaceAddress}</if>
-			<if test="spaceImageMain !==null">SPACE_IMAGE_MAIN=#{spaceImageMain}</if>
-			<if test="spaceContent !==null">SPACE_CONTENT=#{spaceContent}</if>
-			<if test="spacePrice !==null">SPACE_PRICE=#{spacePrice}</if>
-			<if test="spaceImageSub1 !==null">SPACE_IMAGE_SUB1=#{spaceImageSub1}</if>
-			<if test="spaceImageSub2 !==null">SPACE_IMAGE_SUB2=#{spaceImageSub2}</if>
-			<if test="spaceHit !==null">SPACE_HIT=#{spaceHit}</if>
-			<if test="spaceLat !==null">SPACE_LAT=#{spaceLat}</if>
-			<if test="spaceLng !==null">SPACE_LNG=#{spaceLng}</if>
+			<if test="spaceName != null">SPACE_NAME=#{spaceName},</if>
+			<if test="spacePrice != null">SPACE_PRICE=#{spacePrice},</if>
+			<if test="spaceCity !=null">SPACE_CITY=#{spaceCity},</if>
+			<if test="spaceAddress !=null">SPACE_ADDRESS=#{spaceAddress},</if>
+			<if test="spaceImageMain !=null">SPACE_IMAGE_MAIN=#{spaceImageMain},</if>
+			<if test="spaceContent !=null">SPACE_CONTENT=#{spaceContent},</if>
+			<if test="spaceStar !=null">SPACE_STAR=#{spaceStar},</if>
+			<if test="spaceImageSub1 !=null">SPACE_IMAGE_SUB1=#{spaceImageSub1},</if>
+			<if test="spaceImageSub2 !=null">SPACE_IMAGE_SUB2=#{spaceImageSub2},</if>
+			<if test="spaceHit !=null">SPACE_HIT=#{spaceHit},</if>
+			<if test="spaceLat !=null">SPACE_LAT=#{spaceLat},</if>
+			<if test="spaceLng !=null">SPACE_LNG=#{spaceLng}</if>
 		</set>
+		WHERE SPACE_ID=#{spaceId}
 	</update>
 	<delete id="spaceDelete"
 		parameterType="co.yedam.teamproject.space.service.SpaceVO">
-		DELETE * FROM SPACE WHERE SPACE_NAME=#{spaceName}
+		DELETE FROM SPACE WHERE SPACE_NAME=#{spaceName}
 	</delete>
 </mapper>

@@ -9,5 +9,5 @@ public interface MemberMapper {
 	MemberVO memberSelect(MemberVO vo);
 	int memberInsert(MemberVO vo);
 	int memberUpdate(MemberVO vo);
-	int memberDelete(MemberVO vo);
+	int memberDelete(String memberId);
 }

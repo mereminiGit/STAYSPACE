@@ -69,24 +69,19 @@
         <!-- Menu -->
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" style="height: 100%">
-          <!-- <div class="app-brand demo">
-            <a href="adminhome.do" class="app-brand-link">
-              <span class="app-brand-logo demo">
-              </span>
-              <span class="app-brand-text demo menu-text fw-bolder ms-2">Stay Space</span>
-            </a>
-
-            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
-              <i class="bx bx-chevron-left bx-sm align-middle"></i>
-            </a>
-          </div> -->
-
+          <!-- 로고 -->
+          <div class="app-brand demo">
+					<a href="home.do" class="app-brand-link"> <img src="vaso-html/images/STAYSPACE_logo.png"
+							class="logo" style="width: 103px; height: 100px;">
+					</a>
+					
+			</div>
           <div class="menu-inner-shadow"></div>
 
           <ul class="menu-inner py-1">
           
-          <!-- MEMBERS 
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">MEMBERS</span></li>
+          <!-- MEMBERS -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">MENU</span></li>
             <!-- Member Management -->
             <li class="menu-item">
               <a href="memberlist.do" class="menu-link">

@@ -19,7 +19,7 @@
 		<put-attribute name="header" value="" />
 		<put-attribute name="menu" value="/WEB-INF/views/admin/adminmenu.jsp" />
 		<put-attribute name="body" value="" />
-		<put-attribute name="footer" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/admin/adminfooter.jsp" />
 	</definition>
 
 	<definition name="businesshome"
@@ -28,7 +28,7 @@
 		<put-attribute name="header" value="" />
 		<put-attribute name="menu" value="/WEB-INF/views/business/businessmenu.jsp" />
 		<put-attribute name="body" value="" />
-		<put-attribute name="footer" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/business/businessfooter.jsp" />
 	</definition>
 	
 	<definition name="memberhome"

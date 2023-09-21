@@ -35,8 +35,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int memberDelete(MemberVO vo) {
-		return map.memberDelete(vo);
+	public int memberDelete(String memberId) {
+		return map.memberDelete(memberId);
 	}
 
 }
