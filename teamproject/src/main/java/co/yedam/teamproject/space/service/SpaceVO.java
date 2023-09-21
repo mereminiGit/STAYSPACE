@@ -20,4 +20,6 @@ public class SpaceVO {
 	private String spaceHit;
 	private String spaceLat;
 	private String spaceLng;
+	private String spaceThumb;
+	private String spaceAttech;
 }

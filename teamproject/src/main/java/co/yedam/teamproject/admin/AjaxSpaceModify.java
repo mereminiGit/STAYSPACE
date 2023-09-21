@@ -1,5 +1,6 @@
 package co.yedam.teamproject.admin;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import co.yedam.teamproject.common.ThumbNail;
 import co.yedam.teamproject.space.service.SpaceService;
 import co.yedam.teamproject.space.service.SpaceVO;
 import co.yedam.teamproject.space.serviceImpl.SpaceServiceImpl;
@@ -25,25 +29,40 @@ public class AjaxSpaceModify extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String sid = request.getParameter("sid");
-		String sname = request.getParameter("sname");
-		String saddress = request.getParameter("saddress");
-		String sprice = request.getParameter("sprice");
-		//
-		String simg = request.getParameter("simg");
-		
+		MultipartRequest multi = null;
+		ThumbNail thumbNail = new ThumbNail();
 		SpaceVO vo = new SpaceVO();
 		SpaceService dao = new SpaceServiceImpl();
 		Map<String, Object> resultMap = new HashMap<>();
+		
+		String saveDir = getServletContext().getRealPath("attech/space");
+		int maxSize = 1024*1024*100;
+		multi = new MultipartRequest(request, saveDir, maxSize, "utf-8", new DefaultFileRenamePolicy());
+		
+		String sid = multi.getParameter("sid");
+		String sname = multi.getParameter("sname");
+		System.out.println(sid+sname);
+		String saddress = multi.getParameter("saddress");
+		String sprice = multi.getParameter("sprice");
+		String imgFileName = multi.getOriginalFileName("imgfile");
+		String realImg = multi.getFilesystemName("imgfile");
 		
 		vo.setSpaceId(Integer.parseInt(sid));
 		vo.setSpaceName(sname);
 		vo.setSpaceAddress(saddress);
 		vo.setSpacePrice(Integer.parseInt(sprice));
+		vo.setSpaceImageMain(realImg);
 		
-		//
-		vo.setSpaceImageMain(simg);
+		String fileExt = imgFileName.substring(imgFileName.indexOf(".")+1);
+		String thumb = thumbNail.makeThumbnail(saveDir+File.separator+imgFileName, imgFileName, fileExt, saveDir+File.separator);
+		thumb = thumb.substring(thumb.lastIndexOf("\\")+1);
+		vo.setSpaceThumb(thumb);
 		
+		String attech = multi.getOriginalFileName("attechfile");
+		if(attech != null) {
+			String attechFile =  multi.getFilesystemName("attechfile");
+			vo.setSpaceAttech(attechFile);
+		}
 		
 		if(dao.spaceUpdate(vo) != 0) {
 			vo = dao.spaceSelect(vo);
