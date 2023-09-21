@@ -3,7 +3,9 @@ package co.yedam.teamproject.space;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,17 +44,23 @@ public class AjaxReplyList extends HttpServlet {
 	} else {
 		String json= "{\"data\":[";
 		int cnt=0;
-		for (ReplyVO vo : list) {
-			json += "["+"\""+vo.getMemberId() + "\"," + 
-					"\""+vo.getReplyStar() + "\"," + 
-					"\""+vo.getReplyDate() + "\"," + 
-					"\""+vo.getReplyImage() + "\"," + 
-					"\""+vo.getReplyContent() + "\"" +"]";
-			if(++cnt != list.size()) {
-				json += ",";
-			}
-		}
+//		for (ReplyVO vo : list) {
+//			json += "["+"\""+vo.getMemberId() + "\"," + 
+//					"\""+vo.getReplyStar() + "\"," + 
+//					"\""+vo.getReplyDate() + "\"," + 
+//					"\""+vo.getReplyImage() + "\"," + 
+//					"\""+vo.getReplyContent() + "\"" +"]";
+//			if(++cnt != list.size()) {
+//				json += ",";
+//			}
+//		}
 		json+="]}";
+		Map<String, Object>map = new HashMap<>();
+		map.put("data", list);
+		
+		ObjectMapper objectMapper=new ObjectMapper().registerModule(new JavaTimeModule());
+		json = objectMapper.writeValueAsString(map);
+		
 		response.setContentType("text/json;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		out.print(json);

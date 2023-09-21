@@ -38,6 +38,8 @@
 	padding: 0;
 }
 </style>
+<script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
 </head>
 <body>
 	<section
@@ -432,10 +434,11 @@
 		href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
 		integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ=="
 		crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+	<script src="js/reply.js"></script>
 	<script>
 		const rep = new Reply();
 		let spaceName = "${s.spaceName}"
-		new DataTable('.review-item', {
+		const table= new DataTable('.review-item', {
 			ajax : 'AjaxReplyList.do?sname=' + spaceName + '&param=jquery',
 
 			columns : [ {
