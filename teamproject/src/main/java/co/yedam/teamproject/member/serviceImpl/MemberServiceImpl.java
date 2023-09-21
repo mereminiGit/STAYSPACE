@@ -40,8 +40,8 @@ public class MemberServiceImpl implements MemberService {
 
 	// 멤버 삭제
 	@Override
-	public int memberDelete(MemberVO vo) {
-		return map.memberDelete(vo);
+	public int memberDelete(String memberId) {
+		return map.memberDelete(memberId);
 	}
 
 	// 멤버 이메일 조회 (아이디, 비밀번호 변경시 사용)

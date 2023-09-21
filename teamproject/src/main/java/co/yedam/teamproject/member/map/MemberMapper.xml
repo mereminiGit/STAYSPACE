@@ -8,7 +8,7 @@
 
 	<select id="memberSelect"
 		resultType="co.yedam.teamproject.member.service.MemberVO">
-		SELECT * FROM MEMBER WHERE MEMBER_ID = #{memberID}
+		SELECT * FROM MEMBER WHERE MEMBER_ID = #{memberId}
 		<if test="memberPassword != null">
 			AND MEMBER_PASSWORD = #{memberPassword}
 		</if>
@@ -31,7 +31,7 @@
 		parameterType="co.yedam.teamproject.member.service.MemberVO">
 		INSERT INTO MEMBER(member_id, member_password, member_email, member_name,
 		member_tel, member_check)
-		SELECT #{memeberId}, #{memberPassword}, #{memberEmail}, #{memberName},
+		SELECT #{memberId}, #{memberPassword}, #{memberEmail}, #{memberName},
 		#{memberTel}, #{memberCheck}
 		FROM DUAL A
 		WHERE NOT EXISTS(

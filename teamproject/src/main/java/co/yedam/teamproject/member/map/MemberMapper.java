@@ -10,5 +10,5 @@ public interface MemberMapper {
 	MemberVO memberSelectEmail(MemberVO vo);// 멤버 이메일 체크 (아이디, 비밀번호 찾기)
 	int memberInsert(MemberVO vo);			// 멤버 등록
 	int memberUpdate(MemberVO vo);			// 멤버 수정
-	int memberDelete(MemberVO vo);			// 멤버 삭제
+	int memberDelete(String memberId);			// 멤버 삭제
 }

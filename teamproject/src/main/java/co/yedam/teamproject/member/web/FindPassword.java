@@ -7,17 +7,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.yedam.teamproject.common.Sha256;
 import co.yedam.teamproject.common.ViewResolve;
 import co.yedam.teamproject.member.service.MemberService;
 import co.yedam.teamproject.member.service.MemberVO;
 import co.yedam.teamproject.member.serviceImpl.MemberServiceImpl;
 
-@WebServlet("/memberregister.do")
-public class MemberRegister extends HttpServlet {
+@WebServlet("/findpassword.do")
+public class FindPassword extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public MemberRegister() {
+    public FindPassword() {
         super();
     }
 
@@ -25,25 +24,16 @@ public class MemberRegister extends HttpServlet {
 		MemberService dao = new MemberServiceImpl();
 		MemberVO vo = new MemberVO();
 		
-		vo.setMemberId(request.getParameter("registerId"));
-		vo.setMemberPassword(Sha256.encrypt(request.getParameter("registerPassword")));
-		vo.setMemberName(request.getParameter("registerName"));
-		vo.setMemberEmail(request.getParameter("registerEmail"));
-		vo.setMemberTel(request.getParameter("registerTel"));
+		vo.setMemberName(request.getParameter("findPwId"));
+		vo.setMemberEmail(request.getParameter("findPwEmail"));
+		vo = dao.memberSelectEmail(vo);
 		
-		if(request.getParameter("registerCheck") != null) {
-			vo.setMemberCheck("host");
-		} else {
-			vo.setMemberCheck("user");
+		String str = "findPwSuccess";
+		if(vo == null) {
+			str = "findPwFail";
 		}
 		
-		int n = dao.memberInsert(vo);
-		
-		if(n != 0) {
-			request.setAttribute("messageJoin", "successJoin");
-		} else {
-			request.setAttribute("messageJoin", "failJoin");
-		}
+		request.setAttribute("findPwmessage", str);
 		
 		String page = "main/account";
 		ViewResolve.forward(request, response, page);
