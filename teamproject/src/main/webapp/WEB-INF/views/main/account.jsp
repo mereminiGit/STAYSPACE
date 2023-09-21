@@ -228,7 +228,7 @@
 			// 아이디 찾기 모달 이벤트(알람창) 	
 			if ($('#findIdSuccess').length){	
 				Swal.fire({
-					title: '아이디 전송',
+					title: '아이디 찾기',
 					text: "이메일을 확인해주세요",
 					icon: 'success',
 					confirmButtonColor: '#87826E',
@@ -240,7 +240,7 @@
 			// 아이디 찾기 모달 이벤트 실패(알람창) 	
 			if ($('#findIdFail').length){	
 				Swal.fire({
-					title: '아이디 전송',
+					title: '아이디 찾기',
 					text: "존재하지 않는 사용자입니다",
 					icon: 'error',
 					confirmButtonColor: '#87826E',
