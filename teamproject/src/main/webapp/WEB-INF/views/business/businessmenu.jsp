@@ -69,23 +69,18 @@
         <!-- Menu -->
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" style="height: 100%">
-           <!-- <div class="app-brand demo">
-            <a href="businesshome.do" class="app-brand-link">
-              <span class="app-brand-logo demo">
-              </span>
-            </a>
-
-            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
-              <i class="bx bx-chevron-left bx-sm align-middle"></i>
-            </a>
-          </div> -->
-
+           <div class="app-brand demo">
+					<a href="home.do" class="app-brand-link"> <img src="vaso-html/images/STAYSPACE_logo.png"
+							class="logo" style="width: 103px; height: 100px;">
+					</a>
+					
+			</div>
           <div class="menu-inner-shadow"></div>
 
           <ul class="menu-inner py-1"> 
           
-          <!-- My page
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">MEMBERS</span></li>
+          <!-- My page -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">MENU</span></li>
             <!-- Member Management -->
             <li class="menu-item">
               <a href="businessmemberpage.do" class="menu-link">

@@ -6,7 +6,9 @@
 	</select>
 	<select id="salesSelect" resultType="co.yedam.teamproject.sales.service.SalesVO">
 
+
 		SELECT * FROM SALES WHERE MEMBER_ID = #{memberId}
+
 
 		<if test="spaceName != null">
 			AND SPACE_NAME = #{spaceName}

@@ -93,7 +93,7 @@
             <!-- / Content -->
 
             <!-- Footer -->
-            
+            <tiles:insertAttribute name="footer"/>
             <!-- / Footer -->
 
             <div class="content-backdrop fade"></div>
