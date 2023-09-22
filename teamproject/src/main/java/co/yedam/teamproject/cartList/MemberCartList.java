@@ -35,7 +35,7 @@ public class MemberCartList extends HttpServlet {
 		List<CartListVO> cartList = new ArrayList<CartListVO>();
 		CartListVO vo = new CartListVO();
 		vo.setMemberId(request.getParameter("memberId"));
-		ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule()); // json 형태의 데이터로 변환하고 날짜형 jsr310규정을 충족시키기 위해서
+//		ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule()); // json 형태의 데이터로 변환하고 날짜형 jsr310규정을 충족시키기 위해서
 
 		cartList = dao.cartListSelectList(vo);
 		request.setAttribute("cartList", cartList);
