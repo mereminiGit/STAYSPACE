@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.teamproject.cartList.service.CartListService;
+import co.yedam.teamproject.cartList.service.CartListVO;
 import co.yedam.teamproject.cartList.serviceImpl.CartListServiceImpl;
 
 @WebServlet("/ajaxCartListDelete")
@@ -19,8 +20,9 @@ public class ajaxCartListDelete extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		CartListVO vo = new CartListVO();
 		CartListService svc = new CartListServiceImpl();
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

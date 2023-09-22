@@ -27,7 +27,7 @@ public class TotalSpaceList extends HttpServlet {
 		SpaceService dao = new SpaceServiceImpl();
 		List<SpaceVO> spaces = new ArrayList<SpaceVO>();
 		
-		spaces = dao.spaceSelectList();
+//		spaces = dao.spaceSelectList();
 		request.setAttribute("spaces", spaces);
 		
 		String page = "admin/admin/totalspacelist";
