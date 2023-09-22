@@ -51,14 +51,9 @@
 									<div class="image-holder zoom-effect">
 										<img src="vaso-html/images/${s.spaceImageMain}"
 											alt="product-item" class="img-fluid zoom-in">
-										<div class="cart-concern position-absolute">
-											<div class="cart-button">
-												<a href="cart.do" class="btn">Add To Cart</a>
-											</div>
-										</div>
 									</div>
-									<div class="card-detail text-center pt-3 pb-2" onclick="selectSpace('${s.spaceName}')">
-										<h5 class="card-title fs-3 text-capitalize"><a href="#">${s.spaceName }</a></h5>
+									<div class="card-detail text-center pt-3 pb-2">
+										<h5 class="card-title fs-3 text-capitalize"><a href="#" onclick="selectSpace('${s.spaceName}')">${s.spaceName }</a></h5>
 										<span class="item-price text-primary fs-3 fw-light">${s.spacePrice }원<small>/시간</small></span>
 									</div>
 								</div>
@@ -136,6 +131,7 @@
 				<input type="hidden" id="spaceName" name="spaceName">
 			</form>
 		</div>
+		
 	</div>
 
 	<!--   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -150,11 +146,11 @@
     </script> -->
 	<script type="text/javascript">
 	function selectSpace(name){
-		console.log('a')
 		let form= document.getElementById("sform");
 		form.spaceName.value = name;
 		form.submit();
 	}
+	
 		$('#datepicker').datepicker({
 			format : 'yyyy-mm-dd'
 		}).on('hide', function(event) {

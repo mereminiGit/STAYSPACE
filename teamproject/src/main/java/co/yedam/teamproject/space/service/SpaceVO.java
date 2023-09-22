@@ -1,5 +1,5 @@
 package co.yedam.teamproject.space.service;
-import java.time.LocalDate;
+import java.util.Date;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,8 +12,8 @@ public class SpaceVO {
 	private String spaceAddress;
 	private String spaceImageMain;
 	private String spaceContent;
-	private LocalDate spaceStartDate;
-	private LocalDate spaceEndDate;
+	private Date spaceStartDate;
+	private Date spaceEndDate;
 	private String memberId;
 	private int spaceStar;
 	private String spaceImageSub1;

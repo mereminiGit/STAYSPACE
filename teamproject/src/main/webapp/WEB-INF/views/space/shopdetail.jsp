@@ -9,6 +9,7 @@
 <title>Vaso Ecommerce Template</title>
 <link rel="stylesheet" type="text/css"
 	href="vaso-html/css/star.css?ver=1">
+
 <style>
 .star-ratings {
 	color: #aaa9a9;
@@ -133,7 +134,8 @@
 							</h5>
 							<div class="action-buttons my-4 d-flex flex-wrap">
 								<a href="checkout.do" class="btn btn-dark me-2 mb-1">Checkout</a>
-								<a href="cart.do" class="btn btn-dark">Add To Cart</a>
+								<a href="#" class="btn btn-dark"
+									onclick="selectToCart('${s.spaceName}')">Add To Cart</a>
 							</div>
 						</div>
 						<hr>
@@ -294,6 +296,11 @@
 					</div>
 				</div>
 			</div>
+			<div>
+				<form id="cform" action="cart.do" method="post">
+					<input type="hidden" id="spaceName" name="spaceName">
+				</form>
+			</div>
 		</div>
 	</section>
 
@@ -376,6 +383,12 @@
 					</div>
 				</div>
 			</div>
+			<div>
+				<form id="sform" action="cart.do" method="post">
+					<input type="hidden" id="spaceName" name="spaceName"> 
+					<input type="hidden" id="spaceStartDate" name="spaceStartDate">
+				</form>
+			</div>
 		</div>
 	</section>
 
@@ -433,36 +446,27 @@
 		integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ=="
 		crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
 	<script>
-		const rep = new Reply();
-		let spaceName = "${s.spaceName}"
-		new DataTable('.review-item', {
-			ajax : 'AjaxReplyList.do?sname=' + spaceName + '&param=jquery',
-
-			columns : [ {
-				data : 'memberId'
-			}, {
-				data : 'replyStar'
-			}, {
-				data : 'replyDate'
-			}, {
-				data : 'replyImage',
-			}, {
-				data : 'replyContent',
-				render : function(data, type) {
-					return rep.displayDate(data);
-				}
-			} ]
-		});
+		
 	</script>
 	<script type="text/javascript">
+	function selectToCart(name){
+		let form= document.getElementById("sform");
+		form.spaceName.value = name;
+		console.log($('input[name=spaceStartDate]').val());
+		form.submit();
+	}
 		$('#datepicker').datepicker({
-			format : 'yyyy-mm-dd'
+			format : 'yyyy-mm-dd',
+			onSelect: function(d) { 
+			        var dateObject =$("#datepicker").val();
+			        let form= document.getElementById("sform");
+					form.spaceStartDate.value=dateObject;
+			    }
 		}).on('hide', function(event) {
 			event.preventDefault();
 			event.stopPropagation();
-		});
+		})
 	</script>
-
 </body>
 
 </html>
