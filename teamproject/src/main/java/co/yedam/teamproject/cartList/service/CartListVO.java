@@ -1,6 +1,6 @@
 package co.yedam.teamproject.cartList.service;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import lombok.Data;
 @Data
@@ -10,7 +10,7 @@ public class CartListVO {
 	private int spacePrice;
 	private String spaceCity;
 	private String spaceImageMain;
-	private Date spaceStartDate;
-	private Date spaceEndDate;
+	private LocalDate spaceStartDate;
+	private LocalDate spaceEndDate;
 	private int reserveId;
 }

@@ -6,6 +6,7 @@
 		SELECT * FROM MEMBER
 	</select>
 
+
 	<select id="memberSelect"
 		resultType="co.yedam.teamproject.member.service.MemberVO">
 		SELECT * FROM MEMBER WHERE MEMBER_ID = #{memberId}
@@ -13,6 +14,7 @@
 			AND MEMBER_PASSWORD = #{memberPassword}
 		</if>
 	</select>
+
 
 	<select id="memberSelectEmail"
 		resultType="co.yedam.teamproject.member.service.MemberVO">

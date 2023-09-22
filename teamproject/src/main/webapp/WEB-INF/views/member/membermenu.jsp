@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
   <!DOCTYPE html>
   <html>
 
@@ -25,15 +27,15 @@
         <!-- Forms & Tables -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">My Page</span></li>
         <!-- Forms 시작점!! -->
-        <li class="menu-item">
-          <a href="memberhome.do" class="menu-link menu-toggle">
+        <li class="menu-item" >
+          <a href="#" class="menu-link menu-toggle" onclick="listClick('jiwon');">
             <i class="menu-icon tf-icons bx bx-detail"></i>
             <div data-i18n="Form Elements">Reservation Details</div>
           </a>
         </li>
         <br>
         <li class="menu-item">
-          <a href="membercart.do" class="menu-link menu-toggle">
+          <a href="#" class="menu-link menu-toggle" onclick="cartClick('jiwon');">
             <i class="menu-icon tf-icons bx bx-detail"></i>
             <div data-i18n="Form Elements">Wish List</div>
           </a>
@@ -50,6 +52,26 @@
 
       </ul>
     </aside>
+    <form id="sform" action="memberreservelist.do" method="post">
+    <input type= "hidden" id="memberId" name="memberId">
+    </form>
+    <form id="aform" action="membercartlist.do" method="post">
+    <input type= "hidden" id="memberId" name="memberId">
+    </form>
+    <script>
+    function listClick(id){
+        console.log(id);
+    	let form = document.getElementById("sform");
+    	form.memberId.value=id;
+    	form.submit();
+    }
+    function cartClick(id){
+        console.log(id);
+    	let form = document.getElementById("aform");
+    	form.memberId.value=id;
+    	form.submit();
+    }
+    </script>
     <!-- / Menu -->
   </body>
 
