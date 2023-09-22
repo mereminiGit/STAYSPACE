@@ -46,7 +46,7 @@
                     	<c:forEach items="${spaces }" var="s">
                     			<tr sn="${s.spaceName }">
                     				<td>${s.spaceId }</td>
-                    				<td><img src="attech/space/${s.spaceThumb}" class="stayimg" alt="image"></td>
+                    				<td><img src="image/space/${s.spaceImageMain}" class="stayimg" alt="image"></td>
                     				<td>${s.spaceName }</td>
                     				<td>${s.spaceAddress }</td>
                     				<td><span>${s.spacePrice }</span> 원</td>
@@ -102,7 +102,7 @@
               
               </div>
               </div>
-              <form method="post" action="AjaxSpaceModify.do" enctype="multipart/form-data">
+              <form id="frm" method="post" action="AjaxSpaceModify.do" enctype="multipart/form-data">
 						<!-- Modal -->
                         <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered" role="document">
@@ -127,14 +127,13 @@
                                       type="text"
                                       id="idWithTitle"
                                       class="form-control"
-                                      name = "modalId"
+                                      name = "sid"
                                       readonly
                                     />
                                   </div>
                                 </div>
-								<label for="formFileMultiple" class="form-label" >이미지 파일
-									선택 (다중선택 가능)</label> <input class="form-control" name="modalImg" type="file"
-									id="formFileMultiple" multiple required/>
+                                <label for="formFile" class="form-label">이미지 파일 선택</label>
+	                       		<input class="form-control" name="imgfile" type="file" id="formFile" multiple/>
 								</div>
 								</div>  
                                 <div class="row">
@@ -144,7 +143,7 @@
                                       type="text"
                                       id="nameWithTitle"
                                       class="form-control"
-                                      name = "modalName"
+                                      name = "sname"
                                       placeholder="이름을 입력하세요."
                                     />
                                   </div>
@@ -156,7 +155,7 @@
                                       type="text"
                                       id="AddressWithTitle"
                                       class="form-control"
-                                      name = "modalAddress"
+                                      name = "saddress"
                                       placeholder="주소를 입력하세요."
                                     />
                                   </div>
@@ -168,7 +167,7 @@
                                       type="text"
                                       id="PriceWithTitle"
                                       class="form-control"
-                                      name = "modalPrice"
+                                      name = "sprice"
                                       placeholder="가격을 입력하세요."
                                     />
                                   </div>
@@ -227,57 +226,40 @@
             	  let spaceaddress = tr.children[3].innerText;
             	  let spaceprice = tr.children[4].children[0].innerText;
             	  
-            	  $('input[name=modalId]').val(spaceid);
-            	  $('input[name=modalName]').val(spacename);
-            	  $('input[name=modalAddress]').val(spaceaddress);
-            	  $('input[name=modalPrice]').val(spaceprice);
+            	  $('input[name=sid]').val(spaceid);
+            	  $('input[name=sname]').val(spacename);
+            	  $('input[name=saddress]').val(spaceaddress);
+            	  $('input[name=sprice]').val(spaceprice);
+            	  $('input[name=imgfile]').val(spaceimage);
             	  
             	  //변경하기 버튼 클릭 이벤트
 	              $('.change').on('click', function(){
-	            	  let attech = null;
-	            	  console.log($('input[name=modalImg]').val());
-	            	  if($('input[name=modalImg]').val() === ""){
-	            		  attech = spaceimage;
-	            	  }else{
-	            		  attech = $('input[name=modalImg]').val();
-	            	  }
-	            	  console.log(attech);
-	            	  let sid = $('input[name=modalId]').val();
-	            	  let name = $('input[name=modalName]').val();
-	            	  let address = $('input[name=modalAddress]').val();
-	            	  let price = $('input[name=modalPrice]').val();
-	            	  let imgfile = attech.substring(attech.lastIndexOf("\\")+1);
-	            	  console.log(sid+name+address+price+imgfile+attech);
-            	  	spaceModify(space={sid:sid, modifyname:name,modifyaddress:address,modifyprice:price, modifyimg:imgfile, modifyattech:attech}, function(data){
-            		  if(data.retCode == 'Success'){
-		            	  Swal.fire({
+	            	  
+	            	  if(performance.navigation.type == 1){
+	            		  Swal.fire({
 							  icon: 'success',
 							  text: '수정 성공',
-							}).then((result) => {
-	            			  location.reload();
 							})
-            		  }else{
-            			  Swal.fire({
-    						  icon: 'error',
-    						  text: '처리 중 오류 발생',
-    						})
-            		  }
-            	  	})
+	            	  }
+	            	  // let attechfile = null;
+	            	  // console.log($('input[name=imgfile]').val());
+	            	  // if($('input[name=imgfile]').val() === ""){
+	            		//   attechfile = spaceimage;
+	            	  // }else{
+	            		//   attechfile = $('input[name=imgfile]').val();
+	            	  // }
+	            	  // console.log(attech);
+	            	  // let sid = $('input[name=sid]').val();
+	            	  // let name = $('input[name=sname]').val();
+	            	  // let address = $('input[name=saddress]').val();
+	            	  // let price = $('input[name=sprice]').val();
+	            	  // let imgfile = attech.substring(attech.lastIndexOf("\\")+1);
+	            	  // console.log(sid+name+address+price+imgfile+attechfile);
+	            	  
+	            	  
 	              })
               })
               
-              function spaceModify(space={sid:"0", modifyname:"studio",modifyaddress:"address",modifyprice:"10000", modifyimg:"space.jpg",modifyattech:"\space.jpg"}, callback){
-            	  fetch('AjaxSpaceModify.do',{
-            		  method: "POST",
-            		  headers: {
-            			  'Content-Type': 'multipart/form-data; boundary=<calculated when request is sent>'
-            		  },
-            		  body:'sid='+space.sid+'&sname='+space.modifyname+'&saddress='+space.modifyaddress+'&sprice='+space.modifyprice+'&imgfile='+space.modifyimg+'&attechfile'+space.attech
-            	  })
-            	  .then(resolve => resolve.json())
-          		  .then(result => callback(result))
-          		  .catch();
-              }
               </script>
               
               <!-- Core JS -->

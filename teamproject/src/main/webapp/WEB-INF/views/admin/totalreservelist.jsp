@@ -5,17 +5,26 @@
 <head>
 <meta charset='utf-8' />
 <script src='fullcalendar/dist/index.global.js'></script>
+<!-- 모달 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
 		var allEvents = [];
-
-		allEvents.push({
-			title : event.title,
-			start : event.startDate,
-			end : event.endDate
+		
+		fetch('AjaxReserveList.do')
+		.then(resolve => resolve.json())
+		.then(json => {
+			console.log(json);
+			json.forEach(event => {
+				allEvents.push({
+					title : event.spaceName,
+					start : event.reserveStartDate,
+					end : event.reserveEndDate,
+					groupId : event.reserveId
+				})
+			})
+			callFull();
 		})
-
-		callFull(); //allEvent에 데이터를 넣어준 후에 fullcalendar 호출해야함.
 
 		//fullcalendar 기능 호출
 		function callFull() {
@@ -29,24 +38,60 @@
 				},
 				initialDate : '2023-09-08',
 				navLinks : true, // can click day/week names to navigate views
-				selectable : true,
+				selectable : false,
 				selectMirror : true,
-				select : function(arg) {
-					var title = prompt('새 예약을 등록하세요.');
-					if (title) {
-
-						calendar.addEvent({
-							title : title,
-							start : arg.start,
-							end : arg.end,
-							allDay : arg.allDay,
-						})
-					}
-					calendar.unselect()
-				},
+				// select : function(arg) {
+				// 	var title = prompt('새 예약을 등록하세요.');
+				// 	if (title) {
+				// 		fetch('AjaxReserveInsert.do',{
+				// 			method: "POST",
+				// 			headers: {"Content-Type": "application/x-www-form-urlencoded"},
+				// 			body: 'title='+title+'&start='+arg.startStr+'&end='+arg.endStr
+				// 		})
+				// 		.then(resolve => resolve.json())
+				// 		.then(json => {
+				// 			if(json.retCode == "Success"){
+				// 				calendar.addEvent({
+				// 					title : title,
+				// 					start : arg.start,
+				// 					end : arg.end,
+				// 					allDay : arg.allDay,
+				// 				})
+				// 			}else{
+				// 				Swal.fire({
+				// 					  icon: 'error',
+				// 					  text: '처리 중 오류 발생',
+				// 					})
+				// 			}
+				// 		})
+				// 		.catch();
+				// 	}
+				// 	calendar.unselect()
+				// },
 				eventClick : function(arg) {
 					if (confirm('해당 예약을 정말 삭제하시겠습니까?')) {
-						arg.event.remove()
+						console.log(arg.event);
+						fetch('AjaxReserveDelete.do',{
+							method: "POST",
+							headers: {"Content-Type": "application/x-www-form-urlencoded"},
+							body: 'title='+arg.event.title+'&reserveId='+arg.event.groupId
+						})
+						.then(resolve => resolve.json())
+						.then(json => {
+							if(json.retCode == "Success"){
+								arg.event.remove()
+								Swal.fire({
+				 					  icon: 'sucess',
+				 					  text: '삭제 성공',
+				 					})
+							}else{
+								Swal.fire({
+				 					  icon: 'error',
+				 					  text: '처리 중 오류 발생',
+				 					})
+							}
+						})
+						.catch();
 					}
 				},
 				eventBorderColor: '#343a40',

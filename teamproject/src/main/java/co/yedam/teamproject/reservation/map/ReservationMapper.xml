@@ -17,7 +17,7 @@
 	</insert>
 	<delete id="reservationDelete" parameterType="co.yedam.teamproject.reservation.service.ReservationVO">
 		DELETE FROM RESERVATION
-		WHERE MEMBER_ID = #{memberId}
+		WHERE RESERVE_ID = #{reserveId}
 		AND SPACE_NAME = #{spaceName}
 	</delete>
 </mapper>
