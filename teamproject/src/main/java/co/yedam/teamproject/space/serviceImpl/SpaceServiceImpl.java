@@ -13,8 +13,8 @@ public class SpaceServiceImpl implements SpaceService {
 	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	SpaceMapper map = sqlSession.getMapper(SpaceMapper.class);
 	@Override
-	public List<SpaceVO> spaceSelectList() {
-		return map.spaceSelectList();
+	public List<SpaceVO> spaceSelectList(SpaceVO vo) {
+		return map.spaceSelectList(vo);
 	}
 
 	@Override

@@ -17,8 +17,8 @@
 		FROM CARTLIST
 		</selectKey>
 		INSERT INTO CARTLIST 
-		VALUES(#{reserveId},
-		#{memberId},#{spaceName},#{spacePrice},#{spaceCity},#{spaceImageMain},#{spaceStartDate},#{spaceEndDate})
+		VALUES(
+		#{memberId},#{spaceName},#{spacePrice},#{spaceCity},#{spaceImageMain},#{spaceStartDate},#{reserveId})
 	</insert>
 
 	<delete id="cartListDelete"

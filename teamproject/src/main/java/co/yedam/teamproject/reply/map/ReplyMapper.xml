@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.yedam.teamproject.reply.map.ReplyMapper">
 	<select id="replySelectList" resultType="co.yedam.teamproject.reply.service.ReplyVO">
-		SELECT * FROM REPLY
+		SELECT * FROM REPLY WHERE SPACE_NAME = #{spaceName}
 	</select>
 	<select id="replySelect" resultType="co.yedam.teamproject.reply.service.ReplyVO">
 		SELECT * FROM REPLY WHERE SPACE_NAME = #{spaceName}

@@ -12,4 +12,5 @@ public class ReplyVO {
 	private LocalDate replyDate;
 	private LocalDate replyUpdateDate;
 	private int replyStar;
+	private String replyImage;
 }

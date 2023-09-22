@@ -10,7 +10,7 @@ public class CartListVO {
 	private int spacePrice;
 	private String spaceCity;
 	private String spaceImageMain;
-	private LocalDate spaceStartDate;
-	private LocalDate spaceEndDate;
+	private Date spaceStartDate;
+
 	private int reserveId;
 }
