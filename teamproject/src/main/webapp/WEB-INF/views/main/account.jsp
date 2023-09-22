@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<!DOCTYPE html>
 	<html>
 
 	<head>
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 		<style type="text/css">
 			.swal2-title {
 				font-family: 'Noto Sans KR', sans-serif;
@@ -64,68 +66,107 @@
 							<!-- 로그인 -->
 							<div class="tab-pane fade active show" id="nav-sign-in" role="tabpanel"
 								aria-labelledby="nav-sign-in-tab">
-								<div class="form-group py-3">
-									<label for="sign-in">Username or email address *</label> <input type="text"
-										minlength="2" name="username" placeholder="Your Username" class="w-100"
-										required>
-								</div>
-								<div class="form-group py-3">
-									<label for="sign-in">Password *</label> <input type="password" minlength="2"
-										name="password" placeholder="Your Password" class="w-100" required>
-								</div>
-								<label class="py-3">
-									<!-- 아이디 찾기 -->
-									<span class="label-body">
-										<a type="button" data-bs-toggle="modal" data-bs-target="#forgotIdModal"
-											class="fw-bold">Forgot ID</a>
-									</span>
-									<span>&nbsp; | &nbsp;</span>
-									<!-- 비밀번호 찾기 -->
-									<span class="label-body">
-										<a type="button" data-bs-toggle="modal" data-bs-target="#forgotPwModal"
-											class="fw-bold">Forgot Password</a>
-									</span>
-								</label>
-								<button type="submit" name="submit" class="btn btn-dark w-100 my-3">Login</button>
+								<form action="memberlogin.do" method="post">
+									<div class="form-group py-3">
+										<label for="loginId">User id *</label> <input type="text"
+											minlength="2" name="loginId" placeholder="Your UserId" class="w-100"
+											required>
+									</div>
+									<div class="form-group py-3">
+										<label for="loginPassword">Password *</label> <input type="password" minlength="2"
+											name="loginPassword" placeholder="Your Password" class="w-100" required>
+									</div>
+									<label class="py-3">
+										<!-- 아이디 찾기 -->
+										<span class="label-body">
+											<a type="button" data-bs-toggle="modal" data-bs-target="#forgotIdModal"
+												class="fw-bold">Forgot ID</a>
+										</span>
+										<span>&nbsp; | &nbsp;</span>
+										<!-- 비밀번호 찾기 -->
+										<span class="label-body">
+											<a type="button" data-bs-toggle="modal" data-bs-target="#forgotPwModal"
+												class="fw-bold">Forgot Password</a>
+										</span>
+									</label>
+									<button type="submit" name="submit" class="btn btn-dark w-100 my-3">Login</button>
+								</form>
 							</div>
 
 							<!-- 회원가입 -->
 							<div class="tab-pane fade" id="nav-register" role="tabpanel"
 								aria-labelledby="nav-register-tab">
-								<form action="memberRegister.do" method="post" id="registerJoin">
+								<form action="memberregister.do" method="post" id="registerJoin" onsubmit="return formcheck()">
 									<div class="form-group py-3">
-										<label for="register">ID *</label> <input type="text"
-											minlength="2" name="registerId" placeholder="Your Id" class="w-100" required>
+										<label for="register">ID *</label> &nbsp;&nbsp;&nbsp;&nbsp;
+										<button type="button" class="btn btn-primary" id="idcheck" onclick="memberIdCheck()" value="No"
+										style="padding: 10px 15px 10px 15px; border-radius: 30px;">중복</button>
+										<input type="text" minlength="2" id="registerId"
+											name="registerId" placeholder="Your Id" class="w-100" required>
 									</div>
 									<div class="form-group py-3">
 										<label for="register">Password *</label> <input type="password" minlength="2"
 											name="registerPassword" placeholder="Your Password" class="w-100" required>
 									</div>
 									<div class="form-group py-3">
-										<label for="register">name *</label> <input type="text"
-											minlength="2" name="registerName" placeholder="Your Name" class="w-100" required>
+										<label for="register">name *</label> <input type="text" minlength="2"
+											name="registerName" placeholder="Your Name" class="w-100" required>
 									</div>
 									<div class="form-group py-3">
-										<label for="register">email *</label> <input
-											type="email" minlength="2" name="registerEmail" placeholder="Your Email Address" class="w-100" required>
+										<label for="register">email *</label> <input type="email" minlength="2"
+											name="registerEmail" placeholder="Your Email Address" class="w-100"
+											required>
 									</div>
 									<div class="form-group py-3">
-										<label for="register">phone *</label> <input
-											type="text" minlength="2" name="registerTel" placeholder="Your Phone Number" class="w-100" required>
+										<label for="register">phone *</label> 
+										<!-- <span class="label-body">
+											<a type="button" data-bs-toggle="modal" data-bs-target="#CheckTelModal"
+												class="fw-bold" id="CheckTel" data-value="No">Check Phone number</a>
+										</span> -->
+										<input type="text" minlength="2"
+											name="registerTel" placeholder="Your Phone Number" class="w-100" required>
 									</div>
-									<label class="py-3"> <input type="checkbox" name="registerCheck" class="d-inline"> <span
-											class="label-body">&nbsp;Do you want to sign up as a host?</span>
+									<label class="py-3"> <input type="checkbox" name="registerCheck" class="d-inline">
+										<span class="label-body">&nbsp;Do you want to sign up as a 'host'?</span>
 									</label>
-									<button type="submit" name="registersubmit" class="btn btn-dark w-100 my-3">Register</button>
+									<button type="submit" name="registersubmit"
+										class="btn btn-dark w-100 my-3">Register</button>
 								</form>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+
+			<!-- 전화번호 인증 모달 -->
+				<div class="modal fade" id="CheckTelModal" tabindex="-1" role="dialog" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+
+							Modal Header
+							<div class="modal-header">
+								<h4 class="modal-title">Check phone</h4>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+							</div>
+
+							Modal body
+							<div class="modal-body">
+								<div class="form-group py-3">
+									<label for="CheckTel">User phone *</label>
+									<input type="text" minlength="2" name="CheckTel" id="CheckTel"
+										placeholder="Your Phone number" class="w-100" required>
+								</div>
+							</div>
+							Modal footer
+							<div class="modal-footer">
+								<button type="button" class="btn btn-primary" id="telcheck" onclick="memberTelCheck()" value="No">submit</button>
+							</div>
+						</div>
+					</div>
+				</div> 
 			
-			<!-- 아이디 모달 -->
-			<form id="findId">
+			<!-- 아이디 찾기 모달 -->
+			<form id="findId" action="findid.do" method="post">
 				<div class="modal fade" id="forgotIdModal" tabindex="-1" role="dialog" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
@@ -139,13 +180,13 @@
 							<!-- Modal body -->
 							<div class="modal-body">
 								<div class="form-group py-3">
-									<label for="username">User name *</label>
-									<input type="text" minlength="2" name="username" id="username"
+									<label for="findIdName">User name *</label>
+									<input type="text" minlength="2" name="findIdName" id="findIdName"
 										placeholder="Your Username" class="w-100" required>
 								</div>
 								<div class="form-group py-3">
-									<label for="useremail">Email address *</label>
-									<input type="email" minlength="2" name="useremail" id="useremail"
+									<label for="findIdEmail">Email address *</label>
+									<input type="email" minlength="2" name="findIdEmail" id="findIdEmail"
 										placeholder="Your Useremail" class="w-100" required>
 								</div>
 							</div>
@@ -158,8 +199,8 @@
 				</div>
 			</form>
 
-			<!-- 비밀번호 모달 -->
-			<form id="findPassword">
+			<!-- 비밀번호 찾기 모달 -->
+			<form id="findPassword" action="findpassword.do" method="post">
 				<div class="modal fade" id="forgotPwModal" tabindex="-1" role="dialog" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
@@ -173,13 +214,13 @@
 							<!-- Modal body -->
 							<div class="modal-body">
 								<div class="form-group py-3">
-									<label for="userid">User Id *</label>
-									<input type="text" minlength="2" name="userid" id="userid" placeholder="Your Userid"
+									<label for="findPwId">User Id *</label>
+									<input type="text" minlength="2" name="findPwId" id="findPwId" placeholder="Your Userid"
 										class="w-100" required>
 								</div>
 								<div class="form-group py-3">
-									<label for="useremail">Email address *</label>
-									<input type="email" minlength="2" name="useremail" id="useremail"
+									<label for="findPwEmail">Email address *</label>
+									<input type="email" minlength="2" name="findPwEmail" id="findPwEmail"
 										placeholder="Your Useremail" class="w-100" required>
 								</div>
 							</div>
@@ -192,12 +233,57 @@
 				</div>
 			</form>
 
+			<!-- 회원가입을 진행한 후 -->
+			<c:if test="${not empty messageJoin }">
+			<div id="${messageJoin }"></div>
+			</c:if> 
+			
+			<!-- 로그인 진행한 후 -->
+			<c:if test="${not empty messageLogin }">
+			<div id="${messageLogin }"></div>
+			</c:if>
+			
+			<!-- 아이디 찾기 진행 후 -->
+			<c:if test="${not empty findIdmessage }">
+			<div id="${findIdmessage }"></div>
+			</c:if>
+			
+			<!-- 비밀번호 찾기 진행 후 -->
+			<c:if test="${not empty findPwmessage }">
+			<div id="${findPwmessage }"></div>
+			</c:if>
+			
 		</section>
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.all.min.js"></script>
 		<script type="text/javascript">
-			<!-- 아이디 찾기 모달 이벤트(알람창) -->
-			$('#findId').on('submit', function () {
+			
+			// 아이디 찾기 모달 이벤트(알람창) 	
+			if ($('#findIdSuccess').length){	
+				Swal.fire({
+					title: '아이디 찾기',
+					text: "이메일을 확인해주세요",
+					icon: 'success',
+					confirmButtonColor: '#87826E',
+					confirmButtonText: 'OK',
+				}).then(function () {
+					location.href='account.do';
+				});	
+			}
+			// 아이디 찾기 모달 이벤트 실패(알람창) 	
+			if ($('#findIdFail').length){	
+				Swal.fire({
+					title: '아이디 찾기',
+					text: "존재하지 않는 사용자입니다",
+					icon: 'error',
+					confirmButtonColor: '#87826E',
+					confirmButtonText: 'OK',
+				}).then(function () {
+					location.href='account.do';
+				});
+			}
+			
+			/* $('#findId').on('submit', function () {
 				event.preventDefault(); // Prevent the page from redirecting
 				Swal.fire({
 					title: '아이디 전송',
@@ -208,41 +294,222 @@
 				}).then(function () {
 					location.reload();
 				});
-			});
+			}); */
 
-
-			<!-- 비밀번호 찾기 모달 이벤트(알람창) -->
-				$('#findPassword').on('submit', function () {
-					/* alert("초기화된 비밀번호가 이메일로 전송되었습니다!"); */
-					/* swal("비밀번호 초기화","이메일을 확인해주세요", "suc"); */				
-					event.preventDefault(); // Prevent the page from redirecting
-					Swal.fire({
-						title: '비밀번호 초기화',
-						text: "이메일을 확인해주세요",
-						icon: 'success',
-						confirmButtonColor: '#87826E',
-						confirmButtonText: 'OK',
-					}) 
-					.then(function () {
-						location.reload();
-					});
+			//  비밀번호 찾기 모달 이벤트(알람창)
+			if ($('#findPwSuccess').length){	
+				Swal.fire({
+					title: '비밀번호 초기화',
+					text: "이메일을 확인해주세요",
+					icon: 'success',
+					confirmButtonColor: '#87826E',
+					confirmButtonText: 'OK',
+				}).then(function () {
+					location.href='account.do';
+				});	
+			}
+			// 비밀번호 찾기 모달 이벤트 실패(알람창) 	
+			if ($('#findPwFail').length){	
+				Swal.fire({
+					title: '비밀번호 초기화',
+					text: "존재하지 않는 사용자입니다",
+					icon: 'error',
+					confirmButtonColor: '#87826E',
+					confirmButtonText: 'OK',
+				}).then(function () {
+					location.href='account.do';
 				});
-				
-				/* 회원가입 알람 */
-				$('#registerJoin').on('submit', function () {
-					let joinEvent = event.preventDefault();
+			}
+			
+		 	// $('#findPassword').on('submit', function () {
+			// 	/* alert("초기화된 비밀번호가 이메일로 전송되었습니다!"); */
+			// 	/* swal("비밀번호 초기화","이메일을 확인해주세요", "suc"); */
+			// 	event.preventDefault(); // Prevent the page from redirecting
+			// 	Swal.fire({
+			// 		title: '비밀번호 초기화',
+			// 		text: "이메일을 확인해주세요",
+			// 		icon: 'success',
+			// 		confirmButtonColor: '#87826E',
+			// 		confirmButtonText: 'OK',
+			// 	})
+			// 		.then(function () {
+			// 			location.reload();
+			// 		});
+			// }); 
+			
+
+			/* 회원가입 알람 (성공)*/
+			if ($('#successJoin').length){				
+				/* $('#registerJoin').on('submit', function () { */
+					/* let joinEvent = event.preventDefault(); */
 					Swal.fire({
 						title: '회원가입',
 						text: "회원가입을 축하합니다",
-						icon: 'info',
+						icon: 'success',
 						confirmButtonColor: '#87826E',
 						confirmButtonText: 'OK',
-					}) 
+					})
 					.then(function () {
-						// 다시 폼 실행
-						$('#registerJoin').submit();
+						location.href='account.do';
 					});
-				})
+						/* .then(function () {
+							// 다시 폼 실행
+							$('#registerJoin').submit();
+						}); */
+				/* }) */
+			}
+			
+			/* 회원가입 알람 (실패)*/
+			if ($('#failJoin').length){				
+				/* $('#registerJoin').on('submit', function () {
+					let joinEvent = event.preventDefault(); */
+					Swal.fire({
+						title: '회원가입',
+						text: "이미 존재하는 이메일입니다",
+						icon: 'error',
+						confirmButtonColor: '#87826E',
+						confirmButtonText: 'OK',
+					})
+					.then(function () {
+						location.href='account.do';
+					});
+						/* .then(function () {
+							// 다시 폼 실행
+							$('#registerJoin').submit();
+						}); */
+				/* }) */
+			}
+			
+			/* 로그인 알람 (성공)*/
+			if ($('#successLogin').length){				
+					Swal.fire({
+						title: '로그인',
+						text: "${memberName } 환영합니다",
+						icon: 'success',
+						confirmButtonColor: '#87826E',
+						confirmButtonText: 'OK',
+					})
+					.then(function () {
+						location.href='home.do';
+					});
+			}
+			
+			/* 로그인 알람 (실패)*/
+			if ($('#failLogin').length){				
+					Swal.fire({
+						title: '로그인',
+						text: "아이디 또는 비밀번호가 일치하지 않습니다",
+						icon: 'error',
+						confirmButtonColor: '#87826E',
+						confirmButtonText: 'OK',
+					})
+					.then(function () {
+						location.href='account.do';
+					});
+			}
+			
+		</script>
+		
+<!-- 		<script type="text/javascript">
+		// 전화번호 인증
+								//aJax 사용
+/* 					let url = "memberregistertel.do";
+	
+					fetch(url)
+						.then(response => response.text())	// response 객체에 text로 받기
+						.then(text => memberTelCheck(text));		 */
+		
+		</script> -->
+		
+		
+		<script type="text/javascript">
+			// 아이디 중복 체크
+			function formcheck() {
+				console.log($('#idcheck').val());
+				if($('#idcheck').val() == 'No'){
+					/* alert('아이디 중복체크 하세요');
+					// false면 form 실행 x
+					return false;  */
+					Swal.fire({
+						title: '중복체크',
+						text: "아이디 중복체크 하세요",
+						icon: 'warning',
+						confirmButtonColor: '#87826E',
+						confirmButtonText: 'OK',
+					})
+					return false;
+					
+				} else{	
+					return true;
+				}
+			}
+
+			function memberIdCheck() {
+				/* $('input[name = registerId]').val */
+				/* console.log($('input[id = registerId]').val()); */
+				if(!($('input[id = registerId]').val())){
+					/* alert('아이디를 입력하세요');
+					$('input[name = registerId]').focus(); */
+					Swal.fire({
+						title: '아이디 입력',
+						text: "아이디를 입력하세요",
+						icon: 'warning',
+						confirmButtonColor: '#87826E',
+						confirmButtonText: 'OK',
+					})
+					.then(function () {
+						$('input[name = registerId]').focus();
+					});
+				} else {
+					//aJax 사용
+					let url = "memberidcheck.do";
+					let id = $('input[name = registerId]').val();
+	
+					url = url+"?memberId="+id;
+	
+					fetch(url)
+						.then(response => response.text())	// response 객체에 text로 받기
+						.then(text => membercheck(text));					
+				}
+			}
+
+			function membercheck(check) {
+				if(check == 'Yes') {
+					
+					Swal.fire({
+						title: '아이디 체크',
+						text: "사용가능한 아이디 입니다",
+						icon: 'success',
+						confirmButtonColor: '#87826E',
+						confirmButtonText: 'OK',
+					})
+					.then(function () {
+						$('#idcheck').val('Yes');
+						$('#idcheck').attr('disabled', 'true');	// 버튼 비활성화 */
+					});
+					
+					/* alert("아이디 사용이 가능합니다.");
+					$('#idcheck').val('Yes');
+					$('#idcheck').attr('disabled', 'true');	// 버튼 비활성화 */
+				} else {
+					
+					Swal.fire({
+						title: '아이디 체크',
+						text: "존재하는 아이디 입니다",
+						icon: 'error',
+						confirmButtonColor: '#87826E',
+						confirmButtonText: 'OK',
+					})
+					.then(function () {
+						$('input[name = registerId]').val('');
+						$('input[name = registerId]').focus();
+					});
+					
+					/* alert("이미 존재하는 아이디");
+					$('input[name = registerId]').val('');
+					$('input[name = registerId]').focus(); */
+				}
+			}	
 		</script>
 	</body>
 

@@ -4,23 +4,23 @@
 	<select id="salesSelectList" resultType="co.yedam.teamproject.sales.service.SalesVO">
 		SELECT * FROM SALES
 	</select>
-	<select id="salesSelectList" resultType="co.yedam.teamproject.sales.service.SalesVO">
-		SELECT * FROM SALES WHERE MEMBER_ID=#{memberId}
+	<select id="salesSelect" resultType="co.yedam.teamproject.sales.service.SalesVO">
+		SELECT * FROM SALES WHERE MEMBER_ID = #{memberId}
 		<if test="spaceName != null">
-			AND SPACE_NAME=#{spaceName}
+			AND SPACE_NAME = #{spaceName}
 		</if>
 		<if test="salesMonth != null">
-			AND SALES_MONTH=#{salesMonth}
+			AND SALES_MONTH =# {salesMonth}
 		</if>
 	</select>
 	<insert id="salesInsert" parameterType="co.yedam.teamproject.sales.service.SalesVO">
 		INSERT INTO SALES
 		VALUES(#{memberId},#{spaceName},#{salesMonthPrice},#{salesMonth})
 	</insert>
-	<update id="salesInsert" parameterType="co.yedam.teamproject.sales.service.SalesVO">
+	<update id="salesUpdate" parameterType="co.yedam.teamproject.sales.service.SalesVO">
 		
 	</update>
-	<delete id="salesInsert" parameterType="co.yedam.teamproject.sales.service.SalesVO">
+	<delete id="salesDelete" parameterType="co.yedam.teamproject.sales.service.SalesVO">
 		
 	</delete>
 </mapper>

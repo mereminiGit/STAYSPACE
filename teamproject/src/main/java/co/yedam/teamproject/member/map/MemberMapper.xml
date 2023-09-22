@@ -1,37 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.yedam.teamproject.member.map.MemberMapper">
-<select id="memberSelectList" resultType="co.yedam.teamproject.member.service.MemberVO">
-	SELECT * FROM MEMBER
-</select>
+	<select id="memberSelectList"
+		resultType="co.yedam.teamproject.member.service.MemberVO">
+		SELECT * FROM MEMBER
+	</select>
 
-<select id="memberSelect" resultType="co.yedam.teamproject.member.service.MemberVO">
-	SELECT * FROM MEMBER WHERE MEMBER_ID = #{memberID}
-	<if test="memberPassword != null">
-		AND MEMBER_PASSWORD = #{memberPassword}
-	</if>
-</select>
+	<select id="memberSelect"
+		resultType="co.yedam.teamproject.member.service.MemberVO">
+		SELECT * FROM MEMBER WHERE MEMBER_ID = #{memberId}
+		<if test="memberPassword != null">
+			AND MEMBER_PASSWORD = #{memberPassword}
+		</if>
+	</select>
 
-<insert id="memberInsert" parameterType="co.yedam.teamproject.member.service.MemberVO">
-	insert into member(member_id, member_password, member_email,member_name,member_tel,member_check)
-	values(#{memberId},#{memberPassword},#{memberName},#{memberTel},#{memberCheck})
-</insert>
+	<select id="memberSelectEmail"
+		resultType="co.yedam.teamproject.member.service.MemberVO">
+		SELECT * FROM MEMBER WHERE MEMBER_EMAIL = #{memberEmail}
+		
+		<if test="memberName != null">
+			AND MEMBER_NAME = #{memberName}
+		</if>
+		
+		<if test="memberId != null">
+			AND MEMBER_ID = #{memberId}
+		</if>
+	</select>
 
-<update id="memberUpdate" parameterType="co.yedam.teamproject.member.service.MemberVO">
-	UPDATE MEMBER
-	<set>
-	 <if test="memberName != null">MEMBER_NAME=#{memberName},</if>
-	 <if test="memberPassword != null">MEMBER_PASSWORD=#{memberPassword},</if>
-	 <if test="memberEmail != null">MEMBER_EMAIL=#{memberEmail},</if>
-	 <if test="memberImage != null">MEMBER_IMAGE=#{memberImage},</if>
-	 <if test="memberCheck != null">MEMBER_CHECK=#{memberCheck},</if>
-	 <if test="memberTel != null">MEMBER_TEL=#{memberTel}</if>
-	</set> 
-</update>
+	<insert id="memberInsert"
+		parameterType="co.yedam.teamproject.member.service.MemberVO">
+		INSERT INTO MEMBER(member_id, member_password, member_email, member_name,
+		member_tel, member_check)
+		SELECT #{memberId}, #{memberPassword}, #{memberEmail}, #{memberName},
+		#{memberTel}, #{memberCheck}
+		FROM DUAL A
+		WHERE NOT EXISTS(
+		SELECT 0
+		FROM MEMBER
+		WHERE MEMBER_EMAIL = #{memberEmail})
+	</insert>
 
- <delete id="memberDelete" parameterType="co.yedam.teamproject.member.service.MemberVO">
- 	DELETE FROM MEMBER
- 	WHERE MEMBER_ID=#{memberId}
- </delete>
- 
+	<update id="memberUpdate"
+		parameterType="co.yedam.teamproject.member.service.MemberVO">
+		UPDATE MEMBER
+		<set>
+			<if test="memberName != null">MEMBER_NAME = #{memberName},</if>
+			<if test="memberPassword != null">MEMBER_PASSWORD = #{memberPassword},</if>
+			<if test="memberEmail != null">MEMBER_EMAIL = #{memberEmail},</if>
+			<if test="memberImage != null">MEMBER_IMAGE = #{memberImage},</if>
+			<if test="memberCheck != null">MEMBER_CHECK = #{memberCheck},</if>
+			<if test="memberTel != null">MEMBER_TEL = #{memberTel}</if>
+		</set>
+		WHERE MEMBER_ID = #{memberId}
+	</update>
+
+	<delete id="memberDelete"
+		parameterType="co.yedam.teamproject.member.service.MemberVO">
+		DELETE FROM MEMBER
+		WHERE MEMBER_ID = #{memberId}
+	</delete>
+
 </mapper>
