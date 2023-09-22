@@ -1,9 +1,13 @@
 package co.yedam.teamproject.cartList.service;
 
-import java.time.LocalDate;
 
-import lombok.Data;
-@Data
+
+import java.sql.Date;
+
+import lombok.Getter;
+import lombok.Setter;
+@Setter
+@Getter
 public class CartListVO {
 	private String memberId;
 	private String spaceName;

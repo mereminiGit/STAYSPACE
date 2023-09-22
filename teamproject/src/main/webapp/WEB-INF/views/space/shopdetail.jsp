@@ -456,11 +456,12 @@
 		form.submit();
 	}
 		$('#datepicker').datepicker({
-			format : 'yyyy-mm-dd',
+			dateFormat : 'yy-mm-dd',
 			onSelect: function(d) { 
 			        var dateObject =$("#datepicker").val();
 			        let form= document.getElementById("sform");
 					form.spaceStartDate.value=dateObject;
+					console.log(dateObject);
 			    }
 		}).on('hide', function(event) {
 			event.preventDefault();

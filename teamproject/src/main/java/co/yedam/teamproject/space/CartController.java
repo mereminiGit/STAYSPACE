@@ -1,8 +1,7 @@
 package co.yedam.teamproject.space;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,26 +32,22 @@ public class CartController extends HttpServlet {
 		CartListVO vo=new CartListVO();
 		List<CartListVO> list= new ArrayList<>();
 		SpaceService sdao= new SpaceServiceImpl();
-		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yy");
 		
 		SpaceVO svo=new SpaceVO();
 		svo.setSpaceName(request.getParameter("spaceName"));
 		
 		svo=sdao.spaceSelect(svo);
-		System.out.println(request.getParameter("spaceName"));
 		vo.setSpaceName(svo.getSpaceName());
 		vo.setMemberId(svo.getMemberId());
 		vo.setSpacePrice(svo.getSpacePrice());
 		vo.setSpaceCity(svo.getSpaceCity());
-		vo.setSpaceImageMain(svo.getSpaceImageMain());
-		System.out.println((request.getParameter("spaceStartDate")));
-		try {
-			vo.setSpaceStartDate(sdf.parse(request.getParameter("spaceStartDate")));
-		} catch (ParseException e) {
-			e.printStackTrace();
+		vo.setSpaceImageMain(svo.getSpaceImageMain());	
+		vo.setSpaceStartDate(Date.valueOf(request.getParameter("spaceStartDate")));
+
+		int n = dao.cartListInsert(vo);
+		if(n != 0) {
+			System.out.println("tjdrhdkljfjadksjflk");
 		}
-		
-		dao.cartListInsert(vo);
 		list=dao.cartListSelectList(vo);
 		
 		request.setAttribute("cartList", list);

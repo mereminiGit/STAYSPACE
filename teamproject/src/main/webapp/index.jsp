@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<jsp:forward page="memberreservationhome.do" />
+	<jsp:forward page="home.do" />
 
 </body>
 </html>
