@@ -35,7 +35,7 @@
         </li>
         <br>
         <li class="menu-item">
-          <a href="membercart.do" class="menu-link menu-toggle">
+          <a href="#" class="menu-link menu-toggle" onclick="cartClick('jiwon');">
             <i class="menu-icon tf-icons bx bx-detail"></i>
             <div data-i18n="Form Elements">Wish List</div>
           </a>
@@ -52,10 +52,10 @@
 
       </ul>
     </aside>
-    <form id="sform" action="reservespace.do" method="post">
+    <form id="sform" action="memberreservelist.do" method="post">
     <input type= "hidden" id="memberId" name="memberId">
     </form>
-    <form id="aform" action="memberhome.do" method="post">
+    <form id="aform" action="membercartlist.do" method="post">
     <input type= "hidden" id="memberId" name="memberId">
     </form>
     <script>
@@ -65,7 +65,7 @@
     	form.memberId.value=id;
     	form.submit();
     }
-    function listhome(id){
+    function cartClick(id){
         console.log(id);
     	let form = document.getElementById("aform");
     	form.memberId.value=id;

@@ -1,4 +1,4 @@
-package co.yedam.teamproject.member;
+package co.yedam.teamproject.cartList;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,27 +7,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.yedam.teamproject.common.ViewResolve;
+import co.yedam.teamproject.cartList.service.CartListService;
+import co.yedam.teamproject.cartList.serviceImpl.CartListServiceImpl;
 
-
-@WebServlet("/membercart.do")
-public class MemberCart extends HttpServlet {
+@WebServlet("/ajaxCartListDelete")
+public class ajaxCartListDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    
-    public MemberCart() {
+    public ajaxCartListDelete() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String path = "member/member/membercart";
-		ViewResolve.forward(request, response, path);
+		
+		CartListService svc = new CartListServiceImpl();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

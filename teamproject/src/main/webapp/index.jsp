@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:forward page="reservespace.do" />
+	<jsp:forward page="memberreservationhome.do" />
 </body>
 </html>

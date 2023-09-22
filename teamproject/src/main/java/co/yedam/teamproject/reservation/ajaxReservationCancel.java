@@ -1,4 +1,4 @@
-package co.yedam.teamproject.member;
+package co.yedam.teamproject.reservation;
 
 import java.io.IOException;
 
