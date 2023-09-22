@@ -5,12 +5,16 @@
 		SELECT * FROM SALES
 	</select>
 	<select id="salesSelect" resultType="co.yedam.teamproject.sales.service.SalesVO">
-		SELECT * FROM SALES WHERE MEMBER_ID=#{memberId}
+
+
+		SELECT * FROM SALES WHERE MEMBER_ID = #{memberId}
+
+
 		<if test="spaceName != null">
-			AND SPACE_NAME=#{spaceName}
+			AND SPACE_NAME = #{spaceName}
 		</if>
 		<if test="salesMonth != null">
-			AND SALES_MONTH=#{salesMonth}
+			AND SALES_MONTH =# {salesMonth}
 		</if>
 	</select>
 	<insert id="salesInsert" parameterType="co.yedam.teamproject.sales.service.SalesVO">

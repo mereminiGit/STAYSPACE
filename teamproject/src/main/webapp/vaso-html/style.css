@@ -529,7 +529,7 @@ img.zoom-in {
   align-items: unset!important;
 }
 .offcanvas-body .dropdown-menu{
-  min-width: 13rem;
+  min-width: 10rem;
   background-color: var(--gray-color-300);
   border: 1px solid var(--gray-color-500);
   border-radius: 0;

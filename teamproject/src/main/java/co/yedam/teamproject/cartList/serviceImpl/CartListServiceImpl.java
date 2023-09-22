@@ -14,8 +14,8 @@ public class CartListServiceImpl implements CartListService {
 	private CartListMapper map = sqlSession.getMapper(CartListMapper.class);
 	
 	@Override
-	public List<CartListVO> cartListSelectList() {
-		return map.cartListSelectList();
+	public List<CartListVO> cartListSelectList(CartListVO vo) {
+		return map.cartListSelectList(vo);
 	}
 
 	@Override

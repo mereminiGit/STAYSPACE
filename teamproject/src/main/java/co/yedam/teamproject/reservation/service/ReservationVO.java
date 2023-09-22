@@ -1,6 +1,8 @@
 package co.yedam.teamproject.reservation.service;
 
-import java.util.Date;
+
+import java.sql.Date;
+
 
 import lombok.Data;
 
@@ -11,6 +13,8 @@ public class ReservationVO {
 	private Date reserveStartDate;
 	private Date reserveEndDate;
 	private int reservePrice;
-	private String reserveCheck;
+	private int reserveCheck;
 	private int reserveId;
+	private String reserveImg;
+	private Date reserveCheckoutDate;
 }
