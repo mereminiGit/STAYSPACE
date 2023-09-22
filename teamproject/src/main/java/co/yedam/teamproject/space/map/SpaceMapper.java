@@ -8,5 +8,5 @@ public interface SpaceMapper {
 	SpaceVO spaceSelect(SpaceVO vo);
 	int spaceInsert(SpaceVO vo);
 	int spaceUpdate(SpaceVO vo);
-	int spaceDelete(SpaceVO vo);
+	int spaceDelete(String spaceName);
 }

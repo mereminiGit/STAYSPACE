@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <!-- 타일즈 사용선언 -->
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+<!-- jstl -->
+
 
 <!DOCTYPE html>
 <html>

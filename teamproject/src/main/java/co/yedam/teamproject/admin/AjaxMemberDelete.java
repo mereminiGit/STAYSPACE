@@ -1,33 +1,36 @@
-package co.yedam.teamproject.member;
+package co.yedam.teamproject.admin;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.yedam.teamproject.common.ViewResolve;
+import co.yedam.teamproject.member.service.MemberService;
+import co.yedam.teamproject.member.serviceImpl.MemberServiceImpl;
 
-
-@WebServlet("/membercart.do")
-public class MemberCart extends HttpServlet {
+@WebServlet("/AjaxMemberDelete.do")
+public class AjaxMemberDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    
-    public MemberCart() {
+    public AjaxMemberDelete() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String path = "member/member/membercart";
-		ViewResolve.forward(request, response, path);
+		String mid = request.getParameter("mid");
+		MemberService dao = new MemberServiceImpl();
+		
+		if(dao.memberDelete(mid) != 0) {
+			response.getWriter().print("{\"retCode\": \"Success\"}");
+		}else {
+			response.getWriter().print("{\"retCode\": \"Fail\"}");
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

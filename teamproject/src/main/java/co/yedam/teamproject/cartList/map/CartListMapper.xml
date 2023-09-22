@@ -7,7 +7,7 @@
 
 	<select id="cartListSelect"
 		resultType="co.yedam.teamproject.cartList.service.CartListVO">
-		SELECT * FROM CARTLIST WHERE MEMBER_ID = #{memberId}
+		SELECT * FROM CARTLIST WHERE RESERVE_ID = #{reserveId}
 	</select>
 
 	<insert id="cartListInsert"

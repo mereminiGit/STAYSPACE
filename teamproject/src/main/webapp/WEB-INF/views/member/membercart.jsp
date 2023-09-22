@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
 <!DOCTYPE html>
 <html
   lang="en"
@@ -82,50 +84,19 @@
 
               <!-- Examples -->
               <div class="row mb-5">
-                <div class="col-md-6 col-lg-4 mb-3">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="member/image/숙소2.jpg" alt="Card image cap" id="hoverImg" />
-                    <div class="card-body">
-                      <h5 class="card-title">탭아파트먼트</h5>
-                      <p class="card-text">
-                        다채로운 컨셉과 음악 속에서의 하루
-                      </p>
-                      <button type="button" class="btn btn-outline-secondary">Detailed page</button>
-                       <button type="button" class="btn btn-outline-danger" id="dangerBtn">Delete</button>
-                      <!-- <a href="javascript:void(0)" class="btn btn-outline-primary">Detailed page</a> -->
-                    </div>
-                  </div>
-                </div>
-                
-                   <div class="col-md-6 col-lg-4 mb-3">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="member/image/숙소2.jpg" alt="Card image cap" id="hoverImg" />
-                    <p class="hoverText">2023 09 17 ~ 2023 09 18 <br> 120,000원</p> 
-                    <div class="card-body">
-                      <h5 class="card-title">호미양양</h5>
-                      <p class="card-text">
-                        취향의 아름다움(好美)이 가득 담긴 공간(洋洋)
-                      </p>
-                     <!--  <a href="javascript:void(0)" class="btn btn-outline-primary">Detailed page</a> -->
-                       <button type="button" class="btn btn-outline-secondary">Detailed page</button>
-                       <button type="button" class="btn btn-outline-danger" id="dangerBtn">Delete</button>
-                    </div>
-                  </div>
-                </div>
-                
+                 <c:forEach items="${cartList}" var = "s">
                   <div class="col-md-6 col-lg-4 mb-3">
                   <div class="card h-100">
-                    <img class="card-img-top" src="member/image/숙소3.jpg" alt="Card image cap" id="hoverImg"/>
+                    <img class="card-img-top" src="member/image/${s.spaceImageMain }" alt="Card image cap"/>
                     <div class="card-body">
-                      <h5 class="card-title">소게</h5>
+                      <h5 class="card-title">${s.spaceName }</h5>
                       <p class="card-text">
-                        잠시 기대어 쉬는 느슨한 시간
+                      <!--숙소 콘텐트있던곳-->
+						<br>
+						예약 날짜 : ${s.spaceStartDate } 
 						<br>
 						<br>
-						2023/09/18 - 2023/09/19
-						<br>
-						<br>
-						₩120,000                        
+						가격 : ${s.spacePrice }                     
                       </p>
                       <!-- <a href="javascript:void(0)" class="btn btn-outline-primary">Detailed page</a> -->
                        <button type="button" class="btn btn-outline-secondary">Detailed page</button>
@@ -133,15 +104,15 @@
                     </div>
                   </div>
                 </div>
-                
-                  <div class="col-md-6 col-lg-4 mb-3">
+                </c:forEach>
+      <!--             <div class="col-md-6 col-lg-4 mb-3">
                   <div class="card h-100">
                   
                     <img class="card-img-top" src="member/image/숙소3.jpg" alt="Card image cap" id="hoverImg" />
                     <p class="hoverText">2023 09 17 ~ 2023 09 18 <br> 120,000원</p> 
                   
-                    <!-- <a href="#;" class="banner_bg">
- 				     <p class="hover_text">이미지에 마우스를 올리면 나타나는 텍스트입니다.</p></a> -->
+                    <a href="#;" class="banner_bg">
+ 				     <p class="hover_text">이미지에 마우스를 올리면 나타나는 텍스트입니다.</p></a>
                     <div class="card-body">
                       <h5 class="card-title">소게</h5>
                       <p class="card-text">
@@ -151,7 +122,7 @@
                        <button type="button" class="btn btn-outline-danger" id="dangerBtn">Delete</button>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
               
               <!-- Examples -->
