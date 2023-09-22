@@ -8,7 +8,7 @@ public class Sha256 {
 	        MessageDigest md = null;
 			try {
 				md = MessageDigest.getInstance("SHA-256");
-				 md.update(text.getBytes());
+				md.update(text.getBytes());
 			} catch (NoSuchAlgorithmException e) {
 				e.printStackTrace();
 			}
