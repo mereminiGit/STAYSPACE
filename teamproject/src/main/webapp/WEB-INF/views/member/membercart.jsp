@@ -49,11 +49,12 @@
     <!-- Page CSS -->
 
     <!-- Helpers -->
-    <script src="../assets/vendor/js/helpers.js"></script>
+    <script src="member/assets/vendor/js/helpers.js"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="../assets/js/config.js"></script>
+    <script src="member/assets/js/config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
 
   <body>
@@ -85,7 +86,7 @@
               <!-- Examples -->
               <div class="row mb-5">
                  <c:forEach items="${cartList}" var = "s">
-                  <div class="col-md-6 col-lg-4 mb-3">
+                  <div class="col-md-6 col-lg-4 mb-3" class="cartlist">
                   <div class="card h-100">
                     <img class="card-img-top" src="member/image/${s.spaceImageMain }" alt="Card image cap"/>
                     <div class="card-body">
@@ -100,7 +101,7 @@
                       </p>
                       <!-- <a href="javascript:void(0)" class="btn btn-outline-primary">Detailed page</a> -->
                        <button type="button" class="btn btn-outline-secondary">Detailed page</button>
-                       <button type="button" class="btn btn-outline-danger" id="dangerBtn">Delete</button>
+                       <button type="button" class="btn btn-outline-danger" id="dangerBtn" onclick="deleteCall('${s.spaceName}','${s.memberId}')">Delete</button>
                     </div>
                   </div>
                 </div>
@@ -199,7 +200,68 @@
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script>
-
+	//삭제이벤트
+	/* $('#dangerBtn').on('click',function(e){
+		let url = "ajaxCartListDelete.do";
+		let cartlist=$('#dangerBtn').parents();
+		Swal.fire({
+			  title: '관심 상품을 삭제하시겠습니까?',
+			  text: "변경을 원할시 삭제 후 다시 담아주세요.",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Yes'
+			}).then((result) => {
+			  if (result.isConfirmed) {
+				$.ajax({
+					url:url,
+					method:'post',
+					data:{}
+				})
+			    Swal.fire(
+			      '삭제되었습니다!',
+			      'Your wish list has been deleted.',
+			      'success'
+			    )
+			  }
+			})
+	}) */
+/* 	function deleteCall(spaceName,memberId){
+		let url = "ajaxCartListDelete.do?spaceName="+spaceName+"&memberId="+memberId;
+		fetch('ajaxCartListDelete.do',{
+			method:"POST",
+			headers: {"Content-Type": "application/x-www-form-urlencoded"},
+			body:'spaceName='+spaceName+'&memberId='+memberId;
+		})
+		.then(resolve => resolve.json())
+		.the(json => {
+			if(json.retCode == "Success"){
+				$('#dangerBtn').parents().remove()
+				Swal.fire({
+				 		icon: 'sucess',
+				 		text: '삭제 성공',
+				 					})
+			}else{
+				Swal.fire({
+					  icon: 'error',
+					  text: '처리 중 오류 발생',
+					})
+			}
+		})
+		
+	} */
+	$('#dangerBtn').on('click',function(e){
+		let spaceName = e.target.parentElement.parentElement.parentElement.getAttribute('spaceName');
+		deleteCart(spaceName,)
+	})
+	function deleteCart(spaceName,memberId,callback){
+		fetch('ajaxCartListDelete.do?spaceName='+spaceName+'&memberId='+memberId)
+		.then(resolve => resolve.json())
+		.then(result => callback(result))
+		.catch();
+	}
+	
     </script>
   </body>
 </html>
