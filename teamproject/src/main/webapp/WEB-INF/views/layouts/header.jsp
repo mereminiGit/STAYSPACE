@@ -217,7 +217,7 @@
 											<div id="search-bar" class="border-right d-none d-lg-block">
 												<form action="" autocomplete="off">
 													<input id="search" class="text-dark" name="search" type="text"
-														placeholder="Search Here..."> <a type="submit"
+														placeholder="Search Here..." style="padding: 60px 74px 8px 0px;"> <a type="submit"
 														class="nav-link me-0" href="about.do">Search</a>
 												</form>
 											</div>
@@ -408,9 +408,9 @@
 										<!-- <b>Date:</b> <input type="" name="" id="txtDate" runat="server" /> -->
 										<!-- <p>Date: <input type="text" id="datepicker"></p> -->
 										<!--   <input type="text" class="form-control" data-toggle="datepicker"> -->
-										<div class="form-group py-3">
+										<div class="form-group py-3" style="text-align: center;">
 											<input type="text" class="form-control"
-												style="display: inline-block; text-align: center;"
+												style="display: inline-block; text-align: center; width:300px"
 												placeholder="날짜를 선택하세요">
 										</div>
 									</div>
@@ -456,7 +456,7 @@
 				if ($('#successLogout').length){				
 						Swal.fire({
 							title: '로그아웃',
-							text: "${memberName } 감사합니다",
+							text: "${messageLogout } Thank you",
 							icon: 'success',
 							confirmButtonColor: '#87826E',
 							confirmButtonText: 'OK',

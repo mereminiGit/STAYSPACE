@@ -98,8 +98,9 @@
 								aria-labelledby="nav-register-tab">
 								<form action="memberregister.do" method="post" id="registerJoin" onsubmit="return formcheck()">
 									<div class="form-group py-3">
-										<label for="register">ID *</label> 
-										<button type="button" id="idcheck" onclick="memberIdCheck()" value="No">중복</button>
+										<label for="register">ID *</label> &nbsp;&nbsp;&nbsp;&nbsp;
+										<button type="button" class="btn btn-primary" id="idcheck" onclick="memberIdCheck()" value="No"
+										style="padding: 10px 15px 10px 15px; border-radius: 30px;">중복</button>
 										<input type="text" minlength="2" id="registerId"
 											name="registerId" placeholder="Your Id" class="w-100" required>
 									</div>
@@ -117,11 +118,16 @@
 											required>
 									</div>
 									<div class="form-group py-3">
-										<label for="register">phone *</label> <input type="text" minlength="2"
+										<label for="register">phone *</label> 
+										<!-- <span class="label-body">
+											<a type="button" data-bs-toggle="modal" data-bs-target="#CheckTelModal"
+												class="fw-bold" id="CheckTel" data-value="No">Check Phone number</a>
+										</span> -->
+										<input type="text" minlength="2"
 											name="registerTel" placeholder="Your Phone Number" class="w-100" required>
 									</div>
 									<label class="py-3"> <input type="checkbox" name="registerCheck" class="d-inline">
-										<span class="label-body">&nbsp;Do you want to sign up as a host?</span>
+										<span class="label-body">&nbsp;Do you want to sign up as a 'host'?</span>
 									</label>
 									<button type="submit" name="registersubmit"
 										class="btn btn-dark w-100 my-3">Register</button>
@@ -132,6 +138,33 @@
 				</div>
 			</div>
 
+			<!-- 전화번호 인증 모달 -->
+				<div class="modal fade" id="CheckTelModal" tabindex="-1" role="dialog" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+
+							Modal Header
+							<div class="modal-header">
+								<h4 class="modal-title">Check phone</h4>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+							</div>
+
+							Modal body
+							<div class="modal-body">
+								<div class="form-group py-3">
+									<label for="CheckTel">User phone *</label>
+									<input type="text" minlength="2" name="CheckTel" id="CheckTel"
+										placeholder="Your Phone number" class="w-100" required>
+								</div>
+							</div>
+							Modal footer
+							<div class="modal-footer">
+								<button type="button" class="btn btn-primary" id="telcheck" onclick="memberTelCheck()" value="No">submit</button>
+							</div>
+						</div>
+					</div>
+				</div> 
+			
 			<!-- 아이디 찾기 모달 -->
 			<form id="findId" action="findid.do" method="post">
 				<div class="modal fade" id="forgotIdModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -147,12 +180,12 @@
 							<!-- Modal body -->
 							<div class="modal-body">
 								<div class="form-group py-3">
-									<label for="username">User name *</label>
+									<label for="findIdName">User name *</label>
 									<input type="text" minlength="2" name="findIdName" id="findIdName"
 										placeholder="Your Username" class="w-100" required>
 								</div>
 								<div class="form-group py-3">
-									<label for="useremail">Email address *</label>
+									<label for="findIdEmail">Email address *</label>
 									<input type="email" minlength="2" name="findIdEmail" id="findIdEmail"
 										placeholder="Your Useremail" class="w-100" required>
 								</div>
@@ -377,9 +410,19 @@
 			
 		</script>
 		
+<!-- 		<script type="text/javascript">
+		// 전화번호 인증
+								//aJax 사용
+/* 					let url = "memberregistertel.do";
+	
+					fetch(url)
+						.then(response => response.text())	// response 객체에 text로 받기
+						.then(text => memberTelCheck(text));		 */
+		
+		</script> -->
+		
 		
 		<script type="text/javascript">
-		
 			// 아이디 중복 체크
 			function formcheck() {
 				console.log($('#idcheck').val());
@@ -396,7 +439,7 @@
 					})
 					return false;
 					
-				} else{
+				} else{	
 					return true;
 				}
 			}

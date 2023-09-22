@@ -33,7 +33,7 @@ public class MemberLogin extends HttpServlet {
 		
 		vo.setMemberId(request.getParameter("loginId"));
 		vo.setMemberPassword(Sha256.encrypt(request.getParameter("loginPassword")));
-		System.out.println(vo.getMemberPassword());
+		/* System.out.println(vo.getMemberPassword()); */
 		
 		vo = dao.memberSelect(vo);
 		

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.yedam.teamproject.common.Sendsms;
 import co.yedam.teamproject.common.Sha256;
 import co.yedam.teamproject.common.ViewResolve;
 import co.yedam.teamproject.member.service.MemberService;
@@ -41,6 +42,8 @@ public class MemberRegister extends HttpServlet {
 		
 		if(n != 0) {
 			request.setAttribute("messageJoin", "successJoin");
+			/* Sendsms sms = new Sendsms(); */
+			/* sms.sendOne(); */
 		} else {
 			request.setAttribute("messageJoin", "failJoin");
 		}

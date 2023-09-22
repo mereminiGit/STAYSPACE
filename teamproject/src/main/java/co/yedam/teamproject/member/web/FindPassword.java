@@ -1,6 +1,7 @@
 package co.yedam.teamproject.member.web;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.teamproject.common.SendMail;
+import co.yedam.teamproject.common.Sha256;
 import co.yedam.teamproject.common.ViewResolve;
+import co.yedam.teamproject.member.ResetPassword;
 import co.yedam.teamproject.member.service.MemberService;
 import co.yedam.teamproject.member.service.MemberVO;
 import co.yedam.teamproject.member.serviceImpl.MemberServiceImpl;
@@ -38,13 +41,20 @@ public class FindPassword extends HttpServlet {
 			String page = "main/account";
 			ViewResolve.forward(request, response, page);
 			
+			// 비밀번호 변경 초기화 위해
 			MemberVO voUpdate = new MemberVO();
 			voUpdate.setMemberId(vo.getMemberId());
-			voUpdate.setMemberPassword(str);
+			
+			// 난수 생성 후 비밀번호 넣고
+			String resetPw = ResetPassword.getRamdomPassword(15);
+			voUpdate.setMemberPassword(Sha256.encrypt(resetPw));
+			
+			// 해당 아이디의 비밀번호 업데이트
+			dao.memberUpdate(voUpdate);
 			
 			SendMail sendMail = new SendMail();
 			String to = "workroom_km@naver.com";
-			//vo.getMemberEmail();
+						 //vo.getMemberEmail();
 
 			String title = "[스테이스페이스] 비밀번호 초기화";
 			String content = "<!DOCTYPE html>\r\n"
@@ -254,7 +264,7 @@ public class FindPassword extends HttpServlet {
 				+ "                                <a href=\"https://google.com\"\r\n"
 				+ "                                  style=\"display: inline-block; background: #212529; color: white; font-family: Nunito, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: normal; line-height: 30px; margin: 0; text-decoration: none; text-transform: none; padding: 10px 25px; mso-padding-alt: 0px; border-radius: 30px;\"\r\n"
 				+ "                                  target=\"_blank\">\r\n"
-				+ "                                  " + vo.getMemberId() + "</a>\r\n"
+				+ "                                  " + resetPw + "</a>\r\n"
 				+ "                                  <!-- ====================================================================== -->\r\n"
 				+ "                              </td>\r\n"
 				+ "                            </tr>\r\n"
@@ -310,7 +320,8 @@ public class FindPassword extends HttpServlet {
 				+ "</html>";
 	
 			sendMail.sendMail(to, title, content);
-			
+			System.out.println(resetPw);
+			System.out.println(Sha256.encrypt(resetPw));
 		} else {
 			str = "findPwFail";
 			
