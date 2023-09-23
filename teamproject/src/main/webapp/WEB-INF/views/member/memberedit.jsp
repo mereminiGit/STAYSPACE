@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+ 
   <!DOCTYPE html>
 
   <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default"
@@ -39,8 +43,14 @@
                     <!-- Account -->
                     <div class="card-body">
                       <div class="d-flex align-items-start align-items-sm-center gap-4">
-                        <img src="member/assets/img/avatars/1.png" alt="user-avatar" class="d-block rounded"
+                       <c:if test="${empty m.memberImage}">
+                        <img src="image/member/기본프로필.jpg" alt="기본프로필" class="d-block rounded"
                           height="100" width="100" id="uploadedAvatar" />
+                          </c:if>
+                           <c:if test="${not empty m.memberImage}">
+                           <img src="image/member/${m.memberImage }" alt="user-Img" class="d-block rounded"
+                          height="100" width="100" id="uploadedAvatar" />
+                           </c:if>
                         <div class="button-wrapper">
                           <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
                             <span class="d-none d-sm-block">Upload new photo</span>
@@ -48,7 +58,7 @@
                             <input type="file" id="upload" class="account-file-input" hidden
                               accept="image/png, image/jpeg" />
                           </label>
-                          <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
+                          <button type="reset" class="btn btn-outline-secondary account-image-reset mb-4">
                             <i class="bx bx-reset d-block d-sm-none"></i>
                             <span class="d-none d-sm-block">Reset</span>
                           </button>
@@ -57,23 +67,24 @@
                         </div>
                       </div>
                     </div>
+                    </form>
                     <hr class="my-0" />
                     <div class="card-body">
                       <form id="formAccountSettings" method="POST" onsubmit="return false">
                         <div class="row">
                           <div class="mb-3 col-md-6">
                             <label for="firstName" class="form-label">Name</label>
-                            <input class="form-control" type="text" id="Name" name="Name" value="" placeholder="Name"
+                            <input class="form-control" type="text" id="Name" name="Name" value="${m.memberName }" 
                               autofocus />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="organization" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" value=""
-                              placeholder="password" />
+                            <input type="password" class="form-control" id="password" name="password" value="" placeholder="password" 
+                              />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="email" class="form-label">E-mail</label>
-                            <input class="form-control" type="text" id="email" name="email" value=""
+                            <input class="form-control" type="text" id="email" name="email" value="${m.memberEmail }"
                               placeholder="john.doe@example.com" />
                           </div>
                           <div class="mb-3 col-md-6">
@@ -84,7 +95,7 @@
                           <div class="mb-3 col-md-6">
                             <label class="form-label" for="phoneNumber">Phone Number</label>
                             <div class="input-group input-group-merge">
-                              <input type="tel" id="tel" name="tel" class="form-control" placeholder="010-1234-4567" />
+                              <input type="tel" id="tel" name="tel" class="form-control" value="${m.memberTel }"placeholder="010-1234-4567" />
                             </div>
                           </div>
                         </div>
@@ -171,8 +182,8 @@
 
         var p1 = document.getElementById('password').value;
         var p2 = document.getElementById('passwordcheck').value;
-        if (p1.length < 8) {
-          Swal.fire({ text: '비밀번호는 8자 이상이어야 합니다.' })
+        if (p1.length < 10) {
+          Swal.fire({ text: '비밀번호는 10자 이상이어야 합니다.' })
           return false;
         }
 

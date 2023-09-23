@@ -23,7 +23,7 @@
 
 	<delete id="cartListDelete"
 		parameterType="co.yedam.teamproject.cartList.service.CartListVO">
-		DELETE FROM CARTLIST WHERE SPACE_NAME = #{spaceName}
+		DELETE FROM CARTLIST WHERE RESERVE_ID = #{reserveId}
 		AND MEMBER_ID = #{memberId}
 	</delete>
 </mapper>

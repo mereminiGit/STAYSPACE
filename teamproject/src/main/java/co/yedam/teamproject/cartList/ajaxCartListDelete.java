@@ -25,15 +25,22 @@ public class ajaxCartListDelete extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String reserveId = request.getParameter("reserveId");
 		String memberId = request.getParameter("memberId");
-		String spaceName = request.getParameter("spaceName");
+		System.out.println(memberId +"멤버아이디 리절브아이디" +reserveId);
 		CartListVO vo = new CartListVO();
 		CartListService dao = new CartListServiceImpl();
 		
 		vo.setMemberId(memberId);
-		vo.setSpaceName(spaceName);
+		vo.setReserveId(Integer.valueOf(reserveId));
+		int result = dao.cartListDelete(vo);
+		System.out.println("장바구니 삭제 result 찍음!");
+        System.out.println(result);
 		
-		System.out.println(memberId+spaceName);
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+	    response.setCharacterEncoding("utf-8");
+	    
 		if(dao.cartListDelete(vo)!=0) {
 			response.getWriter().print("{\"retCode\": \"Success\"}");
 		}else {
