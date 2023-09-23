@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.yedam.teamproject.common.ViewResolve;
 import co.yedam.teamproject.space.service.SpaceService;
@@ -25,10 +26,13 @@ public class DetailController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		SpaceService dao= new SpaceServiceImpl();
 		SpaceVO vo=new SpaceVO();
+		HttpSession session = request.getSession();
 		
 		vo.setSpaceName(request.getParameter("spaceName"));
 		vo=dao.spaceSelect(vo);
 		request.setAttribute("s", vo);
+		request.setAttribute("memberId", session.getAttribute("memberId"));
+
 		String path = "space/shopdetail";
 		ViewResolve.forward(request, response, path);
 	}

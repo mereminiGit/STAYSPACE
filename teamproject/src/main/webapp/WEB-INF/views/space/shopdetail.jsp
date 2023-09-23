@@ -117,8 +117,9 @@
 								</div>
 							</div> --%>
 							<div class="star-ratings">
+							<c:set var="stars" value="${s.spaceStar *20}"/>
 								<div class="star-ratings-fill space-x-2 text-lg"
-									:style="{ width: ratingToPercent + '%' }">
+									style="width: ${stars }%">
 									<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 								</div>
 								<div class="star-ratings-base space-x-2 text-lg">
@@ -130,7 +131,7 @@
 							</div>
 							<hr>
 							<h5 class="widget-title text-decoration-underline text-uppercase">
-								Date <br> <input type="text" id="datepicker">
+								Date <br> <input type="text" id="datepicker" name="datepicker">
 							</h5>
 							<div class="action-buttons my-4 d-flex flex-wrap">
 								<a href="checkout.do" class="btn btn-dark me-2 mb-1">Checkout</a>
@@ -304,7 +305,7 @@
 		</div>
 	</section>
 
-	<section id="products" class="product-store padding-xlarge"
+<!-- 	<section id="products" class="product-store"
 		data-aos="fade" data-aos-easing="ease-in" data-aos-duration="1000"
 		data-aos-once="true">
 		<div class="container">
@@ -382,15 +383,15 @@
 						<span class="item-price text-primary fs-3 fw-light">$650</span>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<div>
 				<form id="sform" action="cart.do" method="post">
 					<input type="hidden" id="spaceName" name="spaceName"> 
 					<input type="hidden" id="spaceStartDate" name="spaceStartDate">
 				</form>
 			</div>
-		</div>
-	</section>
+<!-- 		</div>
+	</section> -->
 
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7fabb4647805e005839c9dad15111de3"></script>
@@ -448,12 +449,21 @@
 	<script>
 		
 	</script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script type="text/javascript">
 	function selectToCart(name){
-		let form= document.getElementById("sform");
-		form.spaceName.value = name;
-		console.log($('input[name=spaceStartDate]').val());
-		form.submit();
+			let form= document.getElementById("sform");
+		if(form.spaceStartDate.value!=0){
+			form.spaceName.value = name;
+			form.submit();
+		} else{
+			Swal.fire({
+				  icon: 'warning',
+				  title: '날짜를 선택해주세요.',
+				})
+		}
+			
+		
 	}
 		$('#datepicker').datepicker({
 			dateFormat : 'yy-mm-dd',
@@ -461,7 +471,6 @@
 			        var dateObject =$("#datepicker").val();
 			        let form= document.getElementById("sform");
 					form.spaceStartDate.value=dateObject;
-					console.log(dateObject);
 			    }
 		}).on('hide', function(event) {
 			event.preventDefault();
