@@ -160,14 +160,6 @@
 
 							<!-- Modal body -->
 							<div class="modal-body">
-								<!-- <div class="form-group py-3">
-									<label for="CheckTel">User phone *</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<button type="button" class="btn btn-primary" id="phonecheckbtn"
-											onclick="phoneNumberCheck()" value="No"
-											style="padding: 10px 15px 10px 15px; border-radius: 30px;">인증번호 발송</button>
-									<input type="text" minlength="2" name="CheckTel" id="CheckTel"
-										placeholder="Your Phone number" class="w-100" required>
-								</div> -->
 								<div class="form-group py-3">
 									<label for="checkNumber">Certification Number *</label>
 									<button type="button" class="btn btn-primary" id="phonecheckbtn"
@@ -434,8 +426,10 @@
 			<!-- 전화번호 인증 -->
 			<script>
 				let checkNum = '';
+				// 인증번호 발송 버튼 클릭
 				function phoneNumberCheck() {
- 					if (!($('input[id = CheckTel]').val())) {
+					// 전화번호가 입력되지 않았을 때
+ 					if (!($('input[name = registerTel]').val())) {
 						Swal.fire({
 							title: '전화번호 입력',
 							text: "전화번호를 입력하세요",
@@ -443,75 +437,104 @@
 							confirmButtonColor: '#87826E',
 							confirmButtonText: 'OK',
 						})
-							.then(function () {
-								$('input[id = CheckTel]').focus();
-							});
+						.then(function () {
+							$('#CheckTelModal').modal('hide');
+							$('input[id = CheckTel]').focus();
+						});
 					} else {
-						//aJax 사용
-						let url = "checkphonenum.do";
-						let tel = $('input[id = CheckTel]').val();
-
-						url = url + "?phoneNum=" + tel;
-
-						fetch(url)
-							.then(response => response.text())	// response 객체에 text로 받기
-							.then(text => memberTelCheck(text));
-					} 
-				}
-			
-				function memberTelCheck(phone) {
-					if (phone == $('input[id = CheckNumber]')) {
 						Swal.fire({
-							title: '문자인증',
-							text: "문자인증이 완료되었습니다",
+							title: '인증번호 입력',
+							text: "인증번호를 입력하세요",
 							icon: 'success',
 							confirmButtonColor: '#87826E',
 							confirmButtonText: 'OK',
 						})
 						.then(function () {
-							$('#phonecheckbtn').val('Yes');
-						});
-					} else {
-						Swal.fire({
-							title: '문자인증',
-							text: "인증번호를 다시 확인해주세요",
-							icon: 'error',
-							confirmButtonColor: '#87826E',
-							confirmButtonText: 'OK',
-						})
-							.then(function () {
-								$('input[id = checkNumber]').val('');
-								$('input[id = checkNumber]').focus();
-							});
-
-						/* alert("이미 존재하는 아이디");
-						$('input[name = registerId]').val('');
-						$('input[name = registerId]').focus(); */
-					}
+							$('#phonecheckbtn').attr('disabled', 'true');
+							//aJax 사용
+							let url = "checkphonenum.do";
+							let tel = $('input[name = registerTel]').val();
+							url = url + "?phoneNum=" + tel;
+		
+							fetch(url)
+								.then(response => response.text())	// response 객체에 text로 받기
+								.then(text => memberTelCheck(text));
+						});		
+					} 
 				}
 				
+				// 문자로 발송된 인증번호 받아오기
+				function memberTelCheck(phone) {
+					checkNum = phone;
+					/* console.log(checkNum); */
+					// $('#phonecheckbtn').val('Yes');
+				}
+				
+				// 문자인증 submit 했을 경우
 				function certificationCheck() {
-					if ($('#phonecheckbtn').val() == 'Yes') {
-						modal.classList.add('hidden');
-						modal.classList.remove('visible');
-					} else {
+					console.log(checkNum);
+					console.log($('input[id = checkNumber]').val());
+					
+					// 전화번호를 입력 안 했을 떄
+					if (!($('input[name = registerTel]').val())) {
 						Swal.fire({
-							title: '문자인증',
-							text: "문자인증을 진행해주세요",
-							icon: 'error',
+							title: '전화번호 입력',
+							text: "전화번호를 입력하세요",
+							icon: 'warning',
 							confirmButtonColor: '#87826E',
 							confirmButtonText: 'OK',
 						})
+						.then(function () {
+							$('#CheckTelModal').modal('hide');
+							$('input[id = CheckTel]').focus();
+						});
+					}
+					// 인증번호 입력값이 없을때 실행되도록
+					else if (!$('#checkNumber').val()) {
+						Swal.fire({
+							title: '인증번호 입력',
+							text: "인증번호를 입력하세요",
+							icon: 'warning',
+							confirmButtonColor: '#87826E',
+							confirmButtonText: 'OK',
+						})
+						.then(function () {
+							$('#checkNumber').focus();
+						});
+					} else {
+						if (checkNum == $('input[id = checkNumber]').val()) {
+							Swal.fire({
+								title: '문자인증',
+								text: "문자인증이 완료되었습니다",
+								icon: 'success',
+								confirmButtonColor: '#87826E',
+								confirmButtonText: 'OK',
+							})
 							.then(function () {
-								$('input[id = checkNumber]').val('');
-								$('input[id = checkNumber]').focus();
+								/* $('#phonecheckbtn').val('Yes'); */
+								$('#telcheck').val('Yes');
+								$('#telcheck').attr('disabled', 'true');
+								$('#CheckTelModal').modal('hide');
 							});
+						} else {
+							Swal.fire({
+								title: '문자인증',
+								text: "인증번호를 다시 입력하세요",
+								icon: 'error',
+								confirmButtonColor: '#87826E',
+								confirmButtonText: 'OK',
+							})
+								.then(function () {
+									$('input[id = checkNumber]').val('');
+									$('input[id = checkNumber]').focus();
+								});
+						}						
 					}
 				}
 				
 			</script>
 
-
+			<!-- 회원가입 시 체크 사항 -->
 			<script type="text/javascript">
 				// 아이디 중복 체크
 				function formcheck() {
@@ -528,11 +551,8 @@
 							confirmButtonText: 'OK',
 						})
 						return false;
-
 					} else if ($('#telcheck').val() == 'No') {
-						/* alert('아이디 중복체크 하세요');
-						// false면 form 실행 x
-						return false;  */
+						// 문자인증 진행했는지 체크
 						Swal.fire({
 							title: '문자인증',
 							text: "전화번호 인증하세요",

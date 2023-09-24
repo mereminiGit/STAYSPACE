@@ -19,10 +19,10 @@ public class Sendsms {
 	    }
 	    
 	    @RequestMapping("/send-one")
-	    public SingleMessageSentResponse sendOne(String sent, String reception, String content) {
+	    public SingleMessageSentResponse sendOne(String reception, String content) {
 	        Message message = new Message();
 	        // 발신번호 및 수신번호는 반드시 01012345678 형태로 입력되어야 합니다.
-	        message.setFrom(sent);			// 발신번호 입력(보내는 번호) - Sent
+	        message.setFrom("01068580803");	// 발신번호 입력(보내는 번호) - Sent
 	        message.setTo(reception);		// 수신번호 입력(받는 번호) - reception
 	        message.setText(content);		// 내용
 

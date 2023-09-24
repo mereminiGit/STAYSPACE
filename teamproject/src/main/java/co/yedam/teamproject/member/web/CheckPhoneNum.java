@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.teamproject.common.Sendsms;
+import co.yedam.teamproject.member.ResetPassword;
 
-@WebServlet("/CheckPhoneNum")
+@WebServlet("/checkphonenum.do")
 public class CheckPhoneNum extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -19,10 +20,17 @@ public class CheckPhoneNum extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Sendsms sms = new Sendsms();
-//		sms.sendOne();
+		// 수신번호, 내용
+		String inputPhone = request.getParameter("phoneNum");
 		
-		String num = "1234";
+		/* String num = ResetPassword.getRamdomPhoneCheck(); */
+		String num = "123456";
+		
+		String content = "[스테이스페이스] 인증번호는 [" + num + "]입니다.";
+		
+		// 문자 보내는 api 연결
+		//Sendsms sms = new Sendsms();
+		//sms.sendOne(inputPhone, content);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().append(num);

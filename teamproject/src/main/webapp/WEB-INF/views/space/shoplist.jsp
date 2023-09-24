@@ -49,7 +49,7 @@
 							<div class="col-lg-4 col-md-6">
 								<div class="product-card mb-3 position-relative">
 									<div class="image-holder zoom-effect">
-										<img src="vaso-html/images/${s.spaceImageMain}"
+										<img src="image/space/${s.spaceImageMain}"
 											alt="product-item" class="img-fluid zoom-in">
 									</div>
 									<div class="card-detail text-center pt-3 pb-2">

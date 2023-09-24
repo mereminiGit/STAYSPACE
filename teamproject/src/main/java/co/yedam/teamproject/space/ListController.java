@@ -29,6 +29,7 @@ public class ListController extends HttpServlet {
 		List<SpaceVO> spaces = new ArrayList<SpaceVO>();
 		SpaceVO vo=new SpaceVO();
 		
+		System.out.println(request.getParameter("spaceCity"));
 		vo.setSpaceCity(request.getParameter("spaceCity"));
 		vo.setSpaceType(request.getParameter("spaceType"));
 		vo.setSpaceName(request.getParameter("spaceName"));
