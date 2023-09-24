@@ -36,7 +36,7 @@ public class CartController extends HttpServlet {
 		/* if(session.getAttribute("memberId")!= null) { */
 			SpaceService sdao= new SpaceServiceImpl();
 			SpaceVO svo=new SpaceVO();
-			svo.setSpaceName(request.getParameter("spaceName"));
+			svo.setSpaceId(Integer.parseInt(request.getParameter("spaceId")));
 			svo=sdao.spaceSelect(svo);
 			
 			vo.setSpaceName(svo.getSpaceName());
@@ -47,7 +47,7 @@ public class CartController extends HttpServlet {
 			vo.setSpaceImageMain(svo.getSpaceImageMain());	
 			vo.setSpaceStartDate(Date.valueOf(request.getParameter("spaceStartDate")));
 			
-			int n = dao.cartListInsert(vo);
+			dao.cartListInsert(vo);
 			list=dao.cartListSelectList(vo);
 			
 			request.setAttribute("cartList", list);

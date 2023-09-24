@@ -13,7 +13,7 @@
    </select>
    <select id="spaceSelect"
       resultType="co.yedam.teamproject.space.service.SpaceVO">
-      SELECT * FROM SPACE WHERE SPACE_NAME=#{spaceName}
+      SELECT * FROM SPACE WHERE space_id=#{spaceId}
    </select>
    <insert id="spaceInsert"
       parameterType="co.yedam.teamproject.space.service.SpaceVO">

@@ -28,7 +28,7 @@ public class DetailController extends HttpServlet {
 		SpaceVO vo=new SpaceVO();
 		HttpSession session = request.getSession();
 		
-		vo.setSpaceName(request.getParameter("spaceName"));
+		vo.setSpaceId(Integer.parseInt(request.getParameter("spaceId")));
 		vo=dao.spaceSelect(vo);
 		request.setAttribute("s", vo);
 		request.setAttribute("memberId", session.getAttribute("memberId"));
