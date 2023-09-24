@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
     <!DOCTYPE html>
     <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default"
@@ -91,12 +91,12 @@
                             예약 날짜 : ${s.spaceStartDate }
                             <br>
                             <br>
-                            가격 : ${s.spacePrice }
+                            가격 : <fmt:formatNumber value="${s.spacePrice }" type="currency" currencySymbol="￦"/>
                           </p>
                           <!-- <a href="javascript:void(0)" class="btn btn-outline-primary">Detailed page</a> -->
                           <button type="button" class="btn btn-outline-secondary">Detailed page</button>
                           <button type="button" class="btn btn-outline-danger" id="dangerBtn"
-                            onclick="deleteCall('jiwon','${s.reserveId}')">Delete</button>
+                            onclick="deleteCall('${s.memberId }','${s.reserveId}')">Delete</button>
                         </div>
                       </div>
                     </div>
@@ -178,8 +178,7 @@
       <!-- Place this tag in your head or just before your close body tag. -->
       <script async defer src="https://buttons.github.io/buttons.js"></script>
       <script>
-        //삭제이벤트
-
+        //삭제 onclick
         function deleteCall(memberId, reserveId) {
           Swal.fire({
             title: '관심 상품을 삭제하시겠습니까?',

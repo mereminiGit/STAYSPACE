@@ -242,6 +242,9 @@
 		})
 		
 	</script>
+	<script type="text/javascript" src="member/assets/js/pages-account-settings-account.js">
+	
+	</script>
 
 </body>
 </html>

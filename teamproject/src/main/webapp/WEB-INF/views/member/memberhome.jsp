@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 
 		<!DOCTYPE html>
 		<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default"
@@ -68,7 +70,7 @@
 																<td>${r.spaceName }</td>
 																<td>${r.reserveStartDate }</td>
 																<td>${r.reserveCheckoutDate }</td>
-																<td>${r.reservePrice }</td>
+																<td><fmt:formatNumber value="${r.reservePrice }" type="currency" currencySymbol="￦"/></td>
 																<td ><span class="badge bg-label-primary me-1"><strong id="reservation_${r.reserveId }">
 																			<c:choose>
 																				<c:when test="${r.reserveCheck == 0}">

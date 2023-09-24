@@ -18,6 +18,7 @@
   <body>
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
+   
       <div class="layout-container">
         <!-- Menu -->
 
@@ -67,7 +68,7 @@
                         </div>
                       </div>
                     </div>
-                    </form>
+                   
                     <hr class="my-0" />
                     <div class="card-body">
                       <form id="formAccountSettings" method="POST" onsubmit="return false">
@@ -100,7 +101,7 @@
                           </div>
                         </div>
                         <div class="mt-2">
-                          <button type="submit" class="btn btn-primary me-2" onclick="test()">저장</button>
+                          <button type="submit" class="btn btn-primary me-2" onclick="test(); editCall('${m.memberId}');">저장</button>
                           <button type="reset" class="btn btn-outline-secondary">취소</button>
                         </div>
                       </form>
@@ -123,12 +124,16 @@
                           <label class="form-check-label" for="accountActivation">회원 탈퇴에 동의합니다.</label>
                         </div>
                         <button type="submit" id="delete" class="btn btn-danger deactivate-account"
-                          onclick="checkTest()">회원 탈퇴</button>
+                          onclick="deleteMember('${m.memberId}');">회원 탈퇴</button>
                       </form>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
+            </div>
+            </div>
+            </div>
             </div>
             <!-- / Content -->
 
@@ -201,7 +206,7 @@
 
     </script>
     <script>
-      function checkTest() {
+      function deleteMember(memberId) {
 
         var chk = $('input[name=chkSelect]:checked').length;
 
@@ -214,27 +219,92 @@
             text: '회원 탈퇴에 동의 해주세요!',
           })
           return false;
-        } else {
-          Swal.fire({
-            title: '정말로 탈퇴하시겠어요?',
-            text: "탈퇴시 계정은 삭제되며 복구할 수 없습니다",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
-            if (result.isConfirmed) {
-              Swal.fire(
-                'Deleted!',
-                '계정이 탈퇴되었습니다.',
-                'success'
-              )
-            }
-          })
+        }  else {
+        	   Swal.fire({
+        		   title: '정말로 탈퇴하시겠어요?',
+        		   text: "탈퇴시 계정은 삭제되며 복구할 수 없습니다.",
+        		   icon: 'warning',
+        		   showCancelButton: true,
+        		   confirmButtonColor: '#3085d6',
+        		   cancelButtonColor: '#d33',
+        		   confirmButtonText: 'Yes'
+        		 }).then((result) => {
+        		   if (result.isConfirmed) {
+			    	   $.ajax({
+			               url: "ajaxUserDelete.do?memberId="+ memberId,
+			               type: "post",
+			               datatype: "html",
+			               success: function (data) {}
+			    	   });
+        		     Swal.fire(
+        		       '회원 탈퇴가 완료되었습니다.',
+        		       '그동안 저희 StaySpace를 이용해주셔서 감사합니다.',
+        		       'success'
+        		     )
+        		     setTimeout(function() {
+        		    	 location.href = "home.do";
+						}, 2000);
+        		    
+        		   }
+        		 })
           return true;
-        }
+        } 
       }
+      //회원정보수정
+      function editCall(memberId){
+    	  $.ajax({
+              url: "ajaxMemberEdit.do?memberId="+ memberId,
+              type: "post",
+              data:{
+            	  memberName:$("#Name").val(),
+              	  memberPassword:$("#password").val(),
+              	  memberEmail:$("#email").val(),
+              	  memberTel:$("#tel").val()
+              },
+              datatype:"JSON",
+              success: function (data) {
+            	  Swal.fire({
+            		  position: 'center',
+            		  icon: 'success',
+            		  title: '회원정보가 변경되었습니다.',
+            		  showConfirmButton: false,
+            		  timer: 1500
+            		})
+              }
+            });
+      };
+      
+      //회원탈퇴
+      /* function deleteMember(memberId){
+            	   Swal.fire({
+            		   title: '정말로 탈퇴하시겠어요?',
+            		   text: "탈퇴시 계정은 삭제되며 복구할 수 없습니다.",
+            		   icon: 'warning',
+            		   showCancelButton: true,
+            		   confirmButtonColor: '#3085d6',
+            		   cancelButtonColor: '#d33',
+            		   confirmButtonText: 'Yes'
+            		 }).then((result) => {
+            		   if (result.isConfirmed) {
+				    	   $.ajax({
+				               url: "ajaxUserDelete.do?memberId="+ memberId,
+				               type: "post",
+				               datatype: "html",
+				               success: function (data) {}
+				    	   });
+            		     Swal.fire(
+            		       '회원 탈퇴가 완료되었습니다.',
+            		       '그동안 저희 StaySpace를 이용해주셔서 감사합니다.',
+            		       'success'
+            		     )
+            		   }
+            		 })
+                 //location.href = "/로그인창";
+      } */
+      
+      
+      
+      
 
     </script>
   </body>

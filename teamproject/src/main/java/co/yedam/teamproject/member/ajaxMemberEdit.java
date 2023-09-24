@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import co.yedam.teamproject.common.Sha256;
 import co.yedam.teamproject.member.service.MemberService;
 import co.yedam.teamproject.member.service.MemberVO;
 import co.yedam.teamproject.member.serviceImpl.MemberServiceImpl;
@@ -29,7 +30,7 @@ public class ajaxMemberEdit extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String memberId = request.getParameter("memberId");
-		String mPw = request.getParameter("memberPassword");
+		String memberPassword = request.getParameter("memberPassword");
 		String memberName = request.getParameter("memberName");
 		String memberEmail = request.getParameter("memberEmail");
 		String memberTel = request.getParameter("memberTel");
@@ -40,12 +41,14 @@ public class ajaxMemberEdit extends HttpServlet {
 		
 		vo.setMemberId(memberId);
 		vo.setMemberName(memberName);
-		vo.setMemberPassword(mPw);
+		vo.setMemberPassword(Sha256.encrypt(memberPassword));
 		vo.setMemberEmail(memberEmail);
 		vo.setMemberTel(memberTel);
 		vo.setMemberImage(memberImg);
 		
+		System.out.println("vo찍음"+vo);
 		int result = dao.memberUpdate(vo);
+		
 		System.out.println("ajaxmemberUpdate 찍음 ");
 		System.out.println(result);
 		
