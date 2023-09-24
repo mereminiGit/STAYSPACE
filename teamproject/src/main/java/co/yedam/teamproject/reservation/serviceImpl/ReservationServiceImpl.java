@@ -43,4 +43,9 @@ public class ReservationServiceImpl implements ReservationService {
 		return map.reservationUpdate(vo);
 	}
 
+	@Override
+	public List<ReservationVO> reservationSelectListSpace(String spaceId) {
+		return map.reservationSelectListSpace(spaceId);
+	}
+
 }
