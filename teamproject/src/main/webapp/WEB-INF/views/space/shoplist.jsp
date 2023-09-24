@@ -64,12 +64,12 @@
 						</div>
 						<div class="sort-by">
 							<select id="input-sort" class="form-control" data-filter-sort=""
-								data-filter-order="">
-								<option value="">Default sorting</option>
-								<option value="">Price (Low-High)</option>
-								<option value="">Price (High-Low)</option>
-								<option value="">Rating (Highest)</option>
-								<option value="">Rating (Lowest)</option>
+								data-filter-order="" name="order">
+								<option value="default">Default sorting</option>
+								<option value="priceAsc">Price (Low-High)</option>
+								<option value="priceDesc">Price (High-Low)</option>
+								<option value="rateDesc">Rating (Highest)</option>
+								<option value="rateAsc">Rating (Lowest)</option>
 							</select>
 						</div>
 					</div>
@@ -191,7 +191,8 @@
 		}
 
 		$('#datepicker').datepicker({
-			format : 'yyyy-mm-dd'
+			dateFormat : 'yy-mm-dd',
+			minDate:0
 		}).on('hide', function(event) {
 			event.preventDefault();
 			event.stopPropagation();

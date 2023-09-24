@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import co.yedam.teamproject.common.GeoCoding;
 import co.yedam.teamproject.common.ViewResolve;
 import co.yedam.teamproject.space.service.SpaceService;
 import co.yedam.teamproject.space.service.SpaceVO;
@@ -30,6 +31,10 @@ public class DetailController extends HttpServlet {
 		
 		vo.setSpaceId(Integer.parseInt(request.getParameter("spaceId")));
 		vo=dao.spaceSelect(vo);
+		String location=vo.getSpaceAddress();
+		Float[] coords = GeoCoding.geoCoding(location);
+		vo.setSpaceLat(coords[0]);
+		vo.setSpaceLng(coords[1]);
 		request.setAttribute("s", vo);
 		request.setAttribute("memberId", session.getAttribute("memberId"));
 
