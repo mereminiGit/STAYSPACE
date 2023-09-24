@@ -78,15 +78,16 @@
 			<artifactId>tiles-extras</artifactId>
 			<version>3.0.8</version>
 		</dependency>
-<dependency>
-
-<groupId>com.google.code.geocoder-java</groupId>
-
-<artifactId>geocoder-java</artifactId>
-
-<version>0.16</version>
-
-</dependency>
+		<dependency>
+			<groupId>com.google.code.geocoder-java</groupId>
+			<artifactId>geocoder-java</artifactId>
+			<version>0.16</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.1.8</version>
+		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
@@ -107,7 +108,7 @@
 			<version>05Nov2002</version>
 		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<finalName>teamproject</finalName>
 		<pluginManagement><!-- lock down plugins versions to avoid using Maven
