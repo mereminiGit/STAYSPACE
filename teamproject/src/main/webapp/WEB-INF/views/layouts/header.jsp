@@ -301,72 +301,72 @@
 											<div class="form-group py-3" id="cityBox">
 												<ul id="cityList">
 													<li class="cityElement">
-														<button type="button" onclick="location.href='shoplist.do'">
+														<button type="button">
 															<a>전체</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button" onclick="location.href='shoplist.do?spaceCity=제주'">
+														<button type="button">
 															<a>제주</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button" onclick="location.href='shoplist.do?spaceCity=서울'">
+														<button type="button">
 															<a>서울</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button" onclick="location.href='shoplist.do?spaceCity=경기'">
+														<button type="button">
 															<a>경기</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button" onclick="location.href='shoplist.do?spaceCity=인천'">
+														<button type="button">
 															<a>인천</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button" onclick="location.href='shoplist.do?spaceCity=강원'">
+														<button type="button">
 															<a>강원</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button" onclick="location.href='shoplist.do?spaceCity=충청'">
+														<button type="button">
 															<a>충청</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button" onclick="location.href='shoplist.do?spaceCity=대전'">
+														<button type="button">
 															<a>대전</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button" onclick="location.href='shoplist.do?spaceCity=경상'">
+														<button type="button">
 															<a>경상</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button" onclick="location.href='shoplist.do?spaceCity=대구'">
+														<button type="button">
 															<a>대구</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button" onclick="location.href='shoplist.do?spaceCity=울산'">
+														<button type="button">
 															<a>울산</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button" onclick="location.href='shoplist.do?spaceCity=부산'">
+														<button type="button">
 															<a>부산</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button" onclick="location.href='shoplist.do?spaceCity=전라'">
+														<button type="button">
 															<a>전라</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button" onclick="location.href='shoplist.do?spaceCity=광주'">
+														<button type="button">
 															<a>광주</a>
 														</button>
 													</li>

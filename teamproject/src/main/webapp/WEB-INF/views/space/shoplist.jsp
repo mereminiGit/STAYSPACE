@@ -83,7 +83,7 @@
 									</div>
 									<div class="card-detail text-center pt-3 pb-2">
 										<h5 class="card-title fs-3 text-capitalize">
-											<a href="#" onclick="selectSpace('${s.spaceId}')">${s.spaceName }</a>
+											<a href="#" onclick="selectSpace('${s.spaceName}')">${s.spaceName }</a>
 										</h5>
 										<span class="item-price text-primary fs-3 fw-light">${s.spaceCity }
 											· ${s.spacePrice }원<small>/시간</small>
@@ -132,20 +132,11 @@
 						<div class="widget-product-categories pt-5">
 							<h5 class="widget-title text-decoration-underline text-uppercase">Cities</h5>
 							<ul class="product-categories sidebar-list list-unstyled">
-								<li class="cat-item"><a href="shoplist.do">전체</a></li>
-								<li class="cat-item"><a href="?spaceCity=제주">제주</a></li>
-								<li class="cat-item"><a href="?spaceCity=서울">서울</a></li>
-								<li class="cat-item"><a href="?spaceCity=경기">경기</a></li>
-								<li class="cat-item"><a href="?spaceCity=인천">인천</a></li>
-								<li class="cat-item"><a href="?spaceCity=강원">강원</a></li>
-								<li class="cat-item"><a href="?spaceCity=충청">충청</a></li>
-								<li class="cat-item"><a href="?spaceCity=대전">대전</a></li>
-								<li class="cat-item"><a href="?spaceCity=경상">경상</a></li>
-								<li class="cat-item"><a href="?spaceCity=대구">대구</a></li>
-								<li class="cat-item"><a href="?spaceCity=울산">울산</a></li>
-								<li class="cat-item"><a href="?spaceCity=부산">부산</a></li>
-								<li class="cat-item"><a href="?spaceCity=전라">전라</a></li>
-								<li class="cat-item"><a href="?spaceCity=광주">광주</a></li>
+								<li class="cat-item"><a href="shoplist.do">All</a></li>
+								<li class="cat-item"><a href="?spaceCity=Seoul">Seoul</a></li>
+								<li class="cat-item"><a href="?spaceCity=Busan">Busan</a></li>
+								<li class="cat-item"><a href="?spaceCity=Daegu">Daegu</a></li>
+								<li class="cat-item"><a href="?spaceCity=Gwangjoo">Gwangjoo</a></li>
 							</ul>
 						</div>
 						<h5 class="widget-title text-decoration-underline text-uppercase">
@@ -167,7 +158,7 @@
 		</div>
 		<div>
 			<form id="sform" action="shopdetail.do" method="post">
-				<input type="hidden" id="spaceId" name="spaceId">
+				<input type="hidden" id="spaceName" name="spaceName">
 			</form>
 		</div>
 
@@ -184,9 +175,9 @@
     } );
     </script> -->
 	<script type="text/javascript">
-		function selectSpace(id) {
+		function selectSpace(name) {
 			let form = document.getElementById("sform");
-			form.spaceId.value = id;
+			form.spaceName.value = name;
 			form.submit();
 		}
 

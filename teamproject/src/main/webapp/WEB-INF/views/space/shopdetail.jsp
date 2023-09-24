@@ -136,7 +136,7 @@
 							<div class="action-buttons my-4 d-flex flex-wrap">
 								<a href="checkout.do" class="btn btn-dark me-2 mb-1">Checkout</a>
 								<a href="#" class="btn btn-dark"
-									onclick="selectToCart('${s.spaceId}')">Add To Cart</a>
+									onclick="selectToCart('${s.spaceName}')">Add To Cart</a>
 							</div>
 						</div>
 						<hr>
@@ -297,6 +297,11 @@
 					</div>
 				</div>
 			</div>
+			<div>
+				<form id="cform" action="cart.do" method="post">
+					<input type="hidden" id="spaceName" name="spaceName">
+				</form>
+			</div>
 		</div>
 	</section>
 
@@ -381,7 +386,7 @@
 			</div> -->
 			<div>
 				<form id="sform" action="cart.do" method="post">
-					<input type="hidden" id="spaceId" name="spaceId"> 
+					<input type="hidden" id="spaceName" name="spaceName"> 
 					<input type="hidden" id="spaceStartDate" name="spaceStartDate">
 				</form>
 			</div>
@@ -446,10 +451,10 @@
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script type="text/javascript">
-	function selectToCart(id){
+	function selectToCart(name){
 			let form= document.getElementById("sform");
 		if(form.spaceStartDate.value!=0){
-			form.spaceId.value = id;
+			form.spaceName.value = name;
 			form.submit();
 		} else{
 			Swal.fire({
@@ -462,7 +467,6 @@
 	}
 		$('#datepicker').datepicker({
 			dateFormat : 'yy-mm-dd',
-			minDate:0,
 			onSelect: function(d) { 
 			        var dateObject =$("#datepicker").val();
 			        let form= document.getElementById("sform");

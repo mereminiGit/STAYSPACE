@@ -29,7 +29,7 @@ public class DetailController extends HttpServlet {
 		SpaceVO vo=new SpaceVO();
 		HttpSession session = request.getSession();
 		
-		vo.setSpaceId(Integer.parseInt(request.getParameter("spaceId")));
+		vo.setSpaceName(request.getParameter("spaceName"));
 		vo=dao.spaceSelect(vo);
 		String location=vo.getSpaceAddress();
 		Float[] coords = GeoCoding.geoCoding(location);
