@@ -43,10 +43,6 @@ public class SpaceServiceImpl implements SpaceService {
 	}
 
 
-	@Override
-	public SpaceVO spaceSelectId(int spaceId) {
-		return map.spaceSelectId(spaceId);
-	}
 
 
 }

@@ -411,7 +411,7 @@
 			adaptiveHeight : true
 		});
 	</script>
-	<script>
+	<!-- <script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
 			center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -450,7 +450,7 @@
 								map.setCenter(coords);
 							}
 						});
-	</script>
+	</script> -->
 	<!--    <script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
 		integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="

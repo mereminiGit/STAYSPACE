@@ -30,10 +30,6 @@ public class DetailController extends HttpServlet {
 		
 		vo.setSpaceId(Integer.parseInt(request.getParameter("spaceId")));
 		vo=dao.spaceSelect(vo);
-//		String loaction=vo.getSpaceAddress();
-//		Float[] coords = GeoCoder.geoCoding(loaction);
-//		vo.setSpaceLat(coords[0]);
-//		vo.setSpaceLng(coords[1]);
 		request.setAttribute("s", vo);
 		
 		request.setAttribute("memberId", session.getAttribute("memberId"));

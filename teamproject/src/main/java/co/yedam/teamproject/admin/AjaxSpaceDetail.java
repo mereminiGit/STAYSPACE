@@ -39,8 +39,8 @@ public class AjaxSpaceDetail extends HttpServlet {
 		
 		ReservationService rdao = new ReservationServiceImpl();
 		List<ReservationVO> reserveList = new ArrayList<ReservationVO>();
-		
-		space = dao.spaceSelectId(Integer.parseInt(sid));
+		space.setSpaceId(Integer.parseInt(sid));
+		space = dao.spaceSelect(space);
 		request.setAttribute("s", space);
 		System.out.println(space);
 
