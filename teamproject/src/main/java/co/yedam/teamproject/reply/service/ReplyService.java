@@ -4,8 +4,8 @@ import java.util.List;
 
 public interface ReplyService {
 	List<ReplyVO> replySelectListMember(String m); //memberId로 reply 리스트 가져옴
-	List<ReplyVO> replySelectListId(String spaceId);
-	List<ReplyVO> replySelectList(String s);
+	List<ReplyVO> replySelectListId(int spaceId); //spaceId로 reply 리스트 가져옴
+	List<ReplyVO> replySelectList(String spaceName);  //spaceName 으로 
 	ReplyVO replySelect(ReplyVO vo);
 	int replyInsert(ReplyVO vo);
 	int replyUpdate(ReplyVO vo);

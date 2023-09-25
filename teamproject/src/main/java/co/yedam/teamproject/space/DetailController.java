@@ -1,6 +1,8 @@
 package co.yedam.teamproject.space;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import co.yedam.teamproject.common.ViewResolve;
+import co.yedam.teamproject.reply.service.ReplyService;
+import co.yedam.teamproject.reply.service.ReplyVO;
+import co.yedam.teamproject.reply.serviceImpl.ReplyServiceImpl;
 import co.yedam.teamproject.space.service.SpaceService;
 import co.yedam.teamproject.space.service.SpaceVO;
 import co.yedam.teamproject.space.serviceImpl.SpaceServiceImpl;
@@ -26,11 +31,18 @@ public class DetailController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		SpaceService dao= new SpaceServiceImpl();
 		SpaceVO vo=new SpaceVO();
+		
+		ReplyService daoReply = new ReplyServiceImpl();
+		List<ReplyVO> replyes = new ArrayList<ReplyVO>();
+		
 		HttpSession session = request.getSession();
 		
 		vo.setSpaceId(Integer.parseInt(request.getParameter("spaceId")));
 		vo=dao.spaceSelect(vo);
 		request.setAttribute("s", vo);
+		
+		replyes = daoReply.replySelectListId(Integer.parseInt(request.getParameter("spaceId")));
+		request.setAttribute("replyes", replyes);
 		
 		request.setAttribute("memberId", session.getAttribute("memberId"));
 
