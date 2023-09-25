@@ -206,6 +206,7 @@
 
     </script>
     <script>
+    //회원탈퇴
       function deleteMember(memberId) {
 
         var chk = $('input[name=chkSelect]:checked').length;
