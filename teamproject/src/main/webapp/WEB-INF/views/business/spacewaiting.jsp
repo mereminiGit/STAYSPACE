@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,22 +48,39 @@ img#stayimg {
 						</thead>
 						<tbody class="table-border-bottom-0">
 							<!-- 1번 공간 -->
+							<c:forEach items="${hostReserve }" var="h">
 							<tr>
 								<td><img id="stayimg"
 									src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
-								<td>촬영
-										스튜디오</td>
-								<td>50000</td>
-								<td>홍길동</td>
-								<td>2023-09-01</td>
-								<td>2023-09-02</td>
+								<td>${h.spaceName }</td>
+								<td><fmt:formatNumber value="${h.reservePrice }" type="currency" currencySymbol="￦"/></td>
+								<td>${h.memberId }</td>
+								<td>${h.reserveStartDate }</td>
+								<td>${h.reserveCheckoutDate }</td>
 								<td>
-									<button type="button" class="btn btn-outline-warning approved">승인</button>
+									<button type="button" class="btn btn-outline-warning approved" onclick="reserveCall('${h.hostId }',${h.reserveId},${h.reserveCheck },'승인')">승인</button>
 									<button type="button"
-										class="btn btn-outline-secondary rejected">거부</button>
+										class="btn btn-outline-secondary rejected" onclick="reserveCall('${h.hostId }',${h.reserveId},${h.reserveCheck },'거부')">거부</button>
 								</td>
 							</tr>
+							</c:forEach>
 							<!-- 2번 공간 -->
+							<!-- <tr>
+								<td><img id="stayimg"
+									src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
+								<td>촬영
+										스튜디오</td>
+								<td>50000</td>
+								<td>홍길동</td>
+								<td>2023-09-01</td>
+								<td>2023-09-02</td>
+								<td>
+									<button type="button" class="btn btn-outline-warning approved">승인</button>
+									<button type="button"
+										class="btn btn-outline-secondary rejected">거부</button>
+								</td>
+							</tr>
+							3번 공간
 							<tr>
 								<td><img id="stayimg"
 									src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
@@ -75,7 +96,7 @@ img#stayimg {
 										class="btn btn-outline-secondary rejected">거부</button>
 								</td>
 							</tr>
-							<!-- 3번 공간 -->
+							4번 공간
 							<tr>
 								<td><img id="stayimg"
 									src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
@@ -90,23 +111,7 @@ img#stayimg {
 									<button type="button"
 										class="btn btn-outline-secondary rejected">거부</button>
 								</td>
-							</tr>
-							<!-- 4번 공간 -->
-							<tr>
-								<td><img id="stayimg"
-									src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
-								<td>촬영
-										스튜디오</td>
-								<td>50000</td>
-								<td>홍길동</td>
-								<td>2023-09-01</td>
-								<td>2023-09-02</td>
-								<td>
-									<button type="button" class="btn btn-outline-warning approved">승인</button>
-									<button type="button"
-										class="btn btn-outline-secondary rejected">거부</button>
-								</td>
-							</tr>
+							</tr> -->
 						</tbody>
 						<caption style="padding-left: 20px">
 							<b>Total:
@@ -119,7 +124,7 @@ img#stayimg {
 		</div>
 	</div>
 	<script>
-		$('.approved').on('click', function(e) {
+	/* 	$('.approved').on('click', function(e) {
 			e.target.parentElement.innerText = 'Approved';
 			Swal.fire({
 				  icon: 'success',
@@ -134,7 +139,18 @@ img#stayimg {
 				  text: '거부되었습니다.',
 				})
 			return rejected;
-		})
+		})  */
+		
+		function reserveCall(hostId,reserveId,reserveCheck,type){
+		    $.ajax({
+                url: "ajaxReserveUpdate.do?hostId="+hostId+"&reserveId="+reserveId+"&reserveCheck="+reserveCheck+"&type="+type,
+                type: "get",
+                datatype: "html",
+                success: function (data) {
+                    alert("연결성공");
+                }
+              });
+		}
 	</script>
 
 </body>

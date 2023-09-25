@@ -14,4 +14,5 @@ public interface ReservationMapper {
 	int reservationUpdate(ReservationVO vo);
 	int reservationInsert(ReservationVO vo);
 	int reservationDelete(ReservationVO vo);
+	int reservationListUpdate(ReservationVO vo);
 }

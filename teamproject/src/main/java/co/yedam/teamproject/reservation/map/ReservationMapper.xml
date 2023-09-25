@@ -36,6 +36,14 @@
 		  WHERE MEMBER_ID = #{memberId}
    		  AND SPACE_NAME = #{spaceName}
 	</update>
+	<update id="reservationListUpdate" parameterType="co.yedam.teamproject.reservation.service.ReservationVO">
+		UPDATE RESERVATION
+		<set>
+		RESERVE_CHECK = #{reserveCheck}
+		</set>	
+		WHERE HOST_ID=#{hostId}
+		AND RESERVE_ID=#{reserveId}
+	</update>
 	<delete id="reservationDelete" parameterType="co.yedam.teamproject.reservation.service.ReservationVO">
 		DELETE FROM RESERVATION
 		WHERE RESERVE_ID = #{reserveId}

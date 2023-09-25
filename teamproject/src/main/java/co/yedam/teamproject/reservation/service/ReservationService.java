@@ -12,4 +12,5 @@ public interface ReservationService {
 	int reservationInsert(ReservationVO vo);
 	int reservationDelete(ReservationVO vo);
 	int reservationUpdate(ReservationVO vo);
+	int reservationListUpdate(ReservationVO vo);
 }
