@@ -185,12 +185,11 @@
 					<div class="billing-details">
 					<c:set var="total" value="0"/>
 					<c:forEach items="${cart }" var="c">
-					<a href="detail.do">
-					<img src="vaso-html/images/${c.spaceImageMain }" style="width:648px">
-						<label for="fname">${c.spaceName }</label>
-					</a></div>
+					<img src="image/space/${c.spaceImageMain }" style="width:648px">
+						<label for="fname">${c.spaceName } · ${c.spaceStartDate }</label>
 					<c:set var="total" value="${total+c.spacePrice }"/>
 					</c:forEach>
+					</div>
 					<div class="your-order mt-5">
 						<h3 class="pb-4">Cart Totals</h3>
 						<div class="total-price">

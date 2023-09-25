@@ -33,4 +33,9 @@ public class CartListServiceImpl implements CartListService {
 		return map.cartListDelete(vo);
 	}
 
+	@Override
+	public List<CartListVO> cartDateSelectList(CartListVO vo) {
+		return map.cartDateSelectList(vo);
+	}
+
 }

@@ -185,7 +185,7 @@
 									<td class="align-middle border-0" scope="row">
 										<div class="cart-product-detail d-flex align-items-center">
 											<div class="card-image">
-												<img src="vaso-html/images/${c.spaceImageMain }" alt="cloth"
+												<img src="image/space/${c.spaceImageMain }" alt="cloth"
 													class="img-fluid">
 											</div>
 											<div class="card-detail ps-3">
@@ -228,7 +228,7 @@
 					</div>
 					<div class="button-wrap">
 						<button class="btn btn-dark me-2 mb-2"
-							onclick="location.href='list.do'">Continue Shopping</button>
+							onclick="location.href='shoplist.do'">Continue Shopping</button>
 						<button class="btn btn-primary me-2 mb-2"
 							onclick="location.href='checkout.do'">Proceed To
 							Checkout</button>

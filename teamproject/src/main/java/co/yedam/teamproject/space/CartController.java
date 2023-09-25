@@ -45,32 +45,25 @@ public class CartController extends HttpServlet {
 
 				vo.setMemberId(id); // 세션에 담긴 아이디 불러오기
 				vo.setSpaceName(svo.getSpaceName());
-				vo.setMemberId(svo.getMemberId());
 				vo.setSpacePrice(svo.getSpacePrice());
 				vo.setSpaceCity(svo.getSpaceCity());
 				vo.setSpaceImageMain(svo.getSpaceImageMain());
 				vo.setSpaceStartDate(Date.valueOf(request.getParameter("spaceStartDate")));
 				vo.setSpaceId(Integer.valueOf(svo.getSpaceId()));
 				dao.cartListInsert(vo);
-				System.out.println(vo.getMemberId());
 				list = dao.cartListSelectList(vo);
 			} else {
-				vo.setMemberId("b"+id); // 세션에 담긴 아이디 불러오기
-				System.out.println(vo.getMemberId());
+				vo.setMemberId(id); // 세션에 담긴 아이디 불러오기
 				list = dao.cartListSelectList(vo);
 			}
-
 			request.setAttribute("cartList", list);
-
 			String path = "space/cart";
 			ViewResolve.forward(request, response, path);
-
 		} else {
 			String path = "main/account";
 			ViewResolve.forward(request, response, path);
 		}
 	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
