@@ -111,9 +111,9 @@
               </a>
              </li>
              <li class="menu-item">
-              <a href="totalsaleschart.do" class="menu-link">
+              <a href="adminmypage.do" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-detail"></i>
-                <div data-i18n="Form Elements">Total Sales Chart</div>
+                <div data-i18n="Form Elements">My Page</div>
               </a>
              </li>
           </ul>

@@ -44,7 +44,7 @@ public class AjaxSpaceDetail extends HttpServlet {
 		request.setAttribute("s", space);
 		System.out.println(space);
 
-		replyList = replydao.replySelectListId(sid);
+		replyList = replydao.replySelectListId(Integer.parseInt(sid));
 		request.setAttribute("reply", replyList);
 		
 		reserveList = rdao.reservationSelectListSpace(sid);

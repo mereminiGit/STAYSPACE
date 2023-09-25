@@ -19,6 +19,7 @@ public class SpaceServiceImpl implements SpaceService {
 
 	@Override
 	public SpaceVO spaceSelect(SpaceVO vo) {
+		map.spaceHitUpdate(vo.getSpaceId());
 		return map.spaceSelect(vo);
 	}
 
@@ -40,6 +41,11 @@ public class SpaceServiceImpl implements SpaceService {
 	@Override
 	public List<SpaceVO> totalSpaceSelectList() {
 		return map.totalSpaceSelectList();
+	}
+
+	@Override
+	public void spaceHitUpdate(int id) {
+		
 	}
 
 

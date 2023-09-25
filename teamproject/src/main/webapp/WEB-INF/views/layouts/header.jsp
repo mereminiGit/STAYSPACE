@@ -303,96 +303,71 @@
 													<li class="cityElement">
 
 														<button type="button" id="All" onclick="cityClick(this)">
-
 															<a>전체</a>
 														</button>
 													</li>
 													<li class="cityElement">
-
 														<button type="button" id="제주" onclick="cityClick(this)">
-
 															<a>제주</a>
 														</button>
 													</li>
 													<li class="cityElement">
-
 														<button type="button" id="서울" onclick="cityClick(this)">
-
 															<a>서울</a>
 														</button>
 													</li>
 													<li class="cityElement">
-
 														<button type="button" id="경기" onclick="cityClick(this)">
-
 															<a>경기</a>
 														</button>
 													</li>
 													<li class="cityElement">
-
 														<button type="button" id="인천" onclick="cityClick(this)">
 															<a>인천</a>
 														</button>
 													</li>
 													<li class="cityElement" >
 														<button type="button" id="강원" onclick="cityClick(this)">
-
 															<a>강원</a>
 														</button>
 													</li>
 													<li class="cityElement">
-
 														<button type="button" id="충청" onclick="cityClick(this)">
-
 															<a>충청</a>
 														</button>
 													</li>
 													<li class="cityElement">
-
 														<button type="button" id="대전" onclick="cityClick(this)">
-
 															<a>대전</a>
 														</button>
 													</li>
 													<li class="cityElement">
-
 														<button type="button" id="경상" onclick="cityClick(this)">
-
 															<a>경상</a>
 														</button>
 													</li>
 													<li class="cityElement">
-											
 														<button type="button" id="대구" onclick="cityClick(this)">
-
 															<a>대구</a>
 														</button>
 													</li>
 													<li class="cityElement">
-
 														<button type="button" id="울산" onclick="cityClick(this)">
-
 															<a>울산</a>
 														</button>
 													</li>
 													<li class="cityElement">
-
 														<button type="button" id="부산" onclick="cityClick(this)">
-
 															<a>부산</a>
 														</button>
 													</li>
 													<li class="cityElement">
-
 														<button type="button" id="전라" onclick="cityClick(this)">
-
 															<a>전라</a>
 														</button>
 													</li>
 													<li class="cityElement">
-
 														<button type="button" id="광주" onclick="cityClick(this)">
-
 															<a>광주</a>
 														</button>
 													</li>
@@ -476,16 +451,16 @@
 				
 				var dateToday = new Date();
 				var dates = $("#finddatepicker").datepicker({
-				    defaultDate: "+1w",
+				  /*   defaultDate: "+1w",
 				    changeMonth: true,
-				    numberOfMonths: 3,
-				    minDate: dateToday,
-				    onSelect: function(selectedDate) {
+				    numberOfMonths: 3, */
+				    minDate: 0,
+				   /*  onSelect: function(selectedDate) {
 				        var option = this.id == "from" ? "minDate" : "maxDate",
 				            instance = $(this).data("datepicker"),
 				            date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
 				        dates.not(this).datepicker("option", option, date);
-				    }
+				    } */
 				});
 			</script>
 			
