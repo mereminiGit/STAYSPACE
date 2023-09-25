@@ -15,6 +15,13 @@
 
 
 			<meta name="description" content="" />
+			
+			<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    		<style type="text/css">
+			    *{
+			     font-family: 'Noto Sans KR', sans-serif; 
+			    }
+    		</style>
 
 		</head>
 
@@ -66,7 +73,7 @@
 														<c:forEach items="${reserve}" var="r">
 															<tr>
 																<td><i class="fab fa-angular fa-lg text-danger me-3"></i><a href="#"><img id="stayimg"
-																			alt="stay" src="member/image/${r.reserveImg }"></a></td>
+																			alt="stay" src="image/space/${r.reserveImg }"></a></td>
 																<td>${r.spaceName }</td>
 																<td>${r.reserveStartDate }</td>
 																<td>${r.reserveCheckoutDate }</td>

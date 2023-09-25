@@ -50,7 +50,14 @@
 						<h5 class="card-title"><strong>Type</strong></h5>
 						<p class="card-text">&nbsp;  ${s.spaceType }</p>
 						<h5 class="card-title"><strong>Grade</strong></h5>
-						<p class="card-text">&nbsp;  ${s.spaceStar }</p>
+						<p class="card-text">
+						<c:forEach begin="1" end="${s.spaceStar }">
+						<span>★</span>
+						</c:forEach>
+						<c:forEach begin="1" end="${5-s.spaceStar }">
+						<span>☆</span>
+						</c:forEach>
+						</p>
 					</div>
 				</div>
 			</div>
@@ -87,14 +94,21 @@
 														class="rounded-circle" alt="default" style="width: 30px"></td>
 												</c:when>
 												<c:otherwise>
-													<td><img src="image/member/${reply.replyImage }"
+													<td><img src="image/reply/${reply.replyImage }"
 														class="rounded-circle" alt="default" style="width: 30px"></td>
 												</c:otherwise>
 											</c:choose>
 											<td>${reply.memberId }</td>
 											<td>${reply.replyContent }</td>
 											<td>${reply.replyDate }</td>
-											<td>${reply.replyStar }</td>
+											<td>
+											<c:forEach begin="1" end="${reply.replyStar }">
+											<span>★</span>
+											</c:forEach>
+											<c:forEach begin="1" end="${5-reply.replyStar }">
+											<span>☆</span>
+											</c:forEach>
+											</td>
 											<td>
 												<div class="dropdown">
 													<button type="button"
@@ -143,8 +157,17 @@
 											<td>${r.reserveId }</td>
 											<td>${r.memberId }</td>
 											<td>${r.reserveStartDate }</td>
-											<td>${r.reserveCheck }</td>
-											<td>${r.reserveCheckoutDate }</td>
+											<c:choose>
+												<c:when test="${r.reserveCheck eq 0}">
+													<td>미승인</td>
+													<td> </td>
+												</c:when>
+												<c:otherwise>
+													<td>승인</td>
+													<td>${r.reserveCheckoutDate }</td>
+												</c:otherwise>
+											</c:choose>
+											
 											<td>
 												<div class="dropdown">
 													<button type="button"

@@ -15,6 +15,7 @@ public class CartListVO {
 	private String spaceCity;
 	private String spaceImageMain;
 	private Date spaceStartDate;
+	private int spaceId;
 
 	private int reserveId;
 	private int spaceId;

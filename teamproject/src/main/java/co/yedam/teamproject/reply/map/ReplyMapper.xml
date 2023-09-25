@@ -11,15 +11,15 @@
 		SELECT * FROM REPLY WHERE SPACE_NAME = #{spaceName}
 	</select>
 	<select id="replySelect" resultType="co.yedam.teamproject.reply.service.ReplyVO">
-		SELECT * FROM REPLY WHERE SPACE_NAME = #{spaceName}
+		SELECT * FROM REPLY WHERE SPACE_ID = #{spaceId}
 	</select>
 	<insert id="replyInsert" parameterType="co.yedam.teamproject.reply.service.ReplyVO">
 		<selectKey keyProperty="replyId" resultType="int" order="BEFORE">
-			SELECT NVL(MAX(SPACE_ID),0)+1
-			FROM REPLY
-		</selectKey>
-		INSERT INTO REPLY
-		VALUES (#{memberId}, #{spaceName}, #{replyContent}, SYSDATE, SYSDATE, #{replyStar},#{replyId})
+        	 SELECT NVL(MAX(REPLY_ID),0)+1
+        	 FROM REPLY
+      	</selectKey>
+		INSERT INTO REPLY (MEMBER_ID, SPACE_NAME, REPLY_CONTENT, REPLY_DATE, REPLY_STAR, REPLY_IMAGE, SPACE_ID, REPLY_ID)
+		VALUES (#{memberId}, #{spaceName}, #{replyContent}, SYSDATE, #{replyStar}, #{replyImage}, #{spaceId}, #{replyId})
 	</insert>
 	<update id="replyUpdate" parameterType="co.yedam.teamproject.reply.service.ReplyVO">
 		UPDATE REPLY SET REPLY_CONTENT = #{replyContent}, REPLY_STAR = #{replyStar}, REPLY_UPDATE_DATE = SYSDATE

@@ -10,4 +10,5 @@ public interface SpaceMapper {
 	int spaceInsert(SpaceVO vo);
 	int spaceUpdate(SpaceVO vo);
 	int spaceDelete(String spaceName);
+	void spaceHitUpdate(int id);
 }

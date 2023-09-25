@@ -161,126 +161,95 @@
 							aria-labelledby="nav-information-tab">
 							<p>${s.spaceContent }</p>
 						</div>
+						
+						<!-- 리뷰 -->
 						<div class="tab-pane fade" id="nav-review" role="tabpanel"
 							aria-labelledby="nav-review-tab">
-							<div
-								class="review-box review-style d-flex flex-wrap justify-content-between">
-								<div class="review-item d-flex">
-									<div class="image-holder">
-										<img src="vaso-html/images/review-image1.jpg" alt="review">
-									</div>
-									<div class="review-content">
-										<div class="rating-container d-flex align-items-center">
-											<div class="rating">
-												<svg class="bi" width="16" height="16">
-														<use xlink:href="#star-fill"></use>
-													</svg>
-											</div>
-											<div class="rating">
-												<svg class="bi" width="16" height="16">
-														<use xlink:href="#star-fill"></use>
-													</svg>
-											</div>
-											<div class="rating">
-												<svg class="bi" width="16" height="16">
-														<use xlink:href="#star-fill"></use>
-													</svg>
-											</div>
-											<div class="rating">
-												<svg class="bi" width="16" height="16">
-														<use xlink:href="#star-fill"></use>
-													</svg>
-											</div>
-											<div class="rating">
-												<svg class="bi" width="16" height="16">
-														<use xlink:href="#star-fill"></use>
-													</svg>
-											</div>
-											<span class="rating-count">(5.0)</span>
+							<div class="review-box review-style d-flex flex-wrap justify-content-between">
+								
+								<!-- 리뷰 반복 -->
+								<c:forEach items="${replyes }" var="r">						
+									<div class="review-item d-flex">
+										<div class="image-holder">
+											<img src="vaso-html/images/${r.replyImage }" alt="review">
 										</div>
-										<div class="review-header">
-											<span class="author-name">Tom Johnson</span> <span
-												class="review-date">- 07/05/2022</span>
+										<div class="review-content">
+											<div class="rating-container d-flex align-items-center">
+												<!-- 별점 -->
+												<c:forEach begin="1" end="${r.replyStar }" step="1">											
+													<div class="rating">
+														<svg class="bi" width="16" height="16">
+																<use xlink:href="#star-fill"></use>
+															</svg>
+													</div>
+												</c:forEach>
+												<!-- 별점 end -->
+												<span class="rating-count"> (${r.replyStar })</span>
+											</div>
+											
+											<div class="review-header">
+												<span class="author-name">${r.memberId }</span> <span
+													class="review-date">- ${r.replyDate }</span>
+											</div>
+											<p>${r.replyContent }</p>
 										</div>
-										<p>Vitae tortor condimentum lacinia quis vel eros donec
-											ac. Nam at lectus urna duis convallis convallis</p>
 									</div>
-								</div>
-								<div class="review-item d-flex">
-									<div class="image-holder">
-										<img src="vaso-html/images/review-image2.jpg" alt="review">
-									</div>
-									<div class="review-content">
-										<div class="rating-container d-flex align-items-center">
-											<div class="rating">
-												<svg class="bi" width="16" height="16">
-														<use xlink:href="#star-fill"></use>
-													</svg>
-											</div>
-											<div class="rating">
-												<svg class="bi" width="16" height="16">
-														<use xlink:href="#star-fill"></use>
-													</svg>
-											</div>
-											<div class="rating">
-												<svg class="bi" width="16" height="16">
-														<use xlink:href="#star-fill"></use>
-													</svg>
-											</div>
-											<div class="rating">
-												<svg class="bi" width="16" height="16">
-														<use xlink:href="#star-fill"></use>
-													</svg>
-											</div>
-											<div class="rating">
-												<svg class="bi" width="16" height="16">
-														<use xlink:href="#star-fill"></use>
-													</svg>
-											</div>
-											<span class="rating-count">(5.0)</span>
-										</div>
-										<div class="review-header">
-											<span class="author-name">Jenny Willis</span> <span
-												class="review-date">- 07/05/2022</span>
-										</div>
-										<p>Vitae tortor condimentum lacinia quis vel eros donec
-											ac. Nam at lectus urna duis convallis convallis</p>
-									</div>
-								</div>
+								</c:forEach>	
+								<!-- 리뷰 반복 -->						
 							</div>
+							
+							<!-- 리뷰 추가 -->
 							<div class="add-review margin-small">
 								<h3>Add a review</h3>
-								<div class="review-rating py-2">
-									<span class="my-2">Your rating</span>
-									<div class="rating-container d-flex align-items-center"
-										id="yourRating">
-										<div class="star-rating space-x-4" style="float: left">
-											<input type="radio" id="5-stars" name="rating" value="5"
-												v-model="ratings" /> <label for="5-stars" class="star pr-4">★</label>
-											<input type="radio" id="4-stars" name="rating" value="4"
-												v-model="ratings" /> <label for="4-stars" class="star">★</label>
-											<input type="radio" id="3-stars" name="rating" value="3"
-												v-model="ratings" /> <label for="3-stars" class="star">★</label>
-											<input type="radio" id="2-stars" name="rating" value="2"
-												v-model="ratings" /> <label for="2-stars" class="star">★</label>
-											<input type="radio" id="1-star" name="rating" value="1"
-												v-model="ratings" /> <label for="1-star" class="star">★</label>
+								<form id="replyForm" action="replyinsert.do">
+									<div class="review-rating py-2">
+										<span class="my-2">Your rating</span>
+										<!-- 별점 -->
+										<div class="rating-container d-flex align-items-center"
+											id="yourRating">
+											<div class="star-rating space-x-4" style="float: left; padding-left: 0;">
+												<input type="radio" id="5-stars" name="rating" value="5"
+													v-model="ratings" /> <label for="5-stars" class="star pr-4">★</label>
+												<input type="radio" id="4-stars" name="rating" value="4"
+													v-model="ratings" /> <label for="4-stars" class="star">★</label>
+												<input type="radio" id="3-stars" name="rating" value="3"
+													v-model="ratings" /> <label for="3-stars" class="star">★</label>
+												<input type="radio" id="2-stars" name="rating" value="2"
+													v-model="ratings" /> <label for="2-stars" class="star">★</label>
+												<input type="radio" id="1-star" name="rating" value="1"
+													v-model="ratings" /> <label for="1-star" class="star">★</label>
+											</div>
 										</div>
 									</div>
-								</div>
-								<input type="file" class="jfilestyle py-2 border-0"
-									data-text="Choose your file">
-								<form id="form">
+									<!-- 이미지 파일 -->
+									<span class="my-2" style="padding-top: 15px;">Your image</span><br>				
+									<input type="file" class="jfilestyle py-2 border-0" id="replyFile" name="replyFile"
+										data-text="Choose your file" style="padding: 8px 0px 0px 8px;">
+									<!-- 리뷰 content -->
 									<div class="py-3">
-										<label>Your Review</label>
-										<textarea placeholder="Write your review here" class="w-100"></textarea>
+											<label>Your Review</label>
+											<textarea placeholder="Write your review here" class="w-100" style="padding-left: 8px"
+											id="replyTextarea" name="replyTextarea"></textarea>
 									</div>
-									<button type="submit" name="submit"
-										class="btn btn-dark w-100 my-3">Submit</button>
+									
+									<div style="display:none">
+										<input type="text" name="replyMemberId" value="${memberId }">
+									</div>
+									
+									<div style="display:none">
+										<input type="text" name="replySpaceId" value="${s.spaceId }">
+									</div>
+									
+									<div style="display:none">
+										<input type="text" name="replySpaceName" value="${s.spaceName }">
+									</div>
+									
+									<button type="submit" name="replySubmit"
+											class="btn btn-dark w-100 my-3">Submit</button>
 								</form>
 							</div>
+							
 						</div>
-
 					</div>
 				</div>
 			</div>
@@ -472,6 +441,9 @@
 			event.stopPropagation();
 		})
 	</script>
+	
+	<!-- 리뷰 script -->
+
 </body>
 
 </html>
