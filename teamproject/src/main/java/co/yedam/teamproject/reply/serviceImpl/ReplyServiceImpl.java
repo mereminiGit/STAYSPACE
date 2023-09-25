@@ -49,7 +49,7 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public List<ReplyVO> replySelectListId(String spaceId) {
+	public List<ReplyVO> replySelectListId(int spaceId) {
 		return map.replySelectListId(spaceId);
 	}
 

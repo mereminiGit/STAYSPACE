@@ -22,7 +22,7 @@
 									<h2 style="text-shadow: 1px 1px 5px rgb(255, 255, 255, 0.5);">Studio Space</h2>
 									<p class="fs-3" style="font-weight: bold; text-shadow: 1px 1px 5px rgb(255, 255, 255, 0.5);">패션 촬영, 자연광으로 사진 잘 나오는 스튜디오는?</p>
 									<!-- image slide 1 상세 페이지 링크 (SpaceItem.do?name=\${space.spaceName}) -->
-									<a href="single-product.html" class="btn">Space Now</a>
+									<a href="shoplist.do?spaceType=Studio" class="btn">Space Now</a>
 								</div>
 							</div>
 							<div class="col-md-5"></div>
@@ -40,7 +40,7 @@
 									<h2 style="text-shadow: 1px 1px 5px rgb(255, 255, 255, 0.5);">House Space</h2>
 									<p class="fs-3" style="font-weight: bold; text-shadow: 1px 1px 5px rgb(255, 255, 255, 0.5);">제품 촬영, 가구 배치 가능한 스튜디오는 없을까?</p>
 									<!-- image slide 2 상세 페이지 링크 -->
-									<a href="single-product.html" class="btn">Space Now</a>
+									<a href="shoplist.do?spaceType=House" class="btn">Space Now</a>
 								</div>
 							</div>
 							<div class="col-md-5"></div>
@@ -58,7 +58,7 @@
 									<h2 style="text-shadow: 1px 1px 5px rgb(255, 255, 255, 0.5);">Commercial Space</h2>
 									<p class="fs-3" style="font-weight: bold; text-shadow: 1px 1px 5px rgb(255, 255, 255, 0.5);">유튜브 콘텐츠 찍기 좋은 감성 카페는?</p>
 									<!-- image slide 3 상세 페이지 링크 -->
-									<a href="single-product.html" class="btn">Space Now</a>
+									<a href="shoplist.do?spaceType=Commercial" class="btn">Space Now</a>
 								</div>
 							</div>
 							<div class="col-md-5"></div>
@@ -524,7 +524,7 @@
 				data-aos-delay="1000" data-aos-easing="ease-in"
 				data-aos-duration="1000" data-aos-once="true">
 				<h2>House</h2>
-				<a href="shop.html" class="btn">Go see it now</a>
+				<a href="shoplist.do?spaceType=House" class="btn">Go see it now</a>
 			</div>
 		</div>
 
@@ -535,7 +535,7 @@
 				data-aos-delay="1000" data-aos-easing="ease-in"
 				data-aos-duration="1000" data-aos-once="true">
 				<h2>Studio</h2>
-				<a href="shop.html" class="btn">Go to space</a>
+				<a href="shoplist.do?spaceType=Studio" class="btn">Go to space</a>
 			</div>
 		</div>
 		
@@ -546,7 +546,7 @@
 				data-aos-delay="1000" data-aos-easing="ease-in"
 				data-aos-duration="1000" data-aos-once="true">
 				<h2>Commercial</h2>
-				<a href="shop.html" class="btn">Go to space</a>
+				<a href="shoplist.do?spaceType=Commercial" class="btn">Go to space</a>
 			</div>
 		</div>
 	</section>

@@ -51,4 +51,10 @@
       parameterType="co.yedam.teamproject.space.service.SpaceVO">
       DELETE FROM SPACE WHERE SPACE_NAME=#{spaceName}
    </delete>
+   
+   <update id="spaceHitUpdate">
+		update space set space_hit = space_hit+1
+		where space_id = #{spaceId}
+	</update>
+	
 </mapper>

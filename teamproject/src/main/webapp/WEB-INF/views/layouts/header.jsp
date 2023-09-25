@@ -303,96 +303,71 @@
 													<li class="cityElement">
 
 														<button type="button" id="All" onclick="cityClick(this)">
-
 															<a>전체</a>
 														</button>
 													</li>
 													<li class="cityElement">
-
-														<button type="button" id="Jeju" onclick="cityClick(this)">
-
+														<button type="button" id="제주" onclick="cityClick(this)">
 															<a>제주</a>
 														</button>
 													</li>
 													<li class="cityElement">
-
-														<button type="button" id="Seoul" onclick="cityClick(this)">
-
+														<button type="button" id="서울" onclick="cityClick(this)">
 															<a>서울</a>
 														</button>
 													</li>
 													<li class="cityElement">
-
-														<button type="button" id="Gyeonggi" onclick="cityClick(this)">
-
+														<button type="button" id="경기" onclick="cityClick(this)">
 															<a>경기</a>
 														</button>
 													</li>
 													<li class="cityElement">
-
-														<button type="button" id="Incheon" onclick="cityClick(this)">
+														<button type="button" id="인천" onclick="cityClick(this)">
 															<a>인천</a>
 														</button>
 													</li>
 													<li class="cityElement" >
-														<button type="button" id="Gangwon" onclick="cityClick(this)">
-
+														<button type="button" id="강원" onclick="cityClick(this)">
 															<a>강원</a>
 														</button>
 													</li>
 													<li class="cityElement">
-
-														<button type="button" id="Chungcheong" onclick="cityClick(this)">
-
+														<button type="button" id="충청" onclick="cityClick(this)">
 															<a>충청</a>
 														</button>
 													</li>
 													<li class="cityElement">
-
-														<button type="button" id="Daejeon" onclick="cityClick(this)">
-
+														<button type="button" id="대전" onclick="cityClick(this)">
 															<a>대전</a>
 														</button>
 													</li>
 													<li class="cityElement">
-
-														<button type="button" id="Gyeongsang" onclick="cityClick(this)">
-
+														<button type="button" id="경상" onclick="cityClick(this)">
 															<a>경상</a>
 														</button>
 													</li>
-													<li class="cityElement"><<<<<<< jiye7
-											
-														<button type="button" id="Daegu" onclick="cityClick(this)">
-
+													<li class="cityElement">
+														<button type="button" id="대구" onclick="cityClick(this)">
 															<a>대구</a>
 														</button>
 													</li>
 													<li class="cityElement">
-
-														<button type="button" id="Ulsan" onclick="cityClick(this)">
-
+														<button type="button" id="울산" onclick="cityClick(this)">
 															<a>울산</a>
 														</button>
 													</li>
 													<li class="cityElement">
-
-														<button type="button" id="Busan" onclick="cityClick(this)">
-
+														<button type="button" id="부산" onclick="cityClick(this)">
 															<a>부산</a>
 														</button>
 													</li>
 													<li class="cityElement">
-
-														<button type="button" id="Jeolla" onclick="cityClick(this)">
-
+														<button type="button" id="전라" onclick="cityClick(this)">
 															<a>전라</a>
 														</button>
 													</li>
 													<li class="cityElement">
-
-														<button type="button" id="Gwangju" onclick="cityClick(this)">
-
+														<button type="button" id="광주" onclick="cityClick(this)">
 															<a>광주</a>
 														</button>
 													</li>
@@ -437,7 +412,7 @@
 										<div class="form-group py-3" style="text-align: center;">
 											<input type="text" class="form-control"
 												style="display: inline-block; text-align: center; width:300px"
-												placeholder="날짜를 선택하세요" id="datepicker" name="datepicker">
+												placeholder="날짜를 선택하세요" id="finddatepicker" name="finddatepicker">
 										</div>
 									</div>
 									<!-- Modal footer -->
@@ -475,17 +450,17 @@
 				}); */
 				
 				var dateToday = new Date();
-				var dates = $("#datepicker").datepicker({
-				    defaultDate: "+1w",
+				var dates = $("#finddatepicker").datepicker({
+				  /*   defaultDate: "+1w",
 				    changeMonth: true,
-				    numberOfMonths: 3,
-				    minDate: dateToday,
-				    onSelect: function(selectedDate) {
+				    numberOfMonths: 3, */
+				    minDate: 0,
+				   /*  onSelect: function(selectedDate) {
 				        var option = this.id == "from" ? "minDate" : "maxDate",
 				            instance = $(this).data("datepicker"),
 				            date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
 				        dates.not(this).datepicker("option", option, date);
-				    }
+				    } */
 				});
 			</script>
 			
