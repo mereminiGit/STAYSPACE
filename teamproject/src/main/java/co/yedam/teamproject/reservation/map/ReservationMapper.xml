@@ -4,6 +4,9 @@
 	<select id="reservationSelectList" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
 		SELECT * FROM RESERVATION
 	</select>
+	<select id="reservationSelectListSpace" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
+		SELECT * FROM RESERVATION WHERE SPACE_ID = #{spaceId}
+	</select>
 	<select id="reservationSelect" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
 		SELECT * FROM RESERVATION WHERE SPACE_NAME = #{spaceName}
 	</select>
@@ -29,6 +32,6 @@
 	<delete id="reservationDelete" parameterType="co.yedam.teamproject.reservation.service.ReservationVO">
 		DELETE FROM RESERVATION
 		WHERE RESERVE_ID = #{reserveId}
-		AND SPACE_NAME = #{spaceName}
+		OR SPACE_NAME = #{spaceName}
 	</delete>
 </mapper>

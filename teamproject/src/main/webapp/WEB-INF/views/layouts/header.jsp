@@ -279,7 +279,7 @@
 					</div>
 
 					<!-- Find Where 모달 -->
-					<form id="findWhereForm" action="spacelist.do" method="get">
+					<!-- <form id="findWhereForm" action="shoplist.do?spaceCity=Seoul" method="get"> -->
 						<div class="modal fade" id="findWhereModal" tabindex="-1" role="dialog" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
@@ -301,72 +301,98 @@
 											<div class="form-group py-3" id="cityBox">
 												<ul id="cityList">
 													<li class="cityElement">
-														<button type="button">
+
+														<button type="button" id="All" onclick="cityClick(this)">
+
 															<a>전체</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button">
+
+														<button type="button" id="Jeju" onclick="cityClick(this)">
+
 															<a>제주</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button">
+
+														<button type="button" id="Seoul" onclick="cityClick(this)">
+
 															<a>서울</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button">
+
+														<button type="button" id="Gyeonggi" onclick="cityClick(this)">
+
 															<a>경기</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button">
+
+														<button type="button" id="Incheon" onclick="cityClick(this)">
 															<a>인천</a>
 														</button>
 													</li>
-													<li class="cityElement">
-														<button type="button">
+													<li class="cityElement" >
+														<button type="button" id="Gangwon" onclick="cityClick(this)">
+
 															<a>강원</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button">
+
+														<button type="button" id="Chungcheong" onclick="cityClick(this)">
+
 															<a>충청</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button">
+
+														<button type="button" id="Daejeon" onclick="cityClick(this)">
+
 															<a>대전</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button">
+
+														<button type="button" id="Gyeongsang" onclick="cityClick(this)">
+
 															<a>경상</a>
 														</button>
 													</li>
-													<li class="cityElement">
-														<button type="button">
+													<li class="cityElement"><<<<<<< jiye7
+											
+														<button type="button" id="Daegu" onclick="cityClick(this)">
+
 															<a>대구</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button">
+
+														<button type="button" id="Ulsan" onclick="cityClick(this)">
+
 															<a>울산</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button">
+
+														<button type="button" id="Busan" onclick="cityClick(this)">
+
 															<a>부산</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button">
+
+														<button type="button" id="Jeolla" onclick="cityClick(this)">
+
 															<a>전라</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button">
+
+														<button type="button" id="Gwangju" onclick="cityClick(this)">
+
 															<a>광주</a>
 														</button>
 													</li>
@@ -376,13 +402,13 @@
 									</div>
 									<!-- Modal footer -->
 									<div class="modal-footer">
-										<button type="submit" class="btn btn-primary" id="idBtn"
-											style="margin: 20px auto; display: block;">search</button>
+										<button type="button" class="btn btn-primary" id="findWhereBtn"
+											style="margin: 20px auto; display: block;" onclick="findformcheck()">search</button>
 									</div>
 								</div>
 							</div>
 						</div>
-					</form>
+					<!-- </form> -->
 
 					<!-- Find When 모달 -->
 					<form id="findWhenForm" action="spacelist.do" method="get">
@@ -411,7 +437,7 @@
 										<div class="form-group py-3" style="text-align: center;">
 											<input type="text" class="form-control"
 												style="display: inline-block; text-align: center; width:300px"
-												placeholder="날짜를 선택하세요">
+												placeholder="날짜를 선택하세요" id="datepicker" name="datepicker">
 										</div>
 									</div>
 									<!-- Modal footer -->
@@ -439,11 +465,27 @@
 			<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 			<!-- <input class="datepicker"> -->
 			<script type="text/javascript">
-				$('.modal-body input').datepicker({
+			/* .modal-body input */
+				/* $('#datepicker').datepicker({
 					format: 'yyyy-mm-dd'
+					minDate: 0;
 				}).on('hide', function (event) {
 					event.preventDefault();
 					event.stopPropagation();
+				}); */
+				
+				var dateToday = new Date();
+				var dates = $("#datepicker").datepicker({
+				    defaultDate: "+1w",
+				    changeMonth: true,
+				    numberOfMonths: 3,
+				    minDate: dateToday,
+				    onSelect: function(selectedDate) {
+				        var option = this.id == "from" ? "minDate" : "maxDate",
+				            instance = $(this).data("datepicker"),
+				            date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+				        dates.not(this).datepicker("option", option, date);
+				    }
 				});
 			</script>
 			
@@ -465,6 +507,32 @@
 							location.href='home.do';
 						});
 				}
+			</script>
+			
+			<!-- Find where -->
+			<script type="text/javascript">
+			
+			let selectCity = '';
+			
+			function cityClick(e) {
+				/* this.children.innerText; */
+				console.log($(e).attr('id'));
+				selectCity = $(e).attr('id');
+			}
+			
+			function findformcheck() {
+				if (selectCity == 'All') {
+					window.location.href = 'shoplist.do';
+					/* $("#findWhereForm").attr("action", "shoplist.do"); */
+				} else if (selectCity == '') {
+					window.location.href = 'shoplist.do';
+				} else {
+					window.location.href = 'shoplist.do?spaceCity=' + selectCity;
+					/* $("#findWhereForm").attr("action", "shoplist.do?spaceCity="+selectCity); */
+					/* console.log($("#findWhereForm").attr('action')); */
+				}
+			}
+			
 			</script>
 		</body>
 

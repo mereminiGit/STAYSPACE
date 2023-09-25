@@ -15,7 +15,6 @@ $bootstrap-colors: () !default;
   .border-#{$color-name} {
     border-color: $color-value !important;
   }
-
   @include template-button-variant('.btn-#{$color-name}', $color-value);
   @include template-button-outline-variant('.btn-outline-#{$color-name}', $color-value);
 }

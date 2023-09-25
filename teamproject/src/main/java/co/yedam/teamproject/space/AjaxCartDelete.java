@@ -27,7 +27,8 @@ public class AjaxCartDelete extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CartListVO vo= new CartListVO();
 		int reserveId=Integer.parseInt(request.getParameter("reserveId"));
-		
+		System.out.println("djfklsadlkfls;kdjf");
+		System.out.println(request.getParameter("reserveId")+"ddddddddddddd");
 		vo.setReserveId(reserveId);
 		
 		CartListService dao= new CartListServiceImpl();

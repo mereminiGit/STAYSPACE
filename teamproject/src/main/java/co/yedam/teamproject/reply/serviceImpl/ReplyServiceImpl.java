@@ -38,4 +38,19 @@ public class ReplyServiceImpl implements ReplyService {
 		return map.replyDelete(vo);
 	}
 
+	@Override
+	public List<ReplyVO> replySelectListMember(String m) {
+		return map.replySelectListMember(m);
+	}
+
+	@Override
+	public int replyDeleteId(int id) {
+		return map.replyDeleteId(id);
+	}
+
+	@Override
+	public List<ReplyVO> replySelectListId(String spaceId) {
+		return map.replySelectListId(spaceId);
+	}
+
 }

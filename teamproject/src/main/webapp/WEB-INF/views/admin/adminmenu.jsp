@@ -88,7 +88,7 @@
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic">Member List</div>
               </a>
-            </li> 
+            </li>
 
             
             <!-- SPACES 
@@ -106,7 +106,7 @@
             <!-- Reservation Management -->
             <li class="menu-item">
               <a href="totalreservelist.do" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-detail"></i>
+                <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Form Elements">Total Reservation List</div>
               </a>
              </li>

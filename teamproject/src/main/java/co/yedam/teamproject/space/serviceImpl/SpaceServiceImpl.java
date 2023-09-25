@@ -37,4 +37,16 @@ public class SpaceServiceImpl implements SpaceService {
 		return map.spaceDelete(spaceName);
 	}
 
+	@Override
+	public List<SpaceVO> totalSpaceSelectList() {
+		return map.totalSpaceSelectList();
+	}
+
+
+	@Override
+	public SpaceVO spaceSelectId(int spaceId) {
+		return map.spaceSelectId(spaceId);
+	}
+
+
 }

@@ -26,6 +26,7 @@
 <!-- script
     ================================================== -->
 <script src="vaso-html/js/modernizr.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -177,6 +178,8 @@
 							</tr>
 						</thead>
 						<tbody>
+							<!--카트 상품목록 -->
+							<c:set var="total" value="0" />
 							<c:forEach items="${cartList }" var="c">
 								<tr class="border-bottom border-dark">
 									<td class="align-middle border-0" scope="row">
@@ -197,14 +200,15 @@
 										class="item-price text-primary fs-3 fw-medium">${c.spaceStartDate }<br>
 									</span></td>
 									<td class="align-middle border-0"><span
-										class="item-price text-primary fs-3 fw-medium">${c.spacePrice }</span></td>
-									<td class="align-middle border-0 cart-remove"><a href="#" onclick="delete()">
-											<svg width="32px" height="32px">
+										class="item-price text-primary fs-3 fw-medium">${c.spacePrice }원</span></td>
+									<td class="align-middle border-0 cart-remove"><a href="#"
+										onclick="remove()"> <svg width="32px" height="32px">
                         <use xlink:href="#baseline-clear"></use>
-                      </svg>
-                      <input type="hidden" class="reserve_id" value="${c.reserveId} ">
+                      </svg> <input type="hidden" class="reserve_id"
+											value="${c.reserveId} ">
 									</a></td>
 								</tr>
+								<c:set var="total" value="${total+c.spacePrice }"/>
 							</c:forEach>
 						</tbody>
 					</table>
@@ -218,7 +222,7 @@
 									<th>Total</th>
 									<td class="align-middle border-0" data-title="Total"><span
 										class="price-amount amount text-primary"> <bdi> <span
-												class="price-currency-symbol">$</span>2,370.00</bdi>
+												class="price-currency-symbol"></span>${total }원</bdi>
 									</span></td>
 								</tr>
 							</tbody>
@@ -237,8 +241,18 @@
 	</section>
 
 	<script>
-	function delete(e){
-		let reserveId= ${'.reserve_id'}.text();
+	function remove(e){
+		Swal.fire({
+			  title: '삭제',
+			  text: "정말로 삭제하시겠습니까?",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'delete'
+			}).then((result) => {
+			  if (result.isConfirmed) {
+		let reserveId= $('.reserve_id').text();
 		
 		$.ajax({
 			url:'cartdelete.do',
@@ -249,7 +263,11 @@
 				if(e.retCode=='Success'){
 					location.href='cart.do';
 					alert('cart에서 삭제되었습니다.')
-				}else{
+					Swal.fire(
+			      '삭제!',
+			      '삭제가 완료되었습니다.',
+			      'success'
+			    )}else{
 					alert('삭제 실패')
 				}
 			},
@@ -257,6 +275,9 @@
 				console.log(e.retCode);
 			}
 		})
+			   
+			  }
+			})
 	}
 	</script>
 	<script src="vaso-html-template/js/jquery-1.11.0.min.js"></script>

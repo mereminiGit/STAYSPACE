@@ -9,6 +9,7 @@ import lombok.Data;
 @Data
 public class ReservationVO {
 	private String memberId;
+	private int spaceId;
 	private String spaceName;
 	private Date reserveStartDate;
 	private Date reserveEndDate;
