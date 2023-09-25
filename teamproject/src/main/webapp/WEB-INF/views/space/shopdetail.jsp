@@ -135,7 +135,7 @@
 									name="datepicker">
 							</h5>
 							<div class="action-buttons my-4 d-flex flex-wrap">
-								<a href="checkout.do" class="btn btn-dark me-2 mb-1">Checkout</a>
+								<a href="checkout.do" class="btn btn-dark me-2 mb-1">Wishlist</a>
 								<a href="#" class="btn btn-dark"
 									onclick="selectToCart('${s.spaceId}')">Add To Cart</a>
 							</div>

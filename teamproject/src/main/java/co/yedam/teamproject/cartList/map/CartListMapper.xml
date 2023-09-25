@@ -24,6 +24,8 @@
 	<delete id="cartListDelete"
 		parameterType="co.yedam.teamproject.cartList.service.CartListVO">
 		DELETE FROM CARTLIST WHERE RESERVE_ID = #{reserveId}
+		<if test="memberId !=null">
 		AND MEMBER_ID = #{memberId}
+		</if>
 	</delete>
 </mapper>
