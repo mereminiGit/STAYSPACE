@@ -42,7 +42,7 @@
         </li>
         <br>
         <li class="menu-item">
-          <a href="memberedit.do" class="menu-link menu-toggle">
+          <a href="#" class="menu-link menu-toggle" onclick="memberClick('jiwon');">
             <i class="menu-icon tf-icons bx bx-detail"></i>
             <div data-i18n="Form Elements">Profile</div>
           </a>
@@ -58,6 +58,9 @@
     <form id="aform" action="membercartlist.do" method="post">
     <input type= "hidden" id="memberId" name="memberId">
     </form>
+     <form id="mform" action="memberedit.do" method="post">
+    <input type= "hidden" id="memberId" name="memberId">
+    </form>
     <script>
     function listClick(id){
         console.log(id);
@@ -68,6 +71,12 @@
     function cartClick(id){
         console.log(id);
     	let form = document.getElementById("aform");
+    	form.memberId.value=id;
+    	form.submit();
+    }
+    function memberClick(id){
+        console.log(id);
+    	let form = document.getElementById("mform");
     	form.memberId.value=id;
     	form.submit();
     }

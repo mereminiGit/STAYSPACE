@@ -11,4 +11,6 @@ public class MemberVO {
 	private String memberTel;
 	private String memberCheck;
 	private String memberImage;
+	private String memberAttech;
+	private String memberThumb;
 }

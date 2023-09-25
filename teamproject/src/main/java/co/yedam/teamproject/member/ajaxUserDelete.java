@@ -7,39 +7,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.yedam.teamproject.common.ViewResolve;
 import co.yedam.teamproject.member.service.MemberService;
 import co.yedam.teamproject.member.service.MemberVO;
 import co.yedam.teamproject.member.serviceImpl.MemberServiceImpl;
 
-
-@WebServlet("/memberedit.do")
-public class MemberEdit extends HttpServlet {
+@WebServlet("/ajaxUserDelete.do")
+public class ajaxUserDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-   
-    public MemberEdit() {
+    public ajaxUserDelete() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String memberId=request.getParameter("memberId");
 		MemberService dao = new MemberServiceImpl();
-		MemberVO vo =new MemberVO();
-		vo.setMemberId(request.getParameter("memberId"));
 		
-		vo = dao.memberSelect(vo);
-		request.setAttribute("m", vo);
-		System.out.println("memberEdit찍어봄"+vo);
-		String path = "member/member/memberedit";
-		ViewResolve.forward(request, response, path);
+		int result = dao.memberDelete(memberId);
 		
+		if(result !=0) {
+			response.getWriter().print("{\"retCode\": \"Success\"}");
+		}else {
+			response.getWriter().print("{\"retCode\": \"Fail\"}");
+		}
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
