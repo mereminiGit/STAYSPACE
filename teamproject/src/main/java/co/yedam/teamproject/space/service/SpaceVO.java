@@ -17,8 +17,6 @@ public class SpaceVO {
 	private String spaceImageSub1;
 	private String spaceImageSub2;
 	private int spaceHit;
-	private float spaceLat;
-	private float spaceLng;
 	private String spaceThumb;
 	private String spaceType;
 	private String spaceAttech;

@@ -44,7 +44,6 @@ public class DetailController extends HttpServlet {
 		replyes = daoReply.replySelectListId(Integer.parseInt(request.getParameter("spaceId")));
 		request.setAttribute("replyes", replyes);
 		
-		request.setAttribute("memberId", session.getAttribute("memberId"));
 
 		String path = "space/shopdetail";
 		ViewResolve.forward(request, response, path);

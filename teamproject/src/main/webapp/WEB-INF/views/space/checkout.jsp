@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -182,29 +183,26 @@
 					</div>
 					<h3 class="pb-4">Reservation Information</h3>
 					<div class="billing-details">
+					<c:set var="total" value="0"/>
+					<c:forEach items="${cart }" var="c">
 					<a href="detail.do">
-					<img src="vaso-html/images/StaySpace_commercial_1(1).jpg" style="width:648px">
-						<label for="fname">[분당/판교] 미드센츄리모던 빈티지 가구들로 꾸며진 카페</label>
+					<img src="vaso-html/images/${c.spaceImageMain }" style="width:648px">
+						<label for="fname">${c.spaceName }</label>
 					</a></div>
+					<c:set var="total" value="${total+c.spacePrice }"/>
+					</c:forEach>
 					<div class="your-order mt-5">
 						<h3 class="pb-4">Cart Totals</h3>
 						<div class="total-price">
 							<table cellspacing="0" class="table">
 								<tbody>
-									<tr
-										class="subtotal border-top border-bottom border-dark pt-2 pb-2 text-uppercase">
-										<th>Subtotal</th>
-										<td data-title="Subtotal"><span
-											class="price-amount amount text-primary ps-5"> <bdi>
-												<span class="price-currency-symbol">$</span>2,370.00 </bdi>
-										</span></td>
-									</tr>
+									
 									<tr
 										class="order-total border-bottom border-dark pt-2 pb-2 text-uppercase">
 										<th>Total</th>
 										<td data-title="Total"><span
 											class="price-amount amount text-primary ps-5"> <bdi>
-												<span class="price-currency-symbol">$</span>2,370.00 </bdi>
+												<span class="price-currency-symbol"></span>${total }원 </bdi>
 										</span></td>
 									</tr>
 								</tbody>
