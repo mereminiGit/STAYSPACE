@@ -29,6 +29,10 @@
 			AND MEMBER_ID = #{memberId}
 		</if>
 	</select>
+	
+	<select id="memberSelectCount" resultType="int">
+		SELECT COUNT(*) FROM MEMBER
+	</select>
 
 	<insert id="memberInsert"
 		parameterType="co.yedam.teamproject.member.service.MemberVO">

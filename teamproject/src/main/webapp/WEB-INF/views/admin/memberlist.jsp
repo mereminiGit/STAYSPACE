@@ -81,7 +81,7 @@
                       </tr> -->
 
                 </tbody>
-                <caption style="padding-left: 20px"><b>Total: </b>(Business: , Customer: )</caption>
+                <caption style="padding-left: 20px"><b>Total: ${count }</b></caption>
               </table>
               
              

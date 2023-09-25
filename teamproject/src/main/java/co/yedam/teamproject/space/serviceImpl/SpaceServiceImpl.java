@@ -48,6 +48,21 @@ public class SpaceServiceImpl implements SpaceService {
 		
 	}
 
+	@Override
+	public int spaceSelectCount() {
+		return map.spaceSelectCount();
+	}
+
+	@Override
+	public List<SpaceVO> spaceSelectListMember(String memberId) {
+		return map.spaceSelectListMember(memberId);
+	}
+
+	@Override
+	public int spaceSelectCountMember(String memberId) {
+		return map.spaceSelectCountMember(memberId);
+	}
+
 
 
 

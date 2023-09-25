@@ -73,7 +73,7 @@
 				eventClick : function(arg) {
 					console.log(arg);
 					Swal.fire({
-	      	            text: "해당 예약"+"을 정말 삭제하시겠습니까?",
+	      	            text: "해당 예약을 정말 삭제하시겠습니까?",
 	      	            icon: 'warning',
 	      	            showCancelButton: true,
 	      	            confirmButtonColor: '#3085d6',

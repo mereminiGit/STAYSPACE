@@ -100,7 +100,7 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="spacelist.do" class="menu-link">
+                  <a href="BusinessSpaceList.do" class="menu-link">
                     <div data-i18n="Basic Inputs">Space List</div>
                   </a>
                 </li>
@@ -129,15 +129,15 @@
              
              <!-- Sales
             <li class="menu-header small text-uppercase"><span class="menu-header-text">SALES</span></li>
-            <!-- Reservation Management -->
+            <!-- Reservation Management 
             <li class="menu-item">
               <a href="sale.do" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-detail"></i>
                 <div data-i18n="Form Elements">Sales Chart</div>
               </a>
-             </li>
+             </li> -->
           </ul>
-        </aside>
+        </aside> 
         <!-- / Menu -->
 
 

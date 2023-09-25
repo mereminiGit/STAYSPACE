@@ -52,4 +52,9 @@ public class MemberServiceImpl implements MemberService {
 
 	}
 
+	@Override
+	public int memberSelectCount() {
+		return map.memberSelectCount();
+	}
+
 }

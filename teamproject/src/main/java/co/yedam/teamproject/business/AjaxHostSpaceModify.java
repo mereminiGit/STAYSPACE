@@ -1,4 +1,4 @@
-package co.yedam.teamproject.admin;
+package co.yedam.teamproject.business;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,21 +16,19 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import co.yedam.teamproject.common.ThumbNail;
-import co.yedam.teamproject.common.ViewResolve;
 import co.yedam.teamproject.space.service.SpaceService;
 import co.yedam.teamproject.space.service.SpaceVO;
 import co.yedam.teamproject.space.serviceImpl.SpaceServiceImpl;
 
-@WebServlet("/AjaxSpaceModify.do")
-public class AjaxSpaceModify extends HttpServlet {
+@WebServlet("/AjaxHostSpaceModify.do")
+public class AjaxHostSpaceModify extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    public AjaxHostSpaceModify() {
+        super();
+    }
 
-	public AjaxSpaceModify() {
-		super();
-	}
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MultipartRequest multi = null;
 		ThumbNail thumbNail = new ThumbNail();
 		SpaceVO vo = new SpaceVO();
@@ -79,7 +77,7 @@ public class AjaxSpaceModify extends HttpServlet {
 			vo = dao.spaceSelect(vo);
 			resultMap.put("retCode", "Success");
 			resultMap.put("data", vo);
-			response.sendRedirect("totalspacelist.do");
+			response.sendRedirect("BusinessSpaceList.do");
 		} else {
 			resultMap.put("retCode", "Fail");
 		}
@@ -89,11 +87,9 @@ public class AjaxSpaceModify extends HttpServlet {
 
 		response.setContentType("text/json; charset=UTF-8");
 		response.getWriter().append(json);
-
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
 

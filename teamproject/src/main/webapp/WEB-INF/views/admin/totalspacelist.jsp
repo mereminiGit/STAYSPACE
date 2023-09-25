@@ -42,6 +42,7 @@ img.stayimg {
 								<th>Name</th>
 								<th>Address</th>
 								<th>Price</th>
+								<th>Type</th>
 								<th>Action</th>
 							</tr>
 						</thead>
@@ -56,6 +57,7 @@ img.stayimg {
 									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceAddress }</td>
 									<td onclick="adminspacedetail('${s.spaceId }')"><span>${s.spacePrice }</span>
 										원</td>
+									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceType }</td>
 									<td>
 										<div class="dropdown">
 											<button type="button"
@@ -78,7 +80,7 @@ img.stayimg {
 							</c:forEach>
 						</tbody>
 						<caption style="padding-left: 20px">
-							<b>Total: </b>
+							<b>Total: ${count }</b>
 						</caption>
 					</table>
 				</div>
@@ -135,6 +137,16 @@ img.stayimg {
 								<label for="PriceWithTitle" class="form-label">Price</label> <input
 									type="text" id="PriceWithTitle" class="form-control"
 									name="sprice" placeholder="가격을 입력하세요." />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col mb-3">
+								<label for="PriceWithTitle" class="form-label">Type</label> <select
+									 id="type" name="type" class="form-control">
+											<option value="Commercial">Commercial</option>
+											<option value="House">House</option>
+											<option value="Studio">Studio</option>
+									</select>
 							</div>
 						</div>
 					</div>
@@ -211,13 +223,14 @@ img.stayimg {
             	  let spacename = tr.children[2].innerText;
             	  let spaceaddress = tr.children[3].innerText;
             	  let spaceprice = tr.children[4].children[0].innerText;
+            	  let spacetype = tr.children[5].innerText;
             	  
             	  $('input[name=sid]').val(spaceid);
             	  $('input[name=sname]').val(spacename);
             	  $('input[name=saddress]').val(spaceaddress);
             	  $('input[name=sprice]').val(spaceprice);
             	  $('input[name=imgfile]').val(spaceimage);
-            	  
+            	  $('select').val(spacetype);
               	})
             	  
               </script>
