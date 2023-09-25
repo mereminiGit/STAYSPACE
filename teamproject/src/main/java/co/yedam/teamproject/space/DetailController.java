@@ -15,6 +15,9 @@ import co.yedam.teamproject.common.ViewResolve;
 import co.yedam.teamproject.reply.service.ReplyService;
 import co.yedam.teamproject.reply.service.ReplyVO;
 import co.yedam.teamproject.reply.serviceImpl.ReplyServiceImpl;
+import co.yedam.teamproject.reservation.service.ReservationService;
+import co.yedam.teamproject.reservation.service.ReservationVO;
+import co.yedam.teamproject.reservation.serviceImpl.ReservationServiceImpl;
 import co.yedam.teamproject.space.service.SpaceService;
 import co.yedam.teamproject.space.service.SpaceVO;
 import co.yedam.teamproject.space.serviceImpl.SpaceServiceImpl;
@@ -35,14 +38,29 @@ public class DetailController extends HttpServlet {
 		ReplyService daoReply = new ReplyServiceImpl();
 		List<ReplyVO> replyes = new ArrayList<ReplyVO>();
 		
+		ReservationService daoReservation = new ReservationServiceImpl();
+		List<ReservationVO> reservations = new ArrayList<ReservationVO>();
+		
 		HttpSession session = request.getSession();
 		
 		vo.setSpaceId(Integer.parseInt(request.getParameter("spaceId")));
 		vo=dao.spaceSelect(vo);
 		request.setAttribute("s", vo);
 		
+//		댓글 출력 위해
 		replyes = daoReply.replySelectListId(Integer.parseInt(request.getParameter("spaceId")));
 		request.setAttribute("replyes", replyes);
+		
+//		로그인한 사람이 예약을 한 사람인지
+		if (session.getAttribute("memberId") == null) {
+			request.setAttribute("reservations", "");
+		} else {
+			System.out.println(session.getAttribute("memberId"));
+			String memid = (String) session.getAttribute("memberId");
+			System.out.println(memid);
+			reservations = daoReservation.reservationSelectListMember((String) session.getAttribute("memberId"));
+			request.setAttribute("reservations", reservations);
+		}
 		
 		request.setAttribute("memberId", session.getAttribute("memberId"));
 

@@ -191,7 +191,7 @@
 								<c:forEach items="${replyes }" var="r">						
 									<div class="review-item d-flex">
 										<div class="image-holder">
-											<img src="vaso-html/images/${r.replyImage }" alt="review">
+											<img src="image/reply/${r.replyImage }" alt="review" style="width: 160px; height: 160px">
 										</div>
 										<div class="review-content">
 											<div class="rating-container d-flex align-items-center">
@@ -219,55 +219,58 @@
 							</div>
 							
 							<!-- 리뷰 추가 -->
-							<div class="add-review margin-small">
-								<h3>Add a review</h3>
-								<form id="replyForm" action="replyinsert.do">
-									<div class="review-rating py-2">
-										<span class="my-2">Your rating</span>
-										<!-- 별점 -->
-										<div class="rating-container d-flex align-items-center"
-											id="yourRating">
-											<div class="star-rating space-x-4" style="float: left; padding-left: 0;">
-												<input type="radio" id="5-stars" name="rating" value="5"
-													v-model="ratings" /> <label for="5-stars" class="star pr-4">★</label>
-												<input type="radio" id="4-stars" name="rating" value="4"
-													v-model="ratings" /> <label for="4-stars" class="star">★</label>
-												<input type="radio" id="3-stars" name="rating" value="3"
-													v-model="ratings" /> <label for="3-stars" class="star">★</label>
-												<input type="radio" id="2-stars" name="rating" value="2"
-													v-model="ratings" /> <label for="2-stars" class="star">★</label>
-												<input type="radio" id="1-star" name="rating" value="1"
-													v-model="ratings" /> <label for="1-star" class="star">★</label>
+							<c:if test="${not empty reservations }">
+							
+								<div class="add-review margin-small">
+									<h3>Add a review</h3>
+									<form id="replyForm" action="replyinsert.do" method="post" enctype="multipart/form-data">
+										<div class="review-rating py-2">
+											<span class="my-2">Your rating</span>
+											<!-- 별점 -->
+											<div class="rating-container d-flex align-items-center"
+												id="yourRating">
+												<div class="star-rating space-x-4" style="float: left; padding-left: 0;">
+													<input type="radio" id="5-stars" name="rating" value="5"
+														v-model="ratings" /> <label for="5-stars" class="star">★</label>
+													<input type="radio" id="4-stars" name="rating" value="4"
+														v-model="ratings" /> <label for="4-stars" class="star">★</label>
+													<input type="radio" id="3-stars" name="rating" value="3"
+														v-model="ratings" /> <label for="3-stars" class="star">★</label>
+													<input type="radio" id="2-stars" name="rating" value="2"
+														v-model="ratings" /> <label for="2-stars" class="star">★</label>
+													<input type="radio" id="1-star" name="rating" value="1"
+														v-model="ratings" /> <label for="1-star" class="star">★</label>
+												</div>
 											</div>
 										</div>
-									</div>
-									<!-- 이미지 파일 -->
-									<span class="my-2" style="padding-top: 15px;">Your image</span><br>				
-									<input type="file" class="jfilestyle py-2 border-0" id="replyFile" name="replyFile"
-										data-text="Choose your file" style="padding: 8px 0px 0px 8px;">
-									<!-- 리뷰 content -->
-									<div class="py-3">
-											<label>Your Review</label>
-											<textarea placeholder="Write your review here" class="w-100" style="padding-left: 8px"
-											id="replyTextarea" name="replyTextarea"></textarea>
-									</div>
-									
-									<div style="display:none">
-										<input type="text" name="replyMemberId" value="${memberId }">
-									</div>
-									
-									<div style="display:none">
-										<input type="text" name="replySpaceId" value="${s.spaceId }">
-									</div>
-									
-									<div style="display:none">
-										<input type="text" name="replySpaceName" value="${s.spaceName }">
-									</div>
-									
-									<button type="submit" name="replySubmit"
-											class="btn btn-dark w-100 my-3">Submit</button>
-								</form>
-							</div>
+										<!-- 이미지 파일 -->
+										<span class="my-2" style="padding-top: 15px;">Your image</span><br>				
+										<input type="file" class="jfilestyle py-2 border-0" id="replyFile" name="replyFile"
+											data-text="Choose your file" style="padding: 8px 0px 0px 8px;">
+										<!-- 리뷰 content -->
+										<div class="py-3">
+												<label>Your Review</label>
+												<textarea placeholder="Write your review here" class="w-100" style="padding-left: 8px"
+												id="replyTextarea" name="replyTextarea"></textarea>
+										</div>
+										
+										<div style="display:none">
+											<input type="text" name="replyMemberId" value="${memberId }">
+										</div>
+										
+										<div style="display:none">
+											<input type="text" name="replySpaceId" value="${s.spaceId }">
+										</div>
+										
+										<div style="display:none">
+											<input type="text" name="replySpaceName" value="${s.spaceName }">
+										</div>
+										
+										<button type="submit" name="replySubmit"
+												class="btn btn-dark w-100 my-3">Submit</button>
+									</form>
+								</div>
+							</c:if>
 							
 						</div>
 					</div>
@@ -275,7 +278,12 @@
 			</div>
 		</div>
 	</section>
-
+	
+	<!-- 리뷰 등록 후 -->
+	<c:if test="${not empty replyMessage }">
+					<div id="${replyMessage }"></div>
+	</c:if>
+	
 	<!-- 	<section id="products" class="product-store"
 		data-aos="fade" data-aos-easing="ease-in" data-aos-duration="1000"
 		data-aos-once="true">
@@ -465,7 +473,20 @@
 	</script>
 	
 	<!-- 리뷰 script -->
-
+	<script type="text/javascript">
+		// 리뷰 등록 실패(알람창) 	
+		if ($('#replyFail').length) {
+			Swal.fire({
+				title: '리뷰등록',
+				text: "리뷰등록을 실패하였습니다",
+				icon: 'error',
+				confirmButtonColor: '#87826E',
+				confirmButtonText: 'OK',
+			}).then(function () {
+				location.href = 'shopdetail.do';
+			});
+		}
+	</script>
 </body>
 
 </html>
