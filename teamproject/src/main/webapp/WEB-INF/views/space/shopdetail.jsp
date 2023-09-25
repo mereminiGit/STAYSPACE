@@ -58,6 +58,7 @@
 			</div>
 		</div>
 	</section>
+	<p>"${memberId}"</p>
 	<section class="single-product padding-large">
 		<div class="container">
 			<div class="row">
@@ -82,16 +83,16 @@
 						<div class="swiper large-swiper overflow-hidden col-9">
 							<div class="swiper-wrapper">
 								<div class="swiper-slide">
-									<img src="image/space/${s.spaceImageMain}"
-										alt="single-product" class="img-fluid">
+									<img src="image/space/${s.spaceImageMain}" alt="single-product"
+										class="img-fluid">
 								</div>
 								<div class="swiper-slide">
-									<img src="image/space/${s.spaceImageSub1}"
-										alt="single-product" class="img-fluid">
+									<img src="image/space/${s.spaceImageSub1}" alt="single-product"
+										class="img-fluid">
 								</div>
 								<div class="swiper-slide">
-									<img src="image/space/${s.spaceImageSub2}"
-										alt="single-product" class="img-fluid">
+									<img src="image/space/${s.spaceImageSub2}" alt="single-product"
+										class="img-fluid">
 								</div>
 							</div>
 						</div>
@@ -101,21 +102,6 @@
 					<div class="product-info">
 						<div class="element-header">
 							<h3 class="product-title my-3">${s.spaceName }</h3>
-							<%-- <div class="rating-container d-flex align-items-center my-3">
-								<div class="rating" data-rating="1" onclick=rate(1)>
-									<c:forEach var="star" begin="1" end="5">
-										<c:if test="${star <= s.spaceStar}">
-											<svg class="bi" width="16" height="16">
-										<use xlink:href="#star-fill"></use></svg>
-										</c:if>
-										<c:if test="${star > s.spaceStar}">
-											<svg class="bi" width="16" height="16">
-										<use xlink:href="#star-empty"></use></svg>
-										</c:if>
-									</c:forEach>
-
-								</div>
-							</div> --%>
 							<div class="star-ratings">
 								<c:set var="stars" value="${s.spaceStar *20}" />
 								<div class="star-ratings-fill space-x-2 text-lg"
@@ -135,7 +121,7 @@
 									name="datepicker">
 							</h5>
 							<div class="action-buttons my-4 d-flex flex-wrap">
-								<a href="checkout.do" class="btn btn-dark me-2 mb-1">Wishlist</a>
+								<a href="checkout.do" class="btn btn-dark me-2 mb-1">Checkout</a>
 								<a href="#" class="btn btn-dark"
 									onclick="selectToCart('${s.spaceId}')">Add To Cart</a>
 							</div>
@@ -155,7 +141,7 @@
 							id="nav-tab" role="tablist">
 							<button class="nav-link text-uppercase active" id="nav-home-tab"
 								data-bs-toggle="tab" data-bs-target="#nav-home" type="button"
-								role="tab" aria-controls="nav-home" aria-selected="true">map</button>
+								role="tab" aria-controls="nav-home" aria-selected="true">Location</button>
 							<button class="nav-link text-uppercase" id="nav-information-tab"
 								data-bs-toggle="tab" data-bs-target="#nav-information"
 								type="button" role="tab" aria-controls="nav-information"
@@ -170,11 +156,6 @@
 							role="tabpanel" aria-labelledby="nav-home-tab">
 							<p>주소 : ${s.spaceAddress }</p>
 							<p style="margin-top: -12px">
-								<em class="link"> <a href="javascript:void(0);"
-									onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
-										 </a>
-								</em>
-							</p>
 							<div id="map" style="width: 100%; height: 350px;"></div>
 						</div>
 						<div class="tab-pane fade" id="nav-information" role="tabpanel"
@@ -395,7 +376,8 @@
 	<!-- 		</div>
 	</section> -->
 
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7fabb4647805e005839c9dad15111de3"></script>
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7fabb4647805e005839c9dad15111de3&libraries=services"></script>
 	<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 	<script type="text/javascript"
 		src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -411,7 +393,7 @@
 			adaptiveHeight : true
 		});
 	</script>
-	<!-- <script>
+	<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
 			center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -426,31 +408,23 @@
 		var geocoder = new kakao.maps.services.Geocoder();
 
 		// 주소로 좌표를 검색합니다
-		geocoder
-				.addressSearch(
-						'${s.spaceAddress}',
-						function(result, status) {
+		geocoder.addressSearch('${s.spaceAddress}', function(result, status) {
 
-							// 정상적으로 검색이 완료됐으면 
-							if (status === kakao.maps.services.Status.OK) {
+			// 정상적으로 검색이 완료됐으면 
+			if (status === kakao.maps.services.Status.OK) {
 
-								var coords = new kakao.maps.LatLng(result[0].y,
-										result[0].x);
+				var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-								// 결과값으로 받은 위치를 마커로 표시합니다
-								var marker = new kakao.maps.Marker({
-									map : map,
-									position : coords
-								});
-								 var infowindow = new kakao.maps.InfoWindow({
-							            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
-							        });
-							        infowindow.open(map, marker);
-								// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-								map.setCenter(coords);
-							}
-						});
-	</script> -->
+				// 결과값으로 받은 위치를 마커로 표시합니다
+				var marker = new kakao.maps.Marker({
+					map : map,
+					position : coords
+				});
+				// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+				map.setCenter(coords);
+			}
+		});
+	</script>
 	<!--    <script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
 		integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="

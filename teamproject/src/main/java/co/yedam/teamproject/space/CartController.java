@@ -34,23 +34,29 @@ public class CartController extends HttpServlet {
 		CartListVO vo = new CartListVO();
 		List<CartListVO> list = new ArrayList<>();
 		HttpSession session = request.getSession();
-		if (session.getAttribute("memberId") != null) {
-			vo.setMemberId((String) session.getAttribute("memberId")); // 세션에 담긴 아이디 불러오기
+		String id=(String) session.getAttribute("memberId");
+		System.out.println("a"+id);
+		if (id != null) {
 			if (request.getParameter("spaceId") != null) {
 				SpaceService sdao = new SpaceServiceImpl();
 				SpaceVO svo = new SpaceVO();
 				svo.setSpaceId(Integer.parseInt(request.getParameter("spaceId")));
 				svo = sdao.spaceSelect(svo);
 
+				vo.setMemberId(id); // 세션에 담긴 아이디 불러오기
 				vo.setSpaceName(svo.getSpaceName());
 				vo.setMemberId(svo.getMemberId());
 				vo.setSpacePrice(svo.getSpacePrice());
 				vo.setSpaceCity(svo.getSpaceCity());
 				vo.setSpaceImageMain(svo.getSpaceImageMain());
 				vo.setSpaceStartDate(Date.valueOf(request.getParameter("spaceStartDate")));
+				vo.setSpaceId(Integer.valueOf(svo.getSpaceId()));
 				dao.cartListInsert(vo);
+				System.out.println(vo.getMemberId());
 				list = dao.cartListSelectList(vo);
 			} else {
+				vo.setMemberId("b"+id); // 세션에 담긴 아이디 불러오기
+				System.out.println(vo.getMemberId());
 				list = dao.cartListSelectList(vo);
 			}
 

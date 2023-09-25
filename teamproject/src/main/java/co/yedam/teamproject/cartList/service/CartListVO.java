@@ -17,4 +17,5 @@ public class CartListVO {
 	private Date spaceStartDate;
 
 	private int reserveId;
+	private int spaceId;
 }

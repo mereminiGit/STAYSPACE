@@ -257,15 +257,16 @@
 					type: "get",
 					success: function(data){
 						$('#cartid').detach();
-						location.replace("cart.do");
+						
 					},
 				})
 					Swal.fire(
 			      '삭제!',
 			      '삭제가 완료되었습니다.',
 			      'success'
-			    )
-			   
+			    ).then((result)=>{
+			    	location.replace("cart.do");
+			    })
 			  }
 			})
 	}

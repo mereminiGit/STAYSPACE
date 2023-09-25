@@ -32,7 +32,7 @@ public class DetailController extends HttpServlet {
 		vo=dao.spaceSelect(vo);
 		request.setAttribute("s", vo);
 		
-		request.setAttribute("memberId", session.getAttribute("memberId"));
+		System.out.println(session.getAttribute("memberId"));
 
 		String path = "space/shopdetail";
 		ViewResolve.forward(request, response, path);
