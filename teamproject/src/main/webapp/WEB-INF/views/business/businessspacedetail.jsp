@@ -46,7 +46,7 @@
 						alt="Card image cap" style="objcet-fit:cover;"/><small class="text-muted" align="center">Sub Image2</small>
 					<div class="card-body">
 						<h5 class="card-title"><strong>Price</strong></h5>
-						<p class="card-text">&nbsp;  ${s.spacePrice }</p>
+						<p class="card-text">&nbsp;  ${s.spacePrice } ₩</p>
 						<h5 class="card-title"><strong>Type</strong></h5>
 						<p class="card-text">&nbsp;  ${s.spaceType }</p>
 						<h5 class="card-title"><strong>Grade</strong></h5>

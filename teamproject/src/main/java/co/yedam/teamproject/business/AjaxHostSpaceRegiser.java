@@ -43,7 +43,7 @@ public class AjaxHostSpaceRegiser extends HttpServlet {
 		String sprice = multi.getParameter("price");
 		String scity = multi.getParameter("city");
 		String saddress = multi.getParameter("address");
-		String stype = multi.getParameter("type");
+		String stype = multi.getParameter("stype");
 		String scontent = multi.getParameter("content");
 		//String smemberId = multi.getParameter("min");
 

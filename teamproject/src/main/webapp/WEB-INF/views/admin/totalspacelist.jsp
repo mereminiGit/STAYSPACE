@@ -56,7 +56,7 @@ img.stayimg {
 									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceName }</td>
 									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceAddress }</td>
 									<td onclick="adminspacedetail('${s.spaceId }')"><span>${s.spacePrice }</span>
-										원</td>
+										₩</td>
 									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceType }</td>
 									<td>
 										<div class="dropdown">

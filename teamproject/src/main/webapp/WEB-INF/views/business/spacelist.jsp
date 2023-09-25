@@ -48,6 +48,7 @@ img.stayimg {
 						</thead>
 						<tbody class="table-border-bottom-0">
 							<c:forEach items="${spaces }" var="s">
+
 								<tr sn="${s.spaceName }">
 									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceId }</td>
 									<td onclick="adminspacedetail('${s.spaceId }')"><img
@@ -55,8 +56,8 @@ img.stayimg {
 										alt="image"></td>
 									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceName }</td>
 									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceAddress }</td>
-									<td onclick="adminspacedetail('${s.spaceId }')"><span>${s.spacePrice }</span>
-										원</td>
+									<td onclick="adminspacedetail('${s.spaceId }')"><span>${s.spacePrice }</span> ₩
+										</td>
 									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceType }</td>
 									<td>
 										<div class="dropdown">
@@ -85,6 +86,41 @@ img.stayimg {
 					</table>
 				</div>
 			</div>
+					<div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+					<c:forEach items="${spaces }" var="s">
+						<div class="col">
+							<div class="card h-100">
+								<img class="card-img-top" src="image/space/${s.spaceImageMain}"
+									alt="Card image cap" style="height: 250px; object-fit: cover;"/>
+								<div class="card-body">
+									<h5 class="card-title">${s.spaceName }</h5><hr>
+									<div class="dropdown" style="float:right">
+											<button type="button"
+												class="btn p-0 dropdown-toggle hide-arrow"
+												data-bs-toggle="dropdown">
+												<i class="bx bx-dots-vertical-rounded"></i>
+											</button>
+											<div class="dropdown-menu">
+												<button type="button" class="dropdown-item spaceedit"
+													data-bs-toggle="modal" data-bs-target="#modalCenter">
+													<i class="bx bx-edit-alt me-1"></i> Edit
+												</button>
+												<button type="button" class="dropdown-item spacedelete">
+													<i class="bx bx-trash me-1"></i> Delete
+												</button>
+											</div>
+										</div>
+									<p class="card-text">
+									<strong>ID: </strong>${s.spaceId }<br><br>
+									<strong>ADRESS: </strong>${s.spaceAddress }<br><br>
+									<strong>PRICE: </strong>${s.spacePrice } ₩<br><br>
+									<strong>TYPE: </strong>${s.spaceType }<br><br>
+									</p>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+					</div>
 			<!--/ Hoverable Table rows -->
 
 
@@ -142,11 +178,11 @@ img.stayimg {
 						<div class="row">
 							<div class="col mb-3">
 								<label for="PriceWithTitle" class="form-label">Type</label> <select
-									 id="stype" name="stype" class="form-control">
-											<option value="Commercial">Commercial</option>
-											<option value="House">House</option>
-											<option value="Studio">Studio</option>
-									</select>
+									id="stype" name="stype" class="form-control">
+									<option value="Commercial">Commercial</option>
+									<option value="House">House</option>
+									<option value="Studio">Studio</option>
+								</select>
 							</div>
 						</div>
 					</div>
@@ -162,8 +198,8 @@ img.stayimg {
 	</form>
 	<!--  -->
 	<form id="detailForm" action="AjaxHostSpaceDetail.do" method="post">
-	  	<input type="hidden" id="spaceId" name="spaceId">
-	  </form>
+		<input type="hidden" id="spaceId" name="spaceId">
+	</form>
 	<script>
 			  //공간 상세보기
 			  function adminspacedetail(id){
