@@ -15,6 +15,15 @@
       resultType="co.yedam.teamproject.space.service.SpaceVO">
       SELECT * FROM SPACE WHERE SPACE_ID=#{spaceId}
    </select>
+   <select id="spaceSelectCount" resultType="int">
+   		SELECT COUNT(*) FROM SPACE
+   </select>
+   <select id="spaceSelectListMember" resultType="co.yedam.teamproject.space.service.SpaceVO">
+   		SELECT * FROM SPACE WHERE MEMBER_ID = #{memberId}
+   </select>
+   <select id="spaceSelectCountMember" resultType="int">
+   		SELECT COUNT(*) FROM SPACE WHERE MEMBER_ID = #{memberId}
+   </select>
    <insert id="spaceInsert"
       parameterType="co.yedam.teamproject.space.service.SpaceVO">
       <selectKey keyProperty="spaceId" resultType="int" order="BEFORE">
@@ -40,10 +49,7 @@
          <if test="spaceStar !=null">SPACE_STAR=#{spaceStar},</if>
          <if test="spaceImageSub1 !=null">SPACE_IMAGE_SUB1=#{spaceImageSub1},</if>
          <if test="spaceImageSub2 !=null">SPACE_IMAGE_SUB2=#{spaceImageSub2},</if>
-         <if test="spaceLat !=null">SPACE_lat=#{spaceLat},</if>
-         <if test="spaceLng !=null">SPACE_lng=#{spaceLng},</if>
-         <if test="spaceType !=null">SPACE_type=#{spaceType}</if>
-
+         <if test="spaceType !=null">SPACE_TYPE=#{spaceType}</if>
       </set>
       WHERE SPACE_ID=#{spaceId}
    </update>

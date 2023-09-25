@@ -1,4 +1,4 @@
-package co.yedam.teamproject.admin;
+package co.yedam.teamproject.business;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,21 +16,19 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import co.yedam.teamproject.common.ThumbNail;
-import co.yedam.teamproject.common.ViewResolve;
 import co.yedam.teamproject.space.service.SpaceService;
 import co.yedam.teamproject.space.service.SpaceVO;
 import co.yedam.teamproject.space.serviceImpl.SpaceServiceImpl;
 
-@WebServlet("/AjaxSpaceModify.do")
-public class AjaxSpaceModify extends HttpServlet {
+@WebServlet("/AjaxHostSpaceRegiser.do")
+public class AjaxHostSpaceRegiser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    public AjaxHostSpaceRegiser() {
+        super();
+    }
 
-	public AjaxSpaceModify() {
-		super();
-	}
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MultipartRequest multi = null;
 		ThumbNail thumbNail = new ThumbNail();
 		SpaceVO vo = new SpaceVO();
@@ -41,30 +39,39 @@ public class AjaxSpaceModify extends HttpServlet {
 		int maxSize = 1024 * 1024 * 100;
 		multi = new MultipartRequest(request, saveDir, maxSize, "utf-8", new DefaultFileRenamePolicy());
 
-		String sid = multi.getParameter("sid");
-		String sname = multi.getParameter("sname");
-		System.out.println(sid + sname);
-		String saddress = multi.getParameter("saddress");
-		String sprice = multi.getParameter("sprice");
-		String stype = multi.getParameter("stype");
+		String sname = multi.getParameter("name");
+		String sprice = multi.getParameter("price");
+		String scity = multi.getParameter("city");
+		String saddress = multi.getParameter("address");
+		String stype = multi.getParameter("type");
+		String scontent = multi.getParameter("content");
+		//String smemberId = multi.getParameter("min");
 
-		vo.setSpaceId(Integer.parseInt(sid));
 		vo.setSpaceName(sname);
-		vo.setSpaceAddress(saddress);
 		vo.setSpacePrice(Integer.parseInt(sprice));
+		vo.setSpaceCity(scity);
+		vo.setSpaceAddress(saddress);
 		vo.setSpaceType(stype);
+		System.out.println(stype);
+		vo.setSpaceContent(scontent);
+		vo.setMemberId("min");
 
-		String imgFileName = multi.getOriginalFileName("imgfile");
-		String realImg = multi.getFilesystemName("imgfile");
+		String imgFileName1 = multi.getOriginalFileName("imgfile1");
+		String realImg1 = multi.getFilesystemName("imgfile1");
+		String realImg2 = multi.getFilesystemName("imgfile2");
+		String realImg3 = multi.getFilesystemName("imgfile3");
 
-		if (imgFileName != null) {
+		vo.setSpaceImageSub1(realImg2);
+		vo.setSpaceImageSub2(realImg3);
+		
+		if (imgFileName1 != null) {
 
-			vo.setSpaceImageMain(realImg);
+			vo.setSpaceImageMain(realImg1);
 
-			System.out.println(imgFileName);
+			System.out.println(imgFileName1);
 			
-			String fileExt = imgFileName.substring(imgFileName.indexOf(".") + 1);
-			String thumb = thumbNail.makeThumbnail(saveDir + File.separator + imgFileName, imgFileName, fileExt,
+			String fileExt = imgFileName1.substring(imgFileName1.indexOf(".") + 1);
+			String thumb = thumbNail.makeThumbnail(saveDir + File.separator + imgFileName1, imgFileName1, fileExt,
 					saveDir + File.separator);
 			thumb = thumb.substring(thumb.lastIndexOf("\\") + 1);
 			vo.setSpaceThumb(thumb);
@@ -75,11 +82,12 @@ public class AjaxSpaceModify extends HttpServlet {
 				vo.setSpaceAttech(attechFile);
 			}
 		}
-		if (dao.spaceUpdate(vo) != 0) {
+		
+		if (dao.spaceInsert(vo) != 0) {
 			vo = dao.spaceSelect(vo);
 			resultMap.put("retCode", "Success");
 			resultMap.put("data", vo);
-			response.sendRedirect("totalspacelist.do");
+			response.sendRedirect("BusinessSpaceList.do");
 		} else {
 			resultMap.put("retCode", "Fail");
 		}
@@ -89,11 +97,9 @@ public class AjaxSpaceModify extends HttpServlet {
 
 		response.setContentType("text/json; charset=UTF-8");
 		response.getWriter().append(json);
-
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
 

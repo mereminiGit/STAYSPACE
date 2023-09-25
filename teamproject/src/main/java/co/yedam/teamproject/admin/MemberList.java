@@ -30,6 +30,9 @@ public class MemberList extends HttpServlet {
 		members = dao.memberSelectList();
 		request.setAttribute("members", members);
 		
+		int n = dao.memberSelectCount();
+		request.setAttribute("count", n);
+		
 		String path = "admin/admin/memberlist";
 		ViewResolve.forward(request, response, path);
 	}

@@ -30,7 +30,10 @@ public class TotalSpaceList extends HttpServlet {
 
 		spaces = dao.totalSpaceSelectList();
 
+		int n = dao.spaceSelectCount();
+		
 		request.setAttribute("spaces", spaces);
+		request.setAttribute("count", n);
 		
 		String page = "admin/admin/totalspacelist";
 		ViewResolve.forward(request, response, page);
