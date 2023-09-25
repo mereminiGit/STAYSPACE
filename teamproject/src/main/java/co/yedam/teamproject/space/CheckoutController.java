@@ -1,6 +1,7 @@
 package co.yedam.teamproject.space;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,9 @@ import co.yedam.teamproject.cartList.service.CartListService;
 import co.yedam.teamproject.cartList.service.CartListVO;
 import co.yedam.teamproject.cartList.serviceImpl.CartListServiceImpl;
 import co.yedam.teamproject.common.ViewResolve;
+import co.yedam.teamproject.space.service.SpaceService;
+import co.yedam.teamproject.space.service.SpaceVO;
+import co.yedam.teamproject.space.serviceImpl.SpaceServiceImpl;
 
 @WebServlet("/checkout.do")
 public class CheckoutController extends HttpServlet {
@@ -30,12 +34,33 @@ public class CheckoutController extends HttpServlet {
 		List<CartListVO> list= new ArrayList<>();
 		
 		HttpSession session = request.getSession();
-		if(session.getAttribute("memberId")!= null) {
-			vo.setMemberId((String) session.getAttribute("memberId"));
-			list=dao.cartListSelectList(vo);
+		String id=(String) session.getAttribute("memberId");
+		if(id!= null) {
+			if(request.getParameter("spaceId")!=null) {
+				SpaceService sdao = new SpaceServiceImpl();
+				SpaceVO svo = new SpaceVO();
+				svo.setSpaceId(Integer.parseInt(request.getParameter("spaceId")));
+				svo = sdao.spaceSelect(svo);
+
+				vo.setMemberId(id); // 세션에 담긴 아이디 불러오기
+				vo.setSpaceName(svo.getSpaceName());
+				vo.setSpacePrice(svo.getSpacePrice());
+				vo.setSpaceCity(svo.getSpaceCity());
+				vo.setSpaceImageMain(svo.getSpaceImageMain());
+				vo.setSpaceStartDate(Date.valueOf(request.getParameter("spaceStartDate")));
+				vo.setSpaceId(Integer.valueOf(svo.getSpaceId()));
+				dao.cartListInsert(vo);
+				list = dao.cartListSelectList(vo);
+			} else {
+				vo.setMemberId(id); // 세션에 담긴 아이디 불러오기
+				list = dao.cartListSelectList(vo);
+			}
 			request.setAttribute("cart", list);
 			String path = "space/checkout";
 			ViewResolve.forward(request, response, path);	
+		} else {
+			String path = "main/account";
+			ViewResolve.forward(request, response, path);
 		}
 		
 	}

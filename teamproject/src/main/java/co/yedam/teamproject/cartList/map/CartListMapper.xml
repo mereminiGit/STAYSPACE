@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="co.yedam.teamproject.cartList.map.CartListMapper">
-    <select id="cartListSelectList" resultType="co.yedam.teamproject.cartList.service.CartListVO">
-		SELECT * FROM CARTLIST WHERE MEMBER_ID = #{memberId} ORDER BY SPACE_START_DATE
+<mapper
+	namespace="co.yedam.teamproject.cartList.map.CartListMapper">
+	<select id="cartListSelectList"
+		resultType="co.yedam.teamproject.cartList.service.CartListVO">
+		SELECT * FROM CARTLIST WHERE MEMBER_ID = #{memberId} ORDER
+		BY SPACE_START_DATE
 	</select>
 
 	<select id="cartListSelect"
@@ -10,13 +13,21 @@
 		SELECT * FROM CARTLIST WHERE RESERVE_ID = #{reserveId}
 	</select>
 
+	<select id="cartDateSelectList"
+		resultType="co.yedam.teamproject.cartList.service.CartListVO">
+		SELECT * FROM SPACE
+		WHERE SPACE_ID=
+		(SELECT SPACE_ID FROM CARTLIST WHERE space_start_date = #{spaceStartDate})
+	</select>
+
 	<insert id="cartListInsert"
 		parameterType="co.yedam.teamproject.cartList.service.CartListVO">
-		<selectKey keyProperty="reserveId" resultType="int" order="BEFORE">
-		SELECT NVL(MAX(RESERVE_ID),0)+1
-		FROM CARTLIST
+		<selectKey keyProperty="reserveId" resultType="int"
+			order="BEFORE">
+			SELECT NVL(MAX(RESERVE_ID),0)+1
+			FROM CARTLIST
 		</selectKey>
-		INSERT INTO CARTLIST 
+		INSERT INTO CARTLIST
 		VALUES(
 		#{memberId},#{spaceName},#{spacePrice},#{spaceCity},#{spaceImageMain},#{spaceStartDate},#{reserveId},#{spaceId})
 	</insert>
@@ -25,7 +36,7 @@
 		parameterType="co.yedam.teamproject.cartList.service.CartListVO">
 		DELETE FROM CARTLIST WHERE RESERVE_ID = #{reserveId}
 		<if test="memberId !=null">
-		AND MEMBER_ID = #{memberId}
+			AND MEMBER_ID = #{memberId}
 		</if>
 	</delete>
 </mapper>

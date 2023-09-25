@@ -192,7 +192,17 @@
 
 		$('#datepicker').datepicker({
 			dateFormat:'yy-mm-dd',
-	        minDate:0
+	        minDate:0,
+	        onSelect : function(d) {
+	        	var date=$("#datepicker").val();
+	        	$.ajax({
+					url:"date.do?spaceStartDate=" + date,
+					type: "get",
+					success: function(data){
+						${spaces}=${date}
+					},
+				})
+			}
 		}).on('hide', function(event) {
 			event.preventDefault();
 			event.stopPropagation();

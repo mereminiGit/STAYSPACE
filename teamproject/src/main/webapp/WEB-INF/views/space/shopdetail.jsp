@@ -58,7 +58,6 @@
 			</div>
 		</div>
 	</section>
-	<p>"${memberId}"</p>
 	<section class="single-product padding-large">
 		<div class="container">
 			<div class="row">
@@ -121,9 +120,9 @@
 									name="datepicker">
 							</h5>
 							<div class="action-buttons my-4 d-flex flex-wrap">
-								<a href="checkout.do" class="btn btn-dark me-2 mb-1">Checkout</a>
+								<a href="#" class="btn btn-dark me-2 mb-1" onclick="selectTo('${s.spaceId}','checkout')">Checkout</a>
 								<a href="#" class="btn btn-dark"
-									onclick="selectToCart('${s.spaceId}')">Add To Cart</a>
+									onclick="selectTo('${s.spaceId}','cart')">Add To Cart</a>
 							</div>
 						</div>
 						<hr>
@@ -345,7 +344,7 @@
 				</div>
 			</div> -->
 	<div>
-		<form id="sform" action="cart.do" method="post">
+		<form id="sform" method="post">
 			<input type="hidden" id="spaceId" name="spaceId"> <input
 				type="hidden" id="spaceStartDate" name="spaceStartDate">
 		</form>
@@ -419,9 +418,14 @@
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script type="text/javascript">
-		function selectToCart(id) {
+		function selectTo(id,go) {
 			let form = document.getElementById("sform");
 			if (form.spaceStartDate.value != 0) {
+				if(go=='cart'){
+					$('#sform').attr('action', 'cart.do')
+				} else{
+					$('#sform').attr('action', 'checkout.do')
+				}
 				form.spaceId.value = id;
 				form.submit();
 			} else {
@@ -436,9 +440,9 @@
 			dateFormat : 'yy-mm-dd',
 			minDate : 0,
 			onSelect : function(d) {
-				var dateObject = $("#datepicker").val();
+				var date=$("#datepicker").val();
 				let form = document.getElementById("sform");
-				form.spaceStartDate.value = dateObject;
+				form.spaceStartDate.value = date;
 			}
 		}).on('hide', function(event) {
 			event.preventDefault();
