@@ -26,7 +26,7 @@
 					<div class="card mb-4">
 						<div
 							class="card-header d-flex justify-content-between align-items-center">
-							<h5 class="mb-0">${m.memberId }Detail page</h5>
+							<h5 class="mb-0">${m.memberId } Detail page</h5>
 							<small class="text-muted float-end"></small>
 						</div>
 						<div class="card-body">
@@ -119,14 +119,21 @@
 														class="rounded-circle" alt="default" style="width: 30px"></td>
 												</c:when>
 												<c:otherwise>
-													<td><img src="image/member/${reply.replyImage }"
+													<td><img src="image/reply/${reply.replyImage }"
 														class="rounded-circle" alt="default" style="width: 30px"></td>
 												</c:otherwise>
 											</c:choose>
 											<td>${reply.spaceName }</td>
 											<td>${reply.replyContent }</td>
 											<td>${reply.replyDate }</td>
-											<td>${reply.replyStar }</td>
+											<td>
+											<c:forEach begin="1" end="${reply.replyStar }">
+											<span>★</span>
+											</c:forEach>
+											<c:forEach begin="1" end="${5-reply.replyStar }">
+											<span>☆</span>
+											</c:forEach>
+											</td>
 											<td>
 												<div class="dropdown">
 													<button type="button"
@@ -147,12 +154,12 @@
 			</div>
 			<!-- Horizontal -->
 			<c:forEach items="${reserve }" var="r">
-				<div class="card mb-3" style="float: left; margin-right: 1.5%">
+				<div class="card mb-3" style="float: left; margin-right: 1.5%; width:48%">
 					<div class="row g-0">
 						<div class="col-md-4">
 							<img class="card-img card-img-left"
 								src="image/space/${r.reserveImg }" alt="Card image"
-								style="height: 100%; object-fit: cover;" />
+								style="height: 100%; object-fit: cover; width: 100%" />
 						</div>
 						<div class="col-md-8">
 							<div class="card-body">
@@ -163,16 +170,26 @@
 								<p class="card-text" style="font-size: 14px">
 									<strong>대여공간:</strong> ${r.spaceName }
 								</p>
+								
 								<p class="card-text" style="font-size: 14px">
 									<strong>가격:</strong> ${r.reservePrice }
 									&nbsp;&nbsp;&nbsp;&nbsp;<strong>예약날짜:</strong>
 									${r.reserveStartDate }
 								</p>
-								<p class="card-text" style="font-size: 14px">
-									<strong>예약승인여부:</strong> ${r.reserveCheck }
-									&nbsp;&nbsp;&nbsp;&nbsp;<strong>예약승인날짜:</strong>
-									${r.reserveCheckoutDate }
-								</p>
+								<c:choose>
+									<c:when test="${r.reserveCheck eq 0}">
+										<p class="card-text" style="font-size: 14px">
+											<strong>예약승인여부:</strong> 미승인
+										</p>
+									</c:when>
+									<c:otherwise>
+										<p class="card-text" style="font-size: 14px">
+											<strong>예약승인여부:</strong> 승인
+											&nbsp;&nbsp;&nbsp;&nbsp;<strong>예약승인날짜:</strong>
+											${r.reserveCheckoutDate }
+										</p>
+								</c:otherwise>
+								</c:choose>
 							</div>
 						</div>
 					</div>

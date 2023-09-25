@@ -162,7 +162,7 @@ img.stayimg {
               $('.spacedelete').on('click', function(e){
       			let sn = e.target.parentElement.parentElement.parentElement.parentElement.getAttribute('sn');
       			Swal.fire({
-      	            text: "회원 삭제하시겠습니까?",
+      	            text: "대여공간을 삭제하시겠습니까?",
       	            icon: 'warning',
       	            showCancelButton: true,
       	            confirmButtonColor: '#3085d6',
