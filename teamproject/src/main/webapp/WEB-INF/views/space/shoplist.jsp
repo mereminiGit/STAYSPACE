@@ -195,13 +195,14 @@
 	        minDate:0,
 	        onSelect : function(d) {
 	        	var date=$("#datepicker").val();
-	        	$.ajax({
-					url:"date.do?spaceStartDate=" + date,
-					type: "get",
-					success: function(data){
-						${spaces}=${date}
-					},
-				})
+	        	let payload = "date="+date
+	        	let url="date.do";
+	        	fetch(url,{
+	        		method: "POST",
+	        		headers:{'Content-Type': 'application/x-www-form-urlencoded'},
+	        		body: payload
+	        	}).then(response=>response.json())
+	        		.then(json=>htmlViews(json));
 			}
 		}).on('hide', function(event) {
 			event.preventDefault();
