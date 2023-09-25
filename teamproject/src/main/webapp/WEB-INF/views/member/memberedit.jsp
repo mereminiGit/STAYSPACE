@@ -78,6 +78,11 @@
                     <div class="card-body">
                       <form id="formAccountSettings" method="POST" onsubmit="return false">
                         <div class="row">
+                        <div class="mb-3 col-md-6">
+										<label for="firstName" class="form-label">ID</label> <input
+											type="text" class="form-control" id="id"
+											name="id" value="${m.memberId }" readonly="readonly" />
+									</div>
                           <div class="mb-3 col-md-6">
                             <label for="firstName" class="form-label">Name</label>
                             <input class="form-control" type="text" id="Name" name="Name" value="${m.memberName }" 

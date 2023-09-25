@@ -49,8 +49,8 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 
 	@Override
-	public List<ReservationVO> reservationSelectListMember(String memberId) {
-		return map.reservationSelectListMember(memberId);
+	public List<ReservationVO> reservationSelectHost(ReservationVO vo) {
+		return map.reservationSelectHost(vo);
 	}
 
 }
