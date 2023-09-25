@@ -7,25 +7,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.yedam.teamproject.common.ViewResolve;
-import co.yedam.teamproject.reservation.service.ReservationService;
-import co.yedam.teamproject.reservation.serviceImpl.ReservationServiceImpl;
+import co.yedam.teamproject.member.service.MemberService;
+import co.yedam.teamproject.member.serviceImpl.MemberServiceImpl;
 
-@WebServlet("/spacewaiting.do")
-public class SpaceWaiting extends HttpServlet {
+@WebServlet("/ajaxHostDelete.do")
+public class ajaxHostDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public SpaceWaiting() {
+    public ajaxHostDelete() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ReservationService dao = new ReservationServiceImpl();
+		String memberId=request.getParameter("memberId");
+		MemberService dao = new MemberServiceImpl();
 		
+		int result = dao.memberDelete(memberId);
 		
-		
-		String page ="business/business/spacewaiting";
-		ViewResolve.forward(request, response, page);
+		if(result !=0) {
+			response.getWriter().print("{\"retCode\": \"Success\"}");
+		}else {
+			response.getWriter().print("{\"retCode\": \"Fail\"}");
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

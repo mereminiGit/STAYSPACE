@@ -18,6 +18,8 @@ public class BusinessHomeController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		String path = "business/business/sale";
 		ViewResolve.forward(request, response, path);
 	}

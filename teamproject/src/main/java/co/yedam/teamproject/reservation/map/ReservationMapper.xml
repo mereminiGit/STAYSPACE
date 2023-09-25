@@ -13,6 +13,9 @@
 	<select id="reservationSelectMember" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
 		SELECT * FROM RESERVATION WHERE MEMBER_ID = #{memberId}
 	</select>
+	<select id="reservationSelectHost" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
+		SELECT * FROM RESERVATION WHERE HOST_ID = #{hostId}
+	</select>
 	<insert id="reservationInsert" parameterType="co.yedam.teamproject.reservation.service.ReservationVO">
 		<selectKey keyProperty="reserveId" resultType="int" order="BEFORE">
 			SELECT NVL(MAX(RESERVE_ID),0) + 1 AS ID

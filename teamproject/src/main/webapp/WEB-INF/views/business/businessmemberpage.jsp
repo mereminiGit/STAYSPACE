@@ -20,6 +20,7 @@
 
 <!-- 모달 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
 
 </head>
@@ -41,24 +42,11 @@
 						<!-- Account -->
 						<div class="card-body">
 							<div class="d-flex align-items-start align-items-sm-center gap-4">
-								<img src="sneat/assets/img/avatars/defaultimg.png"
+								<img src="image/member/기본프로필.jpg"
 									alt="user-avatar" class="d-block rounded" height="100"
 									width="100" id="uploadedAvatar" />
 								<div class="button-wrapper">
-									<label for="upload" class="btn btn-secondary me-2 mb-4"
-										tabindex="0"> <span class="d-none d-sm-block">이미지
-											등록</span> <i class="bx bx-upload d-block d-sm-none"></i> <input
-										type="file" id="upload" class="account-file-input" hidden
-										accept="image/png, image/jpeg" />
-									</label>
-									<button type="button"
-										class="btn btn-outline-secondary account-image-reset mb-4">
-										<i class="bx bx-reset d-block d-sm-none"></i> <span
-											class="d-none d-sm-block">초기화</span>
-									</button>
-
-									<p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max
-										size of 800K</p>
+									<p class="text-muted mb-0"></p>
 								</div>
 							</div>
 						</div>
@@ -67,37 +55,42 @@
 							<form id="formAccountSettings" method="POST"
 								onsubmit="return false">
 								<div class="row">
+								<div class="mb-3 col-md-6">
+										<label for="firstName" class="form-label">ID</label> <input
+											type="text" class="form-control" id="id"
+											name="id" value="${b.memberId }" readonly="readonly" />
+									</div>
 									<div class="mb-3 col-md-6">
 										<label for="password" class="form-label">PASSWORD</label> <input
 											class="form-control" type="password" name="password"
 											id="password" placeholder="비밀번호를 입력하세요." />
 									</div>
 									<div class="mb-3 col-md-6">
+										<label for="firstName" class="form-label">Name</label> <input
+											type="text" class="form-control" id="Name"
+											name="Name" value="${b.memberName }"placeholder="이름을 입력하세요." />
+									</div>
+									<div class="mb-3 col-md-6">
 										<label for="checkPassword" class="form-label">CHECK
 											PASSWORD</label> <input class="form-control" type="password"
-											name="checkPassword" id="checkPassword"
+											name="passwordcheck" id="passwordcheck"
 											placeholder="비밀번호를 다시 입력하세요." />
 									</div>
 									<div class="mb-3 col-md-6">
-										<label for="firstName" class="form-label">Name</label> <input
-											type="text" class="form-control" id="firstName"
-											name="firstName" placeholder="이름을 입력하세요." />
-									</div>
-									<div class="mb-3 col-md-6">
 										<label for="email" class="form-label">E-mail</label> <input
-											class="form-control" type="text" id="email" name="email"
+											class="form-control" type="text" id="email" name="email" value="${b.memberEmail }"
 											placeholder="john.doe@example.com" />
 									</div>
 									<div class="mb-3 col-md-6">
 										<label class="form-label" for="phoneNumber">Phone
 											Number</label>
 										<div class="input-group input-group-merge">
-											<input type="text" id="phoneNumber" name="phoneNumber"
+											<input type="tel" id="tel" name="tel" value="${b.memberTel }"
 												class="form-control" placeholder="010-0000-1111" />
 										</div>
 									</div>
 									<div class="mt-2">
-										<button type="submit" id="edit" class="btn btn-dark me-2">수정하기</button>
+										<button type="submit" id="edit" class="btn btn-dark me-2" onclick="editCall('${b.memberId}')">수정하기</button>
 										<button type="reset" class="btn btn-outline-dark">취소하기</button>
 									</div>
 								</div>
@@ -124,12 +117,12 @@
 							<form id="formAccountDeactivation" onsubmit="return false">
 								<div class="form-check mb-3">
 									<input class="form-check-input" type="checkbox"
-										name="accountActivation" id="accountActivation" /> <label
+										name="chkSelect" id="accountActivation" /> <label
 										class="form-check-label" for="accountActivation">내 계정
 										삭제에 동의합니다.</label>
 								</div>
 								<button type="submit" id="delete"
-									class="btn btn-dark deactivate-account">탈퇴하기</button>
+									class="btn btn-dark deactivate-account" onclick="deleteMember('${b.memberId}');">탈퇴하기</button>
 							</form>
 						</div>
 					</div>
@@ -159,87 +152,229 @@
 		<!-- / Content -->
 	</div>
 	<script>
+
+	//회원정보수정
+	var regEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+    function test() {
+      	var p1 = document.getElementById('password').value;
+          var p2 = document.getElementById('passwordcheck').value;
+
+      if (document.getElementById("Name").value == "") {
+        Swal.fire({
+          icon: 'error',
+          text: 'name을 입력하세요!'
+        })
+        return false;
+
+      } else if (document.getElementById("password").value == "") {
+        Swal.fire({
+          icon: 'error',
+          text: 'password를 입력하세요!'
+        })
+        return false;
+      } else if (document.getElementById("passwordcheck").value == "") {
+        Swal.fire({
+          icon: 'error',
+          text: 'password check를 입력하세요!'
+        })
+        return false;
+      } else if (!regEmail.test(document.getElementById("email").value)) {
+        Swal.fire({
+          icon: 'error',
+          text: 'email을 형식에 맞게 입력하세요! ex) june@example.com'
+        })
+        return false;
+
+      } else if (document.getElementById("email").value == "") {
+        Swal.fire({
+          icon: 'error',
+          text: 'email을 입력하세요! ex) june@example.com'
+        })
+        return false;
+
+      }
+      else if (document.getElementById("tel").value == "") {
+        Swal.fire({
+          icon: 'error',
+          text: 'tel을 입력하세요!'
+        })
+        return false;
+      }
+
+      else if (p1.length < 10) {
+        Swal.fire({ text: '비밀번호는 10자 이상이어야 합니다.' })
+        return false;
+      }
+
+      else if (p1 != p2) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: '비밀번호가 일치하지 않습니다.',
+        })
+        return false;
+      } else {
+        return true;
+      }
+    }
+
+    function editCall(memberId){
+        test();
+        if(test()){
+  	  $.ajax({
+            url: "ajaxHostEdit.do?memberId="+ memberId,
+            type: "post",
+            data:{
+          	  memberName:$("#Name").val(),
+            	  memberPassword:$("#password").val(),
+            	  memberEmail:$("#email").val(),
+            	  memberTel:$("#tel").val()
+            },
+            datatype:"JSON",
+            success: function (data) {
+          	  Swal.fire({
+          		  position: 'center',
+          		  icon: 'success',
+          		  title: '회원정보가 변경되었습니다.',
+          		  showConfirmButton: false,
+          		  timer: 1500
+          		})
+          		$('#password').val('');
+        		$('#passwordcheck').val('');
+            }
+          });
+        }
+    };
+
+	//회원탈퇴
+	 function deleteMember(memberId) {
+
+        var chk = $('input[name=chkSelect]:checked').length;
+
+        if (chk == 0) {
+          //체크박스 선택안함
+          /* alert("회원 탈퇴 동의 해주세요."); */
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '회원 탈퇴에 동의 해주세요!',
+          })
+          return false;
+        }  else {
+        	   Swal.fire({
+        		   title: '정말로 탈퇴하시겠어요?',
+        		   text: "탈퇴시 계정은 삭제되며 복구할 수 없습니다.",
+        		   icon: 'warning',
+        		   showCancelButton: true,
+        		   confirmButtonColor: '#3085d6',
+        		   cancelButtonColor: '#d33',
+        		   confirmButtonText: 'Yes'
+        		 }).then((result) => {
+        		   if (result.isConfirmed) {
+			    	   $.ajax({
+			               url: "ajaxHostDelete.do?memberId="+ memberId,
+			               type: "post",
+			               datatype: "html",
+			               success: function (data) {}
+			    	   });
+        		     Swal.fire(
+        		       '회원 탈퇴가 완료되었습니다.',
+        		       '그동안 저희 StaySpace를 이용해주셔서 감사합니다.',
+        		       'success'
+        		     )
+        		     setTimeout(function() {
+        		    	 location.href = "home.do";
+						}, 2000);
+        		    
+        		   }
+        		 })
+          return true;
+        } 
+      }
+
+
+    
 		
 		//수정하기 버튼 클릭시 이벤트
-		$('#edit').on('click',function(e){
-			let password = $('input[name=password]').val();
-			let checkPassword = $('input[name=checkPassword]').val();
-			let emailFormat = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
-			let email = $('input[name=email]').val();
-			if(password.length<8){
-				Swal.fire({
-					  icon: 'error',
-					  text: '비밀번호 8자리 이상 입력하세요.',
-					})
-				password = '';
-			}else{
-				if(password != checkPassword){
-					Swal.fire({
-						  icon: 'error',
-						  text: '비밀번호가 일치하지 않습니다.',
-						})
-					password='';
-					checkPassword='';
-				}else{
-					if(!emailFormat.test(email)){
-			        	Swal.fire({
-							  icon: 'error',
-							  text: '잘못된 이메일 형식입니다.',
-							})
-			        	email='';
-			        }else{
-			        	Swal.fire({
-			        		  icon: 'question',
-			        		  text: '변경하시겠습니까?',
-			        		  showDenyButton: true,
-			        		  showCancelButton: true,
-			        		  confirmButtonText: 'Yes',
-			        		  denyButtonText: 'No'
-			        		}).then((result) => {
-			        		  /* Read more about isConfirmed, isDenied below */
-			        		  if (result.isConfirmed) {
-			        		    Swal.fire('', '변경되었습니다.', 'success')
-			        		  } else if (result.isDenied) {
-			        		    Swal.fire('', '변경 취소되었습니다.', 'info')
-			        		  }
-			        		})
-			        }
-				}
-			}
+		// $('#edit').on('click',function(e){
+		// 	let password = $('input[name=password]').val();
+		// 	let checkPassword = $('input[name=checkPassword]').val();
+		// 	let emailFormat = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+		// 	let email = $('input[name=email]').val();
+		// 	if(password.length<8){
+		// 		Swal.fire({
+		// 			  icon: 'error',
+		// 			  text: '비밀번호 8자리 이상 입력하세요.',
+		// 			})
+		// 		password = '';
+		// 	}else{
+		// 		if(password != checkPassword){
+		// 			Swal.fire({
+		// 				  icon: 'error',
+		// 				  text: '비밀번호가 일치하지 않습니다.',
+		// 				})
+		// 			password='';
+		// 			checkPassword='';
+		// 		}else{
+		// 			if(!emailFormat.test(email)){
+		// 	        	Swal.fire({
+		// 					  icon: 'error',
+		// 					  text: '잘못된 이메일 형식입니다.',
+		// 					})
+		// 	        	email='';
+		// 	        }else{
+		// 	        	Swal.fire({
+		// 	        		  icon: 'question',
+		// 	        		  text: '변경하시겠습니까?',
+		// 	        		  showDenyButton: true,
+		// 	        		  showCancelButton: true,
+		// 	        		  confirmButtonText: 'Yes',
+		// 	        		  denyButtonText: 'No'
+		// 	        		}).then((result) => {
+		// 	        		  /* Read more about isConfirmed, isDenied below */
+		// 	        		  if (result.isConfirmed) {
+		// 	        		    Swal.fire('', '변경되었습니다.', 'success')
+		// 	        		  } else if (result.isDenied) {
+		// 	        		    Swal.fire('', '변경 취소되었습니다.', 'info')
+		// 	        		  }
+		// 	        		})
+		// 	        }
+		// 		}
+		// 	}
 			
 	        
-		})
+		// })
 		
 		//회원탈퇴 동의 체크시 탈퇴
 		
-		$('#delete').on('click',function(e){
-			let accountActivation = $('input[name=accountActivation]').is(':checked');
-			console.log(accountActivation);
-			if(accountActivation){
+		// $('#delete').on('click',function(e){
+		// 	let accountActivation = $('input[name=accountActivation]').is(':checked');
+		// 	console.log(accountActivation);
+		// 	if(accountActivation){
 				
-				Swal.fire({
-					  text: "회원 탈퇴하시겠습니까?",
-					  icon: 'warning',
-					  showCancelButton: true,
-					  confirmButtonColor: '#3085d6',
-					  cancelButtonColor: '#d33',
-					  confirmButtonText: 'Yes'
-					}).then((result) => {
-					  if (result.isConfirmed) {
-					    Swal.fire(
-					      '',
-					      '탈퇴되었습니다.',
-					      'success'
-					    )
-					  }
-					})
-			}else{
-				Swal.fire({
-					  icon: 'error',
-					  text: '회원탈퇴 동의에 체크해주세요.',
-					})
-			}
-		})
+		// 		Swal.fire({
+		// 			  text: "회원 탈퇴하시겠습니까?",
+		// 			  icon: 'warning',
+		// 			  showCancelButton: true,
+		// 			  confirmButtonColor: '#3085d6',
+		// 			  cancelButtonColor: '#d33',
+		// 			  confirmButtonText: 'Yes'
+		// 			}).then((result) => {
+		// 			  if (result.isConfirmed) {
+		// 			    Swal.fire(
+		// 			      '',
+		// 			      '탈퇴되었습니다.',
+		// 			      'success'
+		// 			    )
+		// 			  }
+		// 			})
+		// 	}else{
+		// 		Swal.fire({
+		// 			  icon: 'error',
+		// 			  text: '회원탈퇴 동의에 체크해주세요.',
+		// 			})
+		// 	}
+		// })
 		
 	</script>
 	<script type="text/javascript" src="member/assets/js/pages-account-settings-account.js">

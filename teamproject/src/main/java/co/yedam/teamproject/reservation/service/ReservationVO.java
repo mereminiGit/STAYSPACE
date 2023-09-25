@@ -18,4 +18,5 @@ public class ReservationVO {
 	private int reserveId;
 	private String reserveImg;
 	private Date reserveCheckoutDate;
+	private String hostId;
 }

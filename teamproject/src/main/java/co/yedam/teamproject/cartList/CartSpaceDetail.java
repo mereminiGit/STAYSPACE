@@ -20,6 +20,8 @@ public class CartSpaceDetail extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 관심목록 디테일페이지 넘어가기 보류
+		
 		SpaceService dao = new SpaceServiceImpl();
 		SpaceVO vo = new SpaceVO();
 		vo.setSpaceId(Integer.parseInt("spaceId"));

@@ -18,6 +18,8 @@ public class SpaceList extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		String page="business/business/spacelist";
 		ViewResolve.forward(request, response, page);
 	}
