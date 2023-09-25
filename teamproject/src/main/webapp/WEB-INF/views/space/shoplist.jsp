@@ -6,6 +6,35 @@
 <head>
 <meta charset="UTF-8">
 <title>Vaso Ecommerce Template</title>
+<style>
+.star-ratings {
+	color: #aaa9a9;
+	position: relative;
+	unicode-bidi: bidi-override;
+	width: max-content;
+	-webkit-text-fill-color: transparent;
+	/* Will override color (regardless of order) */
+	-webkit-text-stroke-width: 1.3px;
+	-webkit-text-stroke-color: #2b2a29;
+}
+
+.star-ratings-fill {
+	color: #fff58c;
+	padding: 0;
+	position: absolute;
+	z-index: 1;
+	display: flex;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	-webkit-text-fill-color: black;
+}
+
+.star-ratings-base {
+	z-index: 0;
+	padding: 0;
+}
+</style>
 </head>
 <body>
 	<section
@@ -53,8 +82,12 @@
 											alt="product-item" class="img-fluid zoom-in">
 									</div>
 									<div class="card-detail text-center pt-3 pb-2">
-										<h5 class="card-title fs-3 text-capitalize"><a href="#" onclick="selectSpace('${s.spaceName}')">${s.spaceName }</a></h5>
-										<span class="item-price text-primary fs-3 fw-light">${s.spacePrice }원<small>/시간</small></span>
+										<h5 class="card-title fs-3 text-capitalize">
+											<a href="#" onclick="selectSpace('${s.spaceId}')">${s.spaceName }</a>
+										</h5>
+										<span class="item-price text-primary fs-3 fw-light">${s.spaceCity }
+											· ${s.spacePrice }원<small>/시간</small>
+										</span>
 									</div>
 								</div>
 							</div>
@@ -96,18 +129,25 @@
 								</form>
 							</div>
 						</div>
-							<div class="widget-product-categories pt-5">
-								<h5
-									class="widget-title text-decoration-underline text-uppercase">Cities</h5>
-								<ul class="product-categories sidebar-list list-unstyled">
-									<li class="cat-item"><a href="shoplist.do"
-										>All</a></li>
-									<li class="cat-item"><a href="?spaceCity=Seoul">Seoul</a></li>
-									<li class="cat-item"><a href="?spaceCity=Busan">Busan</a></li>
-									<li class="cat-item"><a href="?spaceCity=Daegu">Daegu</a></li>
-									<li class="cat-item"><a href="?spaceCity=Gwangjoo">Gwangjoo</a></li>
-								</ul>
-							</div>
+						<div class="widget-product-categories pt-5">
+							<h5 class="widget-title text-decoration-underline text-uppercase">Cities</h5>
+							<ul class="product-categories sidebar-list list-unstyled">
+								<li class="cat-item"><a href="shoplist.do">전체</a></li>
+								<li class="cat-item"><a href="?spaceCity=제주">제주</a></li>
+								<li class="cat-item"><a href="?spaceCity=서울">서울</a></li>
+								<li class="cat-item"><a href="?spaceCity=경기">경기</a></li>
+								<li class="cat-item"><a href="?spaceCity=인천">인천</a></li>
+								<li class="cat-item"><a href="?spaceCity=강원">강원</a></li>
+								<li class="cat-item"><a href="?spaceCity=충청">충청</a></li>
+								<li class="cat-item"><a href="?spaceCity=대전">대전</a></li>
+								<li class="cat-item"><a href="?spaceCity=경상">경상</a></li>
+								<li class="cat-item"><a href="?spaceCity=대구">대구</a></li>
+								<li class="cat-item"><a href="?spaceCity=울산">울산</a></li>
+								<li class="cat-item"><a href="?spaceCity=부산">부산</a></li>
+								<li class="cat-item"><a href="?spaceCity=전라">전라</a></li>
+								<li class="cat-item"><a href="?spaceCity=광주">광주</a></li>
+							</ul>
+						</div>
 						<h5 class="widget-title text-decoration-underline text-uppercase">
 							Date <input type="text" id="datepicker">
 						</h5>
@@ -115,8 +155,7 @@
 							<h5 class="widget-title text-decoration-underline text-uppercase">Space
 								for</h5>
 							<ul class="product-tags sidebar-list list-unstyled">
-								<li class="cat-item"><a href="shoplist.do"
-										>All</a></li>
+								<li class="cat-item"><a href="shoplist.do">All</a></li>
 								<li class="tags-item"><a href="?spaceType=Commercial">Commercial</a></li>
 								<li class="tags-item"><a href="?spaceType=House">House</a></li>
 								<li class="tags-item"><a href="?spaceType=Studio">Studio</a></li>
@@ -128,10 +167,10 @@
 		</div>
 		<div>
 			<form id="sform" action="shopdetail.do" method="post">
-				<input type="hidden" id="spaceName" name="spaceName">
+				<input type="hidden" id="spaceId" name="spaceId">
 			</form>
 		</div>
-		
+
 	</div>
 
 	<!--   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -145,12 +184,12 @@
     } );
     </script> -->
 	<script type="text/javascript">
-	function selectSpace(name){
-		let form= document.getElementById("sform");
-		form.spaceName.value = name;
-		form.submit();
-	}
-	
+		function selectSpace(id) {
+			let form = document.getElementById("sform");
+			form.spaceId.value = id;
+			form.submit();
+		}
+
 		$('#datepicker').datepicker({
 			format : 'yyyy-mm-dd'
 		}).on('hide', function(event) {

@@ -301,72 +301,98 @@
 											<div class="form-group py-3" id="cityBox">
 												<ul id="cityList">
 													<li class="cityElement">
+
 														<button type="button" id="All" onclick="cityClick(this)">
+
 															<a>전체</a>
 														</button>
 													</li>
 													<li class="cityElement">
+
 														<button type="button" id="Jeju" onclick="cityClick(this)">
+
 															<a>제주</a>
 														</button>
 													</li>
 													<li class="cityElement">
+
 														<button type="button" id="Seoul" onclick="cityClick(this)">
+
 															<a>서울</a>
 														</button>
 													</li>
 													<li class="cityElement">
+
 														<button type="button" id="Gyeonggi" onclick="cityClick(this)">
+
 															<a>경기</a>
 														</button>
 													</li>
 													<li class="cityElement">
+
 														<button type="button" id="Incheon" onclick="cityClick(this)">
 															<a>인천</a>
 														</button>
 													</li>
 													<li class="cityElement" >
 														<button type="button" id="Gangwon" onclick="cityClick(this)">
+
 															<a>강원</a>
 														</button>
 													</li>
 													<li class="cityElement">
+
 														<button type="button" id="Chungcheong" onclick="cityClick(this)">
+
 															<a>충청</a>
 														</button>
 													</li>
 													<li class="cityElement">
+
 														<button type="button" id="Daejeon" onclick="cityClick(this)">
+
 															<a>대전</a>
 														</button>
 													</li>
 													<li class="cityElement">
+
 														<button type="button" id="Gyeongsang" onclick="cityClick(this)">
+
 															<a>경상</a>
 														</button>
 													</li>
-													<li class="cityElement">
+													<li class="cityElement"><<<<<<< jiye7
+											
 														<button type="button" id="Daegu" onclick="cityClick(this)">
+
 															<a>대구</a>
 														</button>
 													</li>
 													<li class="cityElement">
+
 														<button type="button" id="Ulsan" onclick="cityClick(this)">
+
 															<a>울산</a>
 														</button>
 													</li>
 													<li class="cityElement">
+
 														<button type="button" id="Busan" onclick="cityClick(this)">
+
 															<a>부산</a>
 														</button>
 													</li>
 													<li class="cityElement">
+
 														<button type="button" id="Jeolla" onclick="cityClick(this)">
+
 															<a>전라</a>
 														</button>
 													</li>
 													<li class="cityElement">
+
 														<button type="button" id="Gwangju" onclick="cityClick(this)">
+
 															<a>광주</a>
 														</button>
 													</li>
