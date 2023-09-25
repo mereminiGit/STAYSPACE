@@ -199,7 +199,7 @@
 					url:"date.do?spaceStartDate=" + date,
 					type: "get",
 					success: function(data){
-						${spaces}=${date}
+						/* ${spaces}=${date} */
 					},
 				})
 			}
