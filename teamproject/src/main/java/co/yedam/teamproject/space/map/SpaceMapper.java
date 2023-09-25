@@ -5,6 +5,7 @@ import co.yedam.teamproject.space.service.SpaceVO;
 
 public interface SpaceMapper {
 	List<SpaceVO> spaceSelectList(SpaceVO vo);
+	List<SpaceVO> totalSpaceSelectList();
 	SpaceVO spaceSelect(SpaceVO vo);
 	int spaceInsert(SpaceVO vo);
 	int spaceUpdate(SpaceVO vo);

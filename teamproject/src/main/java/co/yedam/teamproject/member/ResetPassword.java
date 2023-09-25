@@ -29,4 +29,24 @@ public class ResetPassword {
 		
 		return sb.toString();
 	}
+	
+	public static String getRamdomPhoneCheck() {
+		
+		char[] charSet = new char[] {
+				'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+	    };
+			
+		StringBuffer sb = new StringBuffer();
+		SecureRandom sr = new SecureRandom();
+		sr.setSeed(new Date().getTime());
+			
+		int idx = 0;
+		int len = charSet.length;
+		for(int i = 0; i < 6; i++) {
+			idx = sr.nextInt(len);
+			sb.append(charSet[idx]);
+		}
+			
+		return sb.toString();
+	}
 }
