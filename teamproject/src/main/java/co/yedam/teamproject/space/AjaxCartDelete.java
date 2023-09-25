@@ -34,17 +34,14 @@ public class AjaxCartDelete extends HttpServlet {
 		CartListService dao= new CartListServiceImpl();
 		Map<String, Object> resultMap= new HashMap<>();
 		
+		ObjectMapper objectMapper = new ObjectMapper();
+	    response.setCharacterEncoding("utf-8");
+	    
 		if(dao.cartListDelete(vo)!=0) {
 			resultMap.put("retCode", "Success");
 		} else {
 			resultMap.put("retCode", "Fail");
 		}
-		
-		ObjectMapper objectMapper = new ObjectMapper();
-		String json= objectMapper.writeValueAsString(resultMap);
-		
-		response.setContentType("text/json; charset=utf-8");
-		response.getWriter().print(json);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
