@@ -66,15 +66,15 @@
 						<div class="swiper thumb-swiper col-3">
 							<div class="swiper-wrapper d-flex flex-wrap align-content-start">
 								<div class="swiper-slide">
-									<img src="vaso-html/images/${s.spaceImageMain}" alt=""
+									<img src="image/space/${s.spaceImageMain}" alt=""
 										class="img-fluid">
 								</div>
 								<div class="swiper-slide">
-									<img src="vaso-html/images/${s.spaceImageSub1}" alt=""
+									<img src="image/space/${s.spaceImageSub1}" alt=""
 										class="img-fluid">
 								</div>
 								<div class="swiper-slide">
-									<img src="vaso-html/images/${s.spaceImageSub2}" alt=""
+									<img src="image/space/${s.spaceImageSub2}" alt=""
 										class="img-fluid">
 								</div>
 							</div>
@@ -82,15 +82,15 @@
 						<div class="swiper large-swiper overflow-hidden col-9">
 							<div class="swiper-wrapper">
 								<div class="swiper-slide">
-									<img src="vaso-html/images/${s.spaceImageMain}"
+									<img src="image/space/${s.spaceImageMain}"
 										alt="single-product" class="img-fluid">
 								</div>
 								<div class="swiper-slide">
-									<img src="vaso-html/images/${s.spaceImageSub1}"
+									<img src="image/space/${s.spaceImageSub1}"
 										alt="single-product" class="img-fluid">
 								</div>
 								<div class="swiper-slide">
-									<img src="vaso-html/images/${s.spaceImageSub2}"
+									<img src="image/space/${s.spaceImageSub2}"
 										alt="single-product" class="img-fluid">
 								</div>
 							</div>
