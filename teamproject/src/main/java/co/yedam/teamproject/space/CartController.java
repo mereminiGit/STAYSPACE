@@ -23,44 +23,56 @@ import co.yedam.teamproject.space.serviceImpl.SpaceServiceImpl;
 @WebServlet("/cart.do")
 public class CartController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public CartController() {
-        super();
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CartListService dao= new CartListServiceImpl();
-		CartListVO vo=new CartListVO();
-		List<CartListVO> list= new ArrayList<>();
+	public CartController() {
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		CartListService dao = new CartListServiceImpl();
+		CartListVO vo = new CartListVO();
+		List<CartListVO> list = new ArrayList<>();
 		HttpSession session = request.getSession();
-		/* if(session.getAttribute("memberId")!= null) { */
-			SpaceService sdao= new SpaceServiceImpl();
-			SpaceVO svo=new SpaceVO();
-			svo.setSpaceId(Integer.parseInt(request.getParameter("spaceId")));
-			svo=sdao.spaceSelect(svo);
-			
-			vo.setSpaceName(svo.getSpaceName());
-			vo.setMemberId(svo.getMemberId());
-//			vo.setMemberId((String) session.getAttribute("memberId")); //세션에 담긴 아이디 불러오기
-			vo.setSpacePrice(svo.getSpacePrice());
-			vo.setSpaceCity(svo.getSpaceCity());
-			vo.setSpaceImageMain(svo.getSpaceImageMain());	
-			vo.setSpaceStartDate(Date.valueOf(request.getParameter("spaceStartDate")));
-			
-			dao.cartListInsert(vo);
-			list=dao.cartListSelectList(vo);
-			
-			request.setAttribute("cartList", list);
-			
-			String path = "space/cart";
-			ViewResolve.forward(request, response, path);	
-			/*
-			 * } else { String path="main/account"; ViewResolve.forward(request, response,
-			 * path); }
-			 */
-		}
+		String id=(String) session.getAttribute("memberId");
+		System.out.println("a"+id);
+		if (id != null) {
+			if (request.getParameter("spaceId") != null) {
+				SpaceService sdao = new SpaceServiceImpl();
+				SpaceVO svo = new SpaceVO();
+				svo.setSpaceId(Integer.parseInt(request.getParameter("spaceId")));
+				svo = sdao.spaceSelect(svo);
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+				vo.setMemberId(id); // 세션에 담긴 아이디 불러오기
+				vo.setSpaceName(svo.getSpaceName());
+				vo.setMemberId(svo.getMemberId());
+				vo.setSpacePrice(svo.getSpacePrice());
+				vo.setSpaceCity(svo.getSpaceCity());
+				vo.setSpaceImageMain(svo.getSpaceImageMain());
+				vo.setSpaceStartDate(Date.valueOf(request.getParameter("spaceStartDate")));
+				vo.setSpaceId(Integer.valueOf(svo.getSpaceId()));
+				dao.cartListInsert(vo);
+				System.out.println(vo.getMemberId());
+				list = dao.cartListSelectList(vo);
+			} else {
+				vo.setMemberId("b"+id); // 세션에 담긴 아이디 불러오기
+				System.out.println(vo.getMemberId());
+				list = dao.cartListSelectList(vo);
+			}
+
+			request.setAttribute("cartList", list);
+
+			String path = "space/cart";
+			ViewResolve.forward(request, response, path);
+
+		} else {
+			String path = "main/account";
+			ViewResolve.forward(request, response, path);
+		}
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

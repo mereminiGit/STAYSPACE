@@ -181,7 +181,7 @@
 							<!--카트 상품목록 -->
 							<c:set var="total" value="0" />
 							<c:forEach items="${cartList }" var="c">
-								<tr class="border-bottom border-dark">
+								<tr class="border-bottom border-dark" id="cartid">
 									<td class="align-middle border-0" scope="row">
 										<div class="cart-product-detail d-flex align-items-center">
 											<div class="card-image">
@@ -201,14 +201,13 @@
 									</span></td>
 									<td class="align-middle border-0"><span
 										class="item-price text-primary fs-3 fw-medium">${c.spacePrice }원</span></td>
-									<td class="align-middle border-0 cart-remove"><a href="#"
-										onclick="remove()"> <svg width="32px" height="32px">
+									<td class="align-middle border-0 cart-remove"><button type="button"
+										onclick="remove('${c.reserveId}')"> <svg width="32px" height="32px">
                         <use xlink:href="#baseline-clear"></use>
-                      </svg> <input type="hidden" class="reserve_id"
-											value="${c.reserveId} ">
-									</a></td>
+                      </svg>
+									</button></td>
 								</tr>
-								<c:set var="total" value="${total+c.spacePrice }"/>
+								<c:set var="total" value="${total+c.spacePrice }" />
 							</c:forEach>
 						</tbody>
 					</table>
@@ -221,8 +220,7 @@
 								<tr class="order-total pt-2 pb-2 border-bottom border-dark">
 									<th>Total</th>
 									<td class="align-middle border-0" data-title="Total"><span
-										class="price-amount amount text-primary"> <bdi> <span
-												class="price-currency-symbol"></span>${total }원</bdi>
+										class="price-amount amount text-primary"> ${total }원
 									</span></td>
 								</tr>
 							</tbody>
@@ -241,7 +239,8 @@
 	</section>
 
 	<script>
-	function remove(e){
+	function remove(reserveId){
+		
 		Swal.fire({
 			  title: '삭제',
 			  text: "정말로 삭제하시겠습니까?",
@@ -252,30 +251,22 @@
 			  confirmButtonText: 'delete'
 			}).then((result) => {
 			  if (result.isConfirmed) {
-		let reserveId= $('.reserve_id').text();
-		
-		$.ajax({
-			url:'cartdelete.do',
-			method: 'post',
-			data:{reserveId: reserveId},
-			success: function(e){
-				console.log(e.retCode);
-				if(e.retCode=='Success'){
-					location.href='cart.do';
-					alert('cart에서 삭제되었습니다.')
+				  console.log(reserveId)
+				$.ajax({
+					url:"cartdelete.do?reserveId=" + reserveId,
+					type: "get",
+					success: function(data){
+						$('#cartid').detach();
+						
+					},
+				})
 					Swal.fire(
 			      '삭제!',
 			      '삭제가 완료되었습니다.',
 			      'success'
-			    )}else{
-					alert('삭제 실패')
-				}
-			},
-			error:function(e){
-				console.log(e.retCode);
-			}
-		})
-			   
+			    ).then((result)=>{
+			    	location.replace("cart.do");
+			    })
 			  }
 			})
 	}

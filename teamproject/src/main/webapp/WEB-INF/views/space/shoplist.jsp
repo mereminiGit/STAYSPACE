@@ -191,7 +191,8 @@
 		}
 
 		$('#datepicker').datepicker({
-			format : 'yyyy-mm-dd'
+			dateFormat:'yy-mm-dd',
+	        minDate:0
 		}).on('hide', function(event) {
 			event.preventDefault();
 			event.stopPropagation();

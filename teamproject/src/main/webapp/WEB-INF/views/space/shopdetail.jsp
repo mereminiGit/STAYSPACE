@@ -58,6 +58,7 @@
 			</div>
 		</div>
 	</section>
+	<p>"${memberId}"</p>
 	<section class="single-product padding-large">
 		<div class="container">
 			<div class="row">
@@ -82,16 +83,16 @@
 						<div class="swiper large-swiper overflow-hidden col-9">
 							<div class="swiper-wrapper">
 								<div class="swiper-slide">
-									<img src="image/space/${s.spaceImageMain}"
-										alt="single-product" class="img-fluid">
+									<img src="image/space/${s.spaceImageMain}" alt="single-product"
+										class="img-fluid">
 								</div>
 								<div class="swiper-slide">
-									<img src="image/space/${s.spaceImageSub1}"
-										alt="single-product" class="img-fluid">
+									<img src="image/space/${s.spaceImageSub1}" alt="single-product"
+										class="img-fluid">
 								</div>
 								<div class="swiper-slide">
-									<img src="image/space/${s.spaceImageSub2}"
-										alt="single-product" class="img-fluid">
+									<img src="image/space/${s.spaceImageSub2}" alt="single-product"
+										class="img-fluid">
 								</div>
 							</div>
 						</div>
@@ -101,21 +102,6 @@
 					<div class="product-info">
 						<div class="element-header">
 							<h3 class="product-title my-3">${s.spaceName }</h3>
-							<%-- <div class="rating-container d-flex align-items-center my-3">
-								<div class="rating" data-rating="1" onclick=rate(1)>
-									<c:forEach var="star" begin="1" end="5">
-										<c:if test="${star <= s.spaceStar}">
-											<svg class="bi" width="16" height="16">
-										<use xlink:href="#star-fill"></use></svg>
-										</c:if>
-										<c:if test="${star > s.spaceStar}">
-											<svg class="bi" width="16" height="16">
-										<use xlink:href="#star-empty"></use></svg>
-										</c:if>
-									</c:forEach>
-
-								</div>
-							</div> --%>
 							<div class="star-ratings">
 								<c:set var="stars" value="${s.spaceStar *20}" />
 								<div class="star-ratings-fill space-x-2 text-lg"
@@ -155,7 +141,7 @@
 							id="nav-tab" role="tablist">
 							<button class="nav-link text-uppercase active" id="nav-home-tab"
 								data-bs-toggle="tab" data-bs-target="#nav-home" type="button"
-								role="tab" aria-controls="nav-home" aria-selected="true">map</button>
+								role="tab" aria-controls="nav-home" aria-selected="true">Location</button>
 							<button class="nav-link text-uppercase" id="nav-information-tab"
 								data-bs-toggle="tab" data-bs-target="#nav-information"
 								type="button" role="tab" aria-controls="nav-information"
@@ -170,11 +156,6 @@
 							role="tabpanel" aria-labelledby="nav-home-tab">
 							<p>주소 : ${s.spaceAddress }</p>
 							<p style="margin-top: -12px">
-								<em class="link"> <a href="javascript:void(0);"
-									onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
-										 </a>
-								</em>
-							</p>
 							<div id="map" style="width: 100%; height: 350px;"></div>
 						</div>
 						<div class="tab-pane fade" id="nav-information" role="tabpanel"
@@ -191,7 +172,7 @@
 								<c:forEach items="${replyes }" var="r">						
 									<div class="review-item d-flex">
 										<div class="image-holder">
-											<img src="vaso-html/images/${r.replyImage }" alt="review">
+											<img src="image/reply/${r.replyImage }" alt="review" style="width: 160px; height: 160px">
 										</div>
 										<div class="review-content">
 											<div class="rating-container d-flex align-items-center">
@@ -219,55 +200,58 @@
 							</div>
 							
 							<!-- 리뷰 추가 -->
-							<div class="add-review margin-small">
-								<h3>Add a review</h3>
-								<form id="replyForm" action="replyinsert.do">
-									<div class="review-rating py-2">
-										<span class="my-2">Your rating</span>
-										<!-- 별점 -->
-										<div class="rating-container d-flex align-items-center"
-											id="yourRating">
-											<div class="star-rating space-x-4" style="float: left; padding-left: 0;">
-												<input type="radio" id="5-stars" name="rating" value="5"
-													v-model="ratings" /> <label for="5-stars" class="star pr-4">★</label>
-												<input type="radio" id="4-stars" name="rating" value="4"
-													v-model="ratings" /> <label for="4-stars" class="star">★</label>
-												<input type="radio" id="3-stars" name="rating" value="3"
-													v-model="ratings" /> <label for="3-stars" class="star">★</label>
-												<input type="radio" id="2-stars" name="rating" value="2"
-													v-model="ratings" /> <label for="2-stars" class="star">★</label>
-												<input type="radio" id="1-star" name="rating" value="1"
-													v-model="ratings" /> <label for="1-star" class="star">★</label>
+							<c:if test="${not empty reservations }">
+							
+								<div class="add-review margin-small">
+									<h3>Add a review</h3>
+									<form id="replyForm" action="replyinsert.do" method="post" enctype="multipart/form-data">
+										<div class="review-rating py-2">
+											<span class="my-2">Your rating</span>
+											<!-- 별점 -->
+											<div class="rating-container d-flex align-items-center"
+												id="yourRating">
+												<div class="star-rating space-x-4" style="float: left; padding-left: 0;">
+													<input type="radio" id="5-stars" name="rating" value="5"
+														v-model="ratings" /> <label for="5-stars" class="star">★</label>
+													<input type="radio" id="4-stars" name="rating" value="4"
+														v-model="ratings" /> <label for="4-stars" class="star">★</label>
+													<input type="radio" id="3-stars" name="rating" value="3"
+														v-model="ratings" /> <label for="3-stars" class="star">★</label>
+													<input type="radio" id="2-stars" name="rating" value="2"
+														v-model="ratings" /> <label for="2-stars" class="star">★</label>
+													<input type="radio" id="1-star" name="rating" value="1"
+														v-model="ratings" /> <label for="1-star" class="star">★</label>
+												</div>
 											</div>
 										</div>
-									</div>
-									<!-- 이미지 파일 -->
-									<span class="my-2" style="padding-top: 15px;">Your image</span><br>				
-									<input type="file" class="jfilestyle py-2 border-0" id="replyFile" name="replyFile"
-										data-text="Choose your file" style="padding: 8px 0px 0px 8px;">
-									<!-- 리뷰 content -->
-									<div class="py-3">
-											<label>Your Review</label>
-											<textarea placeholder="Write your review here" class="w-100" style="padding-left: 8px"
-											id="replyTextarea" name="replyTextarea"></textarea>
-									</div>
-									
-									<div style="display:none">
-										<input type="text" name="replyMemberId" value="${memberId }">
-									</div>
-									
-									<div style="display:none">
-										<input type="text" name="replySpaceId" value="${s.spaceId }">
-									</div>
-									
-									<div style="display:none">
-										<input type="text" name="replySpaceName" value="${s.spaceName }">
-									</div>
-									
-									<button type="submit" name="replySubmit"
-											class="btn btn-dark w-100 my-3">Submit</button>
-								</form>
-							</div>
+										<!-- 이미지 파일 -->
+										<span class="my-2" style="padding-top: 15px;">Your image</span><br>				
+										<input type="file" class="jfilestyle py-2 border-0" id="replyFile" name="replyFile"
+											data-text="Choose your file" style="padding: 8px 0px 0px 8px;">
+										<!-- 리뷰 content -->
+										<div class="py-3">
+												<label>Your Review</label>
+												<textarea placeholder="Write your review here" class="w-100" style="padding-left: 8px"
+												id="replyTextarea" name="replyTextarea"></textarea>
+										</div>
+										
+										<div style="display:none">
+											<input type="text" name="replyMemberId" value="${memberId }">
+										</div>
+										
+										<div style="display:none">
+											<input type="text" name="replySpaceId" value="${s.spaceId }">
+										</div>
+										
+										<div style="display:none">
+											<input type="text" name="replySpaceName" value="${s.spaceName }">
+										</div>
+										
+										<button type="submit" name="replySubmit"
+												class="btn btn-dark w-100 my-3">Submit</button>
+									</form>
+								</div>
+							</c:if>
 							
 						</div>
 					</div>
@@ -275,7 +259,12 @@
 			</div>
 		</div>
 	</section>
-
+	
+	<!-- 리뷰 등록 후 -->
+	<c:if test="${not empty replyMessage }">
+					<div id="${replyMessage }"></div>
+	</c:if>
+	
 	<!-- 	<section id="products" class="product-store"
 		data-aos="fade" data-aos-easing="ease-in" data-aos-duration="1000"
 		data-aos-once="true">
@@ -364,7 +353,8 @@
 	<!-- 		</div>
 	</section> -->
 
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7fabb4647805e005839c9dad15111de3"></script>
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7fabb4647805e005839c9dad15111de3&libraries=services"></script>
 	<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 	<script type="text/javascript"
 		src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -380,7 +370,7 @@
 			adaptiveHeight : true
 		});
 	</script>
-	<!-- <script>
+	<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
 			center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -395,31 +385,23 @@
 		var geocoder = new kakao.maps.services.Geocoder();
 
 		// 주소로 좌표를 검색합니다
-		geocoder
-				.addressSearch(
-						'${s.spaceAddress}',
-						function(result, status) {
+		geocoder.addressSearch('${s.spaceAddress}', function(result, status) {
 
-							// 정상적으로 검색이 완료됐으면 
-							if (status === kakao.maps.services.Status.OK) {
+			// 정상적으로 검색이 완료됐으면 
+			if (status === kakao.maps.services.Status.OK) {
 
-								var coords = new kakao.maps.LatLng(result[0].y,
-										result[0].x);
+				var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-								// 결과값으로 받은 위치를 마커로 표시합니다
-								var marker = new kakao.maps.Marker({
-									map : map,
-									position : coords
-								});
-								 var infowindow = new kakao.maps.InfoWindow({
-							            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
-							        });
-							        infowindow.open(map, marker);
-								// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-								map.setCenter(coords);
-							}
-						});
-	</script> -->
+				// 결과값으로 받은 위치를 마커로 표시합니다
+				var marker = new kakao.maps.Marker({
+					map : map,
+					position : coords
+				});
+				// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+				map.setCenter(coords);
+			}
+		});
+	</script>
 	<!--    <script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
 		integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
@@ -465,7 +447,20 @@
 	</script>
 	
 	<!-- 리뷰 script -->
-
+	<script type="text/javascript">
+		// 리뷰 등록 실패(알람창) 	
+		if ($('#replyFail').length) {
+			Swal.fire({
+				title: '리뷰등록',
+				text: "리뷰등록을 실패하였습니다",
+				icon: 'error',
+				confirmButtonColor: '#87826E',
+				confirmButtonText: 'OK',
+			}).then(function () {
+				location.href = 'shopdetail.do';
+			});
+		}
+	</script>
 </body>
 
 </html>
