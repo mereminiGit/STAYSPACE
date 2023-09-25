@@ -15,7 +15,7 @@
 			AND MEMBER_PASSWORD = #{memberPassword}
 		</if>
 	</select>
-
+	
 
 	<select id="memberSelectEmail"
 		resultType="co.yedam.teamproject.member.service.MemberVO">

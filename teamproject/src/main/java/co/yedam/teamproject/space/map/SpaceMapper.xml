@@ -15,6 +15,9 @@
       resultType="co.yedam.teamproject.space.service.SpaceVO">
       SELECT * FROM SPACE WHERE space_id=#{spaceId}
    </select>
+   <select id="spaceSelectId" resultType="co.yedam.teamproject.space.service.SpaceVO">
+   		SELECT * FROM SPACE WHERE SPACE_ID = #{spaceId}
+   </select>
    <insert id="spaceInsert"
       parameterType="co.yedam.teamproject.space.service.SpaceVO">
       <selectKey keyProperty="spaceId" resultType="int" order="BEFORE">

@@ -1,5 +1,4 @@
 package co.yedam.teamproject.space.service;
-import java.util.Date;
 
 import lombok.Getter;
 import lombok.Setter;

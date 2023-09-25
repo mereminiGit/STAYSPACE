@@ -7,29 +7,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.yedam.teamproject.reservation.service.ReservationService;
-import co.yedam.teamproject.reservation.service.ReservationVO;
-import co.yedam.teamproject.reservation.serviceImpl.ReservationServiceImpl;
+import co.yedam.teamproject.reply.service.ReplyService;
+import co.yedam.teamproject.reply.serviceImpl.ReplyServiceImpl;
 
-@WebServlet("/AjaxReserveDelete.do")
-public class AjaxReserveDelete extends HttpServlet {
+@WebServlet("/AjaxReplyDelete.do")
+public class AjaxReplyDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public AjaxReserveDelete() {
+    public AjaxReplyDelete() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String reserveId = request.getParameter("reserveId");
+		String rid = request.getParameter("rid");
+		ReplyService dao = new ReplyServiceImpl();
 		
-		ReservationService dao = new ReservationServiceImpl();
-		ReservationVO vo = new ReservationVO();
-		
-		vo.setReserveId(Integer.parseInt(reserveId));
-		//System.out.println(reserveId);
-		if(dao.reservationDelete(vo) != 0) {
+		if(dao.replyDeleteId(Integer.parseInt(rid)) != 0) {
 			response.getWriter().print("{\"retCode\": \"Success\"}");
-		}else {
+		}
+		else {
 			response.getWriter().print("{\"retCode\": \"Fail\"}");
 		}
 	}

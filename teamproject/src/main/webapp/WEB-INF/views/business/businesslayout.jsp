@@ -93,7 +93,7 @@
             <!-- / Content -->
 
             <!-- Footer -->
-            <tiles:insertAttribute name="footer"/>
+            <tiles:insertAttribute name="footer" />
             <!-- / Footer -->
 
             <div class="content-backdrop fade"></div>
@@ -104,7 +104,7 @@
       </div>
       
       <!-- footer start -->
-		<tiles:insertAttribute name="footer" />
+		
 	<!-- footer end -->
 
       <!-- Overlay -->

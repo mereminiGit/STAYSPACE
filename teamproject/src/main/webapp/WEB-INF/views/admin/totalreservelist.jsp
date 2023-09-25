@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset='utf-8' />
+
 <script src='fullcalendar/dist/index.global.js'></script>
 <!-- 모달 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -20,7 +21,8 @@
 					title : event.spaceName,
 					start : event.reserveStartDate,
 					end : event.reserveEndDate,
-					groupId : event.reserveId
+					groupId : event.reserveId,
+					allDay: true
 				})
 			})
 			callFull();
@@ -69,41 +71,53 @@
 				// 	calendar.unselect()
 				// },
 				eventClick : function(arg) {
-					if (confirm('해당 예약을 정말 삭제하시겠습니까?')) {
-						console.log(arg.event);
-						fetch('AjaxReserveDelete.do',{
-							method: "POST",
-							headers: {"Content-Type": "application/x-www-form-urlencoded"},
-							body: 'title='+arg.event.title+'&reserveId='+arg.event.groupId
-						})
-						.then(resolve => resolve.json())
-						.then(json => {
-							if(json.retCode == "Success"){
-								arg.event.remove()
-								Swal.fire({
-				 					  icon: 'sucess',
-				 					  text: '삭제 성공',
-				 					})
-							}else{
-								Swal.fire({
-				 					  icon: 'error',
-				 					  text: '처리 중 오류 발생',
-				 					})
-							}
-						})
-						.catch();
-					}
-				},
-				eventBorderColor: '#343a40',
-				eventBackgroundColor : '#343a40',
-				editable : true,
-				dayMaxEvents : true, // allow "more" link when too many events
-				events : allEvents
-			});
+					console.log(arg);
+					Swal.fire({
+	      	            text: "해당 예약을 정말 삭제하시겠습니까?",
+	      	            icon: 'warning',
+	      	            showCancelButton: true,
+	      	            confirmButtonColor: '#3085d6',
+	      	            cancelButtonColor: '#d33',
+	      	            confirmButtonText: 'Yes'
+	      	          }).then((result) => {
+						if (result.isConfirmed) {
+							//console.log(arg.event);
+							fetch('AjaxReserveDelete.do',{
+								method: "POST",
+								headers: {"Content-Type": "application/x-www-form-urlencoded"},
+								body: 'reserveId='+arg.event.groupId
+							})
+							.then(resolve => resolve.json())
+							.then(json => {
+								if(json.retCode == "Success"){
+									arg.event.remove()
+									Swal.fire({
+					 					  icon: 'success',
+					 					  text: '삭제 성공',
+					 					})
+								}else{
+									Swal.fire({
+					 					  icon: 'error',
+					 					  text: '처리 중 오류 발생',
+					 					})
+								}
+							})
+							.catch();
+	      	        	  
+	      	          }
+	      	          })
+					},
+					eventBorderColor: '#343a40',
+					eventBackgroundColor : '#343a40',
+					editable : true,
+					dayMaxEvents : true, // allow "more" link when too many events
+					events : allEvents
+				})
+				calendar.render();
+			}
 
-			calendar.render();
-		}
-	});
+		});
+
 </script>
 <style>
 body {
@@ -160,6 +174,7 @@ body {
 .modal-footer {
 	display: inline-block;
 }
+
 </style>
 
 <!-- Favicon -->
