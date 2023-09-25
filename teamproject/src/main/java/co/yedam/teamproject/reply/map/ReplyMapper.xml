@@ -5,7 +5,7 @@
 		SELECT * FROM REPLY WHERE MEMBER_ID = #{memberId}
 	</select>
 	<select id="replySelectListId" resultType="co.yedam.teamproject.reply.service.ReplyVO">
-		SELECT * FROM REPLY WHERE SPACE_ID = #{spaceId}
+		SELECT * FROM REPLY WHERE SPACE_ID = #{spaceId} ORDER BY REPLY_DATE
 	</select>
 	<select id="replySelectList" resultType="co.yedam.teamproject.reply.service.ReplyVO">
 		SELECT * FROM REPLY WHERE SPACE_NAME = #{spaceName}
