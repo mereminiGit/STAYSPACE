@@ -12,7 +12,12 @@
     <title>Stay Space / 회원정보수정</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style type="text/css">
+    *{
+     font-family: 'Noto Sans KR', sans-serif; 
+    }
+    </style>
   </head>
 
   <body>
@@ -53,7 +58,7 @@
                           height="100" width="100" id="uploadedAvatar" />
                            </c:if>
                         <div class="button-wrapper">
-                          <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
+                          <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0" onclick="">
                             <span class="d-none d-sm-block">Upload new photo</span>
                             <i class="bx bx-upload d-block d-sm-none"></i>
                             <input type="file" id="upload" class="account-file-input" hidden
@@ -101,7 +106,7 @@
                           </div>
                         </div>
                         <div class="mt-2">
-                          <button type="submit" class="btn btn-primary me-2" onclick="test(); editCall('${m.memberId}');">저장</button>
+                          <button type="submit" class="btn btn-primary me-2" onclick="editCall('${m.memberId}');">저장</button>
                           <button type="reset" class="btn btn-outline-secondary">취소</button>
                         </div>
                       </form>
@@ -142,6 +147,8 @@
 
       var regEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
       function test() {
+        	var p1 = document.getElementById('password').value;
+            var p2 = document.getElementById('passwordcheck').value;
 
         if (document.getElementById("Name").value == "") {
           Swal.fire({
@@ -185,14 +192,12 @@
           return false;
         }
 
-        var p1 = document.getElementById('password').value;
-        var p2 = document.getElementById('passwordcheck').value;
-        if (p1.length < 10) {
+        else if (p1.length < 10) {
           Swal.fire({ text: '비밀번호는 10자 이상이어야 합니다.' })
           return false;
         }
 
-        if (p1 != p2) {
+        else if (p1 != p2) {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
@@ -253,6 +258,8 @@
       }
       //회원정보수정
       function editCall(memberId){
+          test();
+          if(test()){
     	  $.ajax({
               url: "ajaxMemberEdit.do?memberId="+ memberId,
               type: "post",
@@ -271,8 +278,11 @@
             		  showConfirmButton: false,
             		  timer: 1500
             		})
+            		$('#password').val('');
+          			$('#passwordcheck').val('');
               }
             });
+          }
       };
       
       //회원탈퇴
@@ -308,6 +318,24 @@
       
 
     </script>
+    <script src="member/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="member/assets/vendor/libs/popper/popper.js"></script>
+    <script src="member/assets/vendor/js/bootstrap.js"></script>
+    <script src="member/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+    <script src="member/assets/vendor/js/menu.js"></script>
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+
+    <!-- Main JS -->
+    <script src="member/assets/js/main.js"></script>
+
+    <!-- Page JS -->
+    <script src="member/assets/js/pages-account-settings-account.js"></script>
+
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
   </body>
 
   </html>

@@ -82,7 +82,7 @@
                       <input type="hidden" id="memberId" name="memberId" value="jiwon">
                       <input type="hidden" id="reserveId" name="reserveId" value="${s.reserveId}">
                       <div class="card h-100">
-                        <img class="card-img-top" src="member/image/${s.spaceImageMain }" alt="Card image cap" />
+                        <img class="card-img-top" src="image/space/${s.spaceImageMain }" alt="Card image cap" />
                         <div class="card-body">
                           <h5 class="card-title">${s.spaceName }</h5>
                           <p class="card-text">
@@ -94,7 +94,7 @@
                             가격 : <fmt:formatNumber value="${s.spacePrice }" type="currency" currencySymbol="￦"/>
                           </p>
                           <!-- <a href="javascript:void(0)" class="btn btn-outline-primary">Detailed page</a> -->
-                          <button type="button" class="btn btn-outline-secondary">Detailed page</button>
+                          <button type="button" class="btn btn-outline-secondary" onclick="detailCall('${s.spaceId}')">Detailed page</button>
                           <button type="button" class="btn btn-outline-danger" id="dangerBtn"
                             onclick="deleteCall('${s.memberId }','${s.reserveId}')">Delete</button>
                         </div>
@@ -204,6 +204,17 @@
             }
           })
         };
+        //detailPage연결
+        function detailCall(spaceId){
+            $.ajax({
+                url: "shopdetail.do?spaceId=" + spaceId,
+                type: "post",
+                datatype: "html",
+                success: function (data) {
+                  alert("연결성공");
+                }
+              });
+            }
         /*   $('#dangerBtn').on('click', function(){
           let mId = document.getElementById('memberId');
           let rId = document.getElementById('reserveId');
