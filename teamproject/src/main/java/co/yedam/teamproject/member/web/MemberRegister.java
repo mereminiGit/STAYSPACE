@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.yedam.teamproject.common.Sendsms;
 import co.yedam.teamproject.common.Sha256;
 import co.yedam.teamproject.common.ViewResolve;
 import co.yedam.teamproject.member.service.MemberService;

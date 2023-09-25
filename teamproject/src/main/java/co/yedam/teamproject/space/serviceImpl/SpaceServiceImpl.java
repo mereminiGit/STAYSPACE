@@ -42,9 +42,11 @@ public class SpaceServiceImpl implements SpaceService {
 		return map.totalSpaceSelectList();
 	}
 
+
 	@Override
 	public SpaceVO spaceSelectId(int spaceId) {
 		return map.spaceSelectId(spaceId);
 	}
+
 
 }

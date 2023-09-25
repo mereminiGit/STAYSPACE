@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.yedam.teamproject.cartList.map.CartListMapper">
     <select id="cartListSelectList" resultType="co.yedam.teamproject.cartList.service.CartListVO">
-		SELECT * FROM CARTLIST WHERE MEMBER_ID = #{memberId}
+		SELECT * FROM CARTLIST WHERE MEMBER_ID = #{memberId} ORDER BY SPACE_START_DATE
 	</select>
 
 	<select id="cartListSelect"

@@ -66,15 +66,15 @@
 						<div class="swiper thumb-swiper col-3">
 							<div class="swiper-wrapper d-flex flex-wrap align-content-start">
 								<div class="swiper-slide">
-									<img src="vaso-html/images/${s.spaceImageMain}" alt=""
+									<img src="image/space/${s.spaceImageMain}" alt=""
 										class="img-fluid">
 								</div>
 								<div class="swiper-slide">
-									<img src="vaso-html/images/${s.spaceImageSub1}" alt=""
+									<img src="image/space/${s.spaceImageSub1}" alt=""
 										class="img-fluid">
 								</div>
 								<div class="swiper-slide">
-									<img src="vaso-html/images/${s.spaceImageSub2}" alt=""
+									<img src="image/space/${s.spaceImageSub2}" alt=""
 										class="img-fluid">
 								</div>
 							</div>
@@ -82,15 +82,15 @@
 						<div class="swiper large-swiper overflow-hidden col-9">
 							<div class="swiper-wrapper">
 								<div class="swiper-slide">
-									<img src="vaso-html/images/${s.spaceImageMain}"
+									<img src="image/space/${s.spaceImageMain}"
 										alt="single-product" class="img-fluid">
 								</div>
 								<div class="swiper-slide">
-									<img src="vaso-html/images/${s.spaceImageSub1}"
+									<img src="image/space/${s.spaceImageSub1}"
 										alt="single-product" class="img-fluid">
 								</div>
 								<div class="swiper-slide">
-									<img src="vaso-html/images/${s.spaceImageSub2}"
+									<img src="image/space/${s.spaceImageSub2}"
 										alt="single-product" class="img-fluid">
 								</div>
 							</div>
@@ -117,8 +117,9 @@
 								</div>
 							</div> --%>
 							<div class="star-ratings">
+								<c:set var="stars" value="${s.spaceStar *20}" />
 								<div class="star-ratings-fill space-x-2 text-lg"
-									:style="{ width: ratingToPercent + '%' }">
+									style="width: ${stars }%">
 									<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 								</div>
 								<div class="star-ratings-base space-x-2 text-lg">
@@ -130,12 +131,13 @@
 							</div>
 							<hr>
 							<h5 class="widget-title text-decoration-underline text-uppercase">
-								Date <br> <input type="text" id="datepicker">
+								Date <br> <input type="text" id="datepicker"
+									name="datepicker">
 							</h5>
 							<div class="action-buttons my-4 d-flex flex-wrap">
 								<a href="checkout.do" class="btn btn-dark me-2 mb-1">Checkout</a>
 								<a href="#" class="btn btn-dark"
-									onclick="selectToCart('${s.spaceName}')">Add To Cart</a>
+									onclick="selectToCart('${s.spaceId}')">Add To Cart</a>
 							</div>
 						</div>
 						<hr>
@@ -167,6 +169,12 @@
 						<div class="tab-pane fade active show" id="nav-home"
 							role="tabpanel" aria-labelledby="nav-home-tab">
 							<p>주소 : ${s.spaceAddress }</p>
+							<p style="margin-top: -12px">
+								<em class="link"> <a href="javascript:void(0);"
+									onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
+										 </a>
+								</em>
+							</p>
 							<div id="map" style="width: 100%; height: 350px;"></div>
 						</div>
 						<div class="tab-pane fade" id="nav-information" role="tabpanel"
@@ -296,15 +304,10 @@
 					</div>
 				</div>
 			</div>
-			<div>
-				<form id="cform" action="cart.do" method="post">
-					<input type="hidden" id="spaceName" name="spaceName">
-				</form>
-			</div>
 		</div>
 	</section>
 
-	<section id="products" class="product-store padding-xlarge"
+	<!-- 	<section id="products" class="product-store"
 		data-aos="fade" data-aos-easing="ease-in" data-aos-duration="1000"
 		data-aos-once="true">
 		<div class="container">
@@ -382,18 +385,17 @@
 						<span class="item-price text-primary fs-3 fw-light">$650</span>
 					</div>
 				</div>
-			</div>
-			<div>
-				<form id="sform" action="cart.do" method="post">
-					<input type="hidden" id="spaceName" name="spaceName"> 
-					<input type="hidden" id="spaceStartDate" name="spaceStartDate">
-				</form>
-			</div>
-		</div>
-	</section>
+			</div> -->
+	<div>
+		<form id="sform" action="cart.do" method="post">
+			<input type="hidden" id="spaceId" name="spaceId"> <input
+				type="hidden" id="spaceStartDate" name="spaceStartDate">
+		</form>
+	</div>
+	<!-- 		</div>
+	</section> -->
 
-	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7fabb4647805e005839c9dad15111de3"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7fabb4647805e005839c9dad15111de3"></script>
 	<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 	<script type="text/javascript"
 		src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -417,21 +419,37 @@
 		// 지도의 확대 레벨
 		};
 
-		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		// 지도를 생성합니다    
+		var map = new kakao.maps.Map(mapContainer, mapOption);
 
-		// 마커가 표시될 위치입니다 
-		var markerPosition = new kakao.maps.LatLng(33.450701, 126.570667);
+		// 주소-좌표 변환 객체를 생성합니다
+		var geocoder = new kakao.maps.services.Geocoder();
 
-		// 마커를 생성합니다
-		var marker = new kakao.maps.Marker({
-			position : markerPosition
-		});
+		// 주소로 좌표를 검색합니다
+		geocoder
+				.addressSearch(
+						'${s.spaceAddress}',
+						function(result, status) {
 
-		// 마커가 지도 위에 표시되도록 설정합니다
-		marker.setMap(map);
+							// 정상적으로 검색이 완료됐으면 
+							if (status === kakao.maps.services.Status.OK) {
 
-		// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
-		// marker.setMap(null);
+								var coords = new kakao.maps.LatLng(result[0].y,
+										result[0].x);
+
+								// 결과값으로 받은 위치를 마커로 표시합니다
+								var marker = new kakao.maps.Marker({
+									map : map,
+									position : coords
+								});
+								 var infowindow = new kakao.maps.InfoWindow({
+							            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+							        });
+							        infowindow.open(map, marker);
+								// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+								map.setCenter(coords);
+							}
+						});
 	</script>
 	<!--    <script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
@@ -448,21 +466,29 @@
 	<script>
 		
 	</script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script type="text/javascript">
-	function selectToCart(name){
-		let form= document.getElementById("sform");
-		form.spaceName.value = name;
-		console.log($('input[name=spaceStartDate]').val());
-		form.submit();
-	}
+		function selectToCart(id) {
+			let form = document.getElementById("sform");
+			if (form.spaceStartDate.value != 0) {
+				form.spaceId.value = id;
+				form.submit();
+			} else {
+				Swal.fire({
+					icon : 'warning',
+					title : '날짜를 선택해주세요.',
+				})
+			}
+
+		}
 		$('#datepicker').datepicker({
 			dateFormat : 'yy-mm-dd',
-			onSelect: function(d) { 
-			        var dateObject =$("#datepicker").val();
-			        let form= document.getElementById("sform");
-					form.spaceStartDate.value=dateObject;
-					console.log(dateObject);
-			    }
+			minDate : 0,
+			onSelect : function(d) {
+				var dateObject = $("#datepicker").val();
+				let form = document.getElementById("sform");
+				form.spaceStartDate.value = dateObject;
+			}
 		}).on('hide', function(event) {
 			event.preventDefault();
 			event.stopPropagation();
