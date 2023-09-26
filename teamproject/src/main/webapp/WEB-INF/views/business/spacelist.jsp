@@ -209,7 +209,6 @@ img.stayimg {
 			</div>
 		</div>
 	</form>
-	<br>
 	<!-- pagination -->
 	<nav aria-label="Page navigation">
                           <ul class="pagination justify-content-center">
@@ -328,6 +327,9 @@ img.stayimg {
 							  icon: 'error',
 							  text: '처리 중 오류 발생',
 							})
+							setTimeout(function(){
+								location.reload();
+							}, 1000);
 					}
 				})
 				

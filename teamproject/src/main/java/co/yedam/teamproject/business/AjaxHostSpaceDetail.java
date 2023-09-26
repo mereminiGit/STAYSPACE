@@ -24,19 +24,20 @@ import co.yedam.teamproject.space.serviceImpl.SpaceServiceImpl;
 @WebServlet("/AjaxHostSpaceDetail.do")
 public class AjaxHostSpaceDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public AjaxHostSpaceDetail() {
-        super();
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public AjaxHostSpaceDetail() {
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String sid = request.getParameter("spaceId");
 		SpaceService dao = new SpaceServiceImpl();
 		SpaceVO space = new SpaceVO();
-		
+
 		ReplyService replydao = new ReplyServiceImpl();
 		List<ReplyVO> replyList = new ArrayList<ReplyVO>();
-		
+
 		ReservationService rdao = new ReservationServiceImpl();
 		List<ReservationVO> reserveList = new ArrayList<ReservationVO>();
 		space.setSpaceId(Integer.parseInt(sid));
@@ -46,20 +47,16 @@ public class AjaxHostSpaceDetail extends HttpServlet {
 
 		replyList = replydao.replySelectListId(Integer.parseInt(sid));
 		request.setAttribute("reply", replyList);
-		
+
 		reserveList = rdao.reservationSelectListSpace(sid);
 		request.setAttribute("reserve", reserveList);
-		
-		String page = "business/business/businessspacedetail";
-		ViewResolve.forward(request, response, page);
+
+		String path = "business/business/businessspacedetail";
+		ViewResolve.forward(request, response, path);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }
