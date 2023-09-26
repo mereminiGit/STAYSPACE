@@ -47,6 +47,10 @@
       <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
       <script src="member/assets/js/config.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <style>
+  
+    </style>
     </head>
 
     <body>
@@ -94,7 +98,7 @@
                             가격 : <fmt:formatNumber value="${s.spacePrice }" type="currency" currencySymbol="￦"/>
                           </p>
                           <!-- <a href="javascript:void(0)" class="btn btn-outline-primary">Detailed page</a> -->
-                          <button type="button" class="btn btn-outline-secondary" onclick="detailCall('${s.spaceId}')">Detailed page</button>
+                          <button type="button" class="btn btn-outline-secondary" onclick="detailCall(${s.spaceId})">Detailed page</button>
                           <button type="button" class="btn btn-outline-danger" id="dangerBtn"
                             onclick="deleteCall('${s.memberId }','${s.reserveId}')">Delete</button>
                         </div>
@@ -212,6 +216,7 @@
                 datatype: "html",
                 success: function (data) {
                   alert("연결성공");
+                  location.href='shopdetail.do'
                 }
               });
             }

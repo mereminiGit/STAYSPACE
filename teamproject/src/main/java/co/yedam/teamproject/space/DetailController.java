@@ -44,6 +44,7 @@ public class DetailController extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		vo.setSpaceId(Integer.parseInt(request.getParameter("spaceId")));
+		System.out.println("spaceId찍음>>"+request.getParameter("spaceId"));
 		vo=dao.spaceSelect(vo);
 		request.setAttribute("s", vo);
 		

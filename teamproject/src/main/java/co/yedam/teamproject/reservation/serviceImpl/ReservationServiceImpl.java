@@ -55,12 +55,28 @@ public class ReservationServiceImpl implements ReservationService {
 
 	@Override
 	public List<ReservationVO> reservationSelectListMember(String memberId) {
+
 		return null;
 	}
 
 	@Override
+
+	public int reservationListUpdate(ReservationVO vo) {
+		return map.reservationListUpdate(vo);
+	}
+
+	@Override
+	public int reservationHostTotalCount(String hostId) {
+		return map.reservationHostTotalCount(hostId);
+	}
+
+	@Override
+	public int reservationMemberTotalCount(String memberId) {
+		return map.reservationMemberTotalCount(memberId);
+
 	public List<ReservationVO> reservationSelectListCheck() {
 		return map.reservationSelectListCheck();
+
 	}
 
 }

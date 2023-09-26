@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,31 +41,51 @@ img#stayimg {
 								<th>Img</th>
 								<th>Name</th>
 								<th>Price</th>
+
+								<th>subscriber</th>
+								<th>Start Date</th>
+								<th>Payment date</th>
+								<th>Approved or not</th>
+
 								<th>Member Id</th>
 								<th>Reserved Date</th>
 								<th>Approval</th>
+
 							</tr>
 						</thead>
 						<tbody class="table-border-bottom-0">
 							<!-- 1번 공간 -->
+							<c:forEach items="${hostReserve }" var="h">
 							<tr>
 								<td>1</td>
 								<td><img id="stayimg"
-									src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
-								<td>촬영
-										스튜디오</td>
-								<td>50000 ₩</td>
-								<td>홍길동</td>
-								<td>2023-09-01</td>
-								<td>
-									<button type="button" class="btn btn-outline-warning approved">승인</button>
+
+									src="image/space/${h.reserveImg }" alt="space1"></td>
+								<td>${h.spaceName }</td>
+								<td><fmt:formatNumber value="${h.reservePrice }" type="currency" currencySymbol="￦"/></td>
+								<td>${h.memberId }</td>
+								<td>${h.reserveStartDate }</td>
+								<td>${h.reserveCheckoutDate }</td>
+								<c:choose>
+								<c:when test="${h.reserveCheck == 0 }">
+									<td><button type="button" class="btn btn-outline-warning approved" onclick="reserveCall('${h.hostId }',${h.reserveId},${h.reserveCheck },'승인')">승인</button>
+									
 									<button type="button"
-										class="btn btn-outline-secondary rejected">거부</button>
-								</td>
+										class="btn btn-outline-secondary rejected" onclick="reserveCall('${h.hostId }',${h.reserveId},${h.reserveCheck },'거부')">거부</button>
+									</td>
+								</c:when>
+								<c:otherwise>
+								<td>처리완료</td>
+								</c:otherwise>
+								</c:choose>
+								
 							</tr>
+							</c:forEach>
 							<!-- 2번 공간 -->
+
 							<tr>
 								<td>2</td>
+
 								<td><img id="stayimg"
 									src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
 								<td>촬영
@@ -75,7 +99,7 @@ img#stayimg {
 										class="btn btn-outline-secondary rejected">거부</button>
 								</td>
 							</tr>
-							<!-- 3번 공간 -->
+							3번 공간
 							<tr>
 								<td>3</td>
 								<td><img id="stayimg"
@@ -91,7 +115,7 @@ img#stayimg {
 										class="btn btn-outline-secondary rejected">거부</button>
 								</td>
 							</tr>
-							<!-- 4번 공간 -->
+							4번 공간
 							<tr>
 								<td>4</td>
 								<td><img id="stayimg"
@@ -106,10 +130,10 @@ img#stayimg {
 									<button type="button"
 										class="btn btn-outline-secondary rejected">거부</button>
 								</td>
-							</tr>
+							</tr> -->
 						</tbody>
 						<caption style="padding-left: 20px">
-							<b>Total:
+							<b>Total: ${count}
 						</caption>
 					</table>
 				</div>
@@ -119,22 +143,37 @@ img#stayimg {
 		</div>
 	</div>
 	<script>
-		$('.approved').on('click', function(e) {
-			e.target.parentElement.innerText = 'Approved';
+	 	$('.approved').on('click', function(e) {
 			Swal.fire({
 				  icon: 'success',
 				  text: '승인되었습니다.',
 				})
-			return approved;
+				setTimeout(function() {
+					location.reload();
+				}, 900);
 		})
+		
 		$('.rejected').on('click', function(e) {
-			e.target.parentElement.innerText = 'Rejected';
 			Swal.fire({
 				  icon: 'success',
 				  text: '거부되었습니다.',
 				})
-			return rejected;
-		})
+				setTimeout(function() {
+					location.reload();
+				}, 900);
+		})  
+		
+		function reserveCall(hostId,reserveId,reserveCheck,type){
+		    $.ajax({
+                url: "ajaxReserveUpdate.do?hostId="+hostId+"&reserveId="+reserveId+"&reserveCheck="+reserveCheck+"&type="+type,
+                type: "post",
+                datatype: "html",
+                success: function (data) {
+                	console.log(data);
+                        }
+                
+              });
+		}
 	</script>
 
 </body>

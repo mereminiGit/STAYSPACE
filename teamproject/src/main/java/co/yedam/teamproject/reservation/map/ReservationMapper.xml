@@ -20,6 +20,13 @@
 	<select id="reservationSelectHost" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
 		SELECT * FROM RESERVATION WHERE HOST_ID = #{hostId}
 	</select>
+
+	<select id="reservationHostTotalCount" resultType="int">
+		SELECT COUNT(*) FROM RESERVATION WHERE HOST_ID = #{hostId}
+	</select>
+	<select id="reservationMemberTotalCount" resultType="int">
+		SELECT COUNT(*) FROM RESERVATION WHERE MEMBER_ID = #{memberId}
+
 	<select id="reservationSelectDate"
 		resultType="co.yedam.teamproject.cartList.service.CartListVO">
 		SELECT * FROM SPACE
@@ -27,6 +34,7 @@
 		(SELECT SPACE_ID FROM RESERVATION WHERE reserve_start_date = #{reserveStartDate}) AND reserve_check=1
 	<select id="reservationSelectListCheck" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
 		SELECT * FROM RESERVATION WHERE RESERVE_CHECK = 1
+
 	</select>
 	<insert id="reservationInsert" parameterType="co.yedam.teamproject.reservation.service.ReservationVO">
 		<selectKey keyProperty="reserveId" resultType="int" order="BEFORE">
@@ -43,6 +51,14 @@
 		</set>
 		  WHERE MEMBER_ID = #{memberId}
    		  AND SPACE_NAME = #{spaceName}
+	</update>
+	<update id="reservationListUpdate" parameterType="co.yedam.teamproject.reservation.service.ReservationVO">
+		UPDATE RESERVATION
+		<set>
+		RESERVE_CHECK = #{reserveCheck}
+		</set>	
+		WHERE HOST_ID=#{hostId}
+		AND RESERVE_ID=#{reserveId}
 	</update>
 	<delete id="reservationDelete" parameterType="co.yedam.teamproject.reservation.service.ReservationVO">
 		DELETE FROM RESERVATION

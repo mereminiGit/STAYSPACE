@@ -69,7 +69,7 @@
                             <span class="d-none d-sm-block">Reset</span>
                           </button>
 
-                          <p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
+                          <p class="text-muted mb-0"></p>
                         </div>
                       </div>
                     </div>
