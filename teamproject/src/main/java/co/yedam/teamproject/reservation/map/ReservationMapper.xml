@@ -20,6 +20,11 @@
 	<select id="reservationSelectHost" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
 		SELECT * FROM RESERVATION WHERE HOST_ID = #{hostId}
 	</select>
+	<select id="reservationSelectDate"
+		resultType="co.yedam.teamproject.cartList.service.CartListVO">
+		SELECT * FROM SPACE
+		WHERE SPACE_ID=
+		(SELECT SPACE_ID FROM RESERVATION WHERE reserve_start_date = #{reserveStartDate}) AND reserve_check=1
 	<select id="reservationSelectListCheck" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
 		SELECT * FROM RESERVATION WHERE RESERVE_CHECK = 1
 	</select>

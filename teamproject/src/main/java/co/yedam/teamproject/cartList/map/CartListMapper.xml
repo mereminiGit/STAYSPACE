@@ -13,13 +13,6 @@
 		SELECT * FROM CARTLIST WHERE RESERVE_ID = #{reserveId}
 	</select>
 
-	<select id="cartDateSelectList"
-		resultType="co.yedam.teamproject.cartList.service.CartListVO">
-		SELECT * FROM SPACE
-		WHERE SPACE_ID=
-		(SELECT SPACE_ID FROM CARTLIST WHERE space_start_date = #{spaceStartDate})
-	</select>
-
 	<insert id="cartListInsert"
 		parameterType="co.yedam.teamproject.cartList.service.CartListVO">
 		<selectKey keyProperty="reserveId" resultType="int"
