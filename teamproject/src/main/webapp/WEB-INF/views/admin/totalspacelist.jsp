@@ -48,7 +48,7 @@ img.stayimg {
 						</thead>
 						<tbody class="table-border-bottom-0">
 							<c:forEach items="${spaces }" var="s">
-								<tr sn="${s.spaceName }">
+								<tr sid="${s.spaceId }">
 									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceId }</td>
 									<td onclick="adminspacedetail('${s.spaceId }')"><img
 										src="image/space/${s.spaceImageMain}" class="stayimg"
@@ -56,7 +56,7 @@ img.stayimg {
 									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceName }</td>
 									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceAddress }</td>
 									<td onclick="adminspacedetail('${s.spaceId }')"><span>${s.spacePrice }</span>
-										원</td>
+										₩</td>
 									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceType }</td>
 									<td>
 										<div class="dropdown">
@@ -142,7 +142,7 @@ img.stayimg {
 						<div class="row">
 							<div class="col mb-3">
 								<label for="PriceWithTitle" class="form-label">Type</label> <select
-									 id="type" name="type" class="form-control">
+									 id="stype" name="stype" class="form-control">
 											<option value="Commercial">Commercial</option>
 											<option value="House">House</option>
 											<option value="Studio">Studio</option>
@@ -172,7 +172,7 @@ img.stayimg {
 			  }
               //삭제 이벤트 
               $('.spacedelete').on('click', function(e){
-      			let sn = e.target.parentElement.parentElement.parentElement.parentElement.getAttribute('sn');
+      			let sid = e.target.parentElement.parentElement.parentElement.parentElement.getAttribute('sid');
       			Swal.fire({
       	            text: "대여공간을 삭제하시겠습니까?",
       	            icon: 'warning',
@@ -182,7 +182,7 @@ img.stayimg {
       	            confirmButtonText: 'Yes'
       	          }).then((result) => {
       	        	  if(result.isConfirmed){
-		      			spaceRemove(sn,function(result){
+		      			spaceRemove(sid,function(result){
 		      				if(result.retCode == 'Success'){
 		      					e.target.parentElement.parentElement.parentElement.parentElement.remove();
 		      					Swal.fire({
@@ -205,8 +205,8 @@ img.stayimg {
                   })
 	      			})
 	        
-              function spaceRemove(spaceName, callback){
-            	  fetch('AjaxSpaceDelete.do?sname='+spaceName)
+              function spaceRemove(spaceId, callback){
+            	  fetch('AjaxSpaceDelete.do?sid='+spaceId)
             	  .then(resolve => resolve.json())
             	  .then(result => callback(result))
             	  .catch();
@@ -224,13 +224,15 @@ img.stayimg {
             	  let spaceaddress = tr.children[3].innerText;
             	  let spaceprice = tr.children[4].children[0].innerText;
             	  let spacetype = tr.children[5].innerText;
+            	  //console.log(spacetype);
             	  
             	  $('input[name=sid]').val(spaceid);
             	  $('input[name=sname]').val(spacename);
             	  $('input[name=saddress]').val(spaceaddress);
             	  $('input[name=sprice]').val(spaceprice);
-            	  $('input[name=imgfile]').val(spaceimage);
-            	  $('select').val(spacetype);
+            	  //$('input[name=imgfile]').val(spaceimage);
+            	  $('#stype').val(spacetype).prop('selected', true);
+            	  
               	})
             	  
               </script>

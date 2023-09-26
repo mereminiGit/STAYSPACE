@@ -31,28 +31,29 @@
 
 		<div class="container-xxl flex-grow-1 container-p-y">
 			<h4 class="fw-bold py-3 mb-4">
-				My Account <span class="text-muted fw-light">Settings</span>
+				Admin Account <span class="text-muted fw-light">Settings</span>
 			</h4>
 
 			<div class="row">
 				<div class="col-md-12">
 					<div class="card mb-4">
-						<h5 class="card-header">내 정보 수정</h5>
-							<!-- Account -->
-							<div class="card-body">
-								<div
-									class="d-flex align-items-start align-items-sm-center gap-4">
-									<c:if test="${empty m.memberImage}">
-										<img src="image/member/기본프로필.jpg" alt="기본프로필"
-											class="d-block rounded" height="100" width="100"
-											id="uploadedAvatar" />
-									</c:if>
-									<c:if test="${not empty m.memberImage}">
-										<img src="image/member/${m.memberImage }" alt="user-Img"
-											class="d-block rounded" height="100" width="100"
-											id="uploadedAvatar" />
-									</c:if>
-									<!-- <div class="button-wrapper">
+						<img src="image/space/숙소2.jpg" alt="image"
+							style="height: 200px; object-fit: cover; border-radius: 10px 10px 0 0;">
+						<h5 class="card-header">My Account Settings</h5>
+						<!-- Account -->
+						<div class="card-body">
+							<div class="d-flex align-items-start align-items-sm-center gap-4">
+								<c:if test="${empty m.memberImage}">
+									<img src="image/member/기본프로필.jpg" alt="기본프로필"
+										class="d-block rounded" height="100" width="100"
+										id="uploadedAvatar" />
+								</c:if>
+								<c:if test="${not empty m.memberImage}">
+									<img src="image/member/${m.memberImage }" alt="user-Img"
+										class="d-block rounded" height="100" width="100"
+										id="uploadedAvatar" />
+								</c:if>
+								<!-- <div class="button-wrapper">
 										<label for="upload" class="btn btn-secondary me-2 mb-4"
 											tabindex="0"> <span class="d-none d-sm-block">이미지
 												등록</span> <i class="bx bx-upload d-block d-sm-none"></i> <input
@@ -69,59 +70,67 @@
 										<p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max
 											size of 800K</p>
 									</div>  -->
-								</div>
 							</div>
-							<hr class="my-0" />
-							<div class="card-body">
-								<div class="row">
-									<div class="mb-3 col-md-6">
-										<label for="Id" class="form-label">ID</label> <input
-											type="text" id="id" class="form-control" name="memberId"
-											value="${m.memberId }" readonly />
-									</div>
-									<div class="mb-3 col-md-6">
-										<label for="password" class="form-label">PASSWORD</label> <input
-											class="form-control" type="password" name="password"
-											id="password" placeholder="비밀번호를 입력하세요." />
-									</div>
-									<div class="mb-3 col-md-6">
-										<label for="checkPassword" class="form-label">CHECK
-											PASSWORD</label> <input class="form-control" type="password"
-											name="passwordcheck" id="passwordcheck"
-											placeholder="비밀번호를 다시 입력하세요." />
-									</div>
-									<div class="mb-3 col-md-6">
-										<label for="firstName" class="form-label">Name</label> <input
-											type="text" class="form-control" id="Name" name="Name"
-											value="${m.memberName }" />
-									</div>
-									<div class="mb-3 col-md-6">
-										<label for="email" class="form-label">E-mail</label> <input
-											class="form-control" type="text" id="email" name="email"
-											value="${m.memberEmail }" />
-									</div>
-									<div class="mb-3 col-md-6">
-										<label class="form-label" for="phoneNumber">Phone
-											Number</label>
-										<div class="input-group input-group-merge">
-											<input type="text" id="tel" name="tel"
-												class="form-control" value="${m.memberTel }" />
-										</div>
-									</div>
-									<div class="mt-2">
-										<button type="submit" id="edit" class="btn btn-dark me-2" onclick="editMember('${m.memberId}');">수정하기</button>
-										<button type="reset" class="btn btn-outline-dark">취소하기</button>
+						</div>
+						<hr class="my-0" />
+						<div class="card-body">
+							<div class="row">
+								<div class="mb-3 col-md-6">
+									<label for="Id" class="form-label">ID</label> <input
+										type="text" id="id" class="form-control" name="memberId"
+										value="${m.memberId }" readonly />
+								</div>
+								<div class="mb-3 col-md-6">
+									<label for="firstName" class="form-label">Name</label> <input
+										type="text" class="form-control" id="Name" name="Name"
+										value="${m.memberName }" />
+								</div>
+								<div class="mb-3 col-md-6">
+									<label for="email" class="form-label">E-mail</label> <input
+										class="form-control" type="text" id="email" name="email"
+										value="${m.memberEmail }" />
+								</div>
+								<div class="mb-3 col-md-6">
+									<label class="form-label" for="phoneNumber">Phone
+										Number</label>
+									<div class="input-group input-group-merge">
+										<input type="text" id="tel" name="tel" class="form-control"
+											value="${m.memberTel }" />
 									</div>
 								</div>
 							</div>
+						</div>
+						<hr class="my-0" />
+						<div class="card-body">
+							<div class="row">
+								<small style="color: red">* 비밀번호를 수정하시려면 새로운 비밀번호를 입력하시고
+									수정을 원하지 않으시면 기존 비밀번호를 입력하세요.</small> <br> <br>
+								<div class="mb-3 col-md-6">
+									<label for="password" class="form-label">PASSWORD</label> <input
+										class="form-control" type="password" name="password"
+										id="password" placeholder="비밀번호를 입력하세요." />
+								</div>
+								<div class="mb-3 col-md-6">
+									<label for="checkPassword" class="form-label">CHECK
+										PASSWORD</label> <input class="form-control" type="password"
+										name="passwordcheck" id="passwordcheck"
+										placeholder="비밀번호를 다시 입력하세요." />
+								</div>
+								<div class="mt-2">
+									<button type="submit" id="edit" class="btn btn-dark me-2"
+										onclick="editMember('${m.memberId}');">수정하기</button>
+									<button type="reset" class="btn btn-outline-dark">취소하기</button>
+								</div>
+							</div>
+						</div>
 						<!-- /Account -->
 					</div>
 					<div class="card">
-						<h5 class="card-header">회원 탈퇴</h5>
+						<h5 class="card-header">My Account Delete</h5>
 						<div class="card-body">
 							<div class="mb-3 col-12 mb-0">
 								<div class="alert alert-warning"
-									style="background-color: #eee; width: 80%; border-radius: 10px">
+									style="background-color: #eee; border-radius: 10px">
 									<br>
 									<h6 class="alert-heading fw-bold mb-1"
 										style="color: rgba(0, 0, 0, 0.6)">※ 정말로 계정을 삭제하시겠습니까?</h6>
@@ -139,9 +148,12 @@
 										삭제에 동의합니다.</label>
 								</div>
 								<button type="submit" id="delete"
-									class="btn btn-dark deactivate-account" onclick="deleteMember('${m.memberId}')">탈퇴하기</button>
+									class="btn btn-dark deactivate-account"
+									onclick="deleteMember('${m.memberId}')">탈퇴하기</button>
 							</form>
 						</div>
+						<img src="image/space/숙소2.jpg" alt="image"
+							style="height: 200px; object-fit: cover; border-radius: 0 0 10px 10px; object-position: bottom;">
 					</div>
 					<!-- Modal 1-
 					<div class="modal fade" id="modalToggle"
