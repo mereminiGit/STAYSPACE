@@ -13,12 +13,10 @@
 <meta name="author" content="">
 <meta name="keywords" content="">
 <meta name="description" content="">
-<link rel="stylesheet" type="text/css"
-	href="vaso-html/css/vendor.css">
+<link rel="stylesheet" type="text/css" href="vaso-html/css/vendor.css">
 <link rel="stylesheet" type="text/css"
 	href="vaso-html/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css"
-	href="vaso-html/style.css">
+<link rel="stylesheet" type="text/css" href="vaso-html/style.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -163,39 +161,40 @@
 	</section>
 	<section class="shopify-cart checkout-wrap padding-large">
 		<div class="container">
-			<form class="form-group">
+			<form class="form-group" action="memberregister.do" onsubmit="requestPay()">
 				<div class="col-lg-6" style="margin: 0 auto">
 					<h3 class="pb-4">Billing Details</h3>
 					<div class="billing-details">
 						<div class="py-3">
 							<label for="lname">Name*</label> <input type="text" id="lname"
-								name="lastname" class="w-100">
+								name="lastname" class="w-100" value=${member.memberName }>
 						</div>
 						<div class="py-3">
-							<label for="email">Phone *</label> <input type="text" id="phone"
-								name="phone" class="w-100">
+							<label for="Phone">Phone *</label> <input type="text" id="phone"
+								name="phone" class="w-100" value=${member.memberTel }>
 						</div>
 
 						<div class="py-3">
 							<label for="email">Email address *</label> <input type="text"
-								id="email" name="email" class="w-100">
+								id="email" name="email" class="w-100"
+								value=${member.memberEmail }>
 						</div>
 					</div>
 					<h3 class="pb-4">Reservation Information</h3>
 					<div class="billing-details">
-					<c:set var="total" value="0"/>
-					<c:forEach items="${cart }" var="c">
-					<img src="image/space/${c.spaceImageMain }" style="width:648px">
-						<label for="fname">${c.spaceName } · ${c.spaceStartDate }</label>
-					<c:set var="total" value="${total+c.spacePrice }"/>
-					</c:forEach>
+						<c:set var="total" value="0" />
+						<c:forEach items="${cart }" var="c">
+							<img src="image/space/${c.spaceImageMain }" style="width: 648px">
+							<label for="fname">${c.spaceName } · ${c.spaceStartDate }</label>
+							<c:set var="total" value="${total+c.spacePrice }" />
+						</c:forEach>
 					</div>
 					<div class="your-order mt-5">
 						<h3 class="pb-4">Cart Totals</h3>
 						<div class="total-price">
 							<table cellspacing="0" class="table">
 								<tbody>
-									
+
 									<tr
 										class="order-total border-bottom border-dark pt-2 pb-2 text-uppercase">
 										<th>Total</th>
@@ -206,7 +205,7 @@
 									</tr>
 								</tbody>
 							</table>
-							<div class="list-group mt-5 mb-3">
+							<!-- <div class="list-group mt-5 mb-3">
 								<label
 									class="list-group-item p-0 bg-transparent d-flex gap-2 border-0">
 									<input class="form-check-input p-0 flex-shrink-0" type="radio"
@@ -245,9 +244,9 @@
 											credit card if you don’t have a PayPal account.</p>
 								</span>
 								</label>
-							</div>
-							<button type="button" name="submit" class="btn btn-dark w-100"
-								onclick="check()">Place an order</button>
+							</div> -->
+							<input type="submit" name="submit" class="btn btn-dark w-100"
+								 value="Place an order">
 						</div>
 					</div>
 				</div>
@@ -263,7 +262,7 @@
 	<script type="text/javascript" src="vaso-html/js/checkout.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script>
-		function check() {
+		/* function check() {
 			console.log('a');
 			if (document.getElementById("lname").value == "") {
 				Swal.fire({
@@ -280,13 +279,38 @@
 					text : '이메일을 입력하세요',
 					icon : 'warning'
 				})
-			} else{
+			} else {
 				Swal.fire({
-					title: '결제완료',
+					title : '결제완료',
 					text : '결제가 완료되었습니다.',
 					icon : 'success'
 				})
 			}
+		} */
+	</script>
+	<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+	<script>
+		const userCode = "imp14397622";
+		IMP.init(userCode);
+
+		function requestPay() {
+			IMP.request_pay({
+				pg : "html5_inicis",
+				pay_method : "card",
+				merchant_uid : "${member.memberName}",
+				name : "테스트 결제",
+				amount : ${total},
+				buyer_tel : "${member.memberTel}",
+			});
+			Swal.fire({
+				title : '결제완료',
+				text : '결제가 완료되었습니다.',
+				icon : 'success',
+				confirmButtonText:'OK'
+			}).then((result)=>{
+				if(result.isConfirmed){
+				}
+			})
 		}
 	</script>
 </body>

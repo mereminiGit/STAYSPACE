@@ -20,6 +20,12 @@
 	<select id="reservationSelectHost" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
 		SELECT * FROM RESERVATION WHERE HOST_ID = #{hostId}
 	</select>
+	<select id="reservationSelectDate"
+		resultType="co.yedam.teamproject.cartList.service.CartListVO">
+		SELECT * FROM SPACE
+		WHERE SPACE_ID=
+		(SELECT SPACE_ID FROM RESERVATION WHERE reserve_start_date = #{reserveStartDate}) AND reserve_check=1
+	</select>
 	<insert id="reservationInsert" parameterType="co.yedam.teamproject.reservation.service.ReservationVO">
 		<selectKey keyProperty="reserveId" resultType="int" order="BEFORE">
 			SELECT NVL(MAX(RESERVE_ID),0) + 1 AS ID

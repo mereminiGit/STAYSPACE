@@ -16,6 +16,9 @@ import co.yedam.teamproject.cartList.service.CartListService;
 import co.yedam.teamproject.cartList.service.CartListVO;
 import co.yedam.teamproject.cartList.serviceImpl.CartListServiceImpl;
 import co.yedam.teamproject.common.ViewResolve;
+import co.yedam.teamproject.member.service.MemberService;
+import co.yedam.teamproject.member.service.MemberVO;
+import co.yedam.teamproject.member.serviceImpl.MemberServiceImpl;
 import co.yedam.teamproject.space.service.SpaceService;
 import co.yedam.teamproject.space.service.SpaceVO;
 import co.yedam.teamproject.space.serviceImpl.SpaceServiceImpl;
@@ -55,6 +58,11 @@ public class CheckoutController extends HttpServlet {
 				vo.setMemberId(id); // 세션에 담긴 아이디 불러오기
 				list = dao.cartListSelectList(vo);
 			}
+			MemberVO mvo= new MemberVO();
+			MemberService mdao = new MemberServiceImpl();
+			mvo.setMemberId(id);
+			mvo=mdao.memberSelect(mvo);
+			request.setAttribute("member", mvo);
 			request.setAttribute("cart", list);
 			String path = "space/checkout";
 			ViewResolve.forward(request, response, path);	

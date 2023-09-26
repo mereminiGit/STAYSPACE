@@ -53,4 +53,10 @@ public class ReservationServiceImpl implements ReservationService {
 		return map.reservationSelectHost(vo);
 	}
 
+	@Override
+	public List<ReservationVO> reservationSelectListMember(String memberId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

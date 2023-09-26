@@ -60,33 +60,31 @@
 				<main class="col-md-9">
 					<div class="filter-shop d-flex flex-wrap justify-content-between">
 						<div class="showing-product">
-							<p>Showing 1-9 of 55 results</p>
+							<p>Showing 1-${pages } of ${results } results</p>
 						</div>
-						<div class="sort-by">
+						<!-- <div class="sort-by">
 							<select id="input-sort" class="form-control" data-filter-sort=""
-								data-filter-order="">
-								<option value="">Default sorting</option>
-								<option value="">Price (Low-High)</option>
-								<option value="">Price (High-Low)</option>
-								<option value="">Rating (Highest)</option>
-								<option value="">Rating (Lowest)</option>
+								data-filter-order="" name="sorting">
+								<option value="all">Default sorting</option>
+								<option value="price">Price (Low-High)</option>
+								<option value="ratinr">Rating (Highest)</option>
 							</select>
-						</div>
+						</div> -->
 					</div>
 					<div class="row product-content product-store">
 						<c:forEach items="${spaces }" var="s">
 							<div class="col-lg-4 col-md-6">
 								<div class="product-card mb-3 position-relative">
 									<div class="image-holder zoom-effect">
-										<img src="image/space/${s.spaceImageMain}"
-											alt="product-item" class="img-fluid zoom-in">
+										<a href="#" onclick="selectSpace('${s.spaceId}')"><img src="image/space/${s.spaceImageMain}" alt="product-item"
+											class="img-fluid zoom-in"></a>
 									</div>
 									<div class="card-detail text-center pt-3 pb-2">
 										<h5 class="card-title fs-3 text-capitalize">
 											<a href="#" onclick="selectSpace('${s.spaceId}')">${s.spaceName }</a>
 										</h5>
 										<span class="item-price text-primary fs-3 fw-light">${s.spaceCity }
-											· ${s.spacePrice }원<small>/시간</small>
+											· &#x20a9;${s.spacePrice }<small>/일</small>
 										</span>
 									</div>
 								</div>
@@ -98,13 +96,18 @@
 						role="navigation" style="padding-bottom: 0;">
 						<div
 							class="pagination loop-pagination d-flex justify-content-center align-items-center">
-							<a href="#" class="d-flex pe-2"> <svg width="24" height="24">
+							<a href="?page=${currentPage-1}" class="d-flex pe-2"> <svg width="24" height="24">
 										<use xlink:href="#angle-left"></use></svg>
-							</a> <span aria-current="page" class="page-numbers current pe-3">1</span>
-							<a class="page-numbers pe-3" href="#">2</a> <a
-								class="page-numbers pe-3" href="#">3</a> <a
-								class="page-numbers pe-3" href="#">4</a> <a class="page-numbers"
-								href="#">5</a> <a href="#" class="d-flex ps-2"> <svg
+							</a>
+							<c:forEach var="page" begin="1" end="${pages}">
+							<c:if test="${page eq currentPage}">
+							<a class="page-numbers current pe-3" href="?page=${page }">${page }</a>
+							</c:if>
+							<c:if test="${page ne currentPage}">
+							<a class="page-numbers pe-3" href="?page=${page }">${page }</a>
+							</c:if>
+							</c:forEach>	
+								<a href="?page=${currentPage+1}" class="d-flex ps-2"> <svg
 									width="24" height="24">
 										<use xlink:href="#angle-right"></use></svg>
 							</a>
@@ -149,7 +152,7 @@
 							</ul>
 						</div>
 						<h5 class="widget-title text-decoration-underline text-uppercase">
-							Date <input type="text" id="datepicker">
+							Date <input type="text" id="datepicker" name="spaceStartDate">
 						</h5>
 						<div class="widget-product-tags pt-3">
 							<h5 class="widget-title text-decoration-underline text-uppercase">Space
@@ -195,14 +198,7 @@
 	        minDate:0,
 	        onSelect : function(d) {
 	        	var date=$("#datepicker").val();
-	        	let payload = "date="+date
-	        	let url="date.do";
-	        	fetch(url,{
-	        		method: "POST",
-	        		headers:{'Content-Type': 'application/x-www-form-urlencoded'},
-	        		body: payload
-	        	}).then(response=>response.json())
-	        		.then(json=>htmlViews(json));
+	        	location.href="?spaceStartDate="+date;
 			}
 		}).on('hide', function(event) {
 			event.preventDefault();

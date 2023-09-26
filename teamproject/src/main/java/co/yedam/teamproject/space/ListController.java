@@ -1,6 +1,7 @@
 package co.yedam.teamproject.space;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.teamproject.common.ViewResolve;
+import co.yedam.teamproject.reservation.service.ReservationVO;
 import co.yedam.teamproject.space.service.SpaceService;
 import co.yedam.teamproject.space.service.SpaceVO;
 import co.yedam.teamproject.space.serviceImpl.SpaceServiceImpl;
@@ -28,26 +30,32 @@ public class ListController extends HttpServlet {
 		SpaceService dao= new SpaceServiceImpl();
 		List<SpaceVO> spaces = new ArrayList<SpaceVO>();
 		SpaceVO vo=new SpaceVO();
+		ReservationVO rvo=new ReservationVO();
+		String date=request.getParameter("spaceStartDate");
+		if(date != null) { //날짜검색
+			rvo.setReserveStartDate(Date.valueOf(date));
+			spaces=dao.spaceSelectDate(rvo);
+		} else { 
+			vo.setSpaceCity(request.getParameter("spaceCity")); //도시검색
+			vo.setSpaceType(request.getParameter("spaceType")); //타입검색
+			vo.setSpaceName(request.getParameter("spaceName")); //이름검색
+			spaces=dao.spaceSelectList(vo);
+		} 
+		int pages=(int) Math.ceil(spaces.size()/9.0); //페이지 수
+		request.setAttribute("results", spaces.size()); //공간 수
+		request.setAttribute("pages",pages); //페이지 수
 		
-		System.out.println(request.getParameter("spaceCity"));
-		vo.setSpaceCity(request.getParameter("spaceCity"));
-		vo.setSpaceType(request.getParameter("spaceType"));
-		vo.setSpaceName(request.getParameter("spaceName"));
-		
-		spaces=dao.spaceSelectList(vo);
-		request.setAttribute("spaces",spaces);
-//		String city= request.getParameter("city");
-//		String type= request.getParameter("type");
-//		if(city==null&type==null) {
-//		}else {
-//			if(city!=null) {
-//				vo.setSpaceCity(city);
-//			}
-//			if(type!=null) {
-//				vo.setSpaceType(type);
-//			}
-//			
-//		}
+		String currentPage=request.getParameter("page");//현재페이지
+		if(currentPage==null||currentPage.equals("0")) {
+			currentPage="1";
+		}
+		request.setAttribute("currentPage", currentPage); //현재페이지
+		int page=Integer.parseInt(currentPage);
+		List<SpaceVO> list=new ArrayList<SpaceVO>();
+		for(int i=(page-1)*9; i<page*9&&i<spaces.size(); i++) {
+			list.add(spaces.get(i)); //페이지만큼 출력
+		}
+		request.setAttribute("spaces",list);
 		String path = "space/shoplist";
 		ViewResolve.forward(request, response, path);
 	}
