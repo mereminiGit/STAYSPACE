@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.yedam.teamproject.reply.map.ReplyMapper">
+	<select id="replySelectListRecent" resultType="co.yedam.teamproject.reply.service.ReplyVO">
+		SELECT * FROM REPLY ORDER BY REPLY_DATE DESC
+	</select>
 	<select id="replySelectListMember" resultType="co.yedam.teamproject.reply.service.ReplyVO">
 		SELECT * FROM REPLY WHERE MEMBER_ID = #{memberId}
 	</select>
