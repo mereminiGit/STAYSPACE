@@ -28,7 +28,7 @@ public class AjaxReserveList extends HttpServlet {
 		ReservationService dao = new ReservationServiceImpl();
 		List<ReservationVO> reserveList = new ArrayList<>();
 		
-		reserveList = dao.reservationSelectList();
+		reserveList = dao.reservationSelectListCheck();
 		
 		ObjectMapper mapper = new ObjectMapper();
 		String json = mapper.writeValueAsString(reserveList);

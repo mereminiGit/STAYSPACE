@@ -31,7 +31,7 @@ img.stayimg {
 			</h4>
 
 			<!-- Hoverable Table rows -->
-			<div class="card">
+			<!-- <div class="card">
 				<h5 class="card-header">My Space List</h5>
 				<div class="table-responsive text-nowrap">
 					<table class="table table-hover">
@@ -48,6 +48,7 @@ img.stayimg {
 						</thead>
 						<tbody class="table-border-bottom-0">
 							<c:forEach items="${spaces }" var="s">
+
 								<tr sn="${s.spaceName }">
 									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceId }</td>
 									<td onclick="adminspacedetail('${s.spaceId }')"><img
@@ -56,7 +57,7 @@ img.stayimg {
 									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceName }</td>
 									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceAddress }</td>
 									<td onclick="adminspacedetail('${s.spaceId }')"><span>${s.spacePrice }</span>
-										원</td>
+										₩</td>
 									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceType }</td>
 									<td>
 										<div class="dropdown">
@@ -84,6 +85,54 @@ img.stayimg {
 						</caption>
 					</table>
 				</div>
+			</div> -->
+			<div class="row row-cols-1 row-cols-md-3 g-4 mb-5" id="list">
+				<c:forEach items="${spaces }" var="s">
+					<div class="col">
+						<div class="card h-100">
+							<img class="card-img-top" src="image/space/${s.spaceImageMain}"
+								alt="Card image cap" style="height: 250px; object-fit: cover;" />
+							<div class="card-body" sid="${s.spaceId }">
+								<h4 class="card-title" style="display: inline-block;">${s.spaceName }</h4>
+								<div class="dropdown" style="float: right">
+									<button type="button"
+										class="btn p-0 dropdown-toggle hide-arrow"
+										data-bs-toggle="dropdown">
+										<i class="bx bx-dots-vertical-rounded"></i>
+									</button>
+									<div class="dropdown-menu">
+										<button type="button" class="dropdown-item spaceedit"
+											data-bs-toggle="modal" data-bs-target="#modalCenter">
+											<i class="bx bx-edit-alt me-1"></i> Edit
+										</button>
+										<button type="button" class="dropdown-item spacedelete">
+											<i class="bx bx-trash me-1"></i> Delete
+										</button>
+									</div>
+								</div>
+								<hr>
+								<p class="card-text">
+									<strong>ID:&nbsp;&nbsp;&nbsp;</strong><span>${s.spaceId }</span>
+								</p>
+								<p class="card-text">
+									<strong>ADDRESS:&nbsp;&nbsp;&nbsp;</strong><span>${s.spaceAddress }</span>
+								</p>
+								<p class="card-text">
+									<strong>PRICE:&nbsp;&nbsp;&nbsp;</strong><span>${s.spacePrice }</span>
+									₩
+								</p>
+								<p class="card-text">
+									<strong>TYPE:&nbsp;&nbsp;&nbsp;</strong><span>${s.spaceType }</span>
+								</p>
+								<div align="center">
+									<button type="button" class="btn btn-outline-dark"
+										onclick="adminspacedetail('${s.spaceId }')">Show
+										Detail</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
 			</div>
 			<!--/ Hoverable Table rows -->
 
@@ -142,11 +191,11 @@ img.stayimg {
 						<div class="row">
 							<div class="col mb-3">
 								<label for="PriceWithTitle" class="form-label">Type</label> <select
-									 id="stype" name="stype" class="form-control">
-											<option value="Commercial">Commercial</option>
-											<option value="House">House</option>
-											<option value="Studio">Studio</option>
-									</select>
+									id="stype" name="stype" class="form-control">
+									<option value="Commercial">Commercial</option>
+									<option value="House">House</option>
+									<option value="Studio">Studio</option>
+								</select>
 							</div>
 						</div>
 					</div>
@@ -160,10 +209,38 @@ img.stayimg {
 			</div>
 		</div>
 	</form>
+	<br>
+	<!-- pagination -->
+	<nav aria-label="Page navigation">
+                          <ul class="pagination justify-content-center">
+                            <li class="page-item prev">
+                              <a class="page-link" href="?page=${currentPage-1 }"
+                                ><i class="tf-icon bx bx-chevrons-left"></i
+                              ></a>
+                            </li>
+                            <c:forEach var="page" begin="1" end="${pages }">
+	                           <c:if test="${page eq currentPage }">
+	                           <li class="page-item">
+	                             <a class="page-link active" href="?page=${page }">${page }</a>
+	                           </li>
+	                           </c:if>
+	                           <c:if test="${page ne currentPage }">
+	                           <li class="page-item">
+	                             <a class="page-link" href="?page=${page }">${page }</a>
+	                           </li>
+	                           </c:if>
+                            </c:forEach>
+                            <li class="page-item next">
+                              <a class="page-link" href="?page=${currentPage+1 }"
+                                ><i class="tf-icon bx bx-chevrons-right"></i
+                              ></a>
+                            </li>
+                          </ul>
+                        </nav>
 	<!--  -->
 	<form id="detailForm" action="AjaxHostSpaceDetail.do" method="post">
-	  	<input type="hidden" id="spaceId" name="spaceId">
-	  </form>
+		<input type="hidden" id="spaceId" name="spaceId">
+	</form>
 	<script>
 			  //공간 상세보기
 			  function adminspacedetail(id){
@@ -173,7 +250,7 @@ img.stayimg {
 			  }
               //삭제 이벤트 
               $('.spacedelete').on('click', function(e){
-      			let sn = e.target.parentElement.parentElement.parentElement.parentElement.getAttribute('sn');
+      			let sid = e.target.parentElement.parentElement.parentElement.getAttribute('sid');
       			Swal.fire({
       	            text: "대여공간을 삭제하시겠습니까?",
       	            icon: 'warning',
@@ -183,9 +260,9 @@ img.stayimg {
       	            confirmButtonText: 'Yes'
       	          }).then((result) => {
       	        	  if(result.isConfirmed){
-		      			spaceRemove(sn,function(result){
+		      			spaceRemove(sid,function(result){
 		      				if(result.retCode == 'Success'){
-		      					e.target.parentElement.parentElement.parentElement.parentElement.remove();
+		      					e.target.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
 		      					Swal.fire({
 									  icon: 'success',
 									  text: '삭제 성공',
@@ -206,8 +283,8 @@ img.stayimg {
                   })
 	      			})
 	        
-              function spaceRemove(spaceName, callback){
-            	  fetch('AjaxSpaceDelete.do?sname='+spaceName)
+              function spaceRemove(spaceId, callback){
+            	  fetch('AjaxSpaceDelete.do?sid='+spaceId)
             	  .then(resolve => resolve.json())
             	  .then(result => callback(result))
             	  .catch();
@@ -218,22 +295,42 @@ img.stayimg {
             	  let tr = e.target.parentElement.parentElement.parentElement.parentElement;
             	  console.log(e.target.parentElement.parentElement.parentElement.parentElement);
             	  
-            	  let spaceid = tr.children[0].innerText;
-            	  let spaceimage = tr.children[1].children[0].getAttribute('src');
+            	  let spaceid = tr.children[1].children[3].children[1].innerText;
+            	  let spaceimage = tr.children[0].getAttribute('src');
             	  spaceimage = spaceimage.substring(spaceimage.lastIndexOf("/")+1);
-            	  let spacename = tr.children[2].innerText;
-            	  let spaceaddress = tr.children[3].innerText;
-            	  let spaceprice = tr.children[4].children[0].innerText;
-            	  let spacetype = tr.children[5].innerText;
+            	  let spacename = tr.children[1].children[0].innerText;
+            	  let spaceaddress = tr.children[1].children[4].children[1].innerText;
+            	  let spaceprice = tr.children[1].children[5].children[1].innerText;
+            	  let spacetype = tr.children[1].children[6].children[1].innerText;
+            	  //console.log(spacename + spaceaddress + spaceprice + spacetype);
             	  
             	  $('input[name=sid]').val(spaceid);
             	  $('input[name=sname]').val(spacename);
             	  $('input[name=saddress]').val(spaceaddress);
             	  $('input[name=sprice]').val(spaceprice);
-            	  $('input[name=imgfile]').val(spaceimage);
-            	  $('select').val(spacetype);
-              	})
+            	  //$('input[name=imgfile]').val(spaceimage);
+            	  $('#stype').val(spacetype).prop('selected', true);
             	  
+            	  
+              	})
+            	
+              	$('.change').on('click',function(e){
+					if (<%=request.getParameter("retCode")%> !== 'Fail'){
+						Swal.fire({
+							  icon: 'success',
+							  text: '수정되었습니다.',
+							})
+							setTimeout(function(){
+								location.reload();
+							}, 1000);
+					}else{
+						Swal.fire({
+							  icon: 'error',
+							  text: '처리 중 오류 발생',
+							})
+					}
+				})
+				
               </script>
 
 	<!-- Core JS -->

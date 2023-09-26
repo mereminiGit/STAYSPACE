@@ -28,31 +28,31 @@ img#stayimg {
 			</h4>
 			<!-- Hoverable Table rows -->
 			<div class="card">
-				<h5 class="card-header">예약 승인대기 목록</h5>
+				<h5 class="card-header">Waiting for reservation approval</h5>
 				<div class="table-responsive text-nowrap">
 					<table class="table table-hover">
 						<thead>
 							<tr>
-								<th>Space Img</th>
+								<th>Space Id</th>
+								<th>Img</th>
 								<th>Name</th>
 								<th>Price</th>
-								<th>subscriber</th>
-								<th>Start Date</th>
-								<th>End Date</th>
-								<th>Approved or not</th>
+								<th>Member Id</th>
+								<th>Reserved Date</th>
+								<th>Approval</th>
 							</tr>
 						</thead>
 						<tbody class="table-border-bottom-0">
 							<!-- 1번 공간 -->
 							<tr>
+								<td>1</td>
 								<td><img id="stayimg"
 									src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
 								<td>촬영
 										스튜디오</td>
-								<td>50000</td>
+								<td>50000 ₩</td>
 								<td>홍길동</td>
 								<td>2023-09-01</td>
-								<td>2023-09-02</td>
 								<td>
 									<button type="button" class="btn btn-outline-warning approved">승인</button>
 									<button type="button"
@@ -61,14 +61,14 @@ img#stayimg {
 							</tr>
 							<!-- 2번 공간 -->
 							<tr>
+								<td>2</td>
 								<td><img id="stayimg"
 									src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
 								<td>촬영
 										스튜디오</td>
-								<td>50000</td>
+								<td>50000 ₩</td>
 								<td>홍길동</td>
 								<td>2023-09-01</td>
-								<td>2023-09-02</td>
 								<td>
 									<button type="button" class="btn btn-outline-warning approved">승인</button>
 									<button type="button"
@@ -77,14 +77,14 @@ img#stayimg {
 							</tr>
 							<!-- 3번 공간 -->
 							<tr>
+								<td>3</td>
 								<td><img id="stayimg"
 									src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
 								<td>촬영
 										스튜디오</td>
-								<td>50000</td>
+								<td>50000 ₩</td>
 								<td>홍길동</td>
 								<td>2023-09-01</td>
-								<td>2023-09-02</td>
 								<td>
 									<button type="button" class="btn btn-outline-warning approved">승인</button>
 									<button type="button"
@@ -93,14 +93,14 @@ img#stayimg {
 							</tr>
 							<!-- 4번 공간 -->
 							<tr>
+								<td>4</td>
 								<td><img id="stayimg"
 									src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
 								<td>촬영
 										스튜디오</td>
-								<td>50000</td>
+								<td>50000 ₩</td>
 								<td>홍길동</td>
 								<td>2023-09-01</td>
-								<td>2023-09-02</td>
 								<td>
 									<button type="button" class="btn btn-outline-warning approved">승인</button>
 									<button type="button"
