@@ -64,4 +64,14 @@ public class ReservationServiceImpl implements ReservationService {
 		return map.reservationListUpdate(vo);
 	}
 
+	@Override
+	public int reservationHostTotalCount(String hostId) {
+		return map.reservationHostTotalCount(hostId);
+	}
+
+	@Override
+	public int reservationMemberTotalCount(String memberId) {
+		return map.reservationMemberTotalCount(memberId);
+	}
+
 }

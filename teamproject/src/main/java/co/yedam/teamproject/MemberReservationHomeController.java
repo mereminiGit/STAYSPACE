@@ -37,6 +37,9 @@ public class MemberReservationHomeController extends HttpServlet {
 		ReservationVO vo = new ReservationVO();
 		vo.setMemberId("jiwon"); // 세션에 저장된 아이디를 들고와야함.
 		
+		int n = dao.reservationMemberTotalCount(vo.getMemberId());
+		request.setAttribute("count", n);
+		System.out.println("Mcount>>>"+n);
 		reserve = dao.reservationSelectMember(vo);
 		request.setAttribute("reserve", reserve);
 		System.out.println("menuhome.do reserve 찍어봄");

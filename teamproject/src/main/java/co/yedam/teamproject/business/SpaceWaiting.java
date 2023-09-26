@@ -33,11 +33,14 @@ public class SpaceWaiting extends HttpServlet {
 		vo.setMemberId("jiwon");
 		vo.setHostId("jiwon");
 		ObjectMapper objectMapper = new ObjectMapper();// json 형태의 데이터로 변환하고 날짜형 jsr310규정을 충족시키기 위해서
-		
+	
 		hostReserve = dao.reservationSelectHost(vo);
-		System.out.println("spacewaiting찍어봅니다.."+vo);
+		int n = dao.reservationHostTotalCount(vo.getHostId());
+		request.setAttribute("count", n);
+		System.out.println("count>>"+n);
+//		System.out.println("spacewaiting찍어봅니다.."+vo);
 		request.setAttribute("hostReserve", hostReserve);
-		System.out.println(hostReserve);
+//		System.out.println(hostReserve);
 		String page ="business/business/spacewaiting";
 		ViewResolve.forward(request, response, page);
 	}

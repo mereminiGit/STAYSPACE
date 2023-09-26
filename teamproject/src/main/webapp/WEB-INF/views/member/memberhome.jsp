@@ -102,6 +102,9 @@
 																</td>
 															</tr>
 														</c:forEach>
+															<caption style="padding-left: 20px">
+																<b>Total:${count }
+															</caption>
 													</c:otherwise>
 												</c:choose>
 											</tbody>

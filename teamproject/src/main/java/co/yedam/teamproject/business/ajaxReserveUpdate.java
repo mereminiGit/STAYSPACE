@@ -34,7 +34,6 @@ public class ajaxReserveUpdate extends HttpServlet {
 		vo.setReserveId(Integer.valueOf(reserveId));
 		System.out.println("타입>>"+type);
 		if (Integer.valueOf(reserveCheck) == 0) {
-			
 			if (type.equals("승인")) {
 				System.out.println("if안에>>>>>>"+type);
 				vo.setReserveCheck(1);

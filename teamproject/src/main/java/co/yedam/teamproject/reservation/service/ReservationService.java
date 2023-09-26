@@ -13,4 +13,6 @@ public interface ReservationService {
 	int reservationDelete(ReservationVO vo);
 	int reservationUpdate(ReservationVO vo);
 	int reservationListUpdate(ReservationVO vo);
+	int reservationHostTotalCount(String hostId);
+	int reservationMemberTotalCount(String memberId);
 }

@@ -42,7 +42,9 @@ public class MemberReserveList extends HttpServlet {
     		System.out.println(d.getReserveStartDate());
     		System.out.println(d.getReserveCheckoutDate());
 	     }
-		
+		int n = dao.reservationMemberTotalCount(vo.getMemberId());
+		request.setAttribute("count", n);
+		System.out.println("Mcount>>>"+n);
 		reserve = dao.reservationSelectMember(vo);
 		request.setAttribute("reserve", reserve);
 		System.out.println("memberreservelist.do 찍어봄");

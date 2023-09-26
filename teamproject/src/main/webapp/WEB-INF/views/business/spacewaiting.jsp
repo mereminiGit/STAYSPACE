@@ -42,7 +42,7 @@ img#stayimg {
 								<th>Price</th>
 								<th>subscriber</th>
 								<th>Start Date</th>
-								<th>End Date</th>
+								<th>Payment date</th>
 								<th>Approved or not</th>
 							</tr>
 						</thead>
@@ -51,17 +51,25 @@ img#stayimg {
 							<c:forEach items="${hostReserve }" var="h">
 							<tr>
 								<td><img id="stayimg"
-									src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
+									src="image/space/${h.reserveImg }" alt="space1"></td>
 								<td>${h.spaceName }</td>
 								<td><fmt:formatNumber value="${h.reservePrice }" type="currency" currencySymbol="￦"/></td>
 								<td>${h.memberId }</td>
 								<td>${h.reserveStartDate }</td>
 								<td>${h.reserveCheckoutDate }</td>
-								<td>
-									<button type="button" class="btn btn-outline-warning approved" onclick="reserveCall('${h.hostId }',${h.reserveId},${h.reserveCheck },'승인')">승인</button>
+								<c:choose>
+								<c:when test="${h.reserveCheck == 0 }">
+									<td><button type="button" class="btn btn-outline-warning approved" onclick="reserveCall('${h.hostId }',${h.reserveId},${h.reserveCheck },'승인')">승인</button>
+									
 									<button type="button"
 										class="btn btn-outline-secondary rejected" onclick="reserveCall('${h.hostId }',${h.reserveId},${h.reserveCheck },'거부')">거부</button>
-								</td>
+									</td>
+								</c:when>
+								<c:otherwise>
+								<td>처리완료</td>
+								</c:otherwise>
+								</c:choose>
+								
 							</tr>
 							</c:forEach>
 							<!-- 2번 공간 -->
@@ -114,7 +122,7 @@ img#stayimg {
 							</tr> -->
 						</tbody>
 						<caption style="padding-left: 20px">
-							<b>Total:
+							<b>Total: ${count}
 						</caption>
 					</table>
 				</div>
@@ -124,31 +132,35 @@ img#stayimg {
 		</div>
 	</div>
 	<script>
-	/* 	$('.approved').on('click', function(e) {
-			e.target.parentElement.innerText = 'Approved';
+	 	$('.approved').on('click', function(e) {
 			Swal.fire({
 				  icon: 'success',
 				  text: '승인되었습니다.',
 				})
-			return approved;
+				setTimeout(function() {
+					location.reload();
+				}, 900);
 		})
+		
 		$('.rejected').on('click', function(e) {
-			e.target.parentElement.innerText = 'Rejected';
 			Swal.fire({
 				  icon: 'success',
 				  text: '거부되었습니다.',
 				})
-			return rejected;
-		})  */
+				setTimeout(function() {
+					location.reload();
+				}, 900);
+		})  
 		
 		function reserveCall(hostId,reserveId,reserveCheck,type){
 		    $.ajax({
                 url: "ajaxReserveUpdate.do?hostId="+hostId+"&reserveId="+reserveId+"&reserveCheck="+reserveCheck+"&type="+type,
-                type: "get",
+                type: "post",
                 datatype: "html",
                 success: function (data) {
-                    alert("연결성공");
-                }
+                	console.log(data);
+                        }
+                
               });
 		}
 	</script>
