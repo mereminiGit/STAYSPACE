@@ -112,7 +112,7 @@
 								</div>
 							</div>
 							<div class="product-price my-3">
-								<span class="fs-1 text-primary">${s.spacePrice }원</span> <small>/시간</small>
+								<span class="fs-1 text-primary">&#8361;${s.spacePrice }</span> <small>/일</small>
 							</div>
 							<hr>
 							<h5 class="widget-title text-decoration-underline text-uppercase">
@@ -120,9 +120,11 @@
 									name="datepicker">
 							</h5>
 							<div class="action-buttons my-4 d-flex flex-wrap">
-								<a href="#" class="btn btn-dark me-2 mb-1" onclick="selectTo('${s.spaceId}','checkout')">Checkout</a>
-								<a href="#" class="btn btn-dark"
+								<a href="#" class="btn btn-dark me-2 mb-1"
+									onclick="selectTo('${s.spaceId}','wishlist')">Wishlist</a>
+								<a href="#" class="btn btn-dark me-2 mb-1"
 									onclick="selectTo('${s.spaceId}','cart')">Add To Cart</a>
+								<a href="#" class="btn btn-dark" onclick="selectTo('${s.spaceId}','checkout')">Checkout</a>
 							</div>
 						</div>
 						<hr>
@@ -168,7 +170,13 @@
 							<div class="review-box review-style d-flex flex-wrap justify-content-between">
 								
 								<!-- 리뷰 반복 -->
-								<c:forEach items="${replyes }" var="r">						
+								<c:if test="${empty replyes }">
+									<div class="review-content">
+										<p>등록된 후기가 없습니다.</p>
+									</div>
+								</c:if>
+								
+								<c:forEach items="${replyes }" var="r">					
 									<div class="review-item d-flex">
 										<div class="image-holder">
 											<img src="image/reply/${r.replyImage }" alt="review" style="width: 160px; height: 160px">
@@ -195,8 +203,26 @@
 										</div>
 									</div>
 								</c:forEach>	
-								<!-- 리뷰 반복 -->						
+								<!-- 리뷰 반복 -->				
 							</div>
+							
+							<nav
+								class="navigation paging-navigation text-center padding-medium"
+								role="navigation" style="padding-bottom: 0;">
+								<div
+									class="pagination loop-pagination d-flex justify-content-center align-items-center">
+									<a href="#" class="d-flex pe-2"> <svg width="24" height="24">
+												<use xlink:href="#angle-left"></use></svg>
+									</a> <span aria-current="page" class="page-numbers current pe-3">1</span>
+									<a class="page-numbers pe-3" href="#">2</a> <a
+										class="page-numbers pe-3" href="#">3</a> <a
+										class="page-numbers pe-3" href="#">4</a> <a class="page-numbers"
+										href="#">5</a> <a href="#" class="d-flex ps-2"> <svg
+											width="24" height="24">
+												<use xlink:href="#angle-right"></use></svg>
+									</a>
+								</div>
+							</nav>
 							
 							<!-- 리뷰 추가 -->
 							<c:if test="${not empty reservations }">
@@ -264,93 +290,39 @@
 					<div id="${replyMessage }"></div>
 	</c:if>
 	
-	<!-- 	<section id="products" class="product-store"
+	<section id="products" class="product-store"
 		data-aos="fade" data-aos-easing="ease-in" data-aos-duration="1000"
 		data-aos-once="true">
 		<div class="container">
 			<div
 				class="display-header d-flex flex-wrap justify-content-between align-items-center pb-4">
 				<h3 class="mt-3">Related Products</h3>
-				<a href="shop.html" class="btn">View all items</a>
+				<a href="shoplist.do" class="btn">View all items</a>
 			</div>
 			<div class="row">
+			<c:forEach items="${relatedProduct }" var="r">
 				<div class="col-md-3 product-card position-relative mb-3">
 					<div class="image-holder zoom-effect">
-						<img src="vaso-html/images/product-item1.jpg" alt="product-item"
+						<img src="image/space/${r.spaceImageMain }" alt="product-item"
 							class="img-fluid zoom-in">
-						<div class="cart-concern position-absolute">
-							<div class="cart-button">
-								<a href="#" class="btn">Add to Cart</a>
-							</div>
-						</div>
 					</div>
 					<div class="card-detail text-center pt-3 pb-2">
 						<h5 class="card-title fs-3 text-capitalize">
-							<a href="single-product.html">Matt Black</a>
+							<a href="detail.do?spaceId=${r.spaceId }">${r.spaceName }</a>
 						</h5>
-						<span class="item-price text-primary fs-3 fw-light">$870</span>
+						<span class="item-price text-primary fs-3 fw-light">&#8361;${r.spacePrice }</span>
 					</div>
 				</div>
-				<div class="col-md-3 product-card position-relative mb-3">
-					<div class="image-holder zoom-effect">
-						<img src="vaso-html/images/product-item2.jpg" alt="product-item"
-							class="img-fluid zoom-in">
-						<div class="cart-concern position-absolute">
-							<div class="cart-button">
-								<a href="#" class="btn">Add to Cart</a>
-							</div>
-						</div>
-					</div>
-					<div class="card-detail text-center pt-3 pb-2">
-						<h5 class="card-title fs-3 text-capitalize">
-							<a href="single-product.html">Oldie Off-White</a>
-						</h5>
-						<span class="item-price text-primary fs-3 fw-light">$680</span>
-					</div>
-				</div>
-				<div class="col-md-3 product-card position-relative mb-3">
-					<div class="image-holder zoom-effect">
-						<img src="vaso-html/images/product-item3.jpg" alt="product-item"
-							class="img-fluid zoom-in">
-						<div class="cart-concern position-absolute">
-							<div class="cart-button">
-								<a href="#" class="btn">Add to Cart</a>
-							</div>
-						</div>
-					</div>
-					<div class="card-detail text-center pt-3 pb-2">
-						<h5 class="card-title fs-3 text-capitalize">
-							<a href="single-product.html">Vintage With Handle</a>
-						</h5>
-						<span class="item-price text-primary fs-3 fw-light">$750</span>
-					</div>
-				</div>
-				<div class="col-md-3 product-card position-relative mb-3">
-					<div class="image-holder zoom-effect">
-						<img src="vaso-html/images/product-item4.jpg" alt="product-item"
-							class="img-fluid zoom-in">
-						<div class="cart-concern position-absolute">
-							<div class="cart-button">
-								<a href="#" class="btn">Add to Cart</a>
-							</div>
-						</div>
-					</div>
-					<div class="card-detail text-center pt-3 pb-2">
-						<h5 class="card-title fs-3 text-capitalize">
-							<a href="single-product.html">Opposite Pattern</a>
-						</h5>
-						<span class="item-price text-primary fs-3 fw-light">$650</span>
-					</div>
-				</div>
-			</div> -->
+				</c:forEach>
+			</div>
 	<div>
 		<form id="sform" method="post">
 			<input type="hidden" id="spaceId" name="spaceId"> <input
 				type="hidden" id="spaceStartDate" name="spaceStartDate">
 		</form>
 	</div>
-	<!-- 		</div>
-	</section> -->
+			</div>
+	</section> 
 
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7fabb4647805e005839c9dad15111de3&libraries=services"></script>
@@ -423,6 +395,8 @@
 			if (form.spaceStartDate.value != 0) {
 				if(go=='cart'){
 					$('#sform').attr('action', 'cart.do')
+				} else (go=='whishlist'){
+					$('#sform').attr('action', 'checkout.do')
 				} else{
 					$('#sform').attr('action', 'checkout.do')
 				}
@@ -465,6 +439,8 @@
 			});
 		}
 	</script>
+	<script src="/js/jquery.twbsPagination.js"></script>
+	
 </body>
 
 </html>

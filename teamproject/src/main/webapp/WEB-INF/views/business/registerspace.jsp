@@ -25,11 +25,12 @@
 			<form id="frm" method="post" action="AjaxHostSpaceRegiser.do"
 				enctype="multipart/form-data">
 				<div class="row">
-					<div class="col-xl">
+					<div class="col-xl" style="border-radius:10px">
 						<div class="card mb-4">
+							<img src="image/space/숙소1.jpg" style="height: 200px; object-fit: cover; border-radius:10px 10px 0 0;">
 							<div
 								class="card-header d-flex justify-content-between align-items-center">
-								<h5 class="mb-0">새 대여공간 등록</h5>
+								<h5 class="mb-0">Input New Space Information</h5>
 								<small class="text-muted float-end">space register</small>
 							</div>
 							<div class="card-body">
@@ -71,7 +72,7 @@
 								</div>
 								<div class="mb-3" style="width: 50%">
 									<label class="form-label" for="type">Type</label> <select
-										id="type" name="type" class="select2 form-select" required>
+										id="stype" name="stype" class="select2 form-select" required>
 										<option value="null">선택</option>
 										<option value="Commercial">Commercial</option>
 										<option value="House">House</option>
@@ -102,6 +103,7 @@
 									<button type="reset" class="btn btn-outline-secondary">취소하기</button>
 								</div>
 							</div>
+							<img src="image/space/숙소1.jpg" style="height: 200px; object-fit: cover; object-position: bottom; border-radius:0 0 10px 10px;">
 						</div>
 					</div>
 				</div>
@@ -110,12 +112,22 @@
 		<!-- / Content -->
 	</div>
 	<script>
-	/*function register(){
-		Swal.fire({
-			  icon: 'success',
-			  text: '등록되었습니다.',
-			})
-	})*/
+		$('.register').on('click',function(e){
+					if (<%=request.getParameter("retCode")%> !== 'Fail'){
+			$(document).ready(function() {
+						Swal.fire({
+							  icon: 'success',
+							  text: '등록되었습니다.',
+							  showConfirmButton: true,
+							})
+				});
+					}else{
+						Swal.fire({
+							  icon: 'error',
+							  text: '처리 중 오류 발생',
+							})
+					}
+		})
 	</script>
 </body>
 </html>

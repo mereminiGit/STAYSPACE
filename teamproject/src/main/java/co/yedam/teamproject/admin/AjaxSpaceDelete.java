@@ -19,10 +19,10 @@ public class AjaxSpaceDelete extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String sname = request.getParameter("sname");
+		String sid = request.getParameter("sid");
 		SpaceService dao = new SpaceServiceImpl();
 		
-		if(dao.spaceDelete(sname) != 0) {
+		if(dao.spaceDelete(Integer.parseInt(sid)) != 0) {
 			response.getWriter().print("{\"retCode\": \"Success\"}");
 		}else {
 			response.getWriter().print("{\"retCode\": \"Fail\"}");

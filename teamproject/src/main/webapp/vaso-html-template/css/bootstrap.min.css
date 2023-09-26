@@ -6992,6 +6992,7 @@ fieldset:disabled .btn {
 }
 .pe-3 {
   padding-right: 1rem !important;
+  padding-left:1rem;
 }
 .pe-4 {
   padding-right: 1.5rem !important;

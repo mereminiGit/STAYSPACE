@@ -7,7 +7,6 @@ import co.yedam.teamproject.cartList.service.CartListVO;
 public interface CartListMapper {
 	List<CartListVO> cartListSelectList(CartListVO vo);
 	CartListVO cartListSelect(CartListVO vo);
-	List<CartListVO> cartDateSelectList(CartListVO vo);
 	int cartListInsert(CartListVO vo);
 	int cartListDelete(CartListVO vo);
 }

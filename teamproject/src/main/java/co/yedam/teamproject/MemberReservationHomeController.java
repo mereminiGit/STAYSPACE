@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.yedam.teamproject.common.ViewResolve;
 import co.yedam.teamproject.member.service.MemberService;
@@ -32,10 +33,13 @@ public class MemberReservationHomeController extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		
 		ReservationService dao = new ReservationServiceImpl();
 		List<ReservationVO> reserve = new ArrayList<ReservationVO>();
 		ReservationVO vo = new ReservationVO();
-		vo.setMemberId("jiwon"); // 세션에 저장된 아이디를 들고와야함.
+//		vo.setMemberId("jiwon"); // 세션에 저장된 아이디를 들고와야함.
+		vo.setMemberId((String) session.getAttribute("memberId")); // 세션에 저장된 아이디를 들고와야함.
 		
 		int n = dao.reservationMemberTotalCount(vo.getMemberId());
 		request.setAttribute("count", n);
@@ -45,7 +49,14 @@ public class MemberReservationHomeController extends HttpServlet {
 		System.out.println("menuhome.do reserve 찍어봄");
 		System.out.println(reserve);
 		
-		String path = "member/member/memberhome";
+		// member 가져오기
+		MemberService daoMember = new MemberServiceImpl();
+		MemberVO voMember =new MemberVO();
+		voMember.setMemberId((String) session.getAttribute("memberId"));
+		voMember = daoMember.memberSelect(voMember);
+		request.setAttribute("m", voMember);
+		
+		String path = "member/membermypage";
 		ViewResolve.forward(request, response, path);
 	}
 

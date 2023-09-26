@@ -53,4 +53,9 @@ public class ReplyServiceImpl implements ReplyService {
 		return map.replySelectListId(spaceId);
 	}
 
+	@Override
+	public List<ReplyVO> replySelectListRecent() {
+		return map.replySelectListRecent();
+	}
+
 }

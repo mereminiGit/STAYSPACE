@@ -6,6 +6,7 @@ public interface ReservationService {
 	List<ReservationVO> reservationSelectList();
 	List<ReservationVO> reservationSelectListSpace(String spaceId);
 	List<ReservationVO> reservationSelectListMember(String memberId); // memberId로 리스트 받기
+	List<ReservationVO> reservationSelectListCheck(); //예약승인된 리스트 뽑아내기
 	ReservationVO reservationSelect(ReservationVO vo);
 	List<ReservationVO> reservationSelectMember(ReservationVO vo); //memberId 넘겨받는 select
 	List<ReservationVO> reservationSelectHost(ReservationVO vo); //hostId넘겨받는 select

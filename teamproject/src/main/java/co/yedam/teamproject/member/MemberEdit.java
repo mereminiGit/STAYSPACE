@@ -25,6 +25,7 @@ public class MemberEdit extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		MemberService dao = new MemberServiceImpl();
 		MemberVO vo =new MemberVO();
 		vo.setMemberId(request.getParameter("memberId"));

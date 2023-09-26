@@ -55,11 +55,12 @@ public class ReservationServiceImpl implements ReservationService {
 
 	@Override
 	public List<ReservationVO> reservationSelectListMember(String memberId) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	@Override
+
 	public int reservationListUpdate(ReservationVO vo) {
 		return map.reservationListUpdate(vo);
 	}
@@ -72,6 +73,10 @@ public class ReservationServiceImpl implements ReservationService {
 	@Override
 	public int reservationMemberTotalCount(String memberId) {
 		return map.reservationMemberTotalCount(memberId);
+
+	public List<ReservationVO> reservationSelectListCheck() {
+		return map.reservationSelectListCheck();
+
 	}
 
 }

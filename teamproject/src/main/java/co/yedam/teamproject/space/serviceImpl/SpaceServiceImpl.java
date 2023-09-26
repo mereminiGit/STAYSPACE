@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import co.yedam.teamproject.common.DataSource;
+import co.yedam.teamproject.reservation.service.ReservationVO;
 import co.yedam.teamproject.space.map.SpaceMapper;
 import co.yedam.teamproject.space.service.SpaceService;
 import co.yedam.teamproject.space.service.SpaceVO;
@@ -34,8 +35,8 @@ public class SpaceServiceImpl implements SpaceService {
 	}
 
 	@Override
-	public int spaceDelete(String spaceName) {
-		return map.spaceDelete(spaceName);
+	public int spaceDelete(int spaceId) {
+		return map.spaceDelete(spaceId);
 	}
 
 	@Override
@@ -61,6 +62,16 @@ public class SpaceServiceImpl implements SpaceService {
 	@Override
 	public int spaceSelectCountMember(String memberId) {
 		return map.spaceSelectCountMember(memberId);
+	}
+
+	@Override
+	public List<SpaceVO> spaceSelectDate(ReservationVO vo) {
+		return map.spaceSelectDate(vo);
+	}
+
+	@Override
+	public List<SpaceVO> spaceSelectCity(SpaceVO vo) {
+		return map.spaceSelectCity(vo);
 	}
 
 

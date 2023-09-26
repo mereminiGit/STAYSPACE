@@ -172,7 +172,7 @@
 								</p>
 								
 								<p class="card-text" style="font-size: 14px">
-									<strong>가격:</strong> ${r.reservePrice }
+									<strong>가격:</strong> ${r.reservePrice } ₩
 									&nbsp;&nbsp;&nbsp;&nbsp;<strong>예약날짜:</strong>
 									${r.reserveStartDate }
 								</p>
