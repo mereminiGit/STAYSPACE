@@ -45,6 +45,7 @@ public class MemberReserveList extends HttpServlet {
 		int n = dao.reservationMemberTotalCount(vo.getMemberId());
 		request.setAttribute("count", n);
 		System.out.println("Mcount>>>"+n);
+		
 		reserve = dao.reservationSelectMember(vo);
 		request.setAttribute("reserve", reserve);
 		System.out.println("memberreservelist.do 찍어봄");
@@ -52,10 +53,7 @@ public class MemberReserveList extends HttpServlet {
 
 		ObjectMapper objectMapper = new ObjectMapper();
 		String json = objectMapper.writeValueAsString(reserve);
-		
 
-		
-		
 //		System.out.println(request.getParameter("memberId"));
 		
 	
