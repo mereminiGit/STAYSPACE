@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.yedam.teamproject.space.map.SpaceMapper">
    <select id="totalSpaceSelectList" resultType="co.yedam.teamproject.space.service.SpaceVO">
-      SELECT * FROM SPACE
+      SELECT * FROM SPACE ORDER BY SPACE_HIT DESC
    </select>
    <select id="spaceSelectList"
       resultType="co.yedam.teamproject.space.service.SpaceVO">
@@ -64,7 +64,7 @@
    </update>
    <delete id="spaceDelete"
       parameterType="co.yedam.teamproject.space.service.SpaceVO">
-      DELETE FROM SPACE WHERE SPACE_NAME=#{spaceName}
+      DELETE FROM SPACE WHERE SPACE_ID=#{spaceId}
    </delete>
    
    <update id="spaceHitUpdate">

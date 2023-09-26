@@ -20,7 +20,8 @@
 
 <!-- 모달 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
 
 </head>
@@ -32,54 +33,46 @@
 
 		<div class="container-xxl flex-grow-1 container-p-y">
 			<h4 class="fw-bold py-3 mb-4">
-				My Account <span class="text-muted fw-light">Settings</span>
+				Host Account <span class="text-muted fw-light">Settings</span>
 			</h4>
 
 			<div class="row">
 				<div class="col-md-12">
 					<div class="card mb-4">
-						<h5 class="card-header">내 정보 수정</h5>
+						<img src="image/space/숙소3.jpg" alt="image"
+							style="height: 200px; object-fit: cover; border-radius: 10px 10px 0 0;">
+						<h5 class="card-header">My Account Settings</h5>
 						<!-- Account -->
 						<div class="card-body">
 							<div class="d-flex align-items-start align-items-sm-center gap-4">
-								<img src="image/member/기본프로필.jpg"
-									alt="user-avatar" class="d-block rounded" height="100"
-									width="100" id="uploadedAvatar" />
+								<img src="image/member/기본프로필.jpg" alt="user-avatar"
+									class="d-block rounded" height="100" width="100"
+									id="uploadedAvatar" />
 								<div class="button-wrapper">
 									<p class="text-muted mb-0"></p>
 								</div>
 							</div>
 						</div>
 						<hr class="my-0" />
-						<div class="card-body">
-							<form id="formAccountSettings" method="POST"
-								onsubmit="return false">
+						<form id="formAccountSettings" method="POST"
+							onsubmit="return false">
+							<div class="card-body">
 								<div class="row">
-								<div class="mb-3 col-md-6">
-										<label for="firstName" class="form-label">ID</label> <input
-											type="text" class="form-control" id="id"
-											name="id" value="${b.memberId }" readonly="readonly" />
-									</div>
 									<div class="mb-3 col-md-6">
-										<label for="password" class="form-label">PASSWORD</label> <input
-											class="form-control" type="password" name="password"
-											id="password" placeholder="비밀번호를 입력하세요." />
+										<label for="firstName" class="form-label">ID</label> <input
+											type="text" class="form-control" id="id" name="id"
+											value="${b.memberId }" readonly="readonly" />
 									</div>
+
 									<div class="mb-3 col-md-6">
 										<label for="firstName" class="form-label">Name</label> <input
-											type="text" class="form-control" id="Name"
-											name="Name" value="${b.memberName }"placeholder="이름을 입력하세요." />
-									</div>
-									<div class="mb-3 col-md-6">
-										<label for="checkPassword" class="form-label">CHECK
-											PASSWORD</label> <input class="form-control" type="password"
-											name="passwordcheck" id="passwordcheck"
-											placeholder="비밀번호를 다시 입력하세요." />
+											type="text" class="form-control" id="Name" name="Name"
+											value="${b.memberName }" placeholder="이름을 입력하세요." />
 									</div>
 									<div class="mb-3 col-md-6">
 										<label for="email" class="form-label">E-mail</label> <input
-											class="form-control" type="text" id="email" name="email" value="${b.memberEmail }"
-											placeholder="john.doe@example.com" />
+											class="form-control" type="text" id="email" name="email"
+											value="${b.memberEmail }" placeholder="john.doe@example.com" />
 									</div>
 									<div class="mb-3 col-md-6">
 										<label class="form-label" for="phoneNumber">Phone
@@ -89,44 +82,70 @@
 												class="form-control" placeholder="010-0000-1111" />
 										</div>
 									</div>
+								</div>
+							</div>
+							<hr class="my-0" />
+							<div class="card-body">
+								<div class="row">
+									<small style="color: red">* 비밀번호를 수정하시려면 새로운 비밀번호를
+										입력하시고 수정을 원하지 않으시면 기존 비밀번호를 입력하세요.</small> <br> <br>
+									<div class="mb-3 col-md-6">
+										<label for="password" class="form-label">PASSWORD</label> <input
+											class="form-control" type="password" name="password"
+											id="password" placeholder="비밀번호를 입력하세요." />
+									</div>
+									<div class="mb-3 col-md-6">
+										<label for="checkPassword" class="form-label">CHECK
+											PASSWORD</label> <input class="form-control" type="password"
+											name="passwordcheck" id="passwordcheck"
+											placeholder="비밀번호를 다시 입력하세요." />
+									</div>
 									<div class="mt-2">
-										<button type="submit" id="edit" class="btn btn-dark me-2" onclick="editCall('${b.memberId}')">수정하기</button>
+										<button type="submit" id="edit" class="btn btn-dark me-2"
+											onclick="editCall('${b.memberId}')">수정하기</button>
 										<button type="reset" class="btn btn-outline-dark">취소하기</button>
 									</div>
 								</div>
-							</form>
-
-						</div>
-						<!-- /Account -->
-					</div>
-					<div class="card">
-						<h5 class="card-header">회원 탈퇴</h5>
-						<div class="card-body">
-							<div class="mb-3 col-12 mb-0">
-								<div class="alert alert-warning"
-									style="background-color: #eee; width: 80%; border-radius: 10px">
-									<br>
-									<h6 class="alert-heading fw-bold mb-1"
-										style="color: rgba(0, 0, 0, 0.6)">※ 정말로 계정을 삭제하시겠습니까?</h6>
-									<br>
-									<p class="mb-0" style="color: #aaa">&nbsp;계정을 삭제하면 되돌릴 수
-										없습니다.</p>
-									<br>
-								</div>
 							</div>
-							<form id="formAccountDeactivation" onsubmit="return false">
-								<div class="form-check mb-3">
-									<input class="form-check-input" type="checkbox"
-										name="chkSelect" id="accountActivation" /> <label
-										class="form-check-label" for="accountActivation">내 계정
-										삭제에 동의합니다.</label>
-								</div>
-								<button type="submit" id="delete"
-									class="btn btn-dark deactivate-account" onclick="deleteMember('${b.memberId}');">탈퇴하기</button>
-							</form>
+						</form>
+
+					</div>
+					<!-- /Account -->
+				</div>
+					<div class="col-md-12">
+						<div class="card mb-4">
+							<h5 class="card-header">My Account Delete</h5>
+							<div class="card-body">
+									<div class="mb-3 col-mb-6">
+										<div class="alert alert-warning"
+											style="background-color: #eee; border-radius: 10px">
+											<br>
+											<h6 class="alert-heading fw-bold mb-1"
+												style="color: rgba(0, 0, 0, 0.6)">※ 정말로 계정을 삭제하시겠습니까?</h6>
+											<br>
+											<p class="mb-0" style="color: #aaa">&nbsp;계정을 삭제하면 되돌릴 수
+												없습니다.</p>
+											<br>
+										</div>
+									</div>
+									<form id="formAccountDeactivation" onsubmit="return false">
+										<div class="form-check mb-3">
+											<input class="form-check-input" type="checkbox"
+												name="chkSelect" id="accountActivation" /> <label
+												class="form-check-label" for="accountActivation">내
+												계정 삭제에 동의합니다.</label>
+										</div>
+										<button type="submit" id="delete"
+											class="btn btn-dark deactivate-account"
+											onclick="deleteMember('${b.memberId}');">탈퇴하기</button>
+									</form>
+							</div>
+							<img src="image/space/숙소3.jpg" alt="image"
+								style="height: 200px; object-fit: cover; border-radius: 0 0 10px 10px; object-position: bottom">
 						</div>
 					</div>
-					<!-- Modal 1-
+				</div>
+				<!-- Modal 1-
 					<div class="modal fade" id="modalToggle"
 						aria-labelledby="modalToggleLabel" tabindex="-1"
 						style="display: none" aria-hidden="true">
@@ -146,11 +165,9 @@
 							</div>
 						</div>
 					</div>-->
-				</div>
 			</div>
 		</div>
-		<!-- / Content -->
-	</div>
+	<!-- / Content -->
 	<script>
 
 	//회원정보수정
@@ -235,8 +252,8 @@
           	  Swal.fire({
           		  position: 'center',
           		  icon: 'success',
-          		  title: '회원정보가 변경되었습니다.',
-          		  showConfirmButton: false,
+          		  text: '회원정보가 변경되었습니다.',
+          		  showConfirmButton: true,
           		  timer: 1500
           		})
           		$('#password').val('');
@@ -377,7 +394,8 @@
 		// })
 		
 	</script>
-	<script type="text/javascript" src="member/assets/js/pages-account-settings-account.js">
+	<script type="text/javascript"
+		src="member/assets/js/pages-account-settings-account.js">
 	
 	</script>
 

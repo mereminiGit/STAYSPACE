@@ -15,7 +15,7 @@
 		SELECT * FROM RESERVATION WHERE SPACE_NAME = #{spaceName}
 	</select>
 	<select id="reservationSelectMember" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
-		SELECT * FROM RESERVATION WHERE MEMBER_ID = #{memberId}
+		SELECT * FROM RESERVATION WHERE MEMBER_ID = #{memberId} AND RESERVE_CHECK = 1
 	</select>
 	<select id="reservationSelectHost" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
 		SELECT * FROM RESERVATION WHERE HOST_ID = #{hostId}
@@ -25,6 +25,8 @@
 		SELECT * FROM SPACE
 		WHERE SPACE_ID=
 		(SELECT SPACE_ID FROM RESERVATION WHERE reserve_start_date = #{reserveStartDate}) AND reserve_check=1
+	<select id="reservationSelectListCheck" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
+		SELECT * FROM RESERVATION WHERE RESERVE_CHECK = 1
 	</select>
 	<insert id="reservationInsert" parameterType="co.yedam.teamproject.reservation.service.ReservationVO">
 		<selectKey keyProperty="reserveId" resultType="int" order="BEFORE">

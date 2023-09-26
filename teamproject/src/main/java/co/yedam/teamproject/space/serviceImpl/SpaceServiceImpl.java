@@ -35,8 +35,8 @@ public class SpaceServiceImpl implements SpaceService {
 	}
 
 	@Override
-	public int spaceDelete(String spaceName) {
-		return map.spaceDelete(spaceName);
+	public int spaceDelete(int spaceId) {
+		return map.spaceDelete(spaceId);
 	}
 
 	@Override

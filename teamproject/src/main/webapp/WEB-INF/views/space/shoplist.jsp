@@ -39,7 +39,7 @@
 <body>
 	<section
 		class="hero-section jarallax d-flex align-items-center justify-content-center padding-medium pb-5"
-		style="background: url(vaso-html/images/hero-img.jpg) no-repeat;">
+		style="background: url(image/space/hero-img.jpg) no-repeat;">
 		<div class="hero-content">
 			<div class="container">
 				<div class="row">
@@ -198,7 +198,9 @@
 	        minDate:0,
 	        onSelect : function(d) {
 	        	var date=$("#datepicker").val();
+
 	        	location.href="?spaceStartDate="+date;
+
 			}
 		}).on('hide', function(event) {
 			event.preventDefault();

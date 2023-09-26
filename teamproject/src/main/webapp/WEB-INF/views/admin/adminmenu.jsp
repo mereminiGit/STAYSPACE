@@ -82,10 +82,16 @@
           
           <!-- MEMBERS -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">MENU</span></li>
+          	<li class="menu-item">
+              <a href="adminmypage.do" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                <div data-i18n="Form Elements">My Account Settings</div>
+              </a>
+             </li>
             <!-- Member Management -->
             <li class="menu-item">
               <a href="memberlist.do" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <i class="menu-icon tf-icons bx bx-detail"></i>
                 <div data-i18n="Basic">Member List</div>
               </a>
             </li>
@@ -96,7 +102,7 @@
             <!-- Space Management -->
             <li class="menu-item">
               <a href="totalspacelist.do" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <i class="menu-icon tf-icons bx bx-detail"></i>
                 <div data-i18n="Basic">Total Space List</div>
               </a>
             </li> 
@@ -106,16 +112,11 @@
             <!-- Reservation Management -->
             <li class="menu-item">
               <a href="totalreservelist.do" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <i class="menu-icon tf-icons bx bx-detail"></i>
                 <div data-i18n="Form Elements">Total Reservation List</div>
               </a>
              </li>
-             <li class="menu-item">
-              <a href="adminmypage.do" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-detail"></i>
-                <div data-i18n="Form Elements">My Page</div>
-              </a>
-             </li>
+             
           </ul>
         </aside>
         <!-- / Menu -->
