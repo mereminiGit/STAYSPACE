@@ -48,17 +48,20 @@ public class DetailController extends HttpServlet {
 		vo=dao.spaceSelect(vo);
 		request.setAttribute("s", vo);
 		
-		List<SpaceVO> spaces=new ArrayList<SpaceVO>();
-		System.out.println(vo+"ddddddddddddddddd");
-		System.out.println(dao.spaceSelectCity(vo)+"============");
-		if(dao.spaceSelectCity(vo)!=null) {
-			spaces=dao.spaceSelectCity(vo);
-			List<SpaceVO> list=new ArrayList<SpaceVO>();
-			for(int i=0; i<spaces.size()&&i<4;i++) {
+		List<SpaceVO> spaces = new ArrayList<SpaceVO>();
+		/*
+		 * System.out.println(vo+"ddddddddddddddddd");
+		 * System.out.println(dao.spaceSelectCity(vo)+"============");
+		 */
+		if(dao.spaceSelectCity(vo)!= null) {
+			spaces = dao.spaceSelectCity(vo);
+			List<SpaceVO> list = new ArrayList<SpaceVO>();
+			for(int i=0; i<spaces.size()&&i<4; i++) {
 				list.add(spaces.get(i));
 			}
 			request.setAttribute("relatedProduct", list);
 		}
+		
 //		댓글 출력 위해
 		replyes = daoReply.replySelectListId(Integer.parseInt(request.getParameter("spaceId")));
 		request.setAttribute("replyes", replyes);
@@ -70,7 +73,8 @@ public class DetailController extends HttpServlet {
 			System.out.println(session.getAttribute("memberId"));
 			String memid = (String) session.getAttribute("memberId");
 			System.out.println(memid);
-			reservations = daoReservation.reservationSelectListMember((String) session.getAttribute("memberId"));
+			reservations = daoReservation.reservationSelectListMember(memid);
+			System.out.println(reservations);
 			request.setAttribute("reservations", reservations);
 		}
 		

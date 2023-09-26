@@ -1,10 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>contact</title>
+<style type="text/css">
+.swal2-title {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 600;
+}
+</style>
 </head>
 <body>
 	<section
@@ -29,27 +36,26 @@
 			<div class="row">
 				<div class="contact-info col-lg-6 pb-3">
 					<h3>Contact info</h3>
-					<p>Tortor dignissim convallis aenean et tortor at risus viverra
-						adipiscing.</p>
+					<p>문의사항이 있으시면 아래 연락처로 연락 가능합니다.</p>
 					<div class="page-content d-flex flex-wrap">
 						<div class="col-lg-6 col-sm-12">
 							<div class="content-box text-dark pe-4 mb-5">
 								<h5
 									class="widget-title text-decoration-underline text-uppercase">Office</h5>
 								<div class="contact-address pt-3">
-									<p>730 Glenstone Ave 65802, Springfield, US</p>
+									<p>대구광역시 중구 중앙대로 403</p>
 								</div>
 								<div class="contact-number">
 									<p>
-										<a href="#">+123 987 321</a>
+										<a href="#">+82 111 2222 3333</a>
 									</p>
 									<p>
-										<a href="#">+123 123 654</a>
+										<a href="#">+82 111 4444 5555</a>
 									</p>
 								</div>
 								<div class="email-address">
 									<p>
-										<a href="#">vaso@yourinfo.com</a>
+										<a href="#">yedamOfficial@yedam.com</a>
 									</p>
 								</div>
 							</div>
@@ -59,19 +65,19 @@
 								<h5
 									class="widget-title text-decoration-underline text-uppercase">Management</h5>
 								<div class="contact-address pt-3">
-									<p>730 Glenstone Ave 65802, Springfield, US</p>
+									<p>403, Jungang-daero, Jung-gu</p>
 								</div>
 								<div class="contact-number">
 									<p>
-										<a href="#">+123 987 321</a>
+										<a href="#">+82 111 5555 6666</a>
 									</p>
 									<p>
-										<a href="#">+123 123 654</a>
+										<a href="#">+82 111 7777 9999</a>
 									</p>
 								</div>
 								<div class="email-address">
 									<p>
-										<a href="#">vaso@yourinfo.com</a>
+										<a href="#">yedamInfo@yedam.com</a>
 									</p>
 								</div>
 							</div>
@@ -120,14 +126,14 @@
 						data-aos-easing="ease-in" data-aos-delay="600"
 						data-aos-duration="1000" data-aos-once="true">
 						<div class="display-header">
-							<h3>Our stores</h3>
-							<p>You can also directly buy products from our stores.</p>
+							<h3>Branch office</h3>
+							<p>문의사항을 저희 지사를 소개합니다.</p>
 						</div>
 						<div class="location-content d-flex flex-wrap">
 							<div class="col-lg-6 col-sm-12">
 								<div class="content-box text-dark pe-4 mb-5">
 									<h5
-										class="widget-title text-decoration-underline text-uppercase">Office</h5>
+										class="widget-title text-decoration-underline text-uppercase">daegu</h5>
 									<div class="contact-address pt-3">
 										<p>730 Glenstone Ave 65802, Springfield, US</p>
 									</div>
@@ -149,7 +155,7 @@
 							<div class="col-lg-6 col-sm-12">
 								<div class="content-box">
 									<h5
-										class="widget-title text-decoration-underline text-uppercase">USA</h5>
+										class="widget-title text-decoration-underline text-uppercase">busan</h5>
 									<div class="contact-address pt-3">
 										<p>730 Glenstone Ave 65802, Springfield, US</p>
 									</div>
@@ -174,5 +180,27 @@
 			</div>
 		</div>
 	</section>
+	<!-- 이메일 진행한 후 -->
+	<c:if test="${not empty messageContact }">
+		<div id="${messageContact }"></div>
+	</c:if>
+	
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.all.min.js"></script>
+	
+	<script type="text/javascript">
+		// 이메일 이벤트(알람창) 	
+		if ($('#emailSuccess').length) {
+			Swal.fire({
+				title: '문의사항',
+				text: "확인 후 연락드리겠습니다",
+				icon: 'success',
+				confirmButtonColor: '#87826E',
+				confirmButtonText: 'OK',
+			}).then(function () {
+				location.href = 'contactcontroller.do';
+			});
+		}
+	</script>		
 </body>
 </html>

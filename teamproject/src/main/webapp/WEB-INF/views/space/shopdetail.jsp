@@ -208,18 +208,19 @@
 							
 							<nav
 								class="navigation paging-navigation text-center padding-medium"
-								role="navigation" style="padding-bottom: 0;">
+								role="navigation" style="padding: 0 0 30px 0;">
 								<div
 									class="pagination loop-pagination d-flex justify-content-center align-items-center">
 									<a href="#" class="d-flex pe-2"> <svg width="24" height="24">
 												<use xlink:href="#angle-left"></use></svg>
 									</a> <span aria-current="page" class="page-numbers current pe-3">1</span>
-									<a class="page-numbers pe-3" href="#">2</a> <a
-										class="page-numbers pe-3" href="#">3</a> <a
-										class="page-numbers pe-3" href="#">4</a> <a class="page-numbers"
-										href="#">5</a> <a href="#" class="d-flex ps-2"> <svg
-											width="24" height="24">
-												<use xlink:href="#angle-right"></use></svg>
+									<a class="page-numbers pe-3" href="#">2</a> 
+									<a class="page-numbers pe-3" href="#">3</a> 
+									<a class="page-numbers pe-3" href="#">4</a>
+									<a class="page-numbers pe-3" href="#">5</a> 
+									<a href="#" class="d-flex ps-2"> 
+									<svg width="24" height="24">
+									<use xlink:href="#angle-right"></use></svg>
 									</a>
 								</div>
 							</nav>
@@ -393,9 +394,9 @@
 		function selectTo(id,go) {
 			let form = document.getElementById("sform");
 			if (form.spaceStartDate.value != 0) {
-				if(go=='cart'){
+				if(go == 'cart'){
 					$('#sform').attr('action', 'cart.do')
-				} else (go=='whishlist'){
+				} else if(go == 'whishlist'){
 					$('#sform').attr('action', 'checkout.do')
 				} else{
 					$('#sform').attr('action', 'checkout.do')
