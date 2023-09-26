@@ -58,4 +58,9 @@ public class ReservationServiceImpl implements ReservationService {
 		return null;
 	}
 
+	@Override
+	public List<ReservationVO> reservationSelectListCheck() {
+		return map.reservationSelectListCheck();
+	}
+
 }

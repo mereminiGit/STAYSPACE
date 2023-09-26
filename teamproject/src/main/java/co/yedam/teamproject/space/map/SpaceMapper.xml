@@ -55,7 +55,7 @@
    </update>
    <delete id="spaceDelete"
       parameterType="co.yedam.teamproject.space.service.SpaceVO">
-      DELETE FROM SPACE WHERE SPACE_NAME=#{spaceName}
+      DELETE FROM SPACE WHERE SPACE_ID=#{spaceId}
    </delete>
    
    <update id="spaceHitUpdate">

@@ -73,13 +73,22 @@ public class AjaxHostSpaceModify extends HttpServlet {
 				vo.setSpaceAttech(attechFile);
 			}
 		}
+		
+		String retCode = "";
 		if (dao.spaceUpdate(vo) != 0) {
 			vo = dao.spaceSelect(vo);
 			resultMap.put("retCode", "Success");
 			resultMap.put("data", vo);
+			
+			retCode = "Success";
+			request.getSession().setAttribute("retCode", retCode);
 			response.sendRedirect("BusinessSpaceList.do");
 		} else {
 			resultMap.put("retCode", "Fail");
+			
+			retCode = "Fail";
+			request.getSession().setAttribute("retCode", retCode);
+			response.sendRedirect("BusinessSpaceList.do");
 		}
 
 		ObjectMapper objectMapper = new ObjectMapper();

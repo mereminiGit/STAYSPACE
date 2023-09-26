@@ -62,12 +62,12 @@
 				</div>
 			</div>
 			
-			<div class="row">
-				<div class="col-xl">
-					<div class="card mb-4">
+			<div class="row" >
+				<div class="col-xl" >
+					<div class="card mb-4" >
 						<h5 class="card-header">Reply</h5>
 						<div class="table-responsive text-nowrap">
-							<table class="table table-hover">
+							<table class="table table-hover" id="replyTable">
 								<thead>
 									<tr>
 										<th>Img</th>

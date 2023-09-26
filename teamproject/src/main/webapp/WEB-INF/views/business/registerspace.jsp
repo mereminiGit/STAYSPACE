@@ -112,12 +112,22 @@
 		<!-- / Content -->
 	</div>
 	<script>
-	/*function register(){
-		Swal.fire({
-			  icon: 'success',
-			  text: '등록되었습니다.',
-			})
-	})*/
+		$('.register').on('click',function(e){
+					if (<%=request.getParameter("retCode")%> !== 'Fail'){
+			$(document).ready(function() {
+						Swal.fire({
+							  icon: 'success',
+							  text: '등록되었습니다.',
+							  showConfirmButton: true,
+							})
+				});
+					}else{
+						Swal.fire({
+							  icon: 'error',
+							  text: '처리 중 오류 발생',
+							})
+					}
+		})
 	</script>
 </body>
 </html>

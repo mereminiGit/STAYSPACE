@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -83,13 +84,22 @@ public class AjaxHostSpaceRegiser extends HttpServlet {
 			}
 		}
 		
+		String retCode = "";
 		if (dao.spaceInsert(vo) != 0) {
 			vo = dao.spaceSelect(vo);
 			resultMap.put("retCode", "Success");
 			resultMap.put("data", vo);
-			response.sendRedirect("BusinessSpaceList.do");
+			
+			retCode = "Success";
+			request.getSession().setAttribute("retCode", retCode);
+			response.sendRedirect("registerspace.do");
 		} else {
 			resultMap.put("retCode", "Fail");
+			resultMap.put("data", vo);
+			
+			retCode = "Fail";
+			request.getSession().setAttribute("retCode", retCode);
+			response.sendRedirect("registerspace.do");
 		}
 
 		ObjectMapper objectMapper = new ObjectMapper();

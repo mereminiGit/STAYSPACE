@@ -112,14 +112,13 @@
 					</div>
 					<!-- /Account -->
 				</div>
-				<div class="row">
 					<div class="col-md-12">
 						<div class="card mb-4">
 							<h5 class="card-header">My Account Delete</h5>
 							<div class="card-body">
-									<div class="mb-3 col-md-6">
+									<div class="mb-3 col-mb-6">
 										<div class="alert alert-warning"
-											style="background-color: #eee; width: 80%; border-radius: 10px">
+											style="background-color: #eee; border-radius: 10px">
 											<br>
 											<h6 class="alert-heading fw-bold mb-1"
 												style="color: rgba(0, 0, 0, 0.6)">※ 정말로 계정을 삭제하시겠습니까?</h6>
@@ -168,7 +167,6 @@
 					</div>-->
 			</div>
 		</div>
-	</div>
 	<!-- / Content -->
 	<script>
 
@@ -254,8 +252,8 @@
           	  Swal.fire({
           		  position: 'center',
           		  icon: 'success',
-          		  title: '회원정보가 변경되었습니다.',
-          		  showConfirmButton: false,
+          		  text: '회원정보가 변경되었습니다.',
+          		  showConfirmButton: true,
           		  timer: 1500
           		})
           		$('#password').val('');
