@@ -203,7 +203,7 @@
 													<use xlink:href="#chevron-down"></use>
 													</svg></a>
 												<ul class="dropdown-menu" style="text-align: center;">
-													<li><a href="memberhome.do" class="dropdown-item fs-5 fw-medium">My
+													<li><a href="memberreservationhome.do" class="dropdown-item fs-5 fw-medium">My
 													page</a></li>
 													<li><a href="cart.do" class="dropdown-item fs-5 fw-medium">Cart</a>
 													</li>
@@ -212,8 +212,8 @@
 												</ul>
 											</li>
 										</c:if>
-										<!-- Search NAV start -->
-										<li class="nav-item search-item" style="margin-right: 7px">
+										<!--##### Search NAV start #####-->
+										<!-- <li class="nav-item search-item" style="margin-right: 7px">
 											<div id="search-bar" class="border-right d-none d-lg-block">
 												<form action="" autocomplete="off">
 													<input id="search" class="text-dark" name="search" type="text"
@@ -221,7 +221,8 @@
 														class="nav-link me-0" href="about.do">Search</a>
 												</form>
 											</div>
-										</li>
+										</li> -->
+										<li class="nav-item"><a class="nav-link me-0" href="contactcontroller.do">Contact</a></li>
 										<!-- Search NAV end -->
 										<!-- ### right NAV end ### -->
 

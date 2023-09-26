@@ -168,7 +168,13 @@
 							<div class="review-box review-style d-flex flex-wrap justify-content-between">
 								
 								<!-- 리뷰 반복 -->
-								<c:forEach items="${replyes }" var="r">						
+								<c:if test="${empty replyes }">
+									<div class="review-content">
+										<p>등록된 후기가 없습니다.</p>
+									</div>
+								</c:if>
+								
+								<c:forEach items="${replyes }" var="r">					
 									<div class="review-item d-flex">
 										<div class="image-holder">
 											<img src="image/reply/${r.replyImage }" alt="review" style="width: 160px; height: 160px">
@@ -195,8 +201,26 @@
 										</div>
 									</div>
 								</c:forEach>	
-								<!-- 리뷰 반복 -->						
+								<!-- 리뷰 반복 -->				
 							</div>
+							
+							<nav
+								class="navigation paging-navigation text-center padding-medium"
+								role="navigation" style="padding-bottom: 0;">
+								<div
+									class="pagination loop-pagination d-flex justify-content-center align-items-center">
+									<a href="#" class="d-flex pe-2"> <svg width="24" height="24">
+												<use xlink:href="#angle-left"></use></svg>
+									</a> <span aria-current="page" class="page-numbers current pe-3">1</span>
+									<a class="page-numbers pe-3" href="#">2</a> <a
+										class="page-numbers pe-3" href="#">3</a> <a
+										class="page-numbers pe-3" href="#">4</a> <a class="page-numbers"
+										href="#">5</a> <a href="#" class="d-flex ps-2"> <svg
+											width="24" height="24">
+												<use xlink:href="#angle-right"></use></svg>
+									</a>
+								</div>
+							</nav>
 							
 							<!-- 리뷰 추가 -->
 							<c:if test="${not empty reservations }">
@@ -465,6 +489,8 @@
 			});
 		}
 	</script>
+	<script src="/js/jquery.twbsPagination.js"></script>
+	
 </body>
 
 </html>

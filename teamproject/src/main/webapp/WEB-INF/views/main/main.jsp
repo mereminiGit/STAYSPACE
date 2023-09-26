@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,7 +97,7 @@
 		</div>
 	</section>
 	<!-- 플랫폼 소개 about section end -->
-
+	
 	<!-- Best Space section start -->
 	<section id="products" class="product-store position-relative">
 		<div
@@ -124,32 +125,35 @@
 			<div class="swiper-wrapper">
 
 				<!-- 공간사진 & 공간네임 & 공간가격 반복 -->
-				<div class="swiper-slide">
-					<div class="product-card position-relative">
-						<div class="image-holder zoom-effect">
-							<!-- 공간 사진 넣는 곳 -->
-							<img src="vaso-html/images/product-item1.jpg" alt="product-item"
-								class="img-fluid zoom-in">
-							<!-- 공간 상세페이지로 이동하는 버튼 -->
-							<div class="cart-concern position-absolute">
-								<div class="cart-button">
-									<a href="#" class="btn">Go to Space</a>
+				<c:forEach items="${bestSpace }" var="best" varStatus="status" begin="0" end="7">	
+					<div class="swiper-slide">
+						<div class="product-card position-relative">
+							<div class="image-holder zoom-effect">
+								<!-- 공간 사진 넣는 곳 -->
+								<img src="image/space/${best.spaceImageMain }" alt="product-item"
+									class="img-fluid zoom-in" style="height: 500px">
+								<!-- 공간 상세페이지로 이동하는 버튼 -->
+								<div class="cart-concern position-absolute">
+									<div class="cart-button">
+										<a href="shopdetail.do?spaceId=${best.spaceId }" class="btn">Go to Space</a>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="card-detail text-center pt-3 pb-2">
-							<!-- 공간네임 (네임 클릭시 해당 공간 상세페이지로) -->
-							<h5 class="card-title fs-3 text-capitalize">
-								<a href="single-product.html">Matt Black</a>
-							</h5>
-							<!-- 공간가격 -->
-							<span class="item-price text-primary fs-3 fw-light">$870</span>
+							<div class="card-detail text-center pt-3 pb-2">
+								<!-- 공간네임 (네임 클릭시 해당 공간 상세페이지로) -->
+								<h5 class="card-title fs-3 text-capitalize">
+									<a href="single-product.html">${best.spaceName }</a>
+								</h5>
+								<!-- 공간가격 -->
+								<span class="item-price text-primary fs-3 fw-light" id="space${status.index }">${best.spacePrice }</span>
+							</div>
 						</div>
 					</div>
-				</div>
+				</c:forEach>
+				
 				<!-- 공간사진 & 공간네임 & 공간가격 반복 -->
 
-				<div class="swiper-slide">
+<!-- 				<div class="swiper-slide">
 					<div class="product-card position-relative">
 						<div class="image-holder zoom-effect">
 							<img src="vaso-html/images/product-item2.jpg" alt="product-item"
@@ -167,9 +171,9 @@
 							<span class="item-price text-primary fs-3 fw-light">$680</span>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- ==================================================================== -->
-				<div class="swiper-slide">
+<!-- 				<div class="swiper-slide">
 					<div class="product-card position-relative">
 						<div class="image-holder zoom-effect">
 							<img src="vaso-html/images/product-item3.jpg" alt="product-item"
@@ -187,9 +191,9 @@
 							<span class="item-price text-primary fs-3 fw-light">$750</span>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- ==================================================================== -->
-				<div class="swiper-slide">
+<!-- 				<div class="swiper-slide">
 					<div class="product-card position-relative">
 						<div class="image-holder zoom-effect">
 							<img src="vaso-html/images/product-item4.jpg" alt="product-item"
@@ -207,9 +211,9 @@
 							<span class="item-price text-primary fs-3 fw-light">$650</span>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- ==================================================================== -->
-				<div class="swiper-slide">
+<!-- 				<div class="swiper-slide">
 					<div class="product-card position-relative">
 						<div class="image-holder zoom-effect">
 							<img src="vaso-html/images/product-item5.jpg" alt="product-item"
@@ -227,9 +231,9 @@
 							<span class="item-price text-primary fs-3 fw-light">$750</span>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- ==================================================================== -->
-				<div class="swiper-slide">
+<!-- 				<div class="swiper-slide">
 					<div class="product-card position-relative">
 						<div class="image-holder zoom-effect">
 							<img src="vaso-html/images/product-item2.jpg" alt="product-item"
@@ -247,9 +251,9 @@
 							<span class="item-price text-primary fs-3 fw-light">$750</span>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- ==================================================================== -->
-				<div class="swiper-slide">
+<!-- 				<div class="swiper-slide">
 					<div class="product-card position-relative">
 						<div class="image-holder zoom-effect">
 							<img src="vaso-html/images/product-item4.jpg" alt="product-item"
@@ -267,9 +271,9 @@
 							<span class="item-price text-primary fs-3 fw-light">$750</span>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- ==================================================================== -->
-				<div class="swiper-slide">
+<!-- 				<div class="swiper-slide">
 					<div class="product-card position-relative">
 						<div class="image-holder zoom-effect">
 							<img src="vaso-html/images/product-item3.jpg" alt="product-item"
@@ -287,7 +291,7 @@
 							<span class="item-price text-primary fs-3 fw-light">$750</span>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- ==================================================================== -->
 			</div>
 		</div>
@@ -310,23 +314,22 @@
 						<div class="swiper testimonial-swiper">
 							<div class="swiper-wrapper">
 								<!-- 후기 반복 -->
-								<div
-									class="swiper-slide text-center d-flex justify-content-center">
-									<div class="review-item">
-										<!-- 후기 메세지 -->
-										<blockquote class="fs-1 fw-light">“A pellen
-											tesque pretium feugiat vel morbi sagittis lorem habi tasse
-											cursus. Suspen dise tempus oncu enim pellen tesque este
-											pretium in neque, elit morbi sagittis lorem habi mattis.”</blockquote>
-										<!-- 후기 작성자 -->
-										<div class="author-detail">
-											<div class="name fw-bold text-uppercase pt-2">Anna
-												garcia</div>
+								<c:forEach items="${recentReply }" var="recent" begin="0" end="2">								
+									<div
+										class="swiper-slide text-center d-flex justify-content-center">
+										<div class="review-item">
+											<!-- 후기 메세지 -->
+											<blockquote class="fs-1 fw-light">${recent.replyContent }</blockquote>
+											<!-- 후기 작성자 -->
+											<div class="author-detail">
+												<div class="name fw-bold text-uppercase pt-2">${recent.memberId }</div>
+											</div>
 										</div>
 									</div>
-								</div>
+								</c:forEach>
+								
 								<!-- ==================================================================== -->
-								<div
+								<!-- <div
 									class="swiper-slide text-center d-flex justify-content-center">
 									<div class="review-item">
 										<blockquote class="fs-1 fw-light">“A pellen
@@ -338,9 +341,9 @@
 												garcia</div>
 										</div>
 									</div>
-								</div>
+								</div> -->
 								<!-- ==================================================================== -->
-								<div
+								<!-- <div
 									class="swiper-slide text-center d-flex justify-content-center">
 									<div class="review-item">
 										<blockquote class="fs-1 fw-light">“A pellen
@@ -352,7 +355,7 @@
 												garcia</div>
 										</div>
 									</div>
-								</div>
+								</div> -->
 								<!-- ==================================================================== -->
 							</div>
 						</div>
@@ -574,6 +577,18 @@
 
 		</div>
 	</div>
-
+	
+	<!-- 가격에 , 넣기 -->
+	<script type="text/javascript">
+		let price = '';
+		let result = '';
+		for (let i = 0; i < 8; i++){
+			price = document.getElementById("space"+i).innerText;
+			result = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+			console.log(result);
+			document.getElementById("space"+i).innerText = "￦"+result;
+		}
+		
+	</script>
 </body>
 </html>
