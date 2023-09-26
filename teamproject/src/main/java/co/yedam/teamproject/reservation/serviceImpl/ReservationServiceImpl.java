@@ -73,7 +73,7 @@ public class ReservationServiceImpl implements ReservationService {
 	@Override
 	public int reservationMemberTotalCount(String memberId) {
 		return map.reservationMemberTotalCount(memberId);
-
+	}
 	public List<ReservationVO> reservationSelectListCheck() {
 		return map.reservationSelectListCheck();
 

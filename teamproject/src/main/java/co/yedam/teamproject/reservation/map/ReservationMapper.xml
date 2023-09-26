@@ -26,12 +26,13 @@
 	</select>
 	<select id="reservationMemberTotalCount" resultType="int">
 		SELECT COUNT(*) FROM RESERVATION WHERE MEMBER_ID = #{memberId}
-
+	</select>
 	<select id="reservationSelectDate"
 		resultType="co.yedam.teamproject.cartList.service.CartListVO">
 		SELECT * FROM SPACE
 		WHERE SPACE_ID=
 		(SELECT SPACE_ID FROM RESERVATION WHERE reserve_start_date = #{reserveStartDate}) AND reserve_check=1
+		</select>
 	<select id="reservationSelectListCheck" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
 		SELECT * FROM RESERVATION WHERE RESERVE_CHECK = 1
 
