@@ -387,7 +387,7 @@
 					<!-- </form> -->
 
 					<!-- Find When 모달 -->
-					<form id="findWhenForm" action="spacelist.do" method="get">
+					<form id="findWhenForm" action="shoplist.do" method="get">
 						<div class="modal fade" id="findWhenModal" tabindex="-1" role="dialog" aria-hidden="true">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
@@ -413,7 +413,7 @@
 										<div class="form-group py-3" style="text-align: center;">
 											<input type="text" class="form-control"
 												style="display: inline-block; text-align: center; width:300px"
-												placeholder="날짜를 선택하세요" id="finddatepicker" name="finddatepicker">
+												placeholder="날짜를 선택하세요" id="finddatepicker" name="spaceStartDate">
 										</div>
 									</div>
 									<!-- Modal footer -->
@@ -450,11 +450,12 @@
 					event.stopPropagation();
 				}); */
 				
-				var dateToday = new Date();
+				/* var dateToday = new Date(); */
 				var dates = $("#finddatepicker").datepicker({
 				  /*   defaultDate: "+1w",
 				    changeMonth: true,
 				    numberOfMonths: 3, */
+				    dateFormat:'yy-mm-dd',
 				    minDate: 0,
 				   /*  onSelect: function(selectedDate) {
 				        var option = this.id == "from" ? "minDate" : "maxDate",

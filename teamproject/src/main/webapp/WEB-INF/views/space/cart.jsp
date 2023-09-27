@@ -27,6 +27,11 @@
     ================================================== -->
 <script src="vaso-html/js/modernizr.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+function numberWithCommas(x) {
+	document.write(x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","));
+	}
+</script>
 </head>
 <body>
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -200,7 +205,7 @@
 										class="item-price text-primary fs-3 fw-medium">${c.spaceStartDate }<br>
 									</span></td>
 									<td class="align-middle border-0"><span
-										class="item-price text-primary fs-3 fw-medium">${c.spacePrice }원</span></td>
+										class="item-price text-primary fs-3 fw-medium">&#x20a9;<script>numberWithCommas(${c.spacePrice })</script></span></td>
 									<td class="align-middle border-0 cart-remove"><button type="button"
 										onclick="remove('${c.reserveId}')"> <svg width="32px" height="32px">
                         <use xlink:href="#baseline-clear"></use>
@@ -220,7 +225,7 @@
 								<tr class="order-total pt-2 pb-2 border-bottom border-dark">
 									<th>Total</th>
 									<td class="align-middle border-0" data-title="Total"><span
-										class="price-amount amount text-primary"> ${total }원
+										class="price-amount amount text-primary">&#x20a9;<script>numberWithCommas(${total })</script>
 									</span></td>
 								</tr>
 							</tbody>

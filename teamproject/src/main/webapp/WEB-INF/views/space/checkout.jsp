@@ -26,7 +26,11 @@
 <!-- script
     ================================================== -->
 <script src="vaso-html/js/modernizr.js"></script>
-
+<script>
+function numberWithCommas(x) {
+	document.write(x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","));
+	}
+</script>
 </head>
 <body>
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -161,24 +165,25 @@
 	</section>
 	<section class="shopify-cart checkout-wrap padding-large">
 		<div class="container">
-			<form class="form-group" action="memberregister.do" onsubmit="requestPay()">
 				<div class="col-lg-6" style="margin: 0 auto">
 					<h3 class="pb-4">Billing Details</h3>
 					<div class="billing-details">
+			<form action="memberreservationhome.do" id="frm">
 						<div class="py-3">
-							<label for="lname">Name*</label> <input type="text" id="lname"
-								name="lastname" class="w-100" value=${member.memberName }>
+							<label for="lname">Name*</label> <input type="text" id="name"
+								name="name" class="w-100" value="${member.memberName }" readonly>
 						</div>
 						<div class="py-3">
 							<label for="Phone">Phone *</label> <input type="text" id="phone"
-								name="phone" class="w-100" value=${member.memberTel }>
+								name="phone" class="w-100" value="${member.memberTel }" readonly>
 						</div>
 
 						<div class="py-3">
 							<label for="email">Email address *</label> <input type="text"
 								id="email" name="email" class="w-100"
-								value=${member.memberEmail }>
+								value="${member.memberEmail }" readonly>
 						</div>
+					</form>
 					</div>
 					<h3 class="pb-4">Reservation Information</h3>
 					<div class="billing-details">
@@ -186,6 +191,7 @@
 						<c:forEach items="${cart }" var="c">
 							<img src="image/space/${c.spaceImageMain }" style="width: 648px">
 							<label for="fname">${c.spaceName } · ${c.spaceStartDate }</label>
+							
 							<c:set var="total" value="${total+c.spacePrice }" />
 						</c:forEach>
 					</div>
@@ -200,7 +206,7 @@
 										<th>Total</th>
 										<td data-title="Total"><span
 											class="price-amount amount text-primary ps-5"> <bdi>
-												<span class="price-currency-symbol"></span>${total }원 </bdi>
+												<span class="price-currency-symbol">&#8361;</span><script>numberWithCommas(${total })</script> </bdi>
 										</span></td>
 									</tr>
 								</tbody>
@@ -245,13 +251,12 @@
 								</span>
 								</label>
 							</div> -->
-							<input type="submit" name="submit" class="btn btn-dark w-100"
-								 value="Place an order">
+							<button type="button" class="btn btn-dark w-100" onclick="requestPay()">Place an order</button>
 						</div>
 					</div>
 				</div>
-			</form>
 		</div>
+		
 	</section>
 
 	<script src="vaso-html/js/jquery-1.11.0.min.js"></script>
@@ -309,6 +314,7 @@
 				confirmButtonText:'OK'
 			}).then((result)=>{
 				if(result.isConfirmed){
+					location.href="memberreservationhome.do?name=1"
 				}
 			})
 		}

@@ -39,6 +39,11 @@
 	padding: 0;
 }
 </style>
+<script>
+function numberWithCommas(x) {
+	document.write(x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","));
+	}
+</script>
 </head>
 <body>
 	<section
@@ -112,7 +117,7 @@
 								</div>
 							</div>
 							<div class="product-price my-3">
-								<span class="fs-1 text-primary">&#8361;${s.spacePrice }</span> <small>/일</small>
+								<span class="fs-1 text-primary">&#8361;<script>numberWithCommas(${s.spacePrice })</script></span> <small>/일</small>
 							</div>
 							<hr>
 							<h5 class="widget-title text-decoration-underline text-uppercase">
@@ -296,7 +301,7 @@
 		<div class="container">
 			<div
 				class="display-header d-flex flex-wrap justify-content-between align-items-center pb-4">
-				<h3 class="mt-3">Related Products</h3>
+				<h3 class="mt-3">Nearby</h3>
 				<a href="shoplist.do" class="btn">View all items</a>
 			</div>
 			<div class="row">
@@ -310,7 +315,7 @@
 						<h5 class="card-title fs-3 text-capitalize">
 							<a href="detail.do?spaceId=${r.spaceId }">${r.spaceName }</a>
 						</h5>
-						<span class="item-price text-primary fs-3 fw-light">&#8361;${r.spacePrice }</span>
+						<span class="item-price text-primary fs-3 fw-light">&#8361;<script>numberWithCommas(${r.spacePrice })</script></span>
 					</div>
 				</div>
 				</c:forEach>
