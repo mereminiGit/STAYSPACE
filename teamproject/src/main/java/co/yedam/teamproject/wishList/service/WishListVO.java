@@ -9,4 +9,5 @@ public class WishListVO {
 	private String memberId;
 	private Date wishListStartDate;
 	private int wishListId;
+	private int spaceId;
 }

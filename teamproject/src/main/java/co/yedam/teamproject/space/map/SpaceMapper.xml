@@ -42,7 +42,7 @@
       INSERT INTO SPACE
 
       (SPACE_ID, SPACE_NAME,SPACE_PRICE,SPACE_CITY,SPACE_ADDRESS,SPACE_IMAGE_MAIN,SPACE_CONTENT,MEMBER_ID,SPACE_STAR,SPACE_IMAGE_SUB1,SPACE_IMAGE_SUB2,SPACE_THUMB,SPACE_ATTECH)
-      VALUES(#{spaceId}, #{spaceName},#{spacePrice},#{spaceCity},#{spaceAddress},#{spaceImageMain},#{spaceContent},#{memberId},(SELECT AVG(REPLY_STAR) FROM REPLY),#{spaceImageSub1},#{spaceImageSub2},#{spaceThumb},#{spaceAttech})
+      VALUES(#{spaceId}, #{spaceName},#{spacePrice},#{spaceCity},#{spaceAddress},#{spaceImageMain},#{spaceContent},#{memberId},(SELECT AVG(REPLY_STAR) FROM REPLY WHERE SPACE_ID=#{spaceId}),#{spaceImageSub1},#{spaceImageSub2},#{spaceThumb},#{spaceAttech})
 
    </insert>
    <update id="spaceUpdate"
@@ -55,7 +55,7 @@
          <if test="spaceAddress !=null">SPACE_ADDRESS=#{spaceAddress},</if>
          <if test="spaceImageMain !=null">SPACE_IMAGE_MAIN=#{spaceImageMain},</if>
          <if test="spaceContent !=null">SPACE_CONTENT=#{spaceContent},</if>
-         <if test="spaceStar !=null">SPACE_STAR=#{spaceStar},</if>
+         SPACE_STAR=(SELECT AVG(REPLY_STAR) FROM REPLY WHERE SPACE_ID=#{spaceId}),
          <if test="spaceImageSub1 !=null">SPACE_IMAGE_SUB1=#{spaceImageSub1},</if>
          <if test="spaceImageSub2 !=null">SPACE_IMAGE_SUB2=#{spaceImageSub2},</if>
          <if test="spaceType !=null">SPACE_TYPE=#{spaceType}</if>

@@ -12,7 +12,6 @@ public class ReservationVO {
 	private int spaceId;
 	private String spaceName;
 	private Date reserveStartDate;
-	private Date reserveEndDate;
 	private int reservePrice;
 	private int reserveCheck;
 	private int reserveId;

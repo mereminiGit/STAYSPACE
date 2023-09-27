@@ -19,5 +19,6 @@ public class CartListVO {
 	private int spaceId;
 
 	private int reserveId;
+	private String hostId;
 
 }
