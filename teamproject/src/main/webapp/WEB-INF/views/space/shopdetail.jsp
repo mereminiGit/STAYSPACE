@@ -500,8 +500,8 @@ function numberWithCommas(x) {
 			if (form.spaceStartDate.value != 0) {
 				if(go == 'cart'){
 					$('#sform').attr('action', 'cart.do')
-				} else if(go == 'whishlist'){
-					$('#sform').attr('action', 'checkout.do')
+				} else if(go == 'wishlist'){
+					$('#sform').attr('action', 'memberreservationhome.do')
 				} else{
 					$('#sform').attr('action', 'checkout.do')
 				}

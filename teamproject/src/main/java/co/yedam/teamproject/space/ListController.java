@@ -32,8 +32,9 @@ public class ListController extends HttpServlet {
 		SpaceVO vo=new SpaceVO();
 		ReservationVO rvo=new ReservationVO();
 		String date=request.getParameter("spaceStartDate");
+		System.out.println(date+"11111111111111");
 		if(date != null) { //날짜검색
-			rvo.setReserveStartDate(Date.valueOf(date));
+			rvo.setReserveStartDate(Date.valueOf(date)); 
 			spaces=dao.spaceSelectDate(rvo);
 		} else { 
 			vo.setSpaceCity(request.getParameter("spaceCity")); //도시검색
