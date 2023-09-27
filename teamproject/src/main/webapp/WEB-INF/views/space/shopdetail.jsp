@@ -126,7 +126,7 @@ function numberWithCommas(x) {
 							</h5>
 							<div class="action-buttons my-4 d-flex flex-wrap">
 								<a href="#" class="btn btn-dark me-2 mb-1"
-									onclick="selectTo('${s.spaceId}','wishlist')">Wishlist</a>
+									onclick="wishCall(${s.spaceId });">Wishlist</a>
 								<a href="#" class="btn btn-dark me-2 mb-1"
 									onclick="selectTo('${s.spaceId}','cart')">Add To Cart</a>
 								<a href="#" class="btn btn-dark" onclick="selectTo('${s.spaceId}','checkout')">Checkout</a>
@@ -626,6 +626,31 @@ function numberWithCommas(x) {
 			eform.action = 'updatereply.do?replyId=' + replyId;
 			console.log(eform.action);
 		}
+	</script>
+	<script>
+	//wishList 인서트
+	function wishCall(spaceId){
+		let date = $('#datepicker').val();
+		$.ajax({
+			url: "ajaxWishListAdd.do?spaceId=" + spaceId+"&date="+date,
+			type: "get",
+			datatype: "html",
+			success: function (data) {
+				
+				Swal.fire({
+					  position: 'center',
+					  icon: 'success',
+					  title: 'Your work has been saved',
+					  showConfirmButton: false,
+					  timer: 1500
+					})
+					 setTimeout(function() {
+						 location.href="memberreservationhome.do" 
+						 }, 2000);
+				
+			}
+		});
+	}
 	</script>
 </body>
 

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-		<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 			<!DOCTYPE html>
 			<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default"
 				data-assets-path="../assets/" data-template="vertical-menu-template-free">
@@ -51,6 +51,9 @@
 						disply:flex !important;
 						align-items: center !important;
 						justify-content: space-around !important;
+					}
+					#wishdiv{
+						padding:0px;
 					}
 				</style>
 			</head>
@@ -186,7 +189,7 @@
 										<div class="content-wrapper">
 											<!-- Content -->
 
-											<div class="container-xxl flex-grow-1 container-p-y">
+											<div class="container-xxl flex-grow-1 container-p-y" id="wishdiv">
 												<div class="card">
 												<h4 class="card-header"
 													style="font-family: 'Noto Sans KR', sans-serif; padding: 30px 16px 30px 16px">

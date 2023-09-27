@@ -85,7 +85,6 @@ public class MemberReservationHomeController extends HttpServlet {
 				vo.setHostId(c.getHostId());
 				dao.reservationInsert(vo);
 			}
-//		vo.setMemberId("jiwon"); // 세션에 저장된 아이디를 들고와야함.
 		 }
 				MemberService daoMember = new MemberServiceImpl(); MemberVO voMember =new
 				MemberVO(); voMember.setMemberId((String) session.getAttribute("memberId"));
