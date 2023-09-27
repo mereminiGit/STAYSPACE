@@ -19,7 +19,7 @@
 	</insert>
 	
 	<delete id="wishListDelete" parameterType="co.yedam.teamproject.wishList.service.WishListVO">
-		DELETE FROM WISHLIST WHERE SPACE_ID=#{spaceId}
+		DELETE FROM WISHLIST WHERE WISHLIST_ID=#{wishListId}
 		<if test="memberId != null">
 		AND MEMBER_ID = #{memberId}
 		</if>
