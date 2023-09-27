@@ -16,6 +16,9 @@
 	<select id="replySelect" resultType="co.yedam.teamproject.reply.service.ReplyVO">
 		SELECT * FROM REPLY WHERE SPACE_ID = #{spaceId}
 	</select>
+	<select id="replySelectbyReplyId" resultType="co.yedam.teamproject.reply.service.ReplyVO">
+		SELECT * FROM REPLY WHERE REPLY_ID = #{replyId}
+  </select>
 	<select id="replyCountSpace" resultType="int">
 		SELECT COUNT(*) FROM REPLY WHERE SPACE_ID = #{spaceId}
 	</select>
@@ -31,9 +34,14 @@
 		VALUES (#{memberId}, #{spaceName}, #{replyContent}, SYSDATE, #{replyStar}, #{replyImage}, #{spaceId}, #{replyId})
 	</insert>
 	<update id="replyUpdate" parameterType="co.yedam.teamproject.reply.service.ReplyVO">
-		UPDATE REPLY SET REPLY_CONTENT = #{replyContent}, REPLY_STAR = #{replyStar}, REPLY_UPDATE_DATE = SYSDATE
-		WHERE MEMBER_ID = #{memberId}
-		AND SPACE_NAME = #{spaceName}
+		UPDATE REPLY 
+		<set>
+			<if test="replyContent != null">REPLY_CONTENT = #{replyContent},</if>
+			<if test="replyStar != null">REPLY_STAR = #{replyStar},</if>
+			<if test="replyImage != null">REPLY_IMAGE = #{replyImage},</if>
+			REPLY_DATE = SYSDATE
+		</set>
+		WHERE REPLY_ID = #{replyId}
 	</update>
 	<delete id="replyDelete" parameterType="co.yedam.teamproject.reply.service.ReplyVO">
 		DELETE FROM REPLY

@@ -51,11 +51,8 @@ public class MemberReservationHomeController extends HttpServlet {
 		
 		int n = dao.reservationMemberTotalCount(vo.getMemberId());
 		request.setAttribute("count", n);
-		System.out.println("Mcount>>>"+n);
 		reserve = dao.reservationSelectMember(vo);
 		request.setAttribute("reserve", reserve);
-		System.out.println("menuhome.do reserve 찍어봄");
-		System.out.println(reserve);
 		
 		//WishList
 		WishListService daoWish = new WishListServiceImpl();

@@ -10,6 +10,7 @@ public interface ReplyService {
 	int replyCountSpace(int spaceId);
 	int replyCountMember(String memberId);
 	ReplyVO replySelect(ReplyVO vo);
+	ReplyVO replySelectbyReplyId(ReplyVO vo);
 	int replyInsert(ReplyVO vo);
 	int replyUpdate(ReplyVO vo);
 	int replyDelete(ReplyVO vo);

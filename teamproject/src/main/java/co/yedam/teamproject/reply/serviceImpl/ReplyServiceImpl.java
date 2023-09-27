@@ -59,6 +59,10 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
+	public ReplyVO replySelectbyReplyId(ReplyVO vo) {
+		return map.replySelectbyReplyId(vo);
+  }
+  @Override
 	public int replyCountSpace(int spaceId) {
 		return map.replyCountSpace(spaceId);
 	}

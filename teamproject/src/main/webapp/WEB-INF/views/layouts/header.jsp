@@ -419,13 +419,11 @@
 									<!-- Modal footer -->
 									<div class="modal-footer">
 										<button type="submit" class="btn btn-primary" id="idBtn"
-											style="margin: 20px auto; display: block;">search</button>
+											style="margin: 20px auto; display: block;" onclick="findWhencheck()">search</button>
 									</div>
 								</div>
 							</div>
 						</div>
-					</form>
-
 				</nav>
 			</header>
 			
@@ -448,7 +446,7 @@
 				}).on('hide', function (event) {
 					event.preventDefault();
 					event.stopPropagation();
-				}); */
+				}); 
 				
 				/* var dateToday = new Date(); */
 				var dates = $("#finddatepicker").datepicker({
@@ -463,7 +461,6 @@
 				            date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
 				        dates.not(this).datepicker("option", option, date);
 				    } */
-				});
 			</script>
 			
 			<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
