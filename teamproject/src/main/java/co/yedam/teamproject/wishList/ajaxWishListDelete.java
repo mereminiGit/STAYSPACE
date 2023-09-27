@@ -24,7 +24,7 @@ public class ajaxWishListDelete extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String wishListId=request.getParameter("wishListId");
 		String memberId = request.getParameter("memberId");
-		System.out.println(memberId+"::w,m:::"+wishListId);
+		System.out.println(memberId+"::m, w:::"+wishListId);
 		WishListVO vo = new WishListVO();
 		WishListService dao = new WishListServiceImpl();
 		

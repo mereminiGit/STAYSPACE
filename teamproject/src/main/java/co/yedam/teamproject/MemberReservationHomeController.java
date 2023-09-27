@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import co.yedam.teamproject.common.ViewResolve;
 import co.yedam.teamproject.member.service.MemberService;
 import co.yedam.teamproject.member.service.MemberVO;
@@ -18,6 +20,10 @@ import co.yedam.teamproject.member.serviceImpl.MemberServiceImpl;
 import co.yedam.teamproject.reservation.service.ReservationService;
 import co.yedam.teamproject.reservation.service.ReservationVO;
 import co.yedam.teamproject.reservation.serviceImpl.ReservationServiceImpl;
+import co.yedam.teamproject.space.service.SpaceVO;
+import co.yedam.teamproject.wishList.service.WishListService;
+import co.yedam.teamproject.wishList.service.WishListVO;
+import co.yedam.teamproject.wishList.serviceImpl.WishListServiceImpl;
 
 /**
  * Servlet implementation class MemberHome
@@ -48,6 +54,15 @@ public class MemberReservationHomeController extends HttpServlet {
 		request.setAttribute("reserve", reserve);
 		System.out.println("menuhome.do reserve 찍어봄");
 		System.out.println(reserve);
+		
+		//WishList
+		WishListService daoWish = new WishListServiceImpl();
+		List<WishListVO> wishList = new ArrayList<WishListVO>();
+		WishListVO voWish = new WishListVO();
+		voWish.setMemberId((String) session.getAttribute("memberId"));
+		wishList = daoWish.wishListSelectList(voWish);
+		request.setAttribute("wishList", wishList);
+		
 		
 		// member 가져오기
 		MemberService daoMember = new MemberServiceImpl();

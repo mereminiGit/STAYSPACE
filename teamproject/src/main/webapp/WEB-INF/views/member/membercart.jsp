@@ -50,7 +50,11 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <style>
-
+          #nowish {
+            font-size: 30px;
+            text-align: center;
+            margin-top: 20%;
+          }
         </style>
       </head>
 
@@ -64,14 +68,7 @@
 
             <!-- Layout container -->
             <div class="layout-page">
-              <!-- Navbar -->
-
-              <!-- Search -->
-
-              <!-- /Search -->
-
-
-              <!-- / Navbar -->
+           
 
               <!-- Content wrapper -->
               <div class="content-wrapper">
@@ -83,33 +80,40 @@
                   <!-- Examples -->
                   <form id="frm" action="shopdetail.do" method="post" enctype="form-data">
                     <div class="row mb-5">
-                      <c:forEach items="${wishList}" var="w">
-                        <div class="col-md-6 col-lg-4 mb-3" class="cartlist" id="cartid">
-                          <input type="hidden" id="memberId" name="memberId" value="jiwon">
-                          <input type="hidden" id="spaceId" name="spaceId" value="${w.spaceId}">
-                          <input type="hidden" id="wishListId" name="wishListId" value="${w.wishListId}">
-                          <div class="card h-100">
-                            <img class="card-img-top" src="image/space/${w.spaceImage }" alt="Card image cap" />
-                            <div class="card-body">
-                              <h5 class="card-title">${w.spaceName }</h5>
-                              <p class="card-text">
-                                <!--숙소 콘텐트있던곳-->
-                                <br>
-                                예약 날짜 : ${w.wishListStartDate }
-                                <br>
-                                <br>
-                                가격 :
-                                <fmt:formatNumber value="${w.spacePrice }" type="currency" currencySymbol="￦" />
-                              </p>
-                              <!-- <a href="javascript:void(0)" class="btn btn-outline-primary">Detailed page</a> -->
-                              <button type="button" class="btn btn-outline-secondary"
-                                onclick="detailCall()">Detailed page</button>
-                              <button type="button" class="btn btn-outline-danger" id="dangerBtn"
-                                onclick="deleteCall('${w.memberId }','${w.wishListId}')">Delete</button>
+                      <c:choose>
+                        <c:when test="${empty wishList }">
+                          <p id="nowish">Wish List가 비어있습니다.</p>
+                        </c:when>
+                        <c:otherwise>
+                          <c:forEach items="${wishList}" var="w">
+                            <div class="col-md-6 col-lg-4 mb-3" class="cartlist" id="cartid_${w.wishListId}">
+                              <input type="hidden" id="memberId" name="memberId" value="jiwon">
+                              <input type="hidden" id="spaceId" name="spaceId" value="${w.spaceId}">
+                              <input type="hidden" id="wishListId" name="wishListId" value="${w.wishListId}">
+                              <div class="card h-100">
+                                <img class="card-img-top" src="image/space/${w.spaceImage }" alt="Card image cap" />
+                                <div class="card-body">
+                                  <h5 class="card-title">${w.spaceName }</h5>
+                                  <p class="card-text">
+                                    <!--숙소 콘텐트있던곳-->
+                                    <br>
+                                    예약 날짜 : ${w.wishListStartDate }
+                                    <br>
+                                    <br>
+                                    가격 :
+                                    <fmt:formatNumber value="${w.spacePrice }" type="currency" currencySymbol="￦" />
+                                  </p>
+                                  <!-- <a href="javascript:void(0)" class="btn btn-outline-primary">Detailed page</a> -->
+                                  <button type="button" class="btn btn-outline-secondary"
+                                    onclick="detailCall()">Detailed page</button>
+                                  <button type="button" class="btn btn-outline-danger" id="dangerBtn"
+                                    onclick="deleteCall('${w.memberId }',${w.wishListId})">Delete</button>
+                                </div>
+                              </div>
                             </div>
-                          </div>
-                        </div>
-                      </c:forEach>
+                          </c:forEach>
+                        </c:otherwise>
+                      </c:choose>
                     </div>
                   </form>
 
@@ -205,7 +209,7 @@
                   type: "post",
                   datatype: "html",
                   success: function (data) {
-                    $("#cartid").detach();
+                    $("#cartid_" + wishListId).detach();
                   }
                 });
                 Swal.fire(
