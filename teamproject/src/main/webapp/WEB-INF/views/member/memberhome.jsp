@@ -65,7 +65,7 @@
 												<c:choose>
 													<c:when test="${empty reserve }">
 														<tr>
-															<td colspan="7" align="center">예약 내역이 없습니다.</td>
+															<td colspan="7" align="center"></td>
 														</tr>
 													</c:when>
 													<c:otherwise>

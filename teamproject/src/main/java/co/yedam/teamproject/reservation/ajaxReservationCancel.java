@@ -33,6 +33,7 @@ public class ajaxReservationCancel extends HttpServlet {
         vo.setSpaceName(spaceName);
         vo.setMemberId(memberId);
         vo.setReserveCheck(2);
+        System.out.println(vo);
         int result = dao.reservationUpdate(vo);
         System.out.println("result 찍음!!!!!");
         System.out.println(result);

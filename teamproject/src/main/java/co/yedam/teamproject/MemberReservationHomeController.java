@@ -42,6 +42,7 @@ public class MemberReservationHomeController extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//예약목록
 		ReservationService dao = new ReservationServiceImpl();
 		ReservationVO vo = new ReservationVO();
 		HttpSession session = request.getSession();
@@ -66,8 +67,6 @@ public class MemberReservationHomeController extends HttpServlet {
 		
 		 //member 가져오기
 		
-		 
-		
 		if(request.getParameter("name")!=null){ //예약입력
 			CartListService cdao= new CartListServiceImpl();
 			CartListVO cvo= new CartListVO();
@@ -85,13 +84,11 @@ public class MemberReservationHomeController extends HttpServlet {
 				vo.setHostId(c.getHostId());
 				dao.reservationInsert(vo);
 			}
-//		vo.setMemberId("jiwon"); // 세션에 저장된 아이디를 들고와야함.
 		 }
-				MemberService daoMember = new MemberServiceImpl(); MemberVO voMember =new
-				MemberVO(); voMember.setMemberId((String) session.getAttribute("memberId"));
-				voMember = daoMember.memberSelect(voMember); request.setAttribute("m",
-						voMember);
 				
+//				voMember.setMemberId((String) session.getAttribute("memberId"));
+//				voMember = daoMember.memberSelect(voMember); 
+//				request.setAttribute("m",voMember);
 //				String path = "member/membermypage"; ViewResolve.forward(request, response,
 //						path);
 			int num = dao.reservationMemberTotalCount(vo.getMemberId());
@@ -103,9 +100,12 @@ public class MemberReservationHomeController extends HttpServlet {
 			System.out.println(reserve);
 			
 			// member 가져오기
+			MemberService daoMember = new MemberServiceImpl(); 
+			MemberVO voMember = new MemberVO(); 
 			voMember.setMemberId((String) session.getAttribute("memberId"));
 			voMember = daoMember.memberSelect(voMember);
 			request.setAttribute("m", voMember);
+			
 			String path = "member/membermypage";
 			ViewResolve.forward(request, response, path);
 	}
