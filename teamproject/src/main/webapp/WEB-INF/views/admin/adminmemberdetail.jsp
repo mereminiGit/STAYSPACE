@@ -90,7 +90,7 @@
 			<div class="row" style="width: 70%; height: 700px; float: left;">
 				<div class="col-xl">
 					<div class="card mb-4" style="height: 680px;">
-						<h5 class="card-header">Reply</h5>
+						<h5 class="card-header">Reply  <span style="color:#aaa"><small>(Total Count: ${replycount })</small></span></h5>
 						<div class="table-responsive text-nowrap">
 							<table class="table table-hover">
 								<thead>
@@ -153,6 +153,7 @@
 				</div>
 			</div>
 			<!-- Horizontal -->
+			<h5 class="card-header">Reservation  <span style="color:#aaa"><small>(Total Count: ${replycount })</small></span></h5>
 			<c:forEach items="${reserve }" var="r">
 				<div class="card mb-3" style="float: left; margin-right: 1.5%; width:48%">
 					<div class="row g-0">

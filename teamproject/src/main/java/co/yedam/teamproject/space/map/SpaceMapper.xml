@@ -41,9 +41,8 @@
       </selectKey>
       INSERT INTO SPACE
 
-      (SPACE_ID, SPACE_NAME,SPACE_PRICE,SPACE_CITY,SPACE_ADDRESS,SPACE_IMAGE_MAIN,SPACE_CONTENT,MEMBER_ID,SPACE_STAR,SPACE_IMAGE_SUB1,SPACE_IMAGE_SUB2,SPACE_THUMB,SPACE_ATTECH)
-      VALUES(#{spaceId}, #{spaceName},#{spacePrice},#{spaceCity},#{spaceAddress},#{spaceImageMain},#{spaceContent},#{memberId},(SELECT AVG(REPLY_STAR) FROM REPLY WHERE SPACE_ID=#{spaceId}),#{spaceImageSub1},#{spaceImageSub2},#{spaceThumb},#{spaceAttech})
-
+      (SPACE_ID, SPACE_NAME,SPACE_PRICE,SPACE_CITY,SPACE_ADDRESS,SPACE_IMAGE_MAIN,SPACE_CONTENT,MEMBER_ID,SPACE_STAR,SPACE_IMAGE_SUB1,SPACE_IMAGE_SUB2,SPACE_THUMB,SPACE_ATTECH,SPACE_TYPE)
+      VALUES(#{spaceId}, #{spaceName},#{spacePrice},#{spaceCity},#{spaceAddress},#{spaceImageMain},#{spaceContent},#{memberId},(SELECT AVG(REPLY_STAR) FROM REPLY WHERE SPACE_ID=#{spaceId}),#{spaceImageSub1},#{spaceImageSub2},#{spaceThumb},#{spaceAttech},#{spaceType})
    </insert>
    <update id="spaceUpdate"
       parameterType="co.yedam.teamproject.space.service.SpaceVO">

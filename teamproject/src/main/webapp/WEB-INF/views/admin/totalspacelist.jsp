@@ -84,6 +84,28 @@ img.stayimg {
 						</caption>
 					</table>
 				</div>
+				<!-- pagination -->
+				<nav aria-label="Page navigation">
+					<ul class="pagination justify-content-center">
+						<li class="page-item prev"><a class="page-link"
+							href="?page=${currentPage-1 }"><i
+								class="tf-icon bx bx-chevrons-left"></i></a></li>
+						<c:forEach var="page" begin="1" end="${pages }">
+							<c:if test="${page eq currentPage }">
+								<li class="page-item"><a class="page-link active"
+									href="?page=${page }">${page }</a></li>
+							</c:if>
+							<c:if test="${page ne currentPage }">
+								<li class="page-item"><a class="page-link"
+									href="?page=${page }">${page }</a></li>
+							</c:if>
+						</c:forEach>
+						<li class="page-item next"><a class="page-link"
+							href="?page=${currentPage+1 }"><i
+								class="tf-icon bx bx-chevrons-right"></i></a></li>
+					</ul>
+				</nav>
+				<!--  -->
 			</div>
 			<!--/ Hoverable Table rows -->
 
@@ -142,11 +164,11 @@ img.stayimg {
 						<div class="row">
 							<div class="col mb-3">
 								<label for="PriceWithTitle" class="form-label">Type</label> <select
-									 id="stype" name="stype" class="form-control">
-											<option value="Commercial">Commercial</option>
-											<option value="House">House</option>
-											<option value="Studio">Studio</option>
-									</select>
+									id="stype" name="stype" class="form-control">
+									<option value="Commercial">Commercial</option>
+									<option value="House">House</option>
+									<option value="Studio">Studio</option>
+								</select>
 							</div>
 						</div>
 					</div>
@@ -161,8 +183,8 @@ img.stayimg {
 		</div>
 	</form>
 	<form id="detailForm" action="AjaxSpaceDetail.do" method="post">
-	  	<input type="hidden" id="spaceId" name="spaceId">
-	  </form>
+		<input type="hidden" id="spaceId" name="spaceId">
+	</form>
 	<script>
 			  //공간 상세보기
 			  function adminspacedetail(id){
