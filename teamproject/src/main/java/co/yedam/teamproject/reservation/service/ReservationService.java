@@ -11,6 +11,7 @@ public interface ReservationService {
 	List<ReservationVO> reservationSelectMember(ReservationVO vo); //memberId 넘겨받는 select
 	List<ReservationVO> reservationSelectHost(ReservationVO vo); //hostId넘겨받는 select
 	int reservationCountSpace(int spaceId);
+	List<ReservationVO> reservationSelectDate(ReservationVO vo);
 	int reservationInsert(ReservationVO vo);
 	int reservationDelete(ReservationVO vo);
 	int reservationUpdate(ReservationVO vo);

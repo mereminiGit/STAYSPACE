@@ -15,7 +15,7 @@
 		FROM WISHLIST
 	</selectKey>
 		INSERT INTO WISHLIST
-		VALUES(#{spaceName},#{spacePrice},#{spaceImage},#{memberId},#{wishListStartDate},#{wishListId})		
+		VALUES(#{spaceName},#{spacePrice},#{spaceImage},#{memberId},#{wishListStartDate},#{wishListId},#{spaceId})		
 	</insert>
 	
 	<delete id="wishListDelete" parameterType="co.yedam.teamproject.wishList.service.WishListVO">

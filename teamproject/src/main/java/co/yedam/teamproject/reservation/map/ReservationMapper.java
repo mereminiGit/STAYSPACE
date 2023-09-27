@@ -13,6 +13,7 @@ public interface ReservationMapper {
 	List<ReservationVO> reservationSelectMember(ReservationVO vo);
 	List<ReservationVO> reservationSelectHost(ReservationVO vo);
 	int reservationCountSpace(int spaceId);
+	List<ReservationVO> reservationSelectDate(ReservationVO vo);
 	int reservationUpdate(ReservationVO vo);
 	int reservationInsert(ReservationVO vo);
 	int reservationDelete(ReservationVO vo);

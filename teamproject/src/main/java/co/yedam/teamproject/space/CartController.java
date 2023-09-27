@@ -50,6 +50,7 @@ public class CartController extends HttpServlet {
 				vo.setSpaceImageMain(svo.getSpaceImageMain());
 				vo.setSpaceStartDate(Date.valueOf(request.getParameter("spaceStartDate")));
 				vo.setSpaceId(Integer.valueOf(svo.getSpaceId()));
+				vo.setHostId(svo.getMemberId());
 				dao.cartListInsert(vo);
 				list = dao.cartListSelectList(vo);
 			} else {

@@ -35,6 +35,11 @@
 	padding: 0;
 }
 </style>
+<script>
+function numberWithCommas(x) {
+	document.write(x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","));
+	}
+</script>
 </head>
 <body>
 	<section
@@ -46,7 +51,7 @@
 					<div class="text-center padding-large no-padding-bottom">
 						<h1>Spaces</h1>
 						<div class="breadcrumbs">
-							<span class="item"> <a href="index.html">Home ></a>
+							<span class="item"> <a href="home.do">Home ></a>
 							</span> <span class="item">Spaces</span>
 						</div>
 					</div>
@@ -83,8 +88,8 @@
 										<h5 class="card-title fs-3 text-capitalize">
 											<a href="#" onclick="selectSpace('${s.spaceId}')">${s.spaceName }</a>
 										</h5>
-										<span class="item-price text-primary fs-3 fw-light">${s.spaceCity }
-											· &#x20a9;${s.spacePrice }<small>/일</small>
+										<span class="item-price text-primary fs-3 fw-light" id="price">${s.spaceCity }
+											· &#x20a9;<script>numberWithCommas(${s.spacePrice })</script><small>/일</small>
 										</span>
 									</div>
 								</div>
@@ -96,21 +101,14 @@
 						role="navigation" style="padding-bottom: 0;">
 						<div
 							class="pagination loop-pagination d-flex justify-content-center align-items-center">
-							<a href="?page=${currentPage-1}" class="d-flex pe-2"> <svg width="24" height="24">
-										<use xlink:href="#angle-left"></use></svg>
-							</a>
 							<c:forEach var="page" begin="1" end="${pages}">
 							<c:if test="${page eq currentPage}">
-							<a class="page-numbers current pe-3" href="?page=${page }">${page }</a>
+							<a class="page-numbers current pe-3" href="javascript:void(0);" onclick=url(${page})>${page }</a>
 							</c:if>
 							<c:if test="${page ne currentPage}">
-							<a class="page-numbers pe-3" href="?page=${page }">${page }</a>
+							<a class="page-numbers pe-3" href="javascript:void(0);" onclick=url(${page})>${page }</a>
 							</c:if>
 							</c:forEach>	
-								<a href="?page=${currentPage+1}" class="d-flex ps-2"> <svg
-									width="24" height="24">
-										<use xlink:href="#angle-right"></use></svg>
-							</a>
 						</div>
 					</nav>
 				</main>
@@ -192,6 +190,19 @@
 			form.spaceId.value = id;
 			form.submit();
 		}
+		function url(page){
+			var currentUrl = window.location.href;
+			if(currentUrl.includes("?")){
+				if(currentUrl.includes("page")){
+					location.href=currentUrl.split('page')[0]+"page="+page
+				}else{
+					location.href=currentUrl+"&page="+page
+				}
+			} else{
+				location.href=currentUrl+"?page="+page
+			}
+		}
+		
 
 		$('#datepicker').datepicker({
 			dateFormat:'yy-mm-dd',

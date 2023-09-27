@@ -74,6 +74,7 @@ public class ReservationServiceImpl implements ReservationService {
 	public int reservationMemberTotalCount(String memberId) {
 		return map.reservationMemberTotalCount(memberId);
 	}
+  @Override
 	public List<ReservationVO> reservationSelectListCheck() {
 		return map.reservationSelectListCheck();
 
@@ -82,6 +83,10 @@ public class ReservationServiceImpl implements ReservationService {
 	@Override
 	public int reservationCountSpace(int spaceId) {
 		return map.reservationCountSpace(spaceId);
+  }
+  @Override
+	public List<ReservationVO> reservationSelectDate(ReservationVO vo) {
+		return map.reservationSelectDate(vo);
 	}
 
 }
