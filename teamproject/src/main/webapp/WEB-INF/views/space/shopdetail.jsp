@@ -88,15 +88,15 @@ function numberWithCommas(x) {
 							<div class="swiper-wrapper">
 								<div class="swiper-slide">
 									<img src="image/space/${s.spaceImageMain}" alt="single-product"
-										class="img-fluid">
+										class="img-fluid" onclick="window.open(this.src)">
 								</div>
 								<div class="swiper-slide">
 									<img src="image/space/${s.spaceImageSub1}" alt="single-product"
-										class="img-fluid">
+										class="img-fluid" onclick="window.open(this.src)">
 								</div>
 								<div class="swiper-slide">
 									<img src="image/space/${s.spaceImageSub2}" alt="single-product"
-										class="img-fluid">
+										class="img-fluid" onclick="window.open(this.src)">
 								</div>
 							</div>
 						</div>
