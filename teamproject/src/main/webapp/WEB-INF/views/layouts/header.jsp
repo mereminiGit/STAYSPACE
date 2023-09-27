@@ -387,7 +387,6 @@
 					<!-- </form> -->
 
 					<!-- Find When 모달 -->
-					<form id="findWhenForm" action="spacelist.do" method="get">
 						<div class="modal fade" id="findWhenModal" tabindex="-1" role="dialog" aria-hidden="true">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
@@ -419,13 +418,11 @@
 									<!-- Modal footer -->
 									<div class="modal-footer">
 										<button type="submit" class="btn btn-primary" id="idBtn"
-											style="margin: 20px auto; display: block;">search</button>
+											style="margin: 20px auto; display: block;" onclick="findWhencheck()">search</button>
 									</div>
 								</div>
 							</div>
 						</div>
-					</form>
-
 				</nav>
 			</header>
 			
@@ -448,21 +445,37 @@
 				}).on('hide', function (event) {
 					event.preventDefault();
 					event.stopPropagation();
-				}); */
+				}); 
 				
 				var dateToday = new Date();
-				var dates = $("#finddatepicker").datepicker({
-				  /*   defaultDate: "+1w",
+				var dates = 
+				*/
+				
+				// 날짜로 검색하기
+				$("#finddatepicker").datepicker({
+					dateFormat: 'yy-mm-dd',
+				    minDate: 0,
+				});
+				  
+				function findWhencheck() {
+					var date = $("#finddatepicker").val();
+					if (date == '') {
+						window.location.href = 'shoplist.do';
+					} else {						
+						window.location.href = 'shoplist.do?spaceStartDate=' + date;
+					}
+				}
+				
+				
+				/*   defaultDate: "+1w",
 				    changeMonth: true,
 				    numberOfMonths: 3, */
-				    minDate: 0,
 				   /*  onSelect: function(selectedDate) {
 				        var option = this.id == "from" ? "minDate" : "maxDate",
 				            instance = $(this).data("datepicker"),
 				            date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
 				        dates.not(this).datepicker("option", option, date);
 				    } */
-				});
 			</script>
 			
 			<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

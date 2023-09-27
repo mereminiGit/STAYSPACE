@@ -41,6 +41,7 @@ public class ListController extends HttpServlet {
 			vo.setSpaceName(request.getParameter("spaceName")); //이름검색
 			spaces=dao.spaceSelectList(vo);
 		} 
+		
 		int pages=(int) Math.ceil(spaces.size()/9.0); //페이지 수
 		request.setAttribute("results", spaces.size()); //공간 수
 		request.setAttribute("pages",pages); //페이지 수

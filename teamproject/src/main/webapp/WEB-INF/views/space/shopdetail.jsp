@@ -193,7 +193,28 @@
 												</c:forEach>
 												<!-- 별점 end -->
 												<span class="rating-count"> (${r.replyStar })</span>
+												
+												&nbsp;&nbsp;&nbsp;&nbsp;
+												<!-- 수정버튼 -->
+												<c:if test="${not empty reservations }">
+													<span class="label-body">
+													<a type="button" data-bs-toggle="modal" data-bs-target="#EditReplyModal" onclick="ResetUpdateModal(this.id)"
+														class="btn btn-primary me-2 mb-2" id="EditReply${r.replyId }" data-value="${r.replyId }" style="padding: 5px 10px 5px 10px; margin-top: 8px; border-radius: 30px;">
+													EDIT</a></span>
+	
+												</c:if>
+
+												&nbsp;&nbsp;
+												<!-- 삭제버튼 -->
+												<c:if test="${not empty reservations }">
+													<span class="label-body">
+													<a type="button" id="DeleteReply${r.replyId }" onclick="DeleteReplyDo(this.id)"
+														class="btn btn-dark me-2 mb-2" data-value="${r.replyId }" style="padding: 5px 10px 5px 10px; margin-top: 8px; border-radius: 30px;">
+													DELETE</a></span>
+												</c:if>
 											</div>
+											
+											
 											
 											<div class="review-header">
 												<span class="author-name">${r.memberId }</span> <span
@@ -286,9 +307,87 @@
 		</div>
 	</section>
 	
+	<!-- 리뷰 수정 모달 -->
+	
+		<form id="editReply"
+		method="post" enctype="multipart/form-data">
+		<div class="modal fade" id=EditReplyModal tabindex="-1" role="dialog"
+			aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<h4 class="modal-title">Edit Review</h4>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+					</div>
+
+					<!-- Modal body -->
+					<div class="modal-body">
+						<div class="review-rating py-2">
+							<span class="my-2">Your rating</span>
+							<!-- 별점 -->
+							<div class="rating-container d-flex align-items-center"
+								id="yourRating">
+								<div class="star-rating space-x-4"
+									style="float: left; padding-left: 0;">
+									<input type="radio" id="5-starsEdit" name="ratingEdit"
+										value="5" class="starEdit" v-model="ratings" /> <label
+										for="5-starsEdit" class="starEditLabel">★</label> <input
+										type="radio" id="4-starsEdit" name="ratingEdit" value="4"
+										class="starEdit" v-model="ratings" /> <label
+										for="4-starsEdit" class="starEditLabel">★</label> <input
+										type="radio" id="3-starsEdit" name="ratingEdit" value="3"
+										class="starEdit" v-model="ratings" /> <label
+										for="3-starsEdit" class="starEditLabel">★</label> <input
+										type="radio" id="2-starsEdit" name="ratingEdit" value="2"
+										class="starEdit" v-model="ratings" /> <label
+										for="2-starsEdit" class="starEditLabel">★</label> <input
+										type="radio" id="1-starsEdit" name="ratingEdit" value="1"
+										class="starEdit" v-model="ratings" /> <label for="1-starEdit"
+										class="starEditLabel">★</label>
+								</div>
+							</div>
+						</div>
+						<!-- 이미지 파일 -->
+						<span class="my-2" style="padding-top: 15px;">Your image</span><br>
+						<input type="file" class="jfilestyle py-2 border-0"
+							id="EditreplyFile" name="EditreplyFile"
+							data-text="Choose your file" style="padding: 8px 0px 0px 8px;">
+						<!-- 리뷰 content -->
+						<div class="py-3">
+							<label>Your Review</label>
+							<textarea placeholder="Write your review here" class="w-100"
+								style="padding-left: 8px" id="EditreplyTextarea"
+								name="EditreplyTextarea"></textarea>
+						</div>
+						<div style="display: none">
+							<input type="text" name="EditreplySpaceId" value="${s.spaceId }">
+						</div>
+						<!-- 원본 별점 -->
+						<div style="display: none">
+							<input type="text" name="OriginStar" id="OriginStar" value="">
+						</div>
+					</div>
+					<!-- Modal footer -->
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-primary" id="editBtn" onclick="editform()">submit</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		</form>
+
 	<!-- 리뷰 등록 후 -->
 	<c:if test="${not empty replyMessage }">
 					<div id="${replyMessage }"></div>
+	</c:if>
+	
+	<!-- replyMessage 후기 수정 후 -->
+	<c:if test="${not empty replyEditMessage }">
+					<div id="${replyEditMessage }">
+						<p id="afterEdit" style="display: none">${editspaceId }</p>
+					</div>
 	</c:if>
 	
 	<section id="products" class="product-store"
@@ -439,9 +538,90 @@
 				location.href = 'shopdetail.do';
 			});
 		}
+		
+		// 리뷰 수정 성공
+		if ($('#replyEditSuccess').length) {
+			Swal.fire({
+				title: '리뷰수정',
+				text: "리뷰수정을 성공하였습니다",
+				icon: 'success',
+				confirmButtonColor: '#87826E',
+				confirmButtonText: 'OK',
+			}).then(function () {
+				location.href = 'shopdetail.do?spaceId='+$('#afterEdit').text();
+			});
+		}
+		// 리뷰 수정 실패
+		if ($('#replyEditFail').length) {
+			Swal.fire({
+				title: '리뷰수정',
+				text: "리뷰수정을 실패하였습니다",
+				icon: 'error',
+				confirmButtonColor: '#87826E',
+				confirmButtonText: 'OK',
+			}).then(function () {
+				location.href = 'shopdetail.do?spaceId='+$('#afterEdit').text();
+			});
+		}
 	</script>
-	<script src="/js/jquery.twbsPagination.js"></script>
 	
+	<!-- 리뷰 삭제 -->
+	<script type="text/javascript">
+		function DeleteReplyDo(id) {
+			console.log(id);
+			let value = document.getElementById(id).getAttribute('data-value');
+			
+			console.log(document.getElementById(id).getAttribute('data-value'));
+			
+			let url = "replydelete.do?replyId=" + value;
+			
+			Swal.fire({
+				title: '리뷰 삭제',
+				text: '리뷰를 삭제하시겠습니까?',
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#87826E',
+				cancelButtonColor: '#212529',
+				confirmButtonText: 'Yes'
+			}). then((result) => {
+				if (result.isConfirmed) {
+					fetch(url)
+						.then(response => response.text())
+						.then(text => {
+							if(text == 'Yes') {
+								Swal.fire(
+									'삭제 완료',
+									'리뷰가 삭제되었습니다',
+									'success'
+								).then(function () {
+									location.reload();
+								});
+							}
+						});	
+				}
+			});
+		}
+	</script>
+	
+	<!-- 리뷰 수정 -->
+	<script type="text/javascript">
+		let replyId = '';
+		
+		function ResetUpdateModal(id) {
+			replyId = document.getElementById(id).getAttribute('data-value');
+			
+			$('.starEdit').prop("checked", false);
+			$('#EditreplyFile').val('');
+			$('#EditreplyTextarea').val('');
+		}
+		
+		function editform() {
+			console.log(replyId);
+			let eform = document.getElementById('editReply');
+			eform.action = 'updatereply.do?replyId=' + replyId;
+			console.log(eform.action);
+		}
+	</script>
 </body>
 
 </html>
