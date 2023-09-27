@@ -163,7 +163,7 @@ function numberWithCommas(x) {
 			</div>
 		</div>
 	</section>
-	<section class="shopify-cart checkout-wrap padding-large">
+	<section class="shopify-cart checkout-wrap">
 		<div class="container">
 				<div class="col-lg-6" style="margin: 0 auto">
 					<h3 class="pb-4">Billing Details</h3>
