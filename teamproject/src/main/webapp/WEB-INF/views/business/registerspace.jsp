@@ -118,14 +118,19 @@
 						Swal.fire({
 							  icon: 'success',
 							  text: '등록되었습니다.',
-							  showConfirmButton: true,
 							})
+							setTimeout(function(){
+								location.reload();
+							}, 2000);
 				});
 					}else{
 						Swal.fire({
 							  icon: 'error',
 							  text: '처리 중 오류 발생',
 							})
+							setTimeout(function(){
+								location.reload();
+							}, 2000);
 					}
 		})
 	</script>

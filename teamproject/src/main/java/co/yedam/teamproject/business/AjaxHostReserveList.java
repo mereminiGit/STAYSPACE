@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import co.yedam.teamproject.common.ViewResolve;
 import co.yedam.teamproject.reservation.service.ReservationService;
 import co.yedam.teamproject.reservation.service.ReservationVO;
 import co.yedam.teamproject.reservation.serviceImpl.ReservationServiceImpl;

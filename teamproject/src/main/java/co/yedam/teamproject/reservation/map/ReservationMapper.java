@@ -12,6 +12,8 @@ public interface ReservationMapper {
 	List<ReservationVO> reservationSelectHost(ReservationVO vo);
 	List<ReservationVO> reservationSelectListCheck(); //예약승인된 리스트 뽑아내기
 	ReservationVO reservationSelect(ReservationVO vo);
+	int reservationCountSpace(int spaceId);
+	List<ReservationVO> reservationSelectDate(ReservationVO vo);
 	int reservationUpdate(ReservationVO vo);
 	int reservationInsert(ReservationVO vo);
 	int reservationDelete(ReservationVO vo);

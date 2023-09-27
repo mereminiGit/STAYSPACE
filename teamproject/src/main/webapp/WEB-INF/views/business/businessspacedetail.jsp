@@ -23,49 +23,66 @@
 			<div class="card-group mb-5">
 				<div class="card">
 					<img class="card-img-top" src="image/space/${s.spaceImageMain }"
-						alt="Card image cap" style="objcet-fit:cover;"/><small class="text-muted" align="center">Main Image</small>
+						alt="Card image cap" style="objcet-fit: cover;" /><small
+						class="text-muted" align="center">Main Image</small>
 					<div class="card-body">
-						<h5 class="card-title"><strong>Space Id</strong></h5>
-						<p class="card-text">&nbsp;  ${s.spaceId }</p>
-						<h5 class="card-title"><strong>Name</strong></h5>
-						<p class="card-text">&nbsp;  ${s.spaceName }</p>
-						<h5 class="card-title"><strong>Address</strong></h5>
-						<p class="card-text">&nbsp;  ${s.spaceAddress }</p>
+						<h5 class="card-title">
+							<strong>Space Id</strong>
+						</h5>
+						<p class="card-text">&nbsp; ${s.spaceId }</p>
+						<h5 class="card-title">
+							<strong>Name</strong>
+						</h5>
+						<p class="card-text">&nbsp; ${s.spaceName }</p>
+						<h5 class="card-title">
+							<strong>Address</strong>
+						</h5>
+						<p class="card-text">&nbsp; ${s.spaceAddress }</p>
 					</div>
 				</div>
 				<div class="card">
 					<img class="card-img-top" src="image/space/${s.spaceImageSub1 }"
-						alt="Card image cap" style="objcet-fit:cover;"/><small class="text-muted" align="center">Sub Image1</small>
+						alt="Card image cap" style="objcet-fit: cover;" /><small
+						class="text-muted" align="center">Sub Image1</small>
 					<div class="card-body">
-						<h5 class="card-title"><strong>Content</strong></h5>
-						<p class="card-text">&nbsp;  ${s.spaceContent }</p>
+						<h5 class="card-title">
+							<strong>Content</strong>
+						</h5>
+						<p class="card-text">&nbsp; ${s.spaceContent }</p>
 					</div>
 				</div>
 				<div class="card">
 					<img class="card-img-top" src="image/space/${s.spaceImageSub2 }"
-						alt="Card image cap" style="objcet-fit:cover;"/><small class="text-muted" align="center">Sub Image2</small>
+						alt="Card image cap" style="objcet-fit: cover;" /><small
+						class="text-muted" align="center">Sub Image2</small>
 					<div class="card-body">
-						<h5 class="card-title"><strong>Price</strong></h5>
-						<p class="card-text">&nbsp;  ${s.spacePrice } ₩</p>
-						<h5 class="card-title"><strong>Type</strong></h5>
-						<p class="card-text">&nbsp;  ${s.spaceType }</p>
-						<h5 class="card-title"><strong>Grade</strong></h5>
+						<h5 class="card-title">
+							<strong>Price</strong>
+						</h5>
+						<p class="card-text">&nbsp; ${s.spacePrice } ₩</p>
+						<h5 class="card-title">
+							<strong>Type</strong>
+						</h5>
+						<p class="card-text">&nbsp; ${s.spaceType }</p>
+						<h5 class="card-title">
+							<strong>Grade</strong>
+						</h5>
 						<p class="card-text">
-						<c:forEach begin="1" end="${s.spaceStar }">
-						<span>★</span>
-						</c:forEach>
-						<c:forEach begin="1" end="${5-s.spaceStar }">
-						<span>☆</span>
-						</c:forEach>
+							<c:forEach begin="1" end="${s.spaceStar }">
+								<span>★</span>
+							</c:forEach>
+							<c:forEach begin="1" end="${5-s.spaceStar }">
+								<span>☆</span>
+							</c:forEach>
 						</p>
 					</div>
 				</div>
 			</div>
-			
-			<div class="row" >
-				<div class="col-xl" >
-					<div class="card mb-4" >
-						<h5 class="card-header">Reply</h5>
+
+			<div class="row">
+				<div class="col-xl">
+					<div class="card mb-4">
+						<h5 class="card-header">Reply  <span style="color:#aaa"><small>(Total Count: ${replycount })</small></span></h5>
 						<div class="table-responsive text-nowrap">
 							<table class="table table-hover" id="replyTable">
 								<thead>
@@ -81,45 +98,42 @@
 								<tbody class="table-border-bottom-0">
 									<c:choose>
 										<c:when test="${empty reply }">
-										<tr>
-											<td colspan="6" align="center">해당 공간에 대한 후기가 없습니다.</td>
-										</tr>
+											<tr>
+												<td colspan="6" align="center">해당 공간에 대한 후기가 없습니다.</td>
+											</tr>
 										</c:when>
 										<c:otherwise>
-									<c:forEach items="${reply }" var="reply">
-										<tr rid="${reply.replyId }">
-											<c:choose>
-												<c:when test="${reply.replyImage eq null}">
-													<td><img src="image/member/defaultimg.png"
-														class="rounded-circle" alt="default" style="width: 30px"></td>
-												</c:when>
-												<c:otherwise>
-													<td><img src="image/reply/${reply.replyImage }"
-														class="rounded-circle" alt="default" style="width: 30px"></td>
-												</c:otherwise>
-											</c:choose>
-											<td>${reply.memberId }</td>
-											<td>${reply.replyContent }</td>
-											<td>${reply.replyDate }</td>
-											<td>
-											<c:forEach begin="1" end="${reply.replyStar }">
-											<span>★</span>
+											<c:forEach items="${reply }" var="reply">
+												<tr rid="${reply.replyId }">
+													<c:choose>
+														<c:when test="${reply.replyImage eq null}">
+															<td><img src="image/member/defaultimg.png"
+																class="rounded-circle" alt="default" style="width: 30px"></td>
+														</c:when>
+														<c:otherwise>
+															<td><img src="image/reply/${reply.replyImage }"
+																class="rounded-circle" alt="default" style="width: 30px"></td>
+														</c:otherwise>
+													</c:choose>
+													<td>${reply.memberId }</td>
+													<td>${reply.replyContent }</td>
+													<td>${reply.replyDate }</td>
+													<td><c:forEach begin="1" end="${reply.replyStar }">
+															<span>★</span>
+														</c:forEach> <c:forEach begin="1" end="${5-reply.replyStar }">
+															<span>☆</span>
+														</c:forEach></td>
+													<td>
+														<div class="dropdown">
+															<button type="button"
+																class="btn p-0 dropdown-toggle hide-arrow replydelete">
+																<i class="bx bx-trash me-1"></i> Delete
+															</button>
+														</div>
+													</td>
+												</tr>
 											</c:forEach>
-											<c:forEach begin="1" end="${5-reply.replyStar }">
-											<span>☆</span>
-											</c:forEach>
-											</td>
-											<td>
-												<div class="dropdown">
-													<button type="button"
-														class="btn p-0 dropdown-toggle hide-arrow replydelete">
-														<i class="bx bx-trash me-1"></i> Delete
-													</button>
-												</div>
-											</td>
-										</tr>
-									</c:forEach>
-									</c:otherwise>
+										</c:otherwise>
 									</c:choose>
 								</tbody>
 							</table>
@@ -127,11 +141,11 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="row">
 				<div class="col-xl">
 					<div class="card mb-4">
-						<h5 class="card-header">Reservation</h5>
+						<h5 class="card-header">Reservation  <span style="color:#aaa"><small>(Total Count: ${reservecount })</small></span></h5>
 						<div class="table-responsive text-nowrap">
 							<table class="table table-hover">
 								<thead>
@@ -147,38 +161,38 @@
 								<tbody class="table-border-bottom-0">
 									<c:choose>
 										<c:when test="${empty reserve }">
-										<tr>
-											<td colspan="6" align="center">해당 공간에 대한 예약이 없습니다.</td>
-										</tr>
+											<tr>
+												<td colspan="6" align="center">해당 공간에 대한 예약이 없습니다.</td>
+											</tr>
 										</c:when>
 										<c:otherwise>
-									<c:forEach items="${reserve }" var="r">
-										<tr reserveId="${r.reserveId }">
-											<td>${r.reserveId }</td>
-											<td>${r.memberId }</td>
-											<td>${r.reserveStartDate }</td>
-											<c:choose>
-												<c:when test="${r.reserveCheck eq 0}">
-													<td>미승인</td>
-													<td> </td>
-												</c:when>
-												<c:otherwise>
-													<td>승인</td>
-													<td>${r.reserveCheckoutDate }</td>
-												</c:otherwise>
-											</c:choose>
-											
-											<td>
-												<div class="dropdown">
-													<button type="button"
-														class="btn p-0 dropdown-toggle hide-arrow reservedelete">
-														<i class="bx bx-trash me-1"></i> Delete
-													</button>
-												</div>
-											</td>
-										</tr>
-									</c:forEach>
-									</c:otherwise>
+											<c:forEach items="${reserve }" var="r">
+												<tr reserveId="${r.reserveId }">
+													<td>${r.reserveId }</td>
+													<td>${r.memberId }</td>
+													<td>${r.reserveStartDate }</td>
+													<c:choose>
+														<c:when test="${r.reserveCheck eq 0}">
+															<td>미승인</td>
+															<td></td>
+														</c:when>
+														<c:otherwise>
+															<td>승인</td>
+															<td>${r.reserveCheckoutDate }</td>
+														</c:otherwise>
+													</c:choose>
+
+													<td>
+														<div class="dropdown">
+															<button type="button"
+																class="btn p-0 dropdown-toggle hide-arrow reservedelete">
+																<i class="bx bx-trash me-1"></i> Delete
+															</button>
+														</div>
+													</td>
+												</tr>
+											</c:forEach>
+										</c:otherwise>
 									</c:choose>
 								</tbody>
 							</table>

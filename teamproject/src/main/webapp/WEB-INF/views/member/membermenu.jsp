@@ -61,7 +61,7 @@
     <form id="sform" action="memberreservelist.do" method="post">
     <input type= "hidden" id="memberId" name="memberId">
     </form>
-    <form id="aform" action="membercartlist.do" method="post">
+    <form id="aform" action="wishListhome.do" method="post">
     <input type= "hidden" id="memberId" name="memberId">
     </form>
      <form id="mform" action="memberedit.do" method="post">

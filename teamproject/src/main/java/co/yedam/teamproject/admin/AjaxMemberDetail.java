@@ -54,6 +54,12 @@ public class AjaxMemberDetail extends HttpServlet {
 		request.setAttribute("reply", replyList);
 		System.out.println(replyList);
 		
+		int replycount = replydao.replyCountMember(mid);
+		request.setAttribute("replycount", replycount);
+		
+		int reservecount = rdao.reservationMemberTotalCount(mid);
+		request.setAttribute("reservecount", reservecount);
+		
 		String page = "admin/admin/adminmemberdetail";
 		ViewResolve.forward(request, response, page);
 		

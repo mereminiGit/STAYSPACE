@@ -29,7 +29,7 @@ img.stayimg {
 			<h4 class="fw-bold py-3 mb-4">
 				<span class="text-muted fw-light">Space </span> Management
 			</h4>
-
+			<h5><span style="color:#aaa">Total Count: ${count }</span></h5>
 			<!-- Hoverable Table rows -->
 			<!-- <div class="card">
 				<h5 class="card-header">My Space List</h5>
@@ -209,7 +209,6 @@ img.stayimg {
 			</div>
 		</div>
 	</form>
-	<br>
 	<!-- pagination -->
 	<nav aria-label="Page navigation">
                           <ul class="pagination justify-content-center">
@@ -322,12 +321,15 @@ img.stayimg {
 							})
 							setTimeout(function(){
 								location.reload();
-							}, 1000);
+							}, 2000);
 					}else{
 						Swal.fire({
 							  icon: 'error',
 							  text: '처리 중 오류 발생',
 							})
+							setTimeout(function(){
+								location.reload();
+							}, 2000);
 					}
 				})
 				

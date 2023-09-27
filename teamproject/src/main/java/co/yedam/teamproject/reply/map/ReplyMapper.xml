@@ -18,6 +18,12 @@
 	</select>
 	<select id="replySelectbyReplyId" resultType="co.yedam.teamproject.reply.service.ReplyVO">
 		SELECT * FROM REPLY WHERE REPLY_ID = #{replyId}
+  </select>
+	<select id="replyCountSpace" resultType="int">
+		SELECT COUNT(*) FROM REPLY WHERE SPACE_ID = #{spaceId}
+	</select>
+	<select id="replyCountMember" resultType="int">
+		SELECT COUNT(*) FROM REPLY WHERE MEMBER_ID = #{memberId}
 	</select>
 	<insert id="replyInsert" parameterType="co.yedam.teamproject.reply.service.ReplyVO">
 		<selectKey keyProperty="replyId" resultType="int" order="BEFORE">
