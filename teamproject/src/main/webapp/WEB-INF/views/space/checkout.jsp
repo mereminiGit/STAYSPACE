@@ -26,7 +26,11 @@
 <!-- script
     ================================================== -->
 <script src="vaso-html/js/modernizr.js"></script>
-
+<script>
+function numberWithCommas(x) {
+	document.write(x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","));
+	}
+</script>
 </head>
 <body>
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -202,7 +206,7 @@
 										<th>Total</th>
 										<td data-title="Total"><span
 											class="price-amount amount text-primary ps-5"> <bdi>
-												<span class="price-currency-symbol"></span>${total }원 </bdi>
+												<span class="price-currency-symbol">&#8361;</span><script>numberWithCommas(${total })</script> </bdi>
 										</span></td>
 									</tr>
 								</tbody>

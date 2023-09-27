@@ -35,6 +35,11 @@
 	padding: 0;
 }
 </style>
+<script>
+function numberWithCommas(x) {
+	document.write(x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","));
+	}
+</script>
 </head>
 <body>
 	<section
@@ -83,8 +88,8 @@
 										<h5 class="card-title fs-3 text-capitalize">
 											<a href="#" onclick="selectSpace('${s.spaceId}')">${s.spaceName }</a>
 										</h5>
-										<span class="item-price text-primary fs-3 fw-light">${s.spaceCity }
-											· &#x20a9;${s.spacePrice }<small>/일</small>
+										<span class="item-price text-primary fs-3 fw-light" id="price">${s.spaceCity }
+											· &#x20a9;<script>numberWithCommas(${s.spacePrice })</script><small>/일</small>
 										</span>
 									</div>
 								</div>
@@ -197,6 +202,7 @@
 				location.href=currentUrl+"?page="+page
 			}
 		}
+		
 
 		$('#datepicker').datepicker({
 			dateFormat:'yy-mm-dd',
