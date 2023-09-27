@@ -27,6 +27,9 @@
 	<select id="reservationMemberTotalCount" resultType="int">
 		SELECT COUNT(*) FROM RESERVATION WHERE MEMBER_ID = #{memberId}
 	</select>
+	<select id="reservationCountSpace" resultType="int">
+		SELECT COUNT(*) FROM RESERVATION WHERE SPACE_ID = #{spaceId}
+	</select>
 	<select id="reservationSelectDate"
 		resultType="co.yedam.teamproject.cartList.service.CartListVO">
 		SELECT * FROM SPACE
@@ -42,8 +45,8 @@
 			SELECT NVL(MAX(RESERVE_ID),0) + 1 AS ID
 			FROM RESERVATION
 		</selectKey>
-		INSERT INTO RESERVATION
-		VALUES (#{memberId}, #{spaceName}, #{reserveStartDate}, #{reserveEndDate}, #{reservePrice}, #{reserveCheck})
+		INSERT INTO RESERVATION (MEMBER_ID, SPACE_NAME, RESERVE_START_DATE,RESERVE_PRICE, RESERVE_CHECK, RESERVE_ID, RESERVE_IMG, SPACE_ID, HOST_ID) 
+		VALUES (#{memberId}, #{spaceName}, #{reserveStartDate}, #{reservePrice}, #{reserveCheck}, #{reserveId}, #{reserveImg},#{spaceId},#{hostId})
 	</insert>
 	<update id="reservationUpdate" parameterType="co.yedam.teamproject.reservation.service.ReservationVO">
 		UPDATE RESERVATION

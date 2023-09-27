@@ -73,6 +73,9 @@
 										<label for="email" class="form-label">E-mail</label> <input
 											class="form-control" type="text" id="email" name="email"
 											value="${b.memberEmail }" placeholder="john.doe@example.com" />
+										<br>
+										<button type="button" class="btn btn-dark" id="emailCheck"
+											value="No" onclick="emailChecking()">Email 중복체크</button>
 									</div>
 									<div class="mb-3 col-md-6">
 										<label class="form-label" for="phoneNumber">Phone
@@ -112,40 +115,40 @@
 					</div>
 					<!-- /Account -->
 				</div>
-					<div class="col-md-12">
-						<div class="card mb-4">
-							<h5 class="card-header">My Account Delete</h5>
-							<div class="card-body">
-									<div class="mb-3 col-mb-6">
-										<div class="alert alert-warning"
-											style="background-color: #eee; border-radius: 10px">
-											<br>
-											<h6 class="alert-heading fw-bold mb-1"
-												style="color: rgba(0, 0, 0, 0.6)">※ 정말로 계정을 삭제하시겠습니까?</h6>
-											<br>
-											<p class="mb-0" style="color: #aaa">&nbsp;계정을 삭제하면 되돌릴 수
-												없습니다.</p>
-											<br>
-										</div>
-									</div>
-									<form id="formAccountDeactivation" onsubmit="return false">
-										<div class="form-check mb-3">
-											<input class="form-check-input" type="checkbox"
-												name="chkSelect" id="accountActivation" /> <label
-												class="form-check-label" for="accountActivation">내
-												계정 삭제에 동의합니다.</label>
-										</div>
-										<button type="submit" id="delete"
-											class="btn btn-dark deactivate-account"
-											onclick="deleteMember('${b.memberId}');">탈퇴하기</button>
-									</form>
+				<div class="col-md-12">
+					<div class="card mb-4">
+						<h5 class="card-header">My Account Delete</h5>
+						<div class="card-body">
+							<div class="mb-3 col-mb-6">
+								<div class="alert alert-warning"
+									style="background-color: #eee; border-radius: 10px">
+									<br>
+									<h6 class="alert-heading fw-bold mb-1"
+										style="color: rgba(0, 0, 0, 0.6)">※ 정말로 계정을 삭제하시겠습니까?</h6>
+									<br>
+									<p class="mb-0" style="color: #aaa">&nbsp;계정을 삭제하면 되돌릴 수
+										없습니다.</p>
+									<br>
+								</div>
 							</div>
-							<img src="image/space/숙소3.jpg" alt="image"
-								style="height: 200px; object-fit: cover; border-radius: 0 0 10px 10px; object-position: bottom">
+							<form id="formAccountDeactivation" onsubmit="return false">
+								<div class="form-check mb-3">
+									<input class="form-check-input" type="checkbox"
+										name="chkSelect" id="accountActivation" /> <label
+										class="form-check-label" for="accountActivation">내 계정
+										삭제에 동의합니다.</label>
+								</div>
+								<button type="submit" id="delete"
+									class="btn btn-dark deactivate-account"
+									onclick="deleteMember('${b.memberId}');">탈퇴하기</button>
+							</form>
 						</div>
+						<img src="image/space/숙소3.jpg" alt="image"
+							style="height: 200px; object-fit: cover; border-radius: 0 0 10px 10px; object-position: bottom">
 					</div>
 				</div>
-				<!-- Modal 1-
+			</div>
+			<!-- Modal 1-
 					<div class="modal fade" id="modalToggle"
 						aria-labelledby="modalToggleLabel" tabindex="-1"
 						style="display: none" aria-hidden="true">
@@ -165,8 +168,8 @@
 							</div>
 						</div>
 					</div>-->
-			</div>
 		</div>
+	</div>
 	<!-- / Content -->
 	<script>
 
@@ -230,10 +233,48 @@
           text: '비밀번호가 일치하지 않습니다.',
         })
         return false;
-      } else {
-        return true;
-      }
-    }
+      } else if($('#emailCheck').val() == 'No'){
+	   	   Swal.fire({
+	           icon: 'error',
+	           title: 'Oops...',
+	           text: 'Email 중복체크를 하세요.',
+	         })
+         return false;
+	   }else {
+	        return true;
+	      }
+	    }
+    
+  //이메일 체크
+	function emailChecking(){//aJax사용
+	let url = "AjaxEmailCheck.do";
+	let payload = document.getElementById("email").value;
+	
+	url = url+"?email="+payload;
+	console.log(url);
+	
+	fetch(url) //get방식
+		.then(response => response.text()) 
+		.then(text => emailcheck(text)); 
+	}
+	
+	function emailcheck(str){
+		if(str == 'Yes'){
+			Swal.fire({
+		           icon: 'success',
+		           text: '사용 가능한 이메일 입니다.',
+		         })
+			document.getElementById("emailCheck").value = "Yes";
+			document.getElementById("emailCheck").disabled = true;
+		}else{
+			Swal.fire({
+		           icon: 'error',
+		           text: '사용 불가한 이메일 입니다.',
+		         })
+			document.getElementById("email").value="";
+			document.getElementById("email").focus();
+		}
+	}
 
     function editCall(memberId){
         test();

@@ -89,6 +89,8 @@
 									<label for="email" class="form-label">E-mail</label> <input
 										class="form-control" type="text" id="email" name="email"
 										value="${m.memberEmail }" />
+										<br>
+								<button type="button" class="btn btn-dark" id="emailCheck" value="No" onclick="emailCheck()">Email 중복체크</button>
 								</div>
 								<div class="mb-3 col-md-6">
 									<label class="form-label" for="phoneNumber">Phone
@@ -244,11 +246,48 @@
            text: '비밀번호가 일치하지 않습니다.',
          })
          return false;
+       } else if($('#emailCheck').val() == 'No'){
+    	   Swal.fire({
+               icon: 'error',
+               title: 'Oops...',
+               text: 'Email 중복체크를 하세요.',
+             })
+             return false;
        } else {
          return true;
        }
      }
+		//이메일 체크
+		function emailCheck(){//aJax사용
+		let url = "AjaxEmailCheck.do";
+		let payload = document.getElementById("email").value;
 		
+		url = url+"?email="+payload;
+		console.log(url);
+		
+		fetch(url) //get방식
+			.then(response => response.text()) 
+			.then(text => emailcheck(text)); 
+	}
+	
+	function emailcheck(str){
+		if(str == 'Yes'){
+			Swal.fire({
+		           icon: 'success',
+		           text: '사용 가능한 이메일 입니다.',
+		         })
+			document.getElementById("emailCheck").value = "Yes";
+			document.getElementById("emailCheck").disabled = true;
+		}else{
+			Swal.fire({
+		           icon: 'error',
+		           text: '사용 불가한 이메일 입니다.',
+		         })
+			document.getElementById("email").value="";
+			document.getElementById("email").focus();
+		}
+	}
+	
 		//회원탈퇴 동의 체크시 탈퇴
 		
 		function deleteMember(memberId) {

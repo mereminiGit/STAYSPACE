@@ -22,7 +22,7 @@
 		</selectKey>
 		INSERT INTO CARTLIST
 		VALUES(
-		#{memberId},#{spaceName},#{spacePrice},#{spaceCity},#{spaceImageMain},#{spaceStartDate},#{reserveId},#{spaceId})
+		#{memberId},#{spaceName},#{spacePrice},#{spaceCity},#{spaceImageMain},#{spaceStartDate},#{reserveId},#{spaceId},#{hostId})
 	</insert>
 
 	<delete id="cartListDelete"
