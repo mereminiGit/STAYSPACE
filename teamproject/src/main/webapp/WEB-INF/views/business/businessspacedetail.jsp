@@ -82,7 +82,7 @@
 			<div class="row">
 				<div class="col-xl">
 					<div class="card mb-4">
-						<h5 class="card-header">Reply</h5>
+						<h5 class="card-header">Reply  <span style="color:#aaa"><small>(Total Count: ${replycount })</small></span></h5>
 						<div class="table-responsive text-nowrap">
 							<table class="table table-hover" id="replyTable">
 								<thead>
@@ -145,7 +145,7 @@
 			<div class="row">
 				<div class="col-xl">
 					<div class="card mb-4">
-						<h5 class="card-header">Reservation</h5>
+						<h5 class="card-header">Reservation  <span style="color:#aaa"><small>(Total Count: ${reservecount })</small></span></h5>
 						<div class="table-responsive text-nowrap">
 							<table class="table table-hover">
 								<thead>

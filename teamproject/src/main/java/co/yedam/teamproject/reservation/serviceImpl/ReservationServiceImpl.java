@@ -79,4 +79,9 @@ public class ReservationServiceImpl implements ReservationService {
 
 	}
 
+	@Override
+	public int reservationCountSpace(int spaceId) {
+		return map.reservationCountSpace(spaceId);
+	}
+
 }

@@ -58,4 +58,14 @@ public class ReplyServiceImpl implements ReplyService {
 		return map.replySelectListRecent();
 	}
 
+	@Override
+	public int replyCountSpace(int spaceId) {
+		return map.replyCountSpace(spaceId);
+	}
+
+	@Override
+	public int replyCountMember(String memberId) {
+		return map.replyCountMember(memberId);
+	}
+
 }

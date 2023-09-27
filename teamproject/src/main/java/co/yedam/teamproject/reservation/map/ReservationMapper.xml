@@ -27,6 +27,9 @@
 	<select id="reservationMemberTotalCount" resultType="int">
 		SELECT COUNT(*) FROM RESERVATION WHERE MEMBER_ID = #{memberId}
 	</select>
+	<select id="reservationCountSpace" resultType="int">
+		SELECT COUNT(*) FROM RESERVATION WHERE SPACE_ID = #{spaceId}
+	</select>
 	<select id="reservationSelectDate"
 		resultType="co.yedam.teamproject.cartList.service.CartListVO">
 		SELECT * FROM SPACE

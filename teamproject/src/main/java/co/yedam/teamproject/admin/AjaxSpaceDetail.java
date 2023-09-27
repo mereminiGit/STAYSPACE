@@ -50,6 +50,12 @@ public class AjaxSpaceDetail extends HttpServlet {
 		reserveList = rdao.reservationSelectListSpace(sid);
 		request.setAttribute("reserve", reserveList);
 		
+		int replycount = replydao.replyCountSpace(Integer.parseInt(sid));
+		request.setAttribute("replycount", replycount);
+		
+		int reservecount = rdao.reservationCountSpace(Integer.parseInt(sid));
+		request.setAttribute("reservecount", reservecount);
+		
 		String page = "admin/admin/adminspacedetail";
 		ViewResolve.forward(request, response, page);
 	}

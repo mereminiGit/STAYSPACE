@@ -50,6 +50,12 @@ public class AjaxHostSpaceDetail extends HttpServlet {
 
 		reserveList = rdao.reservationSelectListSpace(sid);
 		request.setAttribute("reserve", reserveList);
+		
+		int replycount = replydao.replyCountSpace(Integer.parseInt(sid));
+		request.setAttribute("replycount", replycount);
+		
+		int reservecount = rdao.reservationCountSpace(Integer.parseInt(sid));
+		request.setAttribute("reservecount", reservecount);
 
 		String path = "business/business/businessspacedetail";
 		ViewResolve.forward(request, response, path);
