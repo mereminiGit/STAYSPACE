@@ -461,6 +461,7 @@
 				            date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
 				        dates.not(this).datepicker("option", option, date);
 				    } */
+				})
 			</script>
 			
 			<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

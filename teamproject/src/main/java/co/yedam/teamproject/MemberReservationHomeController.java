@@ -70,9 +70,10 @@ public class MemberReservationHomeController extends HttpServlet {
 		voMember = daoMember.memberSelect(voMember);
 		request.setAttribute("m", voMember);
 		
-		String path = "member/membermypage";
-		ViewResolve.forward(request, response, path);
-		if(request.getParameter("name")!=null){ //예약입력
+		/*
+		 * String path = "member/membermypage"; ViewResolve.forward(request, response,
+		 * path);
+		 */		if(request.getParameter("name")!=null){ //예약입력
 			CartListService cdao= new CartListServiceImpl();
 			CartListVO cvo= new CartListVO();
 			cvo.setMemberId((String) session.getAttribute("memberId"));
@@ -91,17 +92,15 @@ public class MemberReservationHomeController extends HttpServlet {
 			}
 //		vo.setMemberId("jiwon"); // 세션에 저장된 아이디를 들고와야함.
 		}
-			int n = dao.reservationMemberTotalCount(vo.getMemberId());
-			request.setAttribute("count", n);
-			System.out.println("Mcount>>>"+n);
+			int num = dao.reservationMemberTotalCount(vo.getMemberId());
+			request.setAttribute("count", num);
+			System.out.println("Mcount>>>"+num);
 			reserve = dao.reservationSelectMember(vo);
 			request.setAttribute("reserve", reserve);
 			System.out.println("menuhome.do reserve 찍어봄");
 			System.out.println(reserve);
 			
 			// member 가져오기
-			MemberService daoMember = new MemberServiceImpl();
-			MemberVO voMember =new MemberVO();
 			voMember.setMemberId((String) session.getAttribute("memberId"));
 			voMember = daoMember.memberSelect(voMember);
 			request.setAttribute("m", voMember);
