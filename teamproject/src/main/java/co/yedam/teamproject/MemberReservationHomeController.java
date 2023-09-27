@@ -49,10 +49,11 @@ public class MemberReservationHomeController extends HttpServlet {
 		List<ReservationVO> reserve = new ArrayList<ReservationVO>();
 		System.out.println(request.getParameter("name")+"!!!!!!!!!");
 		
-		int n = dao.reservationMemberTotalCount(vo.getMemberId());
-		request.setAttribute("count", n);
-		reserve = dao.reservationSelectMember(vo);
-		request.setAttribute("reserve", reserve);
+		/*
+		 * int n = dao.reservationMemberTotalCount(vo.getMemberId());
+		 * request.setAttribute("count", n); reserve = dao.reservationSelectMember(vo);
+		 * request.setAttribute("reserve", reserve);
+		 */
 		
 		//WishList
 		WishListService daoWish = new WishListServiceImpl();
@@ -64,16 +65,17 @@ public class MemberReservationHomeController extends HttpServlet {
 		
 		
 		// member 가져오기
-		MemberService daoMember = new MemberServiceImpl();
-		MemberVO voMember =new MemberVO();
-		voMember.setMemberId((String) session.getAttribute("memberId"));
-		voMember = daoMember.memberSelect(voMember);
-		request.setAttribute("m", voMember);
-		
 		/*
+		 * MemberService daoMember = new MemberServiceImpl(); MemberVO voMember =new
+		 * MemberVO(); voMember.setMemberId((String) session.getAttribute("memberId"));
+		 * voMember = daoMember.memberSelect(voMember); request.setAttribute("m",
+		 * voMember);
+		 * 
 		 * String path = "member/membermypage"; ViewResolve.forward(request, response,
 		 * path);
-		 */		if(request.getParameter("name")!=null){ //예약입력
+		 */
+		
+		if(request.getParameter("name")!=null){ //예약입력
 			CartListService cdao= new CartListServiceImpl();
 			CartListVO cvo= new CartListVO();
 			cvo.setMemberId((String) session.getAttribute("memberId"));

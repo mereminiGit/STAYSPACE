@@ -424,6 +424,7 @@
 								</div>
 							</div>
 						</div>
+					</form>
 				</nav>
 			</header>
 			
@@ -455,6 +456,7 @@
 				    numberOfMonths: 3, */
 				    dateFormat:'yy-mm-dd',
 				    minDate: 0,
+				});
 				   /*  onSelect: function(selectedDate) {
 				        var option = this.id == "from" ? "minDate" : "maxDate",
 				            instance = $(this).data("datepicker"),
