@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.yedam.teamproject.wishList.map.WishListMapper">
 	<select id="wishListSelectList" resultType="co.yedam.teamproject.wishList.service.WishListVO">
-	    SELECT * FROM WISHLIST WHERE MEMBER_ID = #{memberId}
+	    SELECT * FROM WISHLIST WHERE MEMBER_ID = #{memberId} ORDER BY WISHLIST_ID DESC
 	</select>
 	
 	<select id="wishListSelect">

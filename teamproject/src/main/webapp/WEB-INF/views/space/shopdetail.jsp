@@ -640,7 +640,7 @@ function numberWithCommas(x) {
 				Swal.fire({
 					  position: 'center',
 					  icon: 'success',
-					  title: 'Your work has been saved',
+					  title: 'Wish list에 담았습니다!',
 					  showConfirmButton: false,
 					  timer: 1500
 					})

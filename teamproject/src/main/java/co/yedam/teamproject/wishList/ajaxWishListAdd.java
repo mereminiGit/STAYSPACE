@@ -19,38 +19,32 @@ import co.yedam.teamproject.wishList.service.WishListService;
 import co.yedam.teamproject.wishList.service.WishListVO;
 import co.yedam.teamproject.wishList.serviceImpl.WishListServiceImpl;
 
+//상세페이지 wishlist 버튼 누르면 wishlist 등록
 @WebServlet("/ajaxWishListAdd.do")
 public class ajaxWishListAdd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public ajaxWishListAdd() {
-        super();
-    }
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//#{spaceName},#{spacePrice},#{spaceImage},#{memberId},#{wishListStartDate},#{wishListId},#{spaceId}
-		
-//		String spaceName = request.getParameter("spaceName");
-//		int spacePrice = Integer.valueOf(request.getParameter("spacePrice"));
-//		String spaceImage = request.getParameter("spaceImage");
-//		String memberId = request.getParameter("memberId");
-//		Date wishListStartDate = Date.valueOf(request.getParameter("wishListStartDate"));
-//		int wishListId = Integer.valueOf(request.getParameter("wishListId"));
-//		int spaceId = Integer.valueOf(request.getParameter("spaceId"));
-		
+
+	public ajaxWishListAdd() {
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		WishListService dao = new WishListServiceImpl();
 		WishListVO vo = new WishListVO();
 		List<WishListVO> list = new ArrayList<>();
 		HttpSession session = request.getSession();
-		String id = (String)session.getAttribute("memberId");
-		System.out.println("wishList add id찍어본다>>"+id);
-		
-		if(id != null) {
-			if(request.getParameter("spaceId")!=null) {
+		String id = (String) session.getAttribute("memberId");
+		System.out.println("wishList add id찍어본다>>" + id);
+
+		if (id != null) {
+			if (request.getParameter("spaceId") != null) {
 				SpaceService sdao = new SpaceServiceImpl();
 				SpaceVO svo = new SpaceVO();
 				svo.setSpaceId(Integer.valueOf(request.getParameter("spaceId")));
 				svo = sdao.spaceSelect(svo);
-				System.out.println("위시svo>> "+svo);
+				System.out.println("위시svo>> " + svo);
 				vo.setMemberId(id);
 				vo.setSpaceName(svo.getSpaceName());
 				vo.setSpacePrice(svo.getSpacePrice());
@@ -58,27 +52,27 @@ public class ajaxWishListAdd extends HttpServlet {
 				vo.setSpaceId(Integer.valueOf(svo.getSpaceId()));
 				vo.setWishListStartDate(Date.valueOf(request.getParameter("date")));
 				int result = dao.wishListInsert(vo);
-				System.out.println("위시add result>> "+result);
+				System.out.println("위시add result>> " + result);
 				System.out.println(request.getParameter("spaceId"));
 
-				if(result==1) {
+				if (result == 1) {
 					response.getWriter().print("{\"retCode\": \"Success\"}");
-				}else {
+				} else {
 					response.getWriter().print("{\"retCode\": \"Fail\"}");
 				}
-				
+
 				list = dao.wishListSelectList(vo);
-			}else {
-				vo.setMemberId(id);//세션에담긴아이디불러오기
-				list=dao.wishListSelectList(vo);
+			} else {
+				vo.setMemberId(id);// 세션에담긴아이디불러오기
+				list = dao.wishListSelectList(vo);
 			}
-	
+
 		}
-		
-		
+
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

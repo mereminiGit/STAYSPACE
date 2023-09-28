@@ -55,6 +55,9 @@
 					#wishdiv{
 						padding:0px;
 					}
+					#wishImg{
+						height: 500px;
+					}
 				</style>
 			</head>
 
@@ -195,7 +198,6 @@
 													style="font-family: 'Noto Sans KR', sans-serif; padding: 30px 16px 30px 16px">
 													Wish list</h4>
 												<!-- Examples -->
-												<form id="frm" action="shopdetail.do" method="post" enctype="form-data">
 													<div class="row mb-5" id="wishlist">
 														<c:choose>
 															<c:when test="${empty wishList }">
@@ -204,11 +206,11 @@
 															<c:otherwise>
 																<c:forEach items="${wishList}" var="w">
 																	<div class="col-md-6 col-lg-4 mb-3" class="cartlist" id="cartid_${w.wishListId}">
-																		<input type="hidden" id="memberId" name="memberId" value="jiwon">
+																		<input type="hidden" id="memberId" name="memberId" value="${w.memberId }">
 																		<input type="hidden" id="spaceId" name="spaceId" value="${w.spaceId}">
 																		<input type="hidden" id="wishListId" name="wishListId" value="${w.wishListId}">
 																		<div class="card h-100">
-																			<img class="card-img-top" src="image/space/${w.spaceImage }"
+																			<img class="card-img-top" id="wishImg" src="image/space/${w.spaceImage }"
 																				alt="Card image cap" />
 																			<div class="card-body">
 																				<h5 class="card-title">${w.spaceName }</h5>
@@ -224,7 +226,7 @@
 																				</p>
 																				<div class="btnwrap">
 																					<!-- <a href="javascript:void(0)" class="btn btn-outline-primary">Detailed page</a> -->
-																					<button type="button" class="btn btn-primary" onclick="detailCall()">Detailed
+																					<button type="button" class="btn btn-primary" onclick="detailCall(${w.spaceId})">Detailed
 																						page</button>
 																					<button type="button" class="btn btn-dark me-2" id="dangerBtn"
 																						onclick="deleteCall('${w.memberId }',${w.wishListId})">Delete</button>
@@ -236,7 +238,6 @@
 															</c:otherwise>
 														</c:choose>
 													</div>
-												</form>
 
 											</div>
 											</div>
@@ -379,6 +380,9 @@
 					</div>
 					</div>
 				</section>
+				<form id="wishform" action="shopdetail.do" method="post">
+			    <input type="hidden" id="spaceId" name="spaceId">
+			    </form>
 				<script>
 					/* function listClick(id) {
 						let form = document.getElementById("sform");
@@ -393,7 +397,7 @@
 				<script>
 					function cancelCall(name, id, rid) {
 
-						let url = "ajaxReservationCancel.do?spaceName=" + name + "&memberId=" + id;
+						let url = "ajaxReservationCancel.do?spaceName=" + name + "&memberId=" + id +"&reserveId="+rid;
 						Swal.fire({
 							title: '예약을 취소하시겠습니까?',
 							text: '해당 상품의 취소정책에 따라 고객님이 선택하신 결제방식으로 환불이 진행됩니다.',
@@ -450,17 +454,10 @@
 						})
 					};
 					//detailPage연결
-					function detailCall() {
-						document.getElementById("frm").submit();
-						// $.ajax({
-						//   url: "shopdetail.do?spaceId=" + spaceId,
-						//   type: "get",
-						//   datatype: "html",
-						//   success: function (data) {
-						//     alert("연결성공");
-						//     location.href = 'shopdetail.do'
-						//   }
-						// });
+					function detailCall(id) {
+						let form = document.getElementById("wishform");
+			            form.spaceId.value = id;
+			            form.submit();
 					}
 
 				</script>

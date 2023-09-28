@@ -17,9 +17,7 @@ import co.yedam.teamproject.member.service.MemberService;
 import co.yedam.teamproject.member.service.MemberVO;
 import co.yedam.teamproject.member.serviceImpl.MemberServiceImpl;
 
-/**
- * Servlet implementation class ajaxMemberEdit
- */
+//마이페이지 회원정보 수정
 @WebServlet("/ajaxMemberEdit.do")
 public class ajaxMemberEdit extends HttpServlet {
 	private static final long serialVersionUID = 1L;
