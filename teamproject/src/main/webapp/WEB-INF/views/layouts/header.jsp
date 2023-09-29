@@ -83,6 +83,7 @@
 				
 				.nav-item a {
 					font-family: 'Noto Sans KR', sans-serif;
+					/* font-weight: 450; */
 				}
 			</style>
 		</head>
@@ -119,11 +120,11 @@
 										<!-- About NAV -->
 										<li class="nav-item"><a class="nav-link ms-0" href="about.do">About</a></li>
 										<!-- Find Where -->
-										<li class="nav-item"><a class="nav-link ms-0" a type="button"
+										<li class="nav-item"><a class="nav-link ms-0" type="button"
 												data-bs-toggle="modal" data-bs-target="#findWhereModal" id="findWhere" style="width: 100%">
 												Find Where</a></li>
 										<!-- Find When -->
-										<li class="nav-item"><a class="nav-link ms-0" a type="button"
+										<li class="nav-item"><a class="nav-link ms-0" type="button"
 												data-bs-toggle="modal" data-bs-target="#findWhenModal" id="findWhen" style="width: 100%">
 												Find When</a></li>
 										<!-- pages NAV -->
