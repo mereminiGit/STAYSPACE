@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import co.yedam.teamproject.common.ViewResolve;
+import co.yedam.teamproject.member.service.MemberService;
+import co.yedam.teamproject.member.service.MemberVO;
+import co.yedam.teamproject.member.serviceImpl.MemberServiceImpl;
 import co.yedam.teamproject.reply.service.ReplyService;
 import co.yedam.teamproject.reply.service.ReplyVO;
 import co.yedam.teamproject.reply.serviceImpl.ReplyServiceImpl;
@@ -41,12 +44,21 @@ public class DetailController extends HttpServlet {
 		ReservationService daoReservation = new ReservationServiceImpl();
 		List<ReservationVO> reservations = new ArrayList<ReservationVO>();
 		
+		MemberService hostdao = new MemberServiceImpl();
+		MemberVO hostvo = new MemberVO();
+		
 		HttpSession session = request.getSession();
 		
 		vo.setSpaceId(Integer.parseInt(request.getParameter("spaceId")));
 		System.out.println("spaceId찍음>>"+request.getParameter("spaceId"));
 		vo=dao.spaceSelect(vo);
 		request.setAttribute("s", vo);
+		
+		// 호스트 연락처, 이메일 받기
+		System.out.println("hostId"+vo.getMemberId());
+		hostvo.setMemberId(vo.getMemberId());
+		hostvo = hostdao.memberSelect(hostvo);
+		request.setAttribute("host", hostvo);
 		
 		List<SpaceVO> spaces = new ArrayList<SpaceVO>();
 		/*
@@ -64,7 +76,21 @@ public class DetailController extends HttpServlet {
 		
 //		댓글 출력 위해
 		replyes = daoReply.replySelectListId(Integer.parseInt(request.getParameter("spaceId")));
-		request.setAttribute("replyes", replyes);
+		int pages=(int) Math.ceil(replyes.size()/4.0); //페이지 수
+		request.setAttribute("results", replyes.size()); //공간 수
+		request.setAttribute("pages",pages); //페이지 수
+		
+		String currentPage=request.getParameter("page");//현재페이지
+		if(currentPage==null||currentPage.equals("0")) {
+			currentPage="1";
+		}
+		request.setAttribute("currentPage", currentPage); //현재페이지
+		int page=Integer.parseInt(currentPage);
+		List<ReplyVO> list=new ArrayList<ReplyVO>();
+		for(int i=(page-1)*4; i<page*4&&i<replyes.size(); i++) {
+			list.add(replyes.get(i)); //페이지만큼 출력
+		}
+		request.setAttribute("replyes", list);
 		
 //		로그인한 사람이 예약을 한 사람인지
 		if (session.getAttribute("memberId") == null) {
@@ -79,7 +105,7 @@ public class DetailController extends HttpServlet {
 		}
 		
 		request.setAttribute("memberId", session.getAttribute("memberId"));
-
+		
 		String path = "space/shopdetail";
 		ViewResolve.forward(request, response, path);
 	}

@@ -43,12 +43,15 @@
 					#withdrawal {
 						font-family: 'Noto Sans KR', sans-serif;
 					}
+
 					#wishlist p {
 						font-family: 'Noto Sans KR', sans-serif;
 						font-weight: 400;
+						text-align: center;
 					}
-					.btnwrap{
-						disply:flex !important;
+
+					.btnwrap {
+						disply: flex !important;
 						align-items: center !important;
 						justify-content: space-around !important;
 					}
@@ -56,7 +59,8 @@
 			</head>
 
 			<body>
-				<section class="hero-section jarallax d-flex align-items-center justify-content-center padding-medium pb-5"
+				<section
+					class="hero-section jarallax d-flex align-items-center justify-content-center padding-medium pb-5"
 					style="background: url(vaso-html/images/hero-img.jpg) no-repeat;">
 					<div class="hero-content">
 						<div class="container">
@@ -81,19 +85,20 @@
 								<nav>
 									<div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
 										<!-- Sign -->
-										<button class="nav-link text-uppercase active" id="nav-reservation-in-tab" data-bs-toggle="tab"
-											data-bs-target="#nav-reservation-in" type="button" role="tab" aria-controls="nav-reservation-in"
+										<button class="nav-link text-uppercase active" id="nav-reservation-in-tab"
+											data-bs-toggle="tab" data-bs-target="#nav-reservation-in" type="button"
+											role="tab" aria-controls="nav-reservation-in"
 											aria-selected="true">Reservation
 											details</button>
 										<!-- wishlist 메뉴바 -->
-										<button class="nav-link text-uppercase" id="nav-wishlist-tab" data-bs-toggle="tab"
-											data-bs-target="#nav-wishlist" type="button" role="tab" aria-controls="nav-wishlist"
-											aria-selected="false">Wish list</button>
+										<button class="nav-link text-uppercase" id="nav-wishlist-tab"
+											data-bs-toggle="tab" data-bs-target="#nav-wishlist" type="button" role="tab"
+											aria-controls="nav-wishlist" aria-selected="false">Wish list</button>
 										<!-- wishlist 메뉴바-->
 										<!-- Register -->
-										<button class="nav-link text-uppercase" id="nav-edituser-tab" data-bs-toggle="tab"
-											data-bs-target="#nav-edituser" type="button" role="tab" aria-controls="nav-edituser"
-											aria-selected="false">Edit profile</button>
+										<button class="nav-link text-uppercase" id="nav-edituser-tab"
+											data-bs-toggle="tab" data-bs-target="#nav-edituser" type="button" role="tab"
+											aria-controls="nav-edituser" aria-selected="false">Edit profile</button>
 										<!-- Register -->
 									</div>
 								</nav>
@@ -131,25 +136,35 @@
 																<c:otherwise>
 																	<c:forEach items="${reserve}" var="r">
 																		<tr>
-																			<td><i class="fab fa-angular fa-lg text-danger me-3"></i><a href="#"><img
-																						id="stayimg" alt="stay" src="image/space/${r.reserveImg }"
-																						style="width: 200px; height: 120px;"></a></td>
+																			<td><i
+																					class="fab fa-angular fa-lg text-danger me-3"></i><a
+																					href="#"><img id="stayimg"
+																						alt="stay"
+																						src="image/space/${r.reserveImg }"
+																						style="width: 200px; height: 120px;"></a>
+																			</td>
 																			<td>${r.spaceName }</td>
 																			<td>${r.reserveStartDate }</td>
 																			<td>${r.reserveCheckoutDate }</td>
 																			<td>
-																				<fmt:formatNumber value="${r.reservePrice }" type="currency"
+																				<fmt:formatNumber
+																					value="${r.reservePrice }"
+																					type="currency"
 																					currencySymbol="￦" />
 																			</td>
-																			<td><span class="btn btn-primary"><strong id="reservation_${r.reserveId }">
+																			<td><span class="btn btn-primary"><strong
+																						id="reservation_${r.reserveId }">
 																						<c:choose>
-																							<c:when test="${r.reserveCheck == 0}">
+																							<c:when
+																								test="${r.reserveCheck == 0}">
 																								예약대기
 																							</c:when>
-																							<c:when test="${r.reserveCheck == 1}">
+																							<c:when
+																								test="${r.reserveCheck == 1}">
 																								예약확정
 																							</c:when>
-																							<c:when test="${r.reserveCheck == 2}">
+																							<c:when
+																								test="${r.reserveCheck == 2}">
 																								예약취소
 																							</c:when>
 																						</c:choose>
@@ -159,7 +174,9 @@
 																					<div class="deletebtn">
 																						<a class="" href="#"
 																							onclick="cancelCall('${r.spaceName }','${r.memberId}','${r.reserveId }');">
-																							<i class="bx bx-trash me-2"></i> Cancel
+																							<i
+																								class="bx bx-trash me-2"></i>
+																							Cancel
 																						</a>
 																					</div>
 																				</div>
@@ -167,75 +184,90 @@
 																		</tr>
 																	</c:forEach>
 																	<caption style="padding-left: 20px">
-																		Total:${count }
-																	</caption>
+																		Total:${count }</caption>
 																</c:otherwise>
 															</c:choose>
 														</tbody>
 													</table>
 												</div>
-												<input type="hidden" id="memberId" name="memberId">
-												<input type="hidden" id="spaceId" name="spaceId">
-												<input type="hidden" id="reserveId" name="reserveId">
+												<input type="hidden" id="memberId" name="memberId"> <input type="hidden"
+													id="spaceId" name="spaceId"> <input type="hidden" id="reserveId"
+													name="reserveId">
 											</form>
 										</div>
 									</div>
 
 									<!-- wishlist 시작 -->
-									<div class="tab-pane fade" id="nav-wishlist" role="tabpanel" aria-labelledby="nav-wishlist-tab">
+									<div class="tab-pane fade" id="nav-wishlist" role="tabpanel"
+										aria-labelledby="nav-wishlist-tab">
 										<div class="content-wrapper">
 											<!-- Content -->
 
 											<div class="container-xxl flex-grow-1 container-p-y">
 												<div class="card">
-												<h4 class="card-header"
-													style="font-family: 'Noto Sans KR', sans-serif; padding: 30px 16px 30px 16px">
-													Wish list</h4>
-												<!-- Examples -->
-												<form id="frm" action="shopdetail.do" method="post" enctype="form-data">
-													<div class="row mb-5" id="wishlist">
-														<c:choose>
-															<c:when test="${empty wishList }">
-																<p id="nowish">Wish List가 비어있습니다.</p>
-															</c:when>
-															<c:otherwise>
-																<c:forEach items="${wishList}" var="w">
-																	<div class="col-md-6 col-lg-4 mb-3" class="cartlist" id="cartid_${w.wishListId}">
-																		<input type="hidden" id="memberId" name="memberId" value="jiwon">
-																		<input type="hidden" id="spaceId" name="spaceId" value="${w.spaceId}">
-																		<input type="hidden" id="wishListId" name="wishListId" value="${w.wishListId}">
-																		<div class="card h-100">
-																			<img class="card-img-top" src="image/space/${w.spaceImage }"
-																				alt="Card image cap" />
-																			<div class="card-body">
-																				<h5 class="card-title">${w.spaceName }</h5>
-																				<p class="card-text">
-																					<!--숙소 콘텐트있던곳-->
-																					<br>
-																					예약 날짜 : ${w.wishListStartDate }
-																					<br>
-																					<br>
-																					가격 :
-																					<fmt:formatNumber value="${w.spacePrice }" type="currency"
-																						currencySymbol="￦" />
-																				</p>
-																				<div class="btnwrap">
-																					<!-- <a href="javascript:void(0)" class="btn btn-outline-primary">Detailed page</a> -->
-																					<button type="button" class="btn btn-primary" onclick="detailCall()">Detailed
-																						page</button>
-																					<button type="button" class="btn btn-dark me-2" id="dangerBtn"
-																						onclick="deleteCall('${w.memberId }',${w.wishListId})">Delete</button>
+													<h4 class="card-header"
+														style="font-family: 'Noto Sans KR', sans-serif; padding: 30px 16px 30px 16px; text-align: center">
+														Wish list</h4>
+													<!-- Examples -->
+													<form id="frm" action="shopdetail.do" method="post"
+														enctype="form-data">
+														<div class="row mb-5" id="wishlist" style="text-align: center;">
+															<c:choose>
+																<c:when test="${empty wishList }">
+																	<p id="nowish">Wish List가 비어있습니다.</p>
+																</c:when>
+																<c:otherwise>
+																	<c:forEach items="${wishList}" var="w">
+																		<div class="col-md-6 col-lg-4 mb-3"
+																			class="cartlist"
+																			id="cartid_${w.wishListId}">
+																			<input type="hidden" id="memberId"
+																				name="memberId" value="jiwon"> <input
+																				type="hidden" id="spaceId"
+																				name="spaceId" value="${w.spaceId}">
+																			<input type="hidden" id="wishListId"
+																				name="wishListId"
+																				value="${w.wishListId}">
+																			<div class="card h-100">
+																				<img class="card-img-top"
+																					src="image/space/${w.spaceImage }"
+																					alt="Card image cap" />
+																				<div class="card-body">
+																					<h5 class="card-title">${w.spaceName
+																						}</h5>
+																					<p class="card-text">
+																						<!--숙소 콘텐트있던곳-->
+																						예약 날짜 :
+																						${w.wishListStartDate } <br>
+																						
+																						가격 :
+																						<fmt:formatNumber
+																							value="${w.spacePrice }"
+																							type="currency"
+																							currencySymbol="￦" />
+																					</p>
+																					<hr>
+																					<div class="btnwrap">
+																						<!-- <a href="javascript:void(0)" class="btn btn-outline-primary">Detailed page</a> -->
+																						<button type="button"
+																							class="btn btn-primary"
+																							onclick="detailCall()">Detailed
+																							page</button>
+																						<button type="button"
+																							class="btn btn-dark me-2"
+																							id="dangerBtn"
+																							onclick="deleteCall('${w.memberId }',${w.wishListId})">Delete</button>
+																					</div>
 																				</div>
 																			</div>
 																		</div>
-																	</div>
-																</c:forEach>
-															</c:otherwise>
-														</c:choose>
-													</div>
-												</form>
+																	</c:forEach>
+																</c:otherwise>
+															</c:choose>
+														</div>
+													</form>
 
-											</div>
+												</div>
 											</div>
 											<div class="content-backdrop fade"></div>
 										</div>
@@ -246,32 +278,41 @@
 
 
 									<!-- ################ 회원정보 수정 ############### -->
-									<div class="tab-pane fade" id="nav-edituser" role="tabpanel" aria-labelledby="nav-edituser-tab">
+									<div class="tab-pane fade" id="nav-edituser" role="tabpanel"
+										aria-labelledby="nav-edituser-tab">
 										<!--  -->
 										<div class="row">
 											<div class="col-md-12">
 												<div class="card mb-4" id="editInformation">
 													<h4 class="card-header"
-														style="font-family: 'Noto Sans KR', sans-serif; padding: 30px 16px 30px 16px">
+														style="font-family: 'Noto Sans KR', sans-serif; padding: 30px 16px 30px 16px; text-align: center;">
 														Profile</h4>
 													<!-- Account -->
 													<%-- <div class="card-body">
-														<div class="d-flex align-items-start align-items-sm-center gap-4">
+														<div
+															class="d-flex align-items-start align-items-sm-center gap-4">
 															<c:if test="${empty m.memberImage}">
-																<img src="image/member/기본프로필.jpg" alt="기본프로필" class="d-block rounded" height="100"
-																	width="100" id="uploadedAvatar" />
+																<img src="image/member/기본프로필.jpg" alt="기본프로필"
+																	class="d-block rounded" height="100" width="100"
+																	id="uploadedAvatar" />
 															</c:if>
 															<c:if test="${not empty m.memberImage}">
-																<img src="image/member/${m.memberImage }" alt="user-Img" class="d-block rounded"
-																	height="100" width="100" id="uploadedAvatar" />
+																<img src="image/member/${m.memberImage }" alt="user-Img"
+																	class="d-block rounded" height="100" width="100"
+																	id="uploadedAvatar" />
 															</c:if>
 															<div class="button-wrapper">
-																<label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0" onclick=""> <span
-																		class="d-none d-sm-block">Upload new photo</span> <i
-																		class="bx bx-upload d-block d-sm-none"></i> <input type="file" id="upload"
-																		class="account-file-input" hidden accept="image/png, image/jpeg" />
+																<label for="upload" class="btn btn-primary me-2 mb-4"
+																	tabindex="0" onclick=""> <span
+																		class="d-none d-sm-block">Upload new
+																		photo</span> <i
+																		class="bx bx-upload d-block d-sm-none"></i>
+																	<input type="file" id="upload"
+																		class="account-file-input" hidden
+																		accept="image/png, image/jpeg" />
 																</label>
-																<button type="reset" class="btn btn-outline-secondary account-image-reset mb-4">
+																<button type="reset"
+																	class="btn btn-outline-secondary account-image-reset mb-4">
 																	<i class="bx bx-reset d-block d-sm-none"></i> <span
 																		class="d-none d-sm-block">Reset</span>
 																</button>
@@ -284,52 +325,64 @@
 
 												<hr class="my-0" /> --%>
 												<div class="card-body">
-													<form id="formAccountSettings" method="POST" onsubmit="return false">
+													<form id="formAccountSettings" method="POST"
+														onsubmit="return false">
 														<div class="row" id="edituser">
 															<div class="mb-3 col-md-6">
 																<label for="firstName" class="form-label">ID</label>
 																<div class="input-group input-group-merge"
 																	style="padding: 0; background-color: #efefef;">
-																	<input type="text" class="w-100" id="id" name="id" value="${m.memberId }"
-																		readonly="readonly" />
+																	<input type="text" class="w-100" id="id" name="id"
+																		value="${m.memberId }" readonly="readonly" />
 																</div>
 															</div>
 															<div class="mb-3 col-md-6">
-																<label for="firstName" class="form-label">Name</label> <input class="w-100" type="text"
-																	id="Name" name="Name" value="${m.memberName }" autofocus />
+																<label for="firstName" class="form-label">Name</label>
+																<input class="w-100" type="text" id="Name" name="Name"
+																	value="${m.memberName }" autofocus />
 															</div>
 															<div class="mb-3 col-md-6">
-																<label for="organization" class="form-label">Password</label>
-																<input type="password" class="w-100" id="password" name="password" value=""
-																	placeholder="password" />
+																<label for="organization"
+																	class="form-label">Password</label>
+																<input type="password" class="w-100" id="password"
+																	name="password" value="" placeholder="password" />
 															</div>
 															<div class="mb-3 col-md-6">
 																<label for="email" class="form-label">E-mail</label>
-																<span class="label-body" style="font-family: 'Noto Sans KR', sans-serif;">
-																	<a type="button" id="editEmailCheck" onclick="EmailCheck()" data-value="No"
-																		style="float: right; color: #87826e">중복체크</a></span>
-																<input class="w-100" type="text" id="email" name="email" value="${m.memberEmail }"
+																<span class="label-body"
+																	style="font-family: 'Noto Sans KR', sans-serif;">
+																	<a type="button" id="editEmailCheck"
+																		onclick="EmailCheck()" data-value="No"
+																		style="float: right; color: #87826e">중복체크</a>
+																</span> <input class="w-100" type="text" id="email"
+																	name="email" value="${m.memberEmail }"
 																	placeholder="yedam@example.com" />
-																<p id="firstEmail" style="display:none">${m.memberEmail }</p>
+																<p id="firstEmail" style="display: none">${m.memberEmail
+																	}</p>
 															</div>
 															<div class="mb-3 col-md-6">
 																<label for="organization" class="form-label">Password
-																	Check</label> <input type="password" class="w-100" id="passwordcheck"
-																	name="passwordcheck" value="" placeholder="password" />
+																	Check</label> <input type="password" class="w-100"
+																	id="passwordcheck" name="passwordcheck" value=""
+																	placeholder="password" />
 															</div>
 															<div class="mb-3 col-md-6">
-																<label class="form-label" for="phoneNumber">PhoneNumber</label>
+																<label class="form-label"
+																	for="phoneNumber">PhoneNumber</label>
 																<div class="input-group input-group-merge"
 																	style="padding: 0; background-color: #efefef;">
-																	<input type="tel" id="tel" name="tel" class="w-100" value="${m.memberTel }"
-																		placeholder="010-1234-4567" readonly="readonly" />
+																	<input type="tel" id="tel" name="tel" class="w-100"
+																		value="${m.memberTel }"
+																		placeholder="010-1234-4567"
+																		readonly="readonly" />
 																</div>
 															</div>
 														</div>
 														<div class="mt-2" style="float: right;">
 															<button type="submit" class="btn btn-primary me-2 mb-2"
 																onclick="editCall('${m.memberId}');">SAVE</button>
-															<button type="reset" class="btn btn-dark me-2 mb-2" onclick="cancelEdit()">CANCEL</button>
+															<button type="reset" class="btn btn-dark me-2 mb-2"
+																onclick="cancelEdit()">CANCEL</button>
 														</div>
 													</form>
 												</div>
@@ -338,8 +391,10 @@
 
 											<div class="card mb-4">
 												<!-- <div class="card" id="withdrawal"> -->
-												<h4 class="card-header" style="font-family: 'Noto Sans KR', sans-serif; padding: 30px 16px 30px 16px;
-											text-align: center;">회원 탈퇴</h4>
+												<h4 class="card-header"
+													style="font-family: 'Noto Sans KR', sans-serif; padding: 30px 16px 30px 16px; text-align: center;">
+													회원
+													탈퇴</h4>
 												<div class="card-body">
 													<div class="mb-3 col-12 mb-0">
 														<div class="alert alert-warning" id="alertwarning"
@@ -348,20 +403,24 @@
 																style="font-family: 'Noto Sans KR', sans-serif; font-weight: 800; color: #87826e">
 																정말로 탈퇴하시겠습니까?</h4>
 															<br>
-															<p class="mb-0" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 500">
+															<p class="mb-0"
+																style="font-family: 'Noto Sans KR', sans-serif; font-weight: 500">
 																탈퇴시 계정을 복구할 수 없습니다.</p>
 														</div>
 													</div>
 													<form id="formAccountDeactivation" onsubmit="return false">
 														<div class="form-check mb-3">
-															<input class="form-check-input" type="checkbox" name="chkSelect" id="accountActivation" />
-															<label class="form-check-label" for="accountActivation"
+															<input class="form-check-input" type="checkbox"
+																name="chkSelect" id="accountActivation" /> <label
+																class="form-check-label" for="accountActivation"
 																style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400">
 																회원탈퇴에 동의합니다.</label>
 														</div>
 														<div class="mt-2" style="float: right;">
-															<button type="submit" id="delete" class="btn btn-primary me-2 mb-2"
-																onclick="deleteMember('${m.memberId}');" style="font-weight: bolder;">회원 탈퇴</button>
+															<button type="submit" id="delete"
+																class="btn btn-primary me-2 mb-2"
+																onclick="deleteMember('${m.memberId}');"
+																style="font-weight: bolder;">회원 탈퇴</button>
 														</div>
 													</form>
 												</div>
@@ -388,8 +447,8 @@
 					}
 				</script>
 				<script>
+					// 예약 공간 취소
 					function cancelCall(name, id, rid) {
-
 						let url = "ajaxReservationCancel.do?spaceName=" + name + "&memberId=" + id;
 						Swal.fire({
 							title: '예약을 취소하시겠습니까?',
@@ -412,7 +471,9 @@
 												'Cancelled!',
 												'예약이 취소되었습니다.',
 												'success'
-											);
+											).then(function () {
+												location.href = 'memberreservationhome.do';
+											});
 										}
 									});
 							}
@@ -634,15 +695,27 @@
 									$('input[id = email]').focus();
 								});
 						} else {
-							//aJax 사용
-							let url = "memberemailcheck.do";
-							let email = $('input[id = email]').val();
+							// 이메일 수정을 하지 않고 중복체크를 할 경우
+							if ($('input[id = email]').val() == $('#firstEmail').text()) {
+								console.log($('#firstEmail'));
+								Swal.fire({
+									title: '이메일 체크',
+									text: "현재 사용중인 이메일 입니다",
+									icon: 'success',
+									confirmButtonColor: '#87826E',
+									confirmButtonText: 'OK',
+								})
+							} else {
+								//aJax 사용
+								let url = "memberemailcheck.do";
+								let email = $('input[id = email]').val();
 
-							url = url + "?memberEmail=" + email;
+								url = url + "?memberEmail=" + email;
 
-							fetch(url)
-								.then(response => response.text())	// response 객체에 text로 받기
-								.then(text => memberemailcheck(text));
+								fetch(url)
+									.then(response => response.text())	// response 객체에 text로 받기
+									.then(text => memberemailcheck(text));
+							}
 						}
 					}
 

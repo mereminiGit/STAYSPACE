@@ -28,12 +28,15 @@ public class ajaxReservationCancel extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String spaceName = request.getParameter("spaceName");
 		String memberId = request.getParameter("memberId");
-        ReservationService dao = new ReservationServiceImpl();
+        
+		ReservationService dao = new ReservationServiceImpl();
         ReservationVO vo = new ReservationVO();
         vo.setSpaceName(spaceName);
         vo.setMemberId(memberId);
         vo.setReserveCheck(2);
+        
         int result = dao.reservationUpdate(vo);
+        
         System.out.println("result 찍음!!!!!");
         System.out.println(result);
         

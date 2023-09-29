@@ -117,22 +117,68 @@ function numberWithCommas(x) {
 								</div>
 							</div>
 							<div class="product-price my-3">
-								<span class="fs-1 text-primary">&#8361;<script>numberWithCommas(${s.spacePrice })</script></span> <small>/일</small>
+								<span class="fs-1 text-primary"
+									style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">&#8361;<script>numberWithCommas(${s.spacePrice })</script></span>
+								<small style="font-family: 'Noto Sans KR', sans-serif;">/일</small>
+							</div>
+							<hr>
+							<h5 class="widget-title text-decoration-underline text-uppercase">host</h5>
+							<div class="meta-product"
+								style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400; font-size: medium;">
+								<div class="meta-item d-flex mb-1">
+									<span class="text-uppercase me-2">Phone :</span>
+									<ul class="select-list list-unstyled d-flex mb-0">
+										<li data-value="S" class="select-item">${host.memberTel }</li>
+									</ul>
+								</div>
+								<div class="meta-item d-flex mb-1">
+									<span class="text-uppercase me-2">Email :</span>
+									<ul class="select-list list-unstyled d-flex mb-0">
+										<li data-value="S" class="select-item">${host.memberEmail }</li>
+									</ul>
+								</div>
 							</div>
 							<hr>
 							<h5 class="widget-title text-decoration-underline text-uppercase">
-								Date <br> <input type="text" id="datepicker"
-									name="datepicker">
+								Date<br> <input type="text" id="datepicker"
+									name="datepicker"
+									style="font-family: 'Noto Sans KR', sans-serif; font-size: medium; font-weight: 400; padding-top: 15px"
+									placeholder="날짜를 선택하세요">
 							</h5>
 							<div class="action-buttons my-4 d-flex flex-wrap">
 								<a href="#" class="btn btn-dark me-2 mb-1"
-									onclick="selectTo('${s.spaceId}','wishlist')">Wishlist</a>
-								<a href="#" class="btn btn-dark me-2 mb-1"
-									onclick="selectTo('${s.spaceId}','cart')">Add To Cart</a>
-								<a href="#" class="btn btn-dark" onclick="selectTo('${s.spaceId}','checkout')">Checkout</a>
+									onclick="selectTo('${s.spaceId}','wishlist')">Wishlist</a> <a
+									href="#" class="btn btn-dark me-2 mb-1"
+									onclick="selectTo('${s.spaceId}','cart')">Add To Cart</a> <a
+									href="#" class="btn btn-dark"
+									onclick="selectTo('${s.spaceId}','checkout')">Checkout</a>
+							</div>
+							<hr>
+							<h5 class="widget-title text-decoration-underline text-uppercase">Information
+								Use</h5>
+							<div
+								style="font-family: 'Noto Sans KR', sans-serif; font-weight: 350; font-size: medium;">
+								<div class="meta-item d-flex mb-1">
+									<span class="text-uppercase me-2">공간대여의 재판매를 비롯하여 양도,
+										양수, 교환을 금지합니다.</span>
+								</div>
+								<div class="meta-item d-flex mb-1">
+									<span class="text-uppercase me-2">카드결제 취소시 카드사 정책별 약
+										2~5일(영업일 기준)이 소요됩니다.</span>
+								</div>
+								<div class="meta-item d-flex mb-1">
+									<span class="text-uppercase me-2">안전관리 소홀 및 부주의에 의한
+										안전사고의 책임은 게스트에게 있습니다.</span>
+								</div>
+								<div class="meta-item d-flex mb-1">
+									<span class="text-uppercase me-2">천재 지변으로 이용일 당일의
+										선박/항공편이 취소된 경우, 전체 환불해 드립니다.</span>
+								</div>
+							</div>
+							<div style="display: none">
+								<p id="pagespaceId">${s.spaceId }</p>
 							</div>
 						</div>
-						<hr>
 					</div>
 				</div>
 			</div>
@@ -160,36 +206,44 @@ function numberWithCommas(x) {
 					<div class="tab-content" id="nav-tabContent">
 						<div class="tab-pane fade active show" id="nav-home"
 							role="tabpanel" aria-labelledby="nav-home-tab">
-							<p>주소 : ${s.spaceAddress }</p>
-							<p style="margin-top: -12px">
-							<div id="map" style="width: 100%; height: 350px;"></div>
+							<p
+								style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">주소
+								: ${s.spaceAddress }</p>
+							<!-- <p style="margin-top: -12px"> -->
+							<div id="map"
+								style="width: 100%; height: 350px; margin-top: 10px;"></div>
 						</div>
 						<div class="tab-pane fade" id="nav-information" role="tabpanel"
 							aria-labelledby="nav-information-tab">
-							<p>${s.spaceContent }</p>
+							<p
+								style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400; line-height: 180%; word-spacing: 2px;">${s.spaceContent }</p>
 						</div>
-						
+
 						<!-- 리뷰 -->
 						<div class="tab-pane fade" id="nav-review" role="tabpanel"
 							aria-labelledby="nav-review-tab">
-							<div class="review-box review-style d-flex flex-wrap justify-content-between">
-								
+							<div
+								class="review-box review-style d-flex flex-wrap justify-content-between">
+
 								<!-- 리뷰 반복 -->
 								<c:if test="${empty replyes }">
 									<div class="review-content">
-										<p>등록된 후기가 없습니다.</p>
+										<p
+											style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400; margin: 0;">등록된
+											후기가 없습니다.</p>
 									</div>
 								</c:if>
-								
-								<c:forEach items="${replyes }" var="r">					
+
+								<c:forEach items="${replyes }" var="r">
 									<div class="review-item d-flex">
 										<div class="image-holder">
-											<img src="image/reply/${r.replyImage }" alt="review" style="width: 160px; height: 160px">
+											<img src="image/reply/${r.replyImage }" alt="review"
+												style="width: 160px; height: 160px">
 										</div>
 										<div class="review-content">
 											<div class="rating-container d-flex align-items-center">
 												<!-- 별점 -->
-												<c:forEach begin="1" end="${r.replyStar }" step="1">											
+												<c:forEach begin="1" end="${r.replyStar }" step="1">
 													<div class="rating">
 														<svg class="bi" width="16" height="16">
 																<use xlink:href="#star-fill"></use>
@@ -198,71 +252,81 @@ function numberWithCommas(x) {
 												</c:forEach>
 												<!-- 별점 end -->
 												<span class="rating-count"> (${r.replyStar })</span>
-												
+
 												&nbsp;&nbsp;&nbsp;&nbsp;
 												<!-- 수정버튼 -->
 												<c:if test="${not empty reservations }">
-													<span class="label-body">
-													<a type="button" data-bs-toggle="modal" data-bs-target="#EditReplyModal" onclick="ResetUpdateModal(this.id)"
-														class="btn btn-primary me-2 mb-2" id="EditReply${r.replyId }" data-value="${r.replyId }" style="padding: 5px 10px 5px 10px; margin-top: 8px; border-radius: 30px;">
-													EDIT</a></span>
-	
+													<span class="label-body"> <a type="button"
+														data-bs-toggle="modal" data-bs-target="#EditReplyModal"
+														onclick="ResetUpdateModal(this.id)"
+														class="btn btn-primary me-2 mb-2"
+														id="EditReply${r.replyId }" data-value="${r.replyId }"
+														style="padding: 5px 10px 5px 10px; margin-top: 8px; border-radius: 30px;">
+															EDIT</a>
+													</span>
+
 												</c:if>
 
 												&nbsp;&nbsp;
 												<!-- 삭제버튼 -->
 												<c:if test="${not empty reservations }">
-													<span class="label-body">
-													<a type="button" id="DeleteReply${r.replyId }" onclick="DeleteReplyDo(this.id)"
-														class="btn btn-dark me-2 mb-2" data-value="${r.replyId }" style="padding: 5px 10px 5px 10px; margin-top: 8px; border-radius: 30px;">
-													DELETE</a></span>
+													<span class="label-body"> <a type="button"
+														id="DeleteReply${r.replyId }"
+														onclick="DeleteReplyDo(this.id)"
+														class="btn btn-dark me-2 mb-2" data-value="${r.replyId }"
+														style="padding: 5px 10px 5px 10px; margin-top: 8px; border-radius: 30px;">
+															DELETE</a>
+													</span>
 												</c:if>
 											</div>
-											
-											
-											
-											<div class="review-header">
+
+											<div class="review-header"
+												style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400; padding-bottom: 5px;">
 												<span class="author-name">${r.memberId }</span> <span
 													class="review-date">- ${r.replyDate }</span>
 											</div>
-											<p>${r.replyContent }</p>
+											<p
+												style="font-family: 'Noto Sans KR', sans-serif; font-weight: 350; font-size: medium;">${r.replyContent }</p>
 										</div>
 									</div>
-								</c:forEach>	
-								<!-- 리뷰 반복 -->				
+								</c:forEach>
+								<!-- 리뷰 반복 -->
 							</div>
-							
-							<nav
-								class="navigation paging-navigation text-center padding-medium"
-								role="navigation" style="padding: 0 0 30px 0;">
-								<div
-									class="pagination loop-pagination d-flex justify-content-center align-items-center">
-									<a href="#" class="d-flex pe-2"> <svg width="24" height="24">
-												<use xlink:href="#angle-left"></use></svg>
-									</a> <span aria-current="page" class="page-numbers current pe-3">1</span>
-									<a class="page-numbers pe-3" href="#">2</a> 
-									<a class="page-numbers pe-3" href="#">3</a> 
-									<a class="page-numbers pe-3" href="#">4</a>
-									<a class="page-numbers pe-3" href="#">5</a> 
-									<a href="#" class="d-flex ps-2"> 
-									<svg width="24" height="24">
-									<use xlink:href="#angle-right"></use></svg>
-									</a>
-								</div>
-							</nav>
-							
+
+							<c:if test="${not empty replyes }">
+								<nav
+									class="navigation paging-navigation text-center padding-medium"
+									role="navigation" style="padding: 0 0 0 0;">
+									<div
+										class="pagination loop-pagination d-flex justify-content-center align-items-center">
+										<c:forEach var="page" begin="1" end="${pages}">
+											<c:if test="${page eq currentPage}">
+												<a class="page-numbers current pe-3"
+													href="javascript:void(0);" onclick=url(${page})>${page }</a>
+											</c:if>
+											<c:if test="${page ne currentPage}">
+												<a class="page-numbers pe-3" href="javascript:void(0);"
+													onclick=url(${page})>${page }</a>
+											</c:if>
+										</c:forEach>
+									</div>
+								</nav>
+							</c:if>
+
 							<!-- 리뷰 추가 -->
 							<c:if test="${not empty reservations }">
-							
+
 								<div class="add-review margin-small">
 									<h3>Add a review</h3>
-									<form id="replyForm" action="replyinsert.do" method="post" enctype="multipart/form-data">
+									<form id="replyForm" action="replyinsert.do" method="post"
+										enctype="multipart/form-data">
 										<div class="review-rating py-2">
 											<span class="my-2">Your rating</span>
 											<!-- 별점 -->
 											<div class="rating-container d-flex align-items-center"
 												id="yourRating">
-												<div class="star-rating space-x-4" style="float: left; padding-left: 0;">
+												<div class="star-rating space-x-4"
+													style="float: left; padding-left: 0;">
 													<input type="radio" id="5-stars" name="rating" value="5"
 														v-model="ratings" /> <label for="5-stars" class="star">★</label>
 													<input type="radio" id="4-stars" name="rating" value="4"
@@ -277,45 +341,48 @@ function numberWithCommas(x) {
 											</div>
 										</div>
 										<!-- 이미지 파일 -->
-										<span class="my-2" style="padding-top: 15px;">Your image</span><br>				
-										<input type="file" class="jfilestyle py-2 border-0" id="replyFile" name="replyFile"
-											data-text="Choose your file" style="padding: 8px 0px 0px 8px;">
+										<span class="my-2" style="padding-top: 15px;">Your
+											image</span><br> <input type="file"
+											class="jfilestyle py-2 border-0" id="replyFile"
+											name="replyFile" data-text="Choose your file"
+											style="padding: 8px 0px 0px 8px;">
 										<!-- 리뷰 content -->
 										<div class="py-3">
-												<label>Your Review</label>
-												<textarea placeholder="Write your review here" class="w-100" style="padding-left: 8px"
-												id="replyTextarea" name="replyTextarea"></textarea>
+											<label>Your Review</label>
+											<textarea placeholder="Write your review here" class="w-100"
+												style="padding-left: 8px" id="replyTextarea"
+												name="replyTextarea"></textarea>
 										</div>
-										
-										<div style="display:none">
+
+										<div style="display: none">
 											<input type="text" name="replyMemberId" value="${memberId }">
 										</div>
-										
-										<div style="display:none">
+
+										<div style="display: none">
 											<input type="text" name="replySpaceId" value="${s.spaceId }">
 										</div>
-										
-										<div style="display:none">
-											<input type="text" name="replySpaceName" value="${s.spaceName }">
+
+										<div style="display: none">
+											<input type="text" name="replySpaceName"
+												value="${s.spaceName }">
 										</div>
-										
+
 										<button type="submit" name="replySubmit"
-												class="btn btn-dark w-100 my-3">Submit</button>
+											class="btn btn-dark w-100 my-3">Submit</button>
 									</form>
 								</div>
 							</c:if>
-							
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	
+
 	<!-- 리뷰 수정 모달 -->
-	
-		<form id="editReply"
-		method="post" enctype="multipart/form-data">
+
+	<form id="editReply" method="post" enctype="multipart/form-data">
 		<div class="modal fade" id=EditReplyModal tabindex="-1" role="dialog"
 			aria-hidden="true">
 			<div class="modal-dialog">
@@ -376,59 +443,66 @@ function numberWithCommas(x) {
 					</div>
 					<!-- Modal footer -->
 					<div class="modal-footer">
-						<button type="submit" class="btn btn-primary" id="editBtn" onclick="editform()">submit</button>
+						<button type="submit" class="btn btn-primary" id="editBtn"
+							onclick="editform()">submit</button>
 					</div>
 				</div>
 			</div>
 		</div>
-		</form>
+	</form>
 
 	<!-- 리뷰 등록 후 -->
 	<c:if test="${not empty replyMessage }">
-					<div id="${replyMessage }"></div>
+		<div id="${replyMessage }"></div>
 	</c:if>
-	
+
 	<!-- replyMessage 후기 수정 후 -->
 	<c:if test="${not empty replyEditMessage }">
-					<div id="${replyEditMessage }">
-						<p id="afterEdit" style="display: none">${editspaceId }</p>
-					</div>
+		<div id="${replyEditMessage }">
+			<p id="afterEdit" style="display: none">${editspaceId }</p>
+		</div>
 	</c:if>
-	
-	<section id="products" class="product-store"
-		data-aos="fade" data-aos-easing="ease-in" data-aos-duration="1000"
+
+	<section id="products" class="product-store" data-aos="fade"
+		data-aos-easing="ease-in" data-aos-duration="1000"
 		data-aos-once="true">
-		<div class="container">
+		<div class="container" style="padding-top: 126px">
 			<div
 				class="display-header d-flex flex-wrap justify-content-between align-items-center pb-4">
 				<h3 class="mt-3">Nearby</h3>
-				<a href="shoplist.do" class="btn">View all items</a>
+				<a href="shoplist.do" class="btn"
+					style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">View
+					all items</a>
 			</div>
 			<div class="row">
-			<c:forEach items="${relatedProduct }" var="r">
-				<div class="col-md-3 product-card position-relative mb-3">
-					<div class="image-holder zoom-effect">
-						<img src="image/space/${r.spaceImageMain }" alt="product-item"
-							class="img-fluid zoom-in">
+				<c:forEach items="${relatedProduct }" var="r">
+					<div class="col-md-3 product-card position-relative mb-3">
+						<div class="image-holder zoom-effect">
+							<img src="image/space/${r.spaceImageMain }" alt="product-item"
+								class="img-fluid zoom-in">
+						</div>
+						<div class="card-detail text-center pt-3 pb-2">
+							<h5 class="card-title fs-3 text-capitalize">
+								<a href="detail.do?spaceId=${r.spaceId }"
+									style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">${r.spaceName }</a>
+							</h5>
+							<span class="item-price text-primary"
+								style="font-family: 'Noto Sans KR', sans-serif !important; font-weight: 400; font-size: medium; ">
+								${s.spaceCity } · &#8361;<script>numberWithCommas(${r.spacePrice })</script>
+							</span>
+						</div>
 					</div>
-					<div class="card-detail text-center pt-3 pb-2">
-						<h5 class="card-title fs-3 text-capitalize">
-							<a href="detail.do?spaceId=${r.spaceId }">${r.spaceName }</a>
-						</h5>
-						<span class="item-price text-primary fs-3 fw-light">&#8361;<script>numberWithCommas(${r.spacePrice })</script></span>
-					</div>
-				</div>
 				</c:forEach>
 			</div>
-	<div>
-		<form id="sform" method="post">
-			<input type="hidden" id="spaceId" name="spaceId"> <input
-				type="hidden" id="spaceStartDate" name="spaceStartDate">
-		</form>
-	</div>
+			<div>
+				<form id="sform" method="post">
+					<input type="hidden" id="spaceId" name="spaceId"> <input
+						type="hidden" id="spaceStartDate" name="spaceStartDate">
+				</form>
 			</div>
-	</section> 
-
+		</div>
+	</section>
+	
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7fabb4647805e005839c9dad15111de3&libraries=services"></script>
 	<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
@@ -478,22 +552,9 @@ function numberWithCommas(x) {
 			}
 		});
 	</script>
-	<!--    <script
-		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-		integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
-		integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
-		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
-		integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ=="
-		crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
-	<script>
-		
-	</script>
+
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	
 	<script type="text/javascript">
 		function selectTo(id,go) {
 			let form = document.getElementById("sform");
@@ -526,7 +587,23 @@ function numberWithCommas(x) {
 		}).on('hide', function(event) {
 			event.preventDefault();
 			event.stopPropagation();
-		})
+		});
+	
+	</script>
+
+	<script type="text/javascript">
+	function url(page){
+		var currentUrl = window.location.href + "?spaceId=" + $('#pagespaceId').text();
+		if(currentUrl.includes("?")){
+			if(currentUrl.includes("page")){
+				location.href=currentUrl.split('page')[0]+"page="+page
+			}else{
+				location.href=currentUrl+"&page="+page
+			}
+		} else{
+			location.href=currentUrl+"?page="+page
+		}
+	}
 	</script>
 	
 	<!-- 리뷰 script -->
@@ -569,7 +646,7 @@ function numberWithCommas(x) {
 			});
 		}
 	</script>
-	
+
 	<!-- 리뷰 삭제 -->
 	<script type="text/javascript">
 		function DeleteReplyDo(id) {
@@ -607,7 +684,7 @@ function numberWithCommas(x) {
 			});
 		}
 	</script>
-	
+
 	<!-- 리뷰 수정 -->
 	<script type="text/javascript">
 		let replyId = '';
@@ -627,6 +704,7 @@ function numberWithCommas(x) {
 			console.log(eform.action);
 		}
 	</script>
+
 </body>
 
 </html>
