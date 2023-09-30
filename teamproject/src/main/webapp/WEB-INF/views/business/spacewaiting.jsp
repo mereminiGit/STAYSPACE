@@ -15,8 +15,8 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
 img#stayimg {
-	width: 200px;
-	height: 120px;
+	width: 120px;
+	height: 80px;
 	border-radius: 10px;
 }
 </style>
@@ -41,25 +41,18 @@ img#stayimg {
 								<th>Img</th>
 								<th>Name</th>
 								<th>Price</th>
-
-								<th>subscriber</th>
-								<th>Start Date</th>
-								<th>Payment date</th>
-								<th>Approved or not</th>
-
 								<th>Member Id</th>
 								<th>Reserved Date</th>
+								<th>Payment Date</th>
 								<th>Approval</th>
 
 							</tr>
 						</thead>
 						<tbody class="table-border-bottom-0">
-							<!-- 1번 공간 -->
 							<c:forEach items="${hostReserve }" var="h">
 							<tr>
 								<td>1</td>
 								<td><img id="stayimg"
-
 									src="image/space/${h.reserveImg }" alt="space1"></td>
 								<td>${h.spaceName }</td>
 								<td><fmt:formatNumber value="${h.reservePrice }" type="currency" currencySymbol="￦"/></td>
@@ -75,71 +68,53 @@ img#stayimg {
 									</td>
 								</c:when>
 								<c:otherwise>
-								<td>처리완료</td>
+								<c:if test="${h.reserveCheck == 1 }">
+								<td>예약승인</td>
+								</c:if>
+								<c:if test="${h.reserveCheck == 2 }">
+								<td>예약거부</td>
+								</c:if>
 								</c:otherwise>
 								</c:choose>
 								
 							</tr>
 							</c:forEach>
-							<!-- 2번 공간 -->
-
-							<tr>
-								<td>2</td>
-
-								<td><img id="stayimg"
-									src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
-								<td>촬영
-										스튜디오</td>
-								<td>50000 ₩</td>
-								<td>홍길동</td>
-								<td>2023-09-01</td>
-								<td>
-									<button type="button" class="btn btn-outline-warning approved">승인</button>
-									<button type="button"
-										class="btn btn-outline-secondary rejected">거부</button>
-								</td>
-							</tr>
-							3번 공간
-							<tr>
-								<td>3</td>
-								<td><img id="stayimg"
-									src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
-								<td>촬영
-										스튜디오</td>
-								<td>50000 ₩</td>
-								<td>홍길동</td>
-								<td>2023-09-01</td>
-								<td>
-									<button type="button" class="btn btn-outline-warning approved">승인</button>
-									<button type="button"
-										class="btn btn-outline-secondary rejected">거부</button>
-								</td>
-							</tr>
-							4번 공간
-							<tr>
-								<td>4</td>
-								<td><img id="stayimg"
-									src="sneat/assets/img/avatars/stayimg1.jpg" alt="space1"></td>
-								<td>촬영
-										스튜디오</td>
-								<td>50000 ₩</td>
-								<td>홍길동</td>
-								<td>2023-09-01</td>
-								<td>
-									<button type="button" class="btn btn-outline-warning approved">승인</button>
-									<button type="button"
-										class="btn btn-outline-secondary rejected">거부</button>
-								</td>
-							</tr> -->
 						</tbody>
 						<caption style="padding-left: 20px">
-							<b>Total: ${count}
+							<b>Total: ${count}</b>
 						</caption>
 					</table>
+<!-- pagination -->
+	<nav aria-label="Page navigation">
+                          <ul class="pagination justify-content-center">
+                            <!-- <li class="page-item prev">
+                              <a class="page-link" href="?page=${currentPage-1 }"
+                                ><i class="tf-icon bx bx-chevrons-left"></i
+                              ></a>
+                            </li> -->
+                            <c:forEach var="page" begin="1" end="${pages }">
+	                           <c:if test="${page eq currentPage }">
+	                           <li class="page-item">
+	                             <a class="page-link active" href="?page=${page }">${page }</a>
+	                           </li>
+	                           </c:if>
+	                           <c:if test="${page ne currentPage }">
+	                           <li class="page-item">
+	                             <a class="page-link" href="?page=${page }">${page }</a>
+	                           </li>
+	                           </c:if>
+                            </c:forEach>
+                            <!-- <li class="page-item next">
+                              <a class="page-link" href="?page=${currentPage+1 }"
+                                ><i class="tf-icon bx bx-chevrons-right"></i
+                              ></a>
+                            </li> -->
+                          </ul>
+                        </nav>
+	<!--  -->
 				</div>
 			</div>
 			<!--/ Hoverable Table rows -->
-
 		</div>
 	</div>
 	<script>

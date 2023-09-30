@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -118,8 +119,7 @@ img.stayimg {
 									<strong>ADDRESS:&nbsp;&nbsp;&nbsp;</strong><span>${s.spaceAddress }</span>
 								</p>
 								<p class="card-text">
-									<strong>PRICE:&nbsp;&nbsp;&nbsp;</strong><span>${s.spacePrice }</span>
-									₩
+									<strong>PRICE:&nbsp;&nbsp;&nbsp;</strong><span><fmt:formatNumber value="${s.spacePrice }" type="currency" currencySymbol="￦"/></span>
 								</p>
 								<p class="card-text">
 									<strong>TYPE:&nbsp;&nbsp;&nbsp;</strong><span>${s.spaceType }</span>
@@ -212,11 +212,11 @@ img.stayimg {
 	<!-- pagination -->
 	<nav aria-label="Page navigation">
                           <ul class="pagination justify-content-center">
-                            <li class="page-item prev">
+                            <!-- <li class="page-item prev">
                               <a class="page-link" href="?page=${currentPage-1 }"
                                 ><i class="tf-icon bx bx-chevrons-left"></i
                               ></a>
-                            </li>
+                            </li> -->
                             <c:forEach var="page" begin="1" end="${pages }">
 	                           <c:if test="${page eq currentPage }">
 	                           <li class="page-item">
@@ -229,11 +229,11 @@ img.stayimg {
 	                           </li>
 	                           </c:if>
                             </c:forEach>
-                            <li class="page-item next">
+                            <!-- <li class="page-item next">
                               <a class="page-link" href="?page=${currentPage+1 }"
                                 ><i class="tf-icon bx bx-chevrons-right"></i
                               ></a>
-                            </li>
+                            </li> -->
                           </ul>
                         </nav>
 	<!--  -->

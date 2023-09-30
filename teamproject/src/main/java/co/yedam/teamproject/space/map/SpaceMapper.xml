@@ -23,6 +23,7 @@
    </select>
    <select id="spaceSelectListMember" resultType="co.yedam.teamproject.space.service.SpaceVO">
    		SELECT * FROM SPACE WHERE MEMBER_ID = #{memberId}
+   		ORDER BY SPACE_HIT DESC
    </select>
    <select id="spaceSelectCountMember" resultType="int">
    		SELECT COUNT(*) FROM SPACE WHERE MEMBER_ID = #{memberId}

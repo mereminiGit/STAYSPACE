@@ -31,7 +31,7 @@
 					<table class="table table-hover">
 						<thead>
 							<tr>
-								<th>Image
+								<!-- <th>Image</th>  -->
 								<th>Id</th>
 								<th>Name</th>
 								<th>Email</th>
@@ -43,7 +43,7 @@
 						<tbody class="table-border-bottom-0">
 							<c:forEach items="${members }" var="m">
 								<tr mid="${m.memberId }">
-									<c:choose>
+									<!-- <c:choose>
 										<c:when test="${m.memberImage eq null}">
 											<td onclick="adminmemberdetail('${m.memberId }')"><img
 												src="image/member/defaultimg.png" class="rounded-circle"
@@ -54,7 +54,7 @@
 												src="image/member/${m.memberImage }" class="rounded-circle"
 												alt="default" style="width: 30px"></td>
 										</c:otherwise>
-									</c:choose>
+									</c:choose> -->
 									<td onclick="adminmemberdetail('${m.memberId }')">${m.memberId }</td>
 									<td onclick="adminmemberdetail('${m.memberId }')">${m.memberName }</td>
 									<td onclick="adminmemberdetail('${m.memberId }')">${m.memberEmail }</td>
@@ -80,9 +80,9 @@
 				<!-- pagination -->
 				<nav aria-label="Page navigation">
 					<ul class="pagination justify-content-center">
-						<li class="page-item prev"><a class="page-link"
+						<!-- <li class="page-item prev"><a class="page-link"
 							href="?page=${currentPage-1 }"><i
-								class="tf-icon bx bx-chevrons-left"></i></a></li>
+								class="tf-icon bx bx-chevrons-left"></i></a></li>  -->
 						<c:forEach var="page" begin="1" end="${pages }">
 							<c:if test="${page eq currentPage }">
 								<li class="page-item"><a class="page-link active"
@@ -93,9 +93,9 @@
 									href="?page=${page }">${page }</a></li>
 							</c:if>
 						</c:forEach>
-						<li class="page-item next"><a class="page-link"
+						<!-- <li class="page-item next"><a class="page-link"
 							href="?page=${currentPage+1 }"><i
-								class="tf-icon bx bx-chevrons-right"></i></a></li>
+								class="tf-icon bx bx-chevrons-right"></i></a></li>  -->
 					</ul>
 				</nav>
 				<!--  -->

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +22,7 @@
 
 			<!-- Basic Layout -->
 			<div class="row"
-				style="width: 30%; height: 700px; float: left; margin-right: 1.5%">
+				style="width: 30%; float: left; margin-right: 1.5%">
 				<div class="col-xl">
 					<div class="card mb-4">
 						<div
@@ -29,14 +30,15 @@
 							<h5 class="mb-0">${m.memberId } Detail page</h5>
 							<small class="text-muted float-end"></small>
 						</div>
+							<hr style="margin: 0px">
 						<div class="card-body">
 							<form>
-								<div class="mb-3">
-									<label class="form-label" for="basic-icon-default-fullname">Profile
-										Image</label> <img src="image/member/defaultimg.png" alt="user-avatar"
+								 <!--<div class="mb-3">
+									 <label class="form-label" for="basic-icon-default-fullname">Profile
+										 </label> <img src="image/member/defaultimg.png" alt="user-avatar"
 										class="d-block rounded" height="200" width="200"
-										id="uploadedAvatar" />
-								</div>
+										id="uploadedAvatar" />  
+								</div> -->
 								<div class="mb-3">
 									<label class="form-label" for="basic-icon-default-company">Member
 										Id</label>
@@ -87,9 +89,9 @@
 				</div>
 			</div>
 
-			<div class="row" style="width: 70%; height: 700px; float: left;">
+			<div class="row" style="width: 70%; float: left;">
 				<div class="col-xl">
-					<div class="card mb-4" style="height: 680px;">
+					<div class="card mb-4" style="height: 457px;">
 						<h5 class="card-header">Reply  <span style="color:#aaa"><small>(Total Count: ${replycount })</small></span></h5>
 						<div class="table-responsive text-nowrap">
 							<table class="table table-hover">
@@ -173,7 +175,7 @@
 								</p>
 								
 								<p class="card-text" style="font-size: 14px">
-									<strong>가격:</strong> ${r.reservePrice } ₩
+									<strong>가격:</strong> <fmt:formatNumber value="${r.reservePrice }" type="currency" currencySymbol="￦"/>
 									&nbsp;&nbsp;&nbsp;&nbsp;<strong>예약날짜:</strong>
 									${r.reserveStartDate }
 								</p>

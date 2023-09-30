@@ -19,6 +19,7 @@
 	</select>
 	<select id="reservationSelectHost" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
 		SELECT * FROM RESERVATION WHERE HOST_ID = #{hostId}
+		ORDER BY RESERVE_CHECK
 	</select>
 
 	<select id="reservationHostTotalCount" resultType="int">
@@ -59,7 +60,7 @@
 	<update id="reservationListUpdate" parameterType="co.yedam.teamproject.reservation.service.ReservationVO">
 		UPDATE RESERVATION
 		<set>
-		RESERVE_CHECK = #{reserveCheck}
+		RESERVE_CHECK = #{reserveCheck}, RESERVE_CHECKOUT_DATE = SYSDATE
 		</set>	
 		WHERE HOST_ID=#{hostId}
 		AND RESERVE_ID=#{reserveId}

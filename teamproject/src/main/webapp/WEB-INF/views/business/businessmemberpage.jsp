@@ -42,7 +42,7 @@
 						<img src="image/space/숙소3.jpg" alt="image"
 							style="height: 200px; object-fit: cover; border-radius: 10px 10px 0 0;">
 						<h5 class="card-header">My Account Settings</h5>
-						<!-- Account -->
+						<!-- Account 
 						<div class="card-body">
 							<div class="d-flex align-items-start align-items-sm-center gap-4">
 								<img src="image/member/기본프로필.jpg" alt="user-avatar"
@@ -52,7 +52,7 @@
 									<p class="text-muted mb-0"></p>
 								</div>
 							</div>
-						</div>
+						</div> -->
 						<hr class="my-0" />
 						<form id="formAccountSettings" method="POST"
 							onsubmit="return false">

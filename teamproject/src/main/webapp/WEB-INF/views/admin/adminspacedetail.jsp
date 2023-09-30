@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,7 @@
 			<div class="card-group mb-5">
 				<div class="card">
 					<img class="card-img-top" src="image/space/${s.spaceImageMain }"
-						alt="Card image cap" style="objcet-fit:cover;"/><small class="text-muted" align="center">Main Image</small>
+						alt="Card image cap" style="objcet-fit:cover; height: 459px;"/><small class="text-muted" align="center">Main Image</small>
 					<div class="card-body">
 						<h5 class="card-title"><strong>Space Id</strong></h5>
 						<p class="card-text">&nbsp;  ${s.spaceId }</p>
@@ -35,7 +36,7 @@
 				</div>
 				<div class="card">
 					<img class="card-img-top" src="image/space/${s.spaceImageSub1 }"
-						alt="Card image cap" style="objcet-fit:cover;"/><small class="text-muted" align="center">Sub Image1</small>
+						alt="Card image cap" style="objcet-fit:cover; height: 459px;"/><small class="text-muted" align="center">Sub Image1</small>
 					<div class="card-body">
 						<h5 class="card-title"><strong>Content</strong></h5>
 						<p class="card-text">&nbsp;  ${s.spaceContent }</p>
@@ -43,10 +44,10 @@
 				</div>
 				<div class="card">
 					<img class="card-img-top" src="image/space/${s.spaceImageSub2 }"
-						alt="Card image cap" style="objcet-fit:cover;"/><small class="text-muted" align="center">Sub Image2</small>
+						alt="Card image cap" style="objcet-fit:cover; height: 459px;"/><small class="text-muted" align="center">Sub Image2</small>
 					<div class="card-body">
 						<h5 class="card-title"><strong>Price</strong></h5>
-						<p class="card-text">&nbsp;  ${s.spacePrice } ₩</p>
+						<p class="card-text">&nbsp;  <fmt:formatNumber value="${s.spacePrice }" type="currency" currencySymbol="￦"/></p>
 						<h5 class="card-title"><strong>Type</strong></h5>
 						<p class="card-text">&nbsp;  ${s.spaceType }</p>
 						<h5 class="card-title"><strong>Grade</strong></h5>

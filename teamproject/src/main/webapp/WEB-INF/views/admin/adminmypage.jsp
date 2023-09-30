@@ -41,18 +41,18 @@
 							style="height: 200px; object-fit: cover; border-radius: 10px 10px 0 0;">
 						<h5 class="card-header">My Account Settings</h5>
 						<!-- Account -->
-						<div class="card-body">
-							<div class="d-flex align-items-start align-items-sm-center gap-4">
-								<c:if test="${empty m.memberImage}">
+						<!-- <div class="card-body">
+							  <div class="d-flex align-items-start align-items-sm-center gap-4">
+								  <c:if test="${empty m.memberImage}">
 									<img src="image/member/기본프로필.jpg" alt="기본프로필"
 										class="d-block rounded" height="100" width="100"
 										id="uploadedAvatar" />
-								</c:if>
+								</c:if> 
 								<c:if test="${not empty m.memberImage}">
 									<img src="image/member/${m.memberImage }" alt="user-Img"
 										class="d-block rounded" height="100" width="100"
 										id="uploadedAvatar" />
-								</c:if>
+								</c:if> 
 								<!-- <div class="button-wrapper">
 										<label for="upload" class="btn btn-secondary me-2 mb-4"
 											tabindex="0"> <span class="d-none d-sm-block">이미지
@@ -69,9 +69,9 @@
 
 										<p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max
 											size of 800K</p>
-									</div>  -->
-							</div>
-						</div>
+									</div>  
+							</div> 
+						</div> -->
 						<hr class="my-0" />
 						<div class="card-body">
 							<div class="row">
