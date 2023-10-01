@@ -18,6 +18,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import co.yedam.teamproject.common.ThumbNail;
+import co.yedam.teamproject.common.ViewResolve;
 import co.yedam.teamproject.member.service.MemberService;
 import co.yedam.teamproject.member.service.MemberVO;
 import co.yedam.teamproject.member.serviceImpl.MemberServiceImpl;
@@ -91,29 +92,15 @@ public class AjaxHostSpaceRegiser extends HttpServlet {
 			}
 		}
 		
-		String retCode = "";
 		if (dao.spaceInsert(vo) != 0) {
 			vo = dao.spaceSelect(vo);
-			resultMap.put("retCode", "Success");
-			resultMap.put("data", vo);
 			
-			retCode = "Success";
-			request.getSession().setAttribute("retCode", retCode);
-			response.sendRedirect("registerspace.do");
+			request.setAttribute("retCode", "Success");
 		} else {
-			resultMap.put("retCode", "Fail");
-			resultMap.put("data", vo);
-			
-			retCode = "Fail";
-			request.getSession().setAttribute("retCode", retCode);
-			response.sendRedirect("registerspace.do");
+			request.getSession().setAttribute("retCode", "Fail");
 		}
-
-		ObjectMapper objectMapper = new ObjectMapper();
-		String json = objectMapper.writeValueAsString(resultMap);
-
-		response.setContentType("text/json; charset=UTF-8");
-		response.getWriter().append(json);
+		String page = "business/business/registerspace";
+		ViewResolve.forward(request, response, page);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

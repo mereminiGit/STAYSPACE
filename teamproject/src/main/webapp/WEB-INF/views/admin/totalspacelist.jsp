@@ -59,6 +59,7 @@ img.stayimg {
 									<td onclick="adminspacedetail('${s.spaceId }')">￦<span>${s.spacePrice }</span>
 									</td>
 									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceType }</td>
+									<td style="display: none">${s.spaceContent }</td>
 									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceHit }</td>
 									<td>
 										<div class="dropdown">
@@ -137,8 +138,14 @@ img.stayimg {
 											name="sid" readonly />
 									</div>
 								</div>
-								<label for="formFile" class="form-label">이미지 파일 선택</label> <input
-									class="form-control" name="imgfile" type="file" id="formFile"
+								<label for="formFile" class="form-label">Main 이미지 파일 선택</label> <input
+									class="form-control" name="imgfile1" type="file" id="formFile1"
+									multiple />
+								<label for="formFile" class="form-label">Sub1 이미지 파일 선택</label> <input
+									class="form-control" name="imgfile2" type="file" id="formFile2"
+									multiple />
+								<label for="formFile" class="form-label">Sub2 이미지 파일 선택</label> <input
+									class="form-control" name="imgfile3" type="file" id="formFile3"
 									multiple />
 							</div>
 						</div>
@@ -173,6 +180,13 @@ img.stayimg {
 								</select>
 							</div>
 						</div>
+						<div class="row">
+							<div class="col mb-3">
+								<label class="form-label" for="basic-default-message">Content</label>
+											<textarea id="basic-default-message" name="scontent"
+												class="form-control" placeholder="대여공간에 대한 설명을 입력하세요."></textarea>
+							</div>
+						</div>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-outline-secondary"
@@ -187,7 +201,28 @@ img.stayimg {
 	<form id="detailForm" action="AjaxSpaceDetail.do" method="post">
 		<input type="hidden" id="spaceId" name="spaceId">
 	</form>
+	<c:if test="${not empty retCode }">
+	<div id="${retCode }"></div>
+	</c:if>
 	<script>
+			//수정시 알람창
+			if($('#Success').length){
+				Swal.fire({
+					  icon: 'success',
+					  text: '수정되었습니다.',
+					}).then(function () {
+						location.href = 'totalspacelist.do';
+					});
+			}
+			if($('#Fail').length){
+				Swal.fire({
+					  icon: 'error',
+					  text: '처리 중 오류 발생',
+					}).then(function () {
+						location.href = 'totalspacelist.do';
+					});
+			}
+			
 			  //공간 상세보기
 			  function adminspacedetail(id){
 				  let form = $('#detailForm');
@@ -244,20 +279,19 @@ img.stayimg {
             	  console.log(e.target.parentElement.parentElement.parentElement.parentElement);
             	  
             	  let spaceid = tr.children[0].innerText;
-            	  let spaceimage = tr.children[1].children[0].getAttribute('src');
-            	  spaceimage = spaceimage.substring(spaceimage.lastIndexOf("/")+1);
             	  let spacename = tr.children[2].innerText;
             	  let spaceaddress = tr.children[3].innerText;
             	  let spaceprice = tr.children[4].children[0].innerText;
             	  let spacetype = tr.children[5].innerText;
+            	  let spacecontent = tr.children[6].innerText;
             	  //console.log(spacetype);
             	  
             	  $('input[name=sid]').val(spaceid);
             	  $('input[name=sname]').val(spacename);
             	  $('input[name=saddress]').val(spaceaddress);
             	  $('input[name=sprice]').val(spaceprice);
-            	  //$('input[name=imgfile]').val(spaceimage);
             	  $('#stype').val(spacetype).prop('selected', true);
+            	  $('textarea').val(spacecontent);
             	  
               	})
               	

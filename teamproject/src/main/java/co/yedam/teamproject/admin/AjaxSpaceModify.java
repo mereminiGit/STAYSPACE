@@ -48,24 +48,31 @@ public class AjaxSpaceModify extends HttpServlet {
 		String saddress = multi.getParameter("saddress");
 		String sprice = multi.getParameter("sprice");
 		String stype = multi.getParameter("stype");
+		String scontent = multi.getParameter("scontent");
 
 		vo.setSpaceId(Integer.parseInt(sid));
 		vo.setSpaceName(sname);
 		vo.setSpaceAddress(saddress);
 		vo.setSpacePrice(Integer.parseInt(sprice));
 		vo.setSpaceType(stype);
+		vo.setSpaceContent(scontent);
 
-		String imgFileName = multi.getOriginalFileName("imgfile");
-		String realImg = multi.getFilesystemName("imgfile");
+		String imgFileName1 = multi.getOriginalFileName("imgfile1");
+		String realImg1 = multi.getFilesystemName("imgfile1");
+		String realImg2 = multi.getFilesystemName("imgfile2");
+		String realImg3 = multi.getFilesystemName("imgfile3");
+		
+		vo.setSpaceImageSub1(realImg2);
+		vo.setSpaceImageSub2(realImg3);
+		
+		if (imgFileName1 != null) {
 
-		if (imgFileName != null) {
+			vo.setSpaceImageMain(realImg1);
 
-			vo.setSpaceImageMain(realImg);
-
-			System.out.println(imgFileName);
+			System.out.println(imgFileName1);
 			
-			String fileExt = imgFileName.substring(imgFileName.indexOf(".") + 1);
-			String thumb = thumbNail.makeThumbnail(saveDir + File.separator + imgFileName, imgFileName, fileExt,
+			String fileExt = imgFileName1.substring(imgFileName1.indexOf(".") + 1);
+			String thumb = thumbNail.makeThumbnail(saveDir + File.separator + imgFileName1, imgFileName1, fileExt,
 					saveDir + File.separator);
 			thumb = thumb.substring(thumb.lastIndexOf("\\") + 1);
 			vo.setSpaceThumb(thumb);
@@ -76,21 +83,22 @@ public class AjaxSpaceModify extends HttpServlet {
 				vo.setSpaceAttech(attechFile);
 			}
 		}
+		
+		
 		if (dao.spaceUpdate(vo) != 0) {
 			vo = dao.spaceSelect(vo);
-			resultMap.put("retCode", "Success");
-			resultMap.put("data", vo);
 			
-            response.sendRedirect("totalspacelist.do");
+			request.setAttribute("retCode", "Success");
+//          response.sendRedirect("totalspacelist.do");
 		} else {
-			resultMap.put("retCode", "Fail");
+			
+			request.setAttribute("retCode", "Fail");
+//			response.sendRedirect("totalspacelist.do");
 		}
 
-		ObjectMapper objectMapper = new ObjectMapper();
-		String json = objectMapper.writeValueAsString(resultMap);
-
-		response.setContentType("text/json; charset=UTF-8");
-		response.getWriter().append(json);
+//		response.sendRedirect("totalspacelist.do");
+		String page = "admin/admin/totalspacelist";
+		ViewResolve.forward(request, response, page);
 
 	}
 
