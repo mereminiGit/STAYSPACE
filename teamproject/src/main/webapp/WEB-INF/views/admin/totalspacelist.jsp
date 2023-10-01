@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,6 +43,7 @@ img.stayimg {
 								<th>Address</th>
 								<th>Price</th>
 								<th>Type</th>
+								<th>Hit</th>
 								<th>Action</th>
 							</tr>
 						</thead>
@@ -56,9 +56,10 @@ img.stayimg {
 										alt="image"></td>
 									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceName }</td>
 									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceAddress }</td>
-									<td onclick="adminspacedetail('${s.spaceId }')"><span><fmt:formatNumber value="${s.spacePrice }" type="currency" currencySymbol="￦"/></span>
+									<td onclick="adminspacedetail('${s.spaceId }')">￦<span>${s.spacePrice }</span>
 									</td>
 									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceType }</td>
+									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceHit }</td>
 									<td>
 										<div class="dropdown">
 											<button type="button"
@@ -211,6 +212,8 @@ img.stayimg {
 		      					Swal.fire({
 									  icon: 'success',
 									  text: '삭제 성공',
+									}).then((result)=>{
+										location.href = "totalspacelist.do"
 									})
 		    				}else if(result.retCode == 'Fail'){
 		 						Swal.fire({
@@ -257,7 +260,7 @@ img.stayimg {
             	  $('#stype').val(spacetype).prop('selected', true);
             	  
               	})
-            	  
+              	
               </script>
 
 	<!-- Core JS -->

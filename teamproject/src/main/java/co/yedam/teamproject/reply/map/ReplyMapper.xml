@@ -5,10 +5,10 @@
 		SELECT * FROM REPLY ORDER BY REPLY_DATE DESC
 	</select>
 	<select id="replySelectListMember" resultType="co.yedam.teamproject.reply.service.ReplyVO">
-		SELECT * FROM REPLY WHERE MEMBER_ID = #{memberId}
+		SELECT * FROM REPLY WHERE MEMBER_ID = #{memberId} ORDER BY REPLY_DATE DESC
 	</select>
 	<select id="replySelectListId" resultType="co.yedam.teamproject.reply.service.ReplyVO">
-		SELECT * FROM REPLY WHERE SPACE_ID = #{spaceId} ORDER BY REPLY_DATE
+		SELECT * FROM REPLY WHERE SPACE_ID = #{spaceId} ORDER BY REPLY_DATE DESC
 	</select>
 	<select id="replySelectList" resultType="co.yedam.teamproject.reply.service.ReplyVO">
 		SELECT * FROM REPLY WHERE SPACE_NAME = #{spaceName}

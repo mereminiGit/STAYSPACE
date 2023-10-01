@@ -94,12 +94,12 @@
 					<div class="card mb-4" style="height: 457px;">
 						<h5 class="card-header">Reply  <span style="color:#aaa"><small>(Total Count: ${replycount })</small></span></h5>
 						<div class="table-responsive text-nowrap">
-							<table class="table table-hover">
+							<table class="table table-hover" style="table-layout: fixed;">
 								<thead>
 									<tr>
 										<th>Img</th>
 										<th>Space Name</th>
-										<th>Content</th>
+										<th style="width: 25%">Content</th>
 										<th>Write Date</th>
 										<th>Grade</th>
 										<th>Action</th>
@@ -117,18 +117,18 @@
 										<tr rid="${reply.replyId }">
 											<c:choose>
 												<c:when test="${reply.replyImage eq null}">
-													<td><img src="image/member/defaultimg.png"
+													<td class="detailContent" data-bs-toggle="modal" data-bs-target="#modalScrollable"><img src="image/member/defaultimg.png"
 														class="rounded-circle" alt="default" style="width: 30px"></td>
 												</c:when>
 												<c:otherwise>
-													<td><img src="image/reply/${reply.replyImage }"
+													<td class="detailContent" data-bs-toggle="modal" data-bs-target="#modalScrollable"><img src="image/reply/${reply.replyImage }"
 														class="rounded-circle" alt="default" style="width: 30px"></td>
 												</c:otherwise>
 											</c:choose>
-											<td>${reply.spaceName }</td>
-											<td>${reply.replyContent }</td>
-											<td>${reply.replyDate }</td>
-											<td>
+											<td class="detailContent" data-bs-toggle="modal" data-bs-target="#modalScrollable">${reply.spaceName }</td>
+											<td class="detailContent" data-bs-toggle="modal" data-bs-target="#modalScrollable" style="overflow: hidden; text-overflow: ellipsis;">${reply.replyContent }</td>
+											<td class="detailContent" data-bs-toggle="modal" data-bs-target="#modalScrollable">${reply.replyDate }</td>
+											<td class="detailContent" data-bs-toggle="modal" data-bs-target="#modalScrollable">
 											<c:forEach begin="1" end="${reply.replyStar }">
 											<span>★</span>
 											</c:forEach>
@@ -198,27 +198,38 @@
 					</div>
 				</div>
 			</c:forEach>
-			<!-- <div class="card mb-3" style="float: right">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img class="card-img card-img-left" src="../assets/img/elements/12.jpg" alt="Card image" />
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">
-                            This is a wider card with supporting text below as a natural lead-in to additional content.
-                            This content is a little bit longer.
-                          </p>
-                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>  -->
-			<!--/ Horizontal -->
 		</div>
 	</div>
+	<!-- Modal -->
+    <div class="modal fade" id="modalScrollable" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalScrollableTitle">Reply Content Detail</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+          <p></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 	<script>
+	//후기 상세보기
+	$('.detailContent').on('click',function(e){
+		//console.log(e.target.parentElement.children[2].innerText);
+		$('.modal-body').text(e.target.parentElement.children[2].innerText);
+	})
 	//삭제 이벤트 
         $('.replydelete').on('click', function (e) {
           //e.target.parentElement.parentElement.parentElement.remove();
@@ -238,7 +249,9 @@
                   Swal.fire({
                     icon: 'success',
                     text: '삭제 성공',
-                  })
+                  }).then((result)=>{
+						location.href = "AjaxMemberDetail.do"
+					})
                 }else if (result.retCode == 'Fail') {
                   Swal.fire({
                     icon: 'error',

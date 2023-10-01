@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -119,10 +118,13 @@ img.stayimg {
 									<strong>ADDRESS:&nbsp;&nbsp;&nbsp;</strong><span>${s.spaceAddress }</span>
 								</p>
 								<p class="card-text">
-									<strong>PRICE:&nbsp;&nbsp;&nbsp;</strong><span><fmt:formatNumber value="${s.spacePrice }" type="currency" currencySymbol="￦"/></span>
+									<strong>PRICE:&nbsp;&nbsp;&nbsp;￦</strong><span>${s.spacePrice }</span>
 								</p>
 								<p class="card-text">
 									<strong>TYPE:&nbsp;&nbsp;&nbsp;</strong><span>${s.spaceType }</span>
+								</p>
+								<p class="card-text">
+									<strong>Hit:&nbsp;&nbsp;&nbsp;</strong><span>${s.spaceHit }</span>
 								</p>
 								<div align="center">
 									<button type="button" class="btn btn-outline-dark"
@@ -265,7 +267,9 @@ img.stayimg {
 		      					Swal.fire({
 									  icon: 'success',
 									  text: '삭제 성공',
-									})
+									}).then((result)=>{
+					                	  location.href = "BusinessSpaceList.do";
+					                  })
 		    				}else if(result.retCode == 'Fail'){
 		 						Swal.fire({
 								  icon: 'error',
@@ -321,7 +325,7 @@ img.stayimg {
 							})
 							setTimeout(function(){
 								location.reload();
-							}, 2000);
+							}, 10000);
 					}else{
 						Swal.fire({
 							  icon: 'error',
@@ -329,7 +333,7 @@ img.stayimg {
 							})
 							setTimeout(function(){
 								location.reload();
-							}, 2000);
+							}, 10000);
 					}
 				})
 				

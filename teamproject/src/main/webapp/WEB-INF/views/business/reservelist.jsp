@@ -20,7 +20,6 @@
 				allEvents.push({
 					title : event.spaceName,
 					start : event.reserveStartDate,
-					end : event.reserveEndDate,
 					groupId : event.reserveId,
 					allDay: true
 				})
@@ -42,34 +41,6 @@
 				navLinks : true, // can click day/week names to navigate views
 				selectable : false,
 				selectMirror : true,
-				// select : function(arg) {
-				// 	var title = prompt('새 예약을 등록하세요.');
-				// 	if (title) {
-				// 		fetch('AjaxReserveInsert.do',{
-				// 			method: "POST",
-				// 			headers: {"Content-Type": "application/x-www-form-urlencoded"},
-				// 			body: 'title='+title+'&start='+arg.startStr+'&end='+arg.endStr
-				// 		})
-				// 		.then(resolve => resolve.json())
-				// 		.then(json => {
-				// 			if(json.retCode == "Success"){
-				// 				calendar.addEvent({
-				// 					title : title,
-				// 					start : arg.start,
-				// 					end : arg.end,
-				// 					allDay : arg.allDay,
-				// 				})
-				// 			}else{
-				// 				Swal.fire({
-				// 					  icon: 'error',
-				// 					  text: '처리 중 오류 발생',
-				// 					})
-				// 			}
-				// 		})
-				// 		.catch();
-				// 	}
-				// 	calendar.unselect()
-				// },
 				eventClick : function(arg) {
 					console.log(arg);
 					Swal.fire({
@@ -81,7 +52,7 @@
 	      	            confirmButtonText: 'Yes'
 	      	          }).then((result) => {
 						if (result.isConfirmed) {
-							//console.log(arg.event);
+							console.log(arg.event);
 							fetch('AjaxReserveDelete.do',{
 								method: "POST",
 								headers: {"Content-Type": "application/x-www-form-urlencoded"},

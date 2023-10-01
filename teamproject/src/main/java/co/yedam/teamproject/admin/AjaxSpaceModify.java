@@ -2,6 +2,7 @@ package co.yedam.teamproject.admin;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -79,7 +80,8 @@ public class AjaxSpaceModify extends HttpServlet {
 			vo = dao.spaceSelect(vo);
 			resultMap.put("retCode", "Success");
 			resultMap.put("data", vo);
-			response.sendRedirect("totalspacelist.do");
+			
+            response.sendRedirect("totalspacelist.do");
 		} else {
 			resultMap.put("retCode", "Fail");
 		}

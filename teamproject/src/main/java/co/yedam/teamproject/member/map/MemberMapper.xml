@@ -4,7 +4,7 @@
 
 	<select id="memberSelectList"
 		resultType="co.yedam.teamproject.member.service.MemberVO">
-		SELECT * FROM MEMBER
+		SELECT * FROM MEMBER ORDER BY MEMBER_ID
 	</select>
 
 

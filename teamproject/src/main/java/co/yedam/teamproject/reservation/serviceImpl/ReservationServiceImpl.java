@@ -89,4 +89,9 @@ public class ReservationServiceImpl implements ReservationService {
 		return map.reservationSelectDate(vo);
 	}
 
+@Override
+public List<ReservationVO> reservationSelectListHost(String hostId) {
+	return map.reservationSelectListHost(hostId);
+}
+
 }

@@ -9,11 +9,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import co.yedam.teamproject.common.ViewResolve;
+import co.yedam.teamproject.member.service.MemberService;
+import co.yedam.teamproject.member.service.MemberVO;
+import co.yedam.teamproject.member.serviceImpl.MemberServiceImpl;
 import co.yedam.teamproject.reservation.service.ReservationService;
 import co.yedam.teamproject.reservation.service.ReservationVO;
 import co.yedam.teamproject.reservation.serviceImpl.ReservationServiceImpl;
@@ -29,12 +33,15 @@ public class SpaceWaiting extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String memberId = (String) session.getAttribute("memberId");
+		
 		ReservationService dao = new ReservationServiceImpl();
 		List<ReservationVO> hostReserve = new ArrayList<ReservationVO>();
 		ReservationVO vo = new ReservationVO();
-		vo.setMemberId("jiwon");
-		vo.setHostId("jiwon");
-		ObjectMapper objectMapper = new ObjectMapper();// json 형태의 데이터로 변환하고 날짜형 jsr310규정을 충족시키기 위해서
+
+		vo.setHostId(memberId);
+		//ObjectMapper objectMapper = new ObjectMapper();// json 형태의 데이터로 변환하고 날짜형 jsr310규정을 충족시키기 위해서
 
 		hostReserve = dao.reservationSelectHost(vo);
 		int n = dao.reservationHostTotalCount(vo.getHostId());

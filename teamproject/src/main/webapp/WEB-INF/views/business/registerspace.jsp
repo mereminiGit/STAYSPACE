@@ -121,7 +121,7 @@
 							})
 							setTimeout(function(){
 								location.reload();
-							}, 2000);
+							}, 10000);
 				});
 					}else{
 						Swal.fire({
@@ -130,7 +130,7 @@
 							})
 							setTimeout(function(){
 								location.reload();
-							}, 2000);
+							}, 10000);
 					}
 		})
 	</script>

@@ -9,8 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.yedam.teamproject.common.ViewResolve;
+import co.yedam.teamproject.member.service.MemberService;
+import co.yedam.teamproject.member.service.MemberVO;
+import co.yedam.teamproject.member.serviceImpl.MemberServiceImpl;
 import co.yedam.teamproject.space.service.SpaceService;
 import co.yedam.teamproject.space.service.SpaceVO;
 import co.yedam.teamproject.space.serviceImpl.SpaceServiceImpl;
@@ -24,12 +28,18 @@ public class BusinessSpaceList extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		SpaceService dao = new SpaceServiceImpl();
+		HttpSession session = request.getSession();
+		SpaceService sdao = new SpaceServiceImpl();
 		List<SpaceVO> spaces = new ArrayList<>();
-		
-		String memberId = "min";
-		spaces = dao.spaceSelectListMember(memberId);
-		int n = dao.spaceSelectCountMember(memberId);
+		MemberService dao = new MemberServiceImpl();
+		MemberVO vo = new MemberVO();
+		String memberId = (String) session.getAttribute("memberId");
+
+		vo.setMemberId(memberId);
+		vo = dao.memberSelect(vo);
+		spaces = sdao.spaceSelectListMember(memberId);
+		int n = sdao.spaceSelectCountMember(memberId);
+		// System.out.println(vo.getMemberCheck());
 		
 		request.setAttribute("spaces", spaces);
 		request.setAttribute("count", n);

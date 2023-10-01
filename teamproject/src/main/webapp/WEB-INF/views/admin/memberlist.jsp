@@ -135,6 +135,8 @@
                   Swal.fire({
                     icon: 'success',
                     text: '삭제 성공',
+                  }).then((result)=>{
+                	  location.href = "memberlist.do";
                   })
                 }else if (result.retCode == 'Fail') {
                   Swal.fire({

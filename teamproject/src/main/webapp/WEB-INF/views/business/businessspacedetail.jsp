@@ -85,12 +85,12 @@
 					<div class="card mb-4">
 						<h5 class="card-header">Reply  <span style="color:#aaa"><small>(Total Count: ${replycount })</small></span></h5>
 						<div class="table-responsive text-nowrap">
-							<table class="table table-hover" id="replyTable">
+							<table class="table table-hover" id="replyTable" style="table-layout: fixed;">
 								<thead>
 									<tr>
 										<th>Img</th>
 										<th>Space Name</th>
-										<th>Content</th>
+										<th style="width: 40%">Content</th>
 										<th>Write Date</th>
 										<th>Grade</th>
 										<th>Action</th>
@@ -108,18 +108,19 @@
 												<tr rid="${reply.replyId }">
 													<c:choose>
 														<c:when test="${reply.replyImage eq null}">
-															<td><img src="image/member/defaultimg.png"
+															<td class="detailContent" data-bs-toggle="modal" data-bs-target="#modalScrollable"><img src="image/member/defaultimg.png"
 																class="rounded-circle" alt="default" style="width: 30px"></td>
 														</c:when>
 														<c:otherwise>
-															<td><img src="image/reply/${reply.replyImage }"
+															<td class="detailContent" data-bs-toggle="modal" data-bs-target="#modalScrollable"><img src="image/reply/${reply.replyImage }"
 																class="rounded-circle" alt="default" style="width: 30px"></td>
 														</c:otherwise>
 													</c:choose>
-													<td>${reply.memberId }</td>
-													<td>${reply.replyContent }</td>
-													<td>${reply.replyDate }</td>
-													<td><c:forEach begin="1" end="${reply.replyStar }">
+													<td class="detailContent" data-bs-toggle="modal" data-bs-target="#modalScrollable">${reply.memberId }</td>
+													<td class="detailContent" data-bs-toggle="modal" data-bs-target="#modalScrollable" style="overflow: hidden; text-overflow: ellipsis;">${reply.replyContent }</td>
+													<td class="detailContent" data-bs-toggle="modal" data-bs-target="#modalScrollable">${reply.replyDate }</td>
+													<td class="detailContent" data-bs-toggle="modal" data-bs-target="#modalScrollable">
+														<c:forEach begin="1" end="${reply.replyStar }">
 															<span>★</span>
 														</c:forEach> <c:forEach begin="1" end="${5-reply.replyStar }">
 															<span>☆</span>
@@ -203,7 +204,36 @@
 			</div>
 		</div>
 	</div>
+	<!-- Modal -->
+    <div class="modal fade" id="modalScrollable" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalScrollableTitle">Reply Content Detail</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+          <p></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 	<script>
+	//후기 상세보기
+	$('.detailContent').on('click',function(e){
+		//console.log(e.target.parentElement.children[2].innerText);
+		$('.modal-body').text(e.target.parentElement.children[2].innerText);
+	})
 	//삭제 이벤트 
         $('.replydelete').on('click', function (e) {
           //e.target.parentElement.parentElement.parentElement.remove();
@@ -223,7 +253,9 @@
                   Swal.fire({
                     icon: 'success',
                     text: '삭제 성공',
-                  })
+                  }).then((result)=>{
+						location.href = "AjaxHostSpaceDetail.do"
+					})
                   
                 }else if (result.retCode == 'Fail') {
                   Swal.fire({
@@ -265,7 +297,9 @@
                     Swal.fire({
                       icon: 'success',
                       text: '삭제 성공',
-                    })
+                    }).then((result)=>{
+                    	location.href = "AjaxHostSpaceDetail.do"
+					})
                     
                   }else if (result.retCode == 'Fail') {
                     Swal.fire({
