@@ -157,7 +157,7 @@
 										<th>Reserved Date</th>
 										<th>Reserve Check</th>
 										<th>Check Out Date</th>
-										<th>Action</th>
+										<!-- <th>Action</th>  -->
 									</tr>
 								</thead>
 								<tbody class="table-border-bottom-0">
@@ -173,25 +173,26 @@
 													<td>${r.reserveId }</td>
 													<td>${r.memberId }</td>
 													<td>${r.reserveStartDate }</td>
-													<c:choose>
-														<c:when test="${r.reserveCheck eq 0}">
-															<td><a href="spacewaiting.do" style="color: red">미승인</a></td>
+														<c:if test="${r.reserveCheck eq 0}">
+															<td><a href="spacewaiting.do" style="color: red">예약대기</a></td>
 															<td></td>
-														</c:when>
-														<c:otherwise>
-															<td>승인</td>
+														</c:if>
+														<c:if test="${r.reserveCheck eq 1}">
+															<td>예약승인</td>
 															<td>${r.reserveCheckoutDate }</td>
-														</c:otherwise>
-													</c:choose>
-
-													<td>
+														</c:if>
+														<c:if test="${r.reserveCheck eq 2}">
+															<td>예약취소</td>
+															<td>${r.reserveCheckoutDate }</td>
+														</c:if>
+													<!-- <td>
 														<div class="dropdown">
 															<button type="button"
 																class="btn p-0 dropdown-toggle hide-arrow reservedelete">
 																<i class="bx bx-trash me-1"></i> Delete
 															</button>
 														</div>
-													</td>
+													</td>  -->
 												</tr>
 											</c:forEach>
 										</c:otherwise>
