@@ -175,7 +175,7 @@
 													<td>${r.reserveStartDate }</td>
 													<c:choose>
 														<c:when test="${r.reserveCheck eq 0}">
-															<td>미승인</td>
+															<td><a href="spacewaiting.do" style="color: red">미승인</a></td>
 															<td></td>
 														</c:when>
 														<c:otherwise>

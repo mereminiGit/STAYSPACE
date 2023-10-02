@@ -21,6 +21,9 @@
 					title : event.spaceName,
 					start : event.reserveStartDate,
 					groupId : event.reserveId,
+					writer : event.memberId,
+					content : event.reserveImg,
+					id : event.reservePrice,
 					allDay: true
 				})
 			})
@@ -37,12 +40,27 @@
 					center : 'title',
 					right : 'dayGridMonth,timeGridWeek,timeGridDay'
 				},
-				initialDate : '2023-09-08',
+				initialDate : new Date(),
 				navLinks : true, // can click day/week names to navigate views
 				selectable : false,
 				selectMirror : true,
 				eventClick : function(arg) {
-					console.log(arg);
+					//console.log(arg);
+					Swal.fire({
+						title: "Reservation Information",
+						imageUrl: "image/space/"+arg.event.extendedProps.content,
+						imageWidth: 200,
+						imageHeight: 298,
+						html: "<br><div><strong>Space Name:&nbsp;&nbsp;&nbsp;</strong>"+arg.event.title+"</div><br>"
+							+"<div><strong>Reserved Date:&nbsp;&nbsp;&nbsp;</strong>"+dateToFormat(arg.event.start)+"</div><br>"
+							+"<div><strong>Member Id:&nbsp;&nbsp;&nbsp;</strong>"+arg.event.extendedProps.writer+"</div><br>"
+							+"<div><strong>Price:&nbsp;&nbsp;&nbsp;</strong>"+arg.event.id+"</div><br>",
+	      	            showCancelButton: true,
+	      	            confirmButtonColor: '#3085d6',
+	      	            cancelButtonColor: '#d33',
+	      	            confirmButtonText: 'Delete'
+					}).then((result)=>{
+						if (result.isConfirmed) {
 					Swal.fire({
 	      	            text: "해당 예약을 정말 삭제하시겠습니까?",
 	      	            icon: 'warning',
@@ -77,6 +95,8 @@
 	      	        	  
 	      	          }
 	      	          })
+						}
+					})
 					},
 					eventBorderColor: '#343a40',
 					eventBackgroundColor : '#343a40',
@@ -89,6 +109,21 @@
 
 		});
 
+		function dateToFormat(date) {
+		    var year = date.getFullYear();
+	
+		    var month = date.getMonth() + 1;
+		    if (month < 10)  {
+		        month = '0' + month;
+		    }
+	
+		    var date = date.getDate();
+		    if (date < 10) {
+		        date = '0' + date;
+		    }
+		    
+		    return year + '/' + month + '/' + date;
+		}
 </script>
 <style>
 body {
