@@ -47,6 +47,10 @@ public class DetailController extends HttpServlet {
 		System.out.println("spaceId찍음>>"+request.getParameter("spaceId"));
 		vo=dao.spaceSelect(vo);
 		request.setAttribute("s", vo);
+		//예약날짜받기
+		List<ReservationVO> reserved = new ArrayList<ReservationVO>();
+		reserved=daoReservation.reservationSelectListSpace(request.getParameter("spaceId"));
+		request.setAttribute("reserved", reserved);
 		
 		List<SpaceVO> spaces = new ArrayList<SpaceVO>();
 		/*

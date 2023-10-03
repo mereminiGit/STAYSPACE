@@ -518,6 +518,7 @@ function numberWithCommas(x) {
 		$('#datepicker').datepicker({
 			dateFormat : 'yy-mm-dd',
 			minDate : 0,
+			/* beforeShowDay: disableSomeDay, */
 			onSelect : function(d) {
 				var date=$("#datepicker").val();
 				let form = document.getElementById("sform");
@@ -527,6 +528,20 @@ function numberWithCommas(x) {
 			event.preventDefault();
 			event.stopPropagation();
 		})
+		var disabledDays=[];
+		
+			console.log(${reserved.memberId});
+		/* function disableSomeDay(date){
+			var month=date.getMonth();
+			var dates=date.getDate();
+			var year=date.getFullYear();
+			for (i=0; i< disabledDays.length;i++){
+				if($.inArray(year+'-'+(month+1)+'-'+dates,disabledDays)!=-1){
+					return[false];
+				}
+			}
+				return[true];
+		} */
 	</script>
 	
 	<!-- 리뷰 script -->
