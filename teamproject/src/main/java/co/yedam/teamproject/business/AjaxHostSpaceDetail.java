@@ -50,12 +50,50 @@ public class AjaxHostSpaceDetail extends HttpServlet {
 
 		reserveList = rdao.reservationSelectListSpace(sid);
 		request.setAttribute("reserve", reserveList);
-		
+
 		int replycount = replydao.replyCountSpace(Integer.parseInt(sid));
 		request.setAttribute("replycount", replycount);
-		
+
 		int reservecount = rdao.reservationCountSpace(Integer.parseInt(sid));
 		request.setAttribute("reservecount", reservecount);
+
+		// reply페이징
+		int rppages = (int) Math.ceil(replyList.size() / 5.0); // 페이지 수
+		request.setAttribute("rpresults", replyList.size()); // 공간 수
+		request.setAttribute("rppages", rppages); // 페이지 수
+
+		String rpcurrentPage = request.getParameter("rppage"); // 현재페이지
+		if (rpcurrentPage == null || rpcurrentPage.equals("0")) {
+			rpcurrentPage = "1";
+		}
+
+		request.setAttribute("rpcurrentPage", rpcurrentPage); // 현재페이지
+		int rppage = Integer.parseInt(rpcurrentPage);
+		List<ReplyVO> rplist = new ArrayList<ReplyVO>();
+		for (int i = (rppage - 1) * 5; i < rppage * 5 && i < replyList.size(); i++) {
+			rplist.add(replyList.get(i)); // 페이지만큼 출력
+		}
+		request.setAttribute("replyList", rplist);
+		//
+
+		// reserve페이징
+		int rspages = (int) Math.ceil(reserveList.size() / 5.0); // 페이지 수
+		request.setAttribute("rsresults", reserveList.size()); // 공간 수
+		request.setAttribute("rspages", rspages); // 페이지 수
+
+		String rscurrentPage = request.getParameter("rspage"); // 현재페이지
+		if (rscurrentPage == null || rscurrentPage.equals("0")) {
+			rscurrentPage = "1";
+		}
+
+		request.setAttribute("rscurrentPage", rscurrentPage); // 현재페이지
+		int rspage = Integer.parseInt(rscurrentPage);
+		List<ReservationVO> rslist = new ArrayList<ReservationVO>();
+		for (int i = (rspage - 1) * 5; i < rspage * 5 && i < reserveList.size(); i++) {
+			rslist.add(reserveList.get(i)); // 페이지만큼 출력
+		}
+		request.setAttribute("reserveList", rslist);
+		//
 
 		String path = "business/business/businessspacedetail";
 		ViewResolve.forward(request, response, path);

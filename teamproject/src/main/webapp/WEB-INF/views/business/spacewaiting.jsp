@@ -20,14 +20,26 @@ img#stayimg {
 	border-radius: 10px;
 }
 #myInput {
-  
-  width: 80%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
+  background-image: url('sneat/assets/img/icons/unicons/searchicon.png');
+  background-size: 25px 25px;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 15px;
+  padding: 10px 20px 10px 40px;
   border: 1px solid #ddd;
   margin-bottom: 12px;
+  margin-right: 30px;
 }
-
+#float{
+  float: right;
+  width: 30%;
+  margin-right: 50px;
+}
+th:hover{
+background-color: beige;
+cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -43,22 +55,25 @@ img#stayimg {
 			<div class="card">
 				<h5 class="card-header">Waiting for reservation approval</h5>
 				<div class="table-responsive text-nowrap">
-					&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="myInput"
+				<div id="float">
+				&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="text" id="myInput"
 						onkeyup="myFunction()" placeholder="Search for somethings.."
 						><br>
-						<small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*예약대기 목록 검색시 '대기'입력</small><br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small id="descript">*예약대기 목록 조회시 '대기'입력</small><br>
 						<br>
-					<table class="table table-hover">
+						</div>
+					<table class="table table-hover" id="myTable">
 						<thead>
 							<tr>
-								<th>Space Id</th>
+								<th onclick="sortTable(0)">Space Id</th>
 								<th>Img</th>
-								<th>Name</th>
-								<th>Price</th>
-								<th>Member Id</th>
-								<th>Reserved Date</th>
-								<th>Payment Date</th>
-								<th>Approval</th>
+								<th onclick="sortTable(2)">Name</th>
+								<th onclick="sortTable(3)">Price</th>
+								<th onclick="sortTable(4)">Member Id</th>
+								<th onclick="sortTable(5)">Reserved Date</th>
+								<th onclick="sortTable(6)">Payment Date</th>
+								<th onclick="sortTable(7)">Approval</th>
 
 							</tr>
 						</thead>
@@ -136,6 +151,60 @@ img#stayimg {
 		</div>
 	</div>
 	<script>
+		//테이블 소팅
+		function sortTable(num) {
+		  var table, rows, switching, i, x, y, shouldSwitch, count;
+		  table = document.getElementById("myTable");
+		  switching = true;
+		  count = 0;
+		  while (switching) {
+		    switching = false;
+		    rows = table.rows;
+		    for (i = 1; i < (rows.length - 1); i++) {
+		      shouldSwitch = false;
+		      x = rows[i].getElementsByTagName("TD")[num];
+		      y = rows[i + 1].getElementsByTagName("TD")[num];
+		      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+		        shouldSwitch = true;
+		        break;
+		      }
+		    }
+		    
+		    if (shouldSwitch) {
+		      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+		      count += 1;
+		      switching = true;
+		    }
+		  }
+		  if(count == 0){
+			  sortTableDesc(num);
+		  }
+		}
+		
+		function sortTableDesc(num) {
+			  var table, rows, switching, i, x, y, shouldSwitch;
+			  table = document.getElementById("myTable");
+			  switching = true;
+			  while (switching) {
+			    switching = false;
+			    rows = table.rows;
+			    for (i = 1; i < (rows.length - 1); i++) {
+			      shouldSwitch = false;
+			      x = rows[i].getElementsByTagName("TD")[num];
+			      y = rows[i + 1].getElementsByTagName("TD")[num];
+			      if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+			        shouldSwitch = true;
+			        break;
+			      }
+			    }
+			    
+			    if (shouldSwitch) {
+			      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+			      switching = true;
+			    }
+			  }
+			}
+		
 		//테이블 필터링
 		function myFunction() {
 		  var input, filter, table, tr, td, i, txtValue;
@@ -162,7 +231,7 @@ img#stayimg {
 		}
 		}
 		
-		
+		//승인, 거부 버튼 기능
 	 	$('.approved').on('click', function(e) {
 			Swal.fire({
 				  icon: 'success',
