@@ -51,6 +51,7 @@
 						disply:flex !important;
 						align-items: center !important;
 						justify-content: space-around !important;
+						margin-left: 50px;
 					}
 					#wishdiv{
 						padding:0px;
