@@ -66,7 +66,7 @@ function numberWithCommas(x) {
 							<c:forEach items="${cartList }" var="c">
 								<tr class="border-bottom border-dark" id="cartid" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">
 									<td class="align-middle border-0" scope="row">
-										<div class="cart-product-detail d-flex align-items-center">
+										<div class="cart-product-detail align-items-center" style="text-align:center;">
 											<div class="card-image">
 												<img src="image/space/${c.spaceImageMain }" alt="cloth"
 													class="img-fluid">
