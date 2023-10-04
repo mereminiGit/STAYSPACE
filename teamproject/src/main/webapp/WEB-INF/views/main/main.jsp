@@ -319,7 +319,7 @@
 										class="swiper-slide text-center d-flex justify-content-center">
 										<div class="review-item">
 											<!-- 후기 메세지 -->
-											<blockquote class="fs-1 fw-light" style="font-family: 'Noto Sans KR'">${recent.replyContent }</blockquote>
+											<blockquote class="fs-1 fw-light" style="font-family: 'Noto Sans KR'; font-size: larger !important;">${recent.replyContent }</blockquote>
 											<!-- 후기 작성자 -->
 											<div class="author-detail">
 												<div class="name fw-bold text-uppercase pt-2" style="font-family: 'Noto Sans KR'">${recent.memberId }</div>
@@ -589,6 +589,9 @@
 			document.getElementById("space"+i).innerText = result;
 		}
 		
+/* 		console.log("${bestSpace }");
+		console.log("${bestSpace[0] }");
+		console.log("${bestSpace[0].spaceId }"); */
 	</script>
 </body>
 </html>
