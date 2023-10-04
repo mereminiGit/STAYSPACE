@@ -453,7 +453,7 @@
 				}); 
 				
 				/* var dateToday = new Date(); */
-				var dates = $("#finddatepicker").datepicker({
+				$("#finddatepicker").datepicker({
 				  /*   defaultDate: "+1w",
 				    changeMonth: true,
 				    numberOfMonths: 3, */

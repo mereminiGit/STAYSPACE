@@ -131,7 +131,7 @@ function numberWithCommas(x) {
 								</span>
 								</label>
 							</div> -->
-							<button type="button" class="btn btn-dark w-100" onclick="requestPay()">Place an order</button>
+							<button type="button" class="btn btn-dark w-100" id="check_module">Place an order</button>
 						</div>
 					</div>
 				</div>
@@ -168,14 +168,66 @@ function numberWithCommas(x) {
 			}
 		} */
 	</script>
-	<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
-	<script>
-		const userCode = "imp14397622";
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
+<script>
+  
+
+    $("#check_module").click(function () {
+		var IMP = window.IMP; // 생략가능
+		IMP.init('imp46405872'); 
+		// i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
+		// ''안에 띄어쓰기 없이 가맹점 식별코드를 붙여넣어주세요. 안그러면 결제창이 안뜹니다.
+		IMP.request_pay({
+			pg: 'kakaopay',
+			pay_method: 'card',
+			merchant_uid: 'merchant_' + new Date().getTime(),
+			/* 
+			 *  merchant_uid에 경우 
+			 *  https://docs.iamport.kr/implementation/payment
+			 *  위에 url에 따라가시면 넣을 수 있는 방법이 있습니다.
+			 */
+			name: '테스트 결제',
+			// 결제창에서 보여질 이름
+			// name: '주문명 : ${auction.a_title}',
+			// 위와같이 model에 담은 정보를 넣어 쓸수도 있습니다.
+			amount: ${total},
+			// amount: ${bid.b_bid},
+			// 가격 
+			buyer_name: '{member.memberName}',
+			// 구매자 이름, 구매자 정보도 model값으로 바꿀 수 있습니다.
+			// 구매자 정보에 여러가지도 있으므로, 자세한 내용은 맨 위 링크를 참고해주세요.
+			buyer_postcode: '123-456',
+			}, function (rsp) {
+				console.log(rsp);
+			if (rsp.success) {
+				Swal.fire({
+					title : '결제완료',
+					text : '결제가 완료되었습니다.',
+					icon : 'success',
+					confirmButtonText:'OK'
+				}).then((result)=>{
+					if(result.isConfirmed){
+						location.href="memberreservationhome.do?name=1"
+					}
+				})
+			} else {
+				Swal.fire({
+					title : '결제실패',
+					text : '결제가 실패하였습니다.',
+					icon : 'error',
+					confirmButtonText:'OK'
+				}).then((result)=>{
+				})
+			}
+		});
+	});
+		/* const userCode = "imp14397622";
 		IMP.init(userCode);
 
 		function requestPay() {
 			IMP.request_pay({
-				pg : "html5_inicis",
+				pg : "html5_inicis.INIpayTest",
 				pay_method : "card",
 				merchant_uid : "${member.memberName}",
 				name : "테스트 결제",
@@ -192,7 +244,7 @@ function numberWithCommas(x) {
 					location.href="memberreservationhome.do?name=1"
 				}
 			})
-		}
+		} */
 	</script>
 </body>
 </html>

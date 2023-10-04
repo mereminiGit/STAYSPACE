@@ -32,4 +32,9 @@ public class CartListServiceImpl implements CartListService {
 	public int cartListDelete(CartListVO vo) {
 		return map.cartListDelete(vo);
 	}
+
+	@Override
+	public CartListVO cartReserveIdSelect(CartListVO vo) {
+		return map.cartReserveIdSelect(vo);
+	}
 }

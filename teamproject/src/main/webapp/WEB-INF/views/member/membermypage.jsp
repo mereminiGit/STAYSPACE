@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-		<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 			<!DOCTYPE html>
 			<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default"
 				data-assets-path="../assets/" data-template="vertical-menu-template-free">
@@ -54,6 +54,13 @@
 						disply: flex !important;
 						align-items: center !important;
 						justify-content: space-around !important;
+						margin-left: 50px;
+					}
+					#wishdiv{
+						padding:0px;
+					}
+					#wishImg{
+						height: 500px;
 					}
 				</style>
 			</head>
@@ -203,69 +210,52 @@
 										<div class="content-wrapper">
 											<!-- Content -->
 
-											<div class="container-xxl flex-grow-1 container-p-y">
+											<div class="container-xxl flex-grow-1 container-p-y" id="wishdiv">
 												<div class="card">
-													<h4 class="card-header"
-														style="font-family: 'Noto Sans KR', sans-serif; padding: 30px 16px 30px 16px; text-align: center">
-														Wish list</h4>
-													<!-- Examples -->
-													<form id="frm" action="shopdetail.do" method="post"
-														enctype="form-data">
-														<div class="row mb-5" id="wishlist" style="text-align: center;">
-															<c:choose>
-																<c:when test="${empty wishList }">
-																	<p id="nowish">Wish List가 비어있습니다.</p>
-																</c:when>
-																<c:otherwise>
-																	<c:forEach items="${wishList}" var="w">
-																		<div class="col-md-6 col-lg-4 mb-3"
-																			class="cartlist"
-																			id="cartid_${w.wishListId}">
-																			<input type="hidden" id="memberId"
-																				name="memberId" value="jiwon"> <input
-																				type="hidden" id="spaceId"
-																				name="spaceId" value="${w.spaceId}">
-																			<input type="hidden" id="wishListId"
-																				name="wishListId"
-																				value="${w.wishListId}">
-																			<div class="card h-100">
-																				<img class="card-img-top"
-																					src="image/space/${w.spaceImage }"
-																					alt="Card image cap" />
-																				<div class="card-body">
-																					<h5 class="card-title">${w.spaceName
-																						}</h5>
-																					<p class="card-text">
-																						<!--숙소 콘텐트있던곳-->
-																						예약 날짜 :
-																						${w.wishListStartDate } <br>
-																						
-																						가격 :
-																						<fmt:formatNumber
-																							value="${w.spacePrice }"
-																							type="currency"
-																							currencySymbol="￦" />
-																					</p>
-																					<hr>
-																					<div class="btnwrap">
-																						<!-- <a href="javascript:void(0)" class="btn btn-outline-primary">Detailed page</a> -->
-																						<button type="button"
-																							class="btn btn-primary"
-																							onclick="detailCall()">Detailed
-																							page</button>
-																						<button type="button"
-																							class="btn btn-dark me-2"
-																							id="dangerBtn"
-																							onclick="deleteCall('${w.memberId }',${w.wishListId})">Delete</button>
-																					</div>
+												<h4 class="card-header"
+													style="font-family: 'Noto Sans KR', sans-serif; padding: 30px 16px 30px 16px; text-align: center">
+													Wish list</h4>
+												<!-- Examples -->
+													<div class="row mb-5" id="wishlist">
+														<c:choose>
+															<c:when test="${empty wishList }">
+																<p id="nowish">Wish List가 비어있습니다.</p>
+															</c:when>
+															<c:otherwise>
+																<c:forEach items="${wishList}" var="w">
+																	<div class="col-md-6 col-lg-4 mb-3" class="cartlist" id="cartid_${w.wishListId}">
+																		<input type="hidden" id="memberId" name="memberId" value="${w.memberId }">
+																		<input type="hidden" id="spaceId" name="spaceId" value="${w.spaceId}">
+																		<input type="hidden" id="wishListId" name="wishListId" value="${w.wishListId}">
+																		<div class="card h-100">
+																			<img class="card-img-top" id="wishImg" src="image/space/${w.spaceImage }"
+																				alt="Card image cap" />
+																			<div class="card-body">
+																				<h5 class="card-title">${w.spaceName }</h5>
+																				<p class="card-text">
+																					<!--숙소 콘텐트있던곳-->
+																					<br>
+																					예약 날짜 : ${w.wishListStartDate }
+																					<br>
+																					<br>
+																					가격 :
+																					<fmt:formatNumber value="${w.spacePrice }" type="currency"
+																						currencySymbol="￦" />
+																				</p>
+																				<div class="btnwrap">
+																					<!-- <a href="javascript:void(0)" class="btn btn-outline-primary">Detailed page</a> -->
+																					<button type="button" class="btn btn-primary" onclick="detailCall(${w.spaceId})">Detailed
+																						page</button>
+																					<button type="button" class="btn btn-dark me-2" id="dangerBtn"
+																						onclick="deleteCall('${w.memberId }',${w.wishListId})">Delete</button>
 																				</div>
 																			</div>
 																		</div>
-																	</c:forEach>
-																</c:otherwise>
-															</c:choose>
-														</div>
-													</form>
+																	</div>
+																</c:forEach>
+															</c:otherwise>
+														</c:choose>
+													</div>
 
 												</div>
 											</div>
@@ -435,6 +425,9 @@
 					</div>
 					</div>
 				</section>
+				<form id="wishform" action="shopdetail.do" method="post">
+			    <input type="hidden" id="spaceId" name="spaceId">
+			    </form>
 				<script>
 					/* function listClick(id) {
 						let form = document.getElementById("sform");
@@ -449,7 +442,10 @@
 				<script>
 					// 예약 공간 취소
 					function cancelCall(name, id, rid) {
-						let url = "ajaxReservationCancel.do?spaceName=" + name + "&memberId=" + id;
+
+
+						let url = "ajaxReservationCancel.do?spaceName=" + name + "&memberId=" + id +"&reserveId="+rid;
+
 						Swal.fire({
 							title: '예약을 취소하시겠습니까?',
 							text: '해당 상품의 취소정책에 따라 고객님이 선택하신 결제방식으로 환불이 진행됩니다.',
@@ -508,17 +504,10 @@
 						})
 					};
 					//detailPage연결
-					function detailCall() {
-						document.getElementById("frm").submit();
-						// $.ajax({
-						//   url: "shopdetail.do?spaceId=" + spaceId,
-						//   type: "get",
-						//   datatype: "html",
-						//   success: function (data) {
-						//     alert("연결성공");
-						//     location.href = 'shopdetail.do'
-						//   }
-						// });
+					function detailCall(id) {
+						let form = document.getElementById("wishform");
+			            form.spaceId.value = id;
+			            form.submit();
 					}
 
 				</script>

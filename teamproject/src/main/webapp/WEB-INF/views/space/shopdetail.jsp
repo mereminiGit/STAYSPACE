@@ -147,7 +147,8 @@ function numberWithCommas(x) {
 							</h5>
 							<div class="action-buttons my-4 d-flex flex-wrap">
 								<a href="#" class="btn btn-dark me-2 mb-1"
-									onclick="selectTo('${s.spaceId}','wishlist')">Wishlist</a> <a
+
+									onclick="wishCall(${s.spaceId });">Wishlist</a>
 									href="#" class="btn btn-dark me-2 mb-1"
 									onclick="selectTo('${s.spaceId}','cart')">Add To Cart</a> <a
 									href="#" class="btn btn-dark"
@@ -177,6 +178,7 @@ function numberWithCommas(x) {
 							</div>
 							<div style="display: none">
 								<p id="pagespaceId">${s.spaceId }</p>
+
 							</div>
 						</div>
 					</div>
@@ -553,6 +555,28 @@ function numberWithCommas(x) {
 		});
 	</script>
 
+	<!--    <script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+		integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+		integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
+		integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+	<script>
+	var disabledDays=[];
+	</script>
+	<c:forEach items="${reserved }" var="r">
+	<script>
+	disabledDays.push("${r.reserveStartDate}");
+	console.log(disabledDays);
+	</script>
+	</c:forEach>
+
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	
 	<script type="text/javascript">
@@ -579,6 +603,7 @@ function numberWithCommas(x) {
 		$('#datepicker').datepicker({
 			dateFormat : 'yy-mm-dd',
 			minDate : 0,
+			beforeShowDay: disableSomeDay,
 			onSelect : function(d) {
 				var date=$("#datepicker").val();
 				let form = document.getElementById("sform");
@@ -587,6 +612,7 @@ function numberWithCommas(x) {
 		}).on('hide', function(event) {
 			event.preventDefault();
 			event.stopPropagation();
+
 		});
 	
 	</script>
@@ -604,7 +630,22 @@ function numberWithCommas(x) {
 			location.href=currentUrl+"?page="+page
 		}
 	}
+
+		})
+		
+		function disableSomeDay(date){
+			var month=date.getMonth();
+			var dates=date.getDate();
+			var year=date.getFullYear();
+			for (i=0; i< disabledDays.length;i++){
+				if($.inArray(year+'-'+(month+1)+'-'+dates,disabledDays)!=-1){
+					return[false];
+				}
+			}
+				return[true];
+		}
 	</script>
+	
 	
 	<!-- 리뷰 script -->
 	<script type="text/javascript">
@@ -703,6 +744,32 @@ function numberWithCommas(x) {
 			eform.action = 'updatereply.do?replyId=' + replyId;
 			console.log(eform.action);
 		}
+	</script>
+
+	<script>
+	//wishList 인서트
+	function wishCall(spaceId){
+		let date = $('#datepicker').val();
+		$.ajax({
+			url: "ajaxWishListAdd.do?spaceId=" + spaceId+"&date="+date,
+			type: "get",
+			datatype: "html",
+			success: function (data) {
+				
+				Swal.fire({
+					  position: 'center',
+					  icon: 'success',
+					  title: 'Wish list에 담았습니다!',
+					  showConfirmButton: false,
+					  timer: 1500
+					})
+					 setTimeout(function() {
+						 location.href="memberreservationhome.do" 
+						 }, 2000);
+				
+			}
+		});
+	}
 	</script>
 
 </body>
