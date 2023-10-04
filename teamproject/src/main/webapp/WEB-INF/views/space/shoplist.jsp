@@ -34,6 +34,11 @@
 	z-index: 0;
 	padding: 0;
 }
+
+/* #cityList li{
+	float: left;
+	margin: 0 45px 10px 0;
+} */
 </style>
 <script>
 function numberWithCommas(x) {
@@ -65,7 +70,7 @@ function numberWithCommas(x) {
 				<main class="col-md-9">
 					<div class="filter-shop d-flex flex-wrap justify-content-between">
 						<div class="showing-product">
-							<p>Showing 1-${pages } of ${results } results</p>
+							<p style="font-family: 'Noto Sans KR', sans-serif;">Showing 1-${pages } of ${results } results</p>
 						</div>
 						<!-- <div class="sort-by">
 							<select id="input-sort" class="form-control" data-filter-sort=""
@@ -78,7 +83,7 @@ function numberWithCommas(x) {
 					</div>
 					<div class="row product-content product-store">
 						<c:forEach items="${spaces }" var="s">
-							<div class="col-lg-4 col-md-6">
+							<div class="col-lg-4 col-md-6" style="margin-bottom: 10px;">
 								<div class="product-card mb-3 position-relative">
 									<div class="image-holder zoom-effect">
 										<a href="#" onclick="selectSpace('${s.spaceId}')"><img src="image/space/${s.spaceImageMain}" alt="product-item"
@@ -86,9 +91,9 @@ function numberWithCommas(x) {
 									</div>
 									<div class="card-detail text-center pt-3 pb-2">
 										<h5 class="card-title fs-3 text-capitalize">
-											<a href="#" onclick="selectSpace('${s.spaceId}')">${s.spaceName }</a>
+											<a href="#" onclick="selectSpace('${s.spaceId}')" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">${s.spaceName }</a>
 										</h5>
-										<span class="item-price text-primary fs-3 fw-light" id="price">${s.spaceCity }
+										<span class="item-price text-primary" id="price" style="font-family: 'Noto Sans KR', sans-serif; font-size: medium; font-weight: 400;">${s.spaceCity }
 											· &#x20a9;<script>numberWithCommas(${s.spacePrice })</script><small>/일</small>
 										</span>
 									</div>
@@ -98,7 +103,7 @@ function numberWithCommas(x) {
 					</div>
 					<nav
 						class="navigation paging-navigation text-center padding-medium"
-						role="navigation" style="padding-bottom: 0;">
+						role="navigation" style="padding-bottom: 0; padding-top: 25px">
 						<div
 							class="pagination loop-pagination d-flex justify-content-center align-items-center">
 							<c:forEach var="page" begin="1" end="${pages}">
@@ -115,7 +120,7 @@ function numberWithCommas(x) {
 				<aside class="col-md-3">
 					<div class="sidebar">
 						<div class="widget-menu">
-							<div class="widget-search-bar">
+							<div class="widget-search-bar" style="margin-top: 30px;">
 								<form role="search" method="get"
 									class="position-relative d-flex justify-content-between align-items-center border-bottom border-dark py-1"
 									action="shoplist.do">
@@ -130,9 +135,9 @@ function numberWithCommas(x) {
 								</form>
 							</div>
 						</div>
-						<div class="widget-product-categories pt-5">
-							<h5 class="widget-title text-decoration-underline text-uppercase">Cities</h5>
-							<ul class="product-categories sidebar-list list-unstyled">
+						<div class="widget-product-categories pt-5" style="padding-top: 45px;">
+							<h5 class="widget-title text-decoration-underline text-uppercase">Find City</h5>
+							<ul id="cityList" class="product-categories sidebar-list list-unstyled" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">
 								<li class="cat-item"><a href="shoplist.do">전체</a></li>
 								<li class="cat-item"><a href="?spaceCity=제주">제주</a></li>
 								<li class="cat-item"><a href="?spaceCity=서울">서울</a></li>
@@ -149,17 +154,16 @@ function numberWithCommas(x) {
 								<li class="cat-item"><a href="?spaceCity=광주">광주</a></li>
 							</ul>
 						</div>
-						<h5 class="widget-title text-decoration-underline text-uppercase">
-							Date <input type="text" id="datepicker" name="spaceStartDate">
-						</h5>
-						<div class="widget-product-tags pt-3">
-							<h5 class="widget-title text-decoration-underline text-uppercase">Space
-								for</h5>
+						<h5 class="widget-title text-decoration-underline text-uppercase" style="clear: both; padding-top: 45px; margin-bottom: 0;">
+							Find Date</h5>
+							<input type="text" id="datepicker" name="spaceStartDate" style="font-family: 'Noto Sans KR', sans-serif; font-size: large; font-weight: 400; padding-top: 15px" placeholder="날짜를 선택하세요">
+						<div class="widget-product-tags" style="padding-top: 45px;">
+							<h5 class="widget-title text-decoration-underline text-uppercase">Find Type</h5>
 							<ul class="product-tags sidebar-list list-unstyled">
 								<li class="cat-item"><a href="shoplist.do">All</a></li>
-								<li class="tags-item"><a href="?spaceType=Commercial">Commercial</a></li>
 								<li class="tags-item"><a href="?spaceType=House">House</a></li>
 								<li class="tags-item"><a href="?spaceType=Studio">Studio</a></li>
+								<li class="tags-item"><a href="?spaceType=Commercial">Commercial</a></li>
 							</ul>
 						</div>
 					</div>

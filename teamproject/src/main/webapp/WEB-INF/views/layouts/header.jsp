@@ -57,6 +57,7 @@
 
 				.cityElement a {
 					font-weight: 500;
+					font-family: 'Noto Sans KR', sans-serif;
 				}
 
 				.cityElement:nth-child(7n) {
@@ -72,15 +73,17 @@
 					padding-right: 15px;
 				}
 
-				/* .ui-datepicker {
-		    margin: 0 auto;
-		} */
 				.ui-datepicker {
 					/* margin-left: 230px; */
 					z-index: 999999 !important;
 				}
 				.dropdown-menu[data-bs-popper] {
 					right:-12.5%;
+				}
+				
+				.nav-item a {
+					font-family: 'Noto Sans KR', sans-serif;
+					/* font-weight: 450; */
 				}
 			</style>
 		</head>
@@ -96,7 +99,7 @@
 						</a>
 						<button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button"
 							data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar"
-							aria-expanded="false" aria-label="Toggle navigation">Menu</button>
+							aria-expanded="false" aria-label="Toggle navigation" style="font-weight: 600;">Menu</button>
 						<div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar"
 							aria-labelledby="bdNavbarOffcanvasLabel">
 							<div class="offcanvas-header px-4 pb-0">
@@ -117,11 +120,11 @@
 										<!-- About NAV -->
 										<li class="nav-item"><a class="nav-link ms-0" href="about.do">About</a></li>
 										<!-- Find Where -->
-										<li class="nav-item"><a class="nav-link ms-0" a type="button"
+										<li class="nav-item"><a class="nav-link ms-0" type="button"
 												data-bs-toggle="modal" data-bs-target="#findWhereModal" id="findWhere" style="width: 100%">
 												Find Where</a></li>
 										<!-- Find When -->
-										<li class="nav-item"><a class="nav-link ms-0" a type="button"
+										<li class="nav-item"><a class="nav-link ms-0" type="button"
 												data-bs-toggle="modal" data-bs-target="#findWhenModal" id="findWhen" style="width: 100%">
 												Find When</a></li>
 										<!-- pages NAV -->
@@ -393,9 +396,9 @@
 								<div class="modal-content">
 
 									<!-- Modal Header -->
-									<div class="modal-header">
+									<div class="modal-header" style="margin: 0 15px;">
 										<h4 class="modal-title"
-											style="font-family: 'Noto Sans KR', sans-serif; font-weight: 600;  margin: 10px 0;">
+											style="font-family: 'Noto Sans KR', sans-serif; font-weight: 750;">
 											언제 떠날까요?</h4>
 										<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 									</div>
@@ -412,7 +415,7 @@
 										<!--   <input type="text" class="form-control" data-toggle="datepicker"> -->
 										<div class="form-group py-3" style="text-align: center;">
 											<input type="text" class="form-control"
-												style="display: inline-block; text-align: center; width:300px"
+												style="display: inline-block; font-family: 'Noto Sans KR', sans-serif; text-align: center; width:300px"
 												placeholder="날짜를 선택하세요" id="finddatepicker" name="spaceStartDate">
 										</div>
 									</div>

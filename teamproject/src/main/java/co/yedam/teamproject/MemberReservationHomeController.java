@@ -28,7 +28,9 @@ import co.yedam.teamproject.wishList.service.WishListService;
 import co.yedam.teamproject.wishList.service.WishListVO;
 import co.yedam.teamproject.wishList.serviceImpl.WishListServiceImpl;
 
+
 //마이페이지(예약목록, 위시리스트, 회원정보수정)
+
 @WebServlet("/memberreservationhome.do")
 public class MemberReservationHomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -39,12 +41,16 @@ public class MemberReservationHomeController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		
 		// 예약내역 & 예약내역 total
+
 		ReservationService dao = new ReservationServiceImpl();
 		ReservationVO vo = new ReservationVO();
 		HttpSession session = request.getSession();
+
 		vo.setMemberId((String) session.getAttribute("memberId")); // 세션에 저장된 아이디를 들고와야함.
+
 		
 		List<ReservationVO> reserve = new ArrayList<ReservationVO>();
 		System.out.println(request.getParameter("name") + "!!!!!!!!!");
@@ -58,6 +64,7 @@ public class MemberReservationHomeController extends HttpServlet {
 		System.out.println("menuhome.do reserve 찍어봄");
 		System.out.println(reserve);
 
+
 		// WishList
 		WishListService daoWish = new WishListServiceImpl();
 		List<WishListVO> wishList = new ArrayList<WishListVO>();
@@ -66,8 +73,10 @@ public class MemberReservationHomeController extends HttpServlet {
 		wishList = daoWish.wishListSelectList(voWish);
 		request.setAttribute("wishList", wishList);
 
+
 		
 		//결제내역..?
+
 		if (request.getParameter("name") != null) { // 예약입력
 			CartListService cdao = new CartListServiceImpl();
 			CartListVO cvo = new CartListVO();
@@ -86,17 +95,25 @@ public class MemberReservationHomeController extends HttpServlet {
 				dao.reservationInsert(vo);
 			}
 		}
-		
-//		voMember.setMemberId((String) session.getAttribute("memberId"));
-//		voMember = daoMember.memberSelect(voMember);
-//		request.setAttribute("m", voMember);
-		
+
+		// vo.setMemberId("jiwon"); // 세션에 저장된 아이디를 들고와야함.
+
+		int num = dao.reservationMemberTotalCount(vo.getMemberId());
+		request.setAttribute("count", num);
+		System.out.println("Mcount>>>" + num);
+		reserve = dao.reservationSelectMember(vo);
+		request.setAttribute("reserve", reserve);
+		System.out.println("menuhome.do reserve 찍어봄");
+		System.out.println(reserve);
+
 		// member 가져오기
 		MemberService daoMember = new MemberServiceImpl();
 		MemberVO voMember = new MemberVO();
 		voMember.setMemberId((String) session.getAttribute("memberId"));
 		voMember = daoMember.memberSelect(voMember);
 		request.setAttribute("m", voMember);
+		
+
 		String path = "member/membermypage";
 		ViewResolve.forward(request, response, path);
 	}
