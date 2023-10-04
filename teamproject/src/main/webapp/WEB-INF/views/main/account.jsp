@@ -270,7 +270,6 @@
 			<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 			<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.all.min.js"></script>
 			<script type="text/javascript">
-
 				// 아이디 찾기 모달 이벤트(알람창) 	
 				if ($('#findIdSuccess').length) {
 					Swal.fire({

@@ -195,11 +195,12 @@
 										<!-- Space NAV end -->
 
 										<!-- Account NAV -->
-										<c:if test="${empty memberId }">
+										<c:choose>
+										<c:when test="${empty memberId }">
 											<li class="nav-item"><a class="nav-link me-0" href="account.do">Account</a>
 											</li>
-										</c:if>
-										<c:if test="${not empty memberId }">
+										</c:when>
+										<c:when test="${not empty memberId }">
 											<li class="nav-item dropdown"><a class="nav-link dropdown-toggle me-0"
 													data-bs-toggle="dropdown" href="home.do" role="button"
 													aria-expanded="false">Account<svg class="bi" width="18" height="18">
@@ -208,13 +209,16 @@
 												<ul class="dropdown-menu" style="text-align: center;">
 													<li><a href="memberreservationhome.do" class="dropdown-item fs-5 fw-medium">My
 													page</a></li>
-													<li><a href="cart.do" class="dropdown-item fs-5 fw-medium">Cart</a>
-													</li>
+													<c:if test="${memberCK eq 'user' }">
+														<li><a href="cart.do" class="dropdown-item fs-5 fw-medium">Cart</a>
+														</li>
+													</c:if>
 													<li><a href="memberlogout.do"
 													class="dropdown-item fs-5 fw-medium">Logout</a></li>
 												</ul>
 											</li>
-										</c:if>
+										</c:when>
+										</c:choose>
 										<!--##### Search NAV start #####-->
 										<!-- <li class="nav-item search-item" style="margin-right: 7px">
 											<div id="search-bar" class="border-right d-none d-lg-block">
