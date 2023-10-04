@@ -149,8 +149,7 @@ function numberWithCommas(x) {
 								<a href="#" class="btn btn-dark me-2 mb-1"
 
 									onclick="wishCall(${s.spaceId });">Wishlist</a>
-									href="#" class="btn btn-dark me-2 mb-1"
-									onclick="selectTo('${s.spaceId}','cart')">Add To Cart</a> <a
+									<a href="#" class="btn btn-dark me-2 mb-1" onclick="selectTo('${s.spaceId}','cart')">Add To Cart</a> <a
 									href="#" class="btn btn-dark"
 									onclick="selectTo('${s.spaceId}','checkout')">Checkout</a>
 							</div>
@@ -614,6 +613,17 @@ function numberWithCommas(x) {
 			event.stopPropagation();
 
 		});
+		function disableSomeDay(date){
+			var month=date.getMonth();
+			var dates=date.getDate();
+			var year=date.getFullYear();
+			for (i=0; i< disabledDays.length;i++){
+				if($.inArray(year+'-'+(month+1)+'-'+dates,disabledDays)!=-1){
+					return[false];
+				}
+			}
+				return[true];
+		}
 	
 	</script>
 
@@ -630,20 +640,7 @@ function numberWithCommas(x) {
 			location.href=currentUrl+"?page="+page
 		}
 	}
-
-		})
 		
-		function disableSomeDay(date){
-			var month=date.getMonth();
-			var dates=date.getDate();
-			var year=date.getFullYear();
-			for (i=0; i< disabledDays.length;i++){
-				if($.inArray(year+'-'+(month+1)+'-'+dates,disabledDays)!=-1){
-					return[false];
-				}
-			}
-				return[true];
-		}
 	</script>
 	
 	

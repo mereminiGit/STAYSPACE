@@ -55,14 +55,7 @@ public class MemberReservationHomeController extends HttpServlet {
 		List<ReservationVO> reserve = new ArrayList<ReservationVO>();
 		System.out.println(request.getParameter("name") + "!!!!!!!!!");
 		
-		int num = dao.reservationMemberTotalCount(vo.getMemberId());
-		request.setAttribute("count", num);
-		System.out.println("Mcount>>>" + num);
 		
-		reserve = dao.reservationSelectMember(vo);
-		request.setAttribute("reserve", reserve);
-		System.out.println("menuhome.do reserve 찍어봄");
-		System.out.println(reserve);
 
 
 		// WishList
