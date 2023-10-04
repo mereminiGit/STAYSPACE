@@ -217,7 +217,7 @@ function numberWithCommas(x) {
 						<div class="tab-pane fade" id="nav-information" role="tabpanel"
 							aria-labelledby="nav-information-tab">
 							<pre
-								style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400; line-height: 180%; word-spacing: 2px;">${s.spaceContent }</pre>
+								style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400; line-height: 180%; word-spacing: 2px; text-align: center;">${s.spaceContent }</pre>
 						</div>
 
 						<!-- 리뷰 -->
