@@ -139,7 +139,6 @@ function numberWithCommas(x) {
 		
 	</section>
 
-	<script type="text/javascript" src="vaso-html/js/checkout.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script>
 		/* function check() {

@@ -484,7 +484,7 @@ function numberWithCommas(x) {
 						</div>
 						<div class="card-detail text-center pt-3 pb-2">
 							<h5 class="card-title fs-3 text-capitalize">
-								<a href="detail.do?spaceId=${r.spaceId }"
+								<a href="shopdetail.do?spaceId=${r.spaceId }"
 									style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">${r.spaceName }</a>
 							</h5>
 							<span class="item-price text-primary"
