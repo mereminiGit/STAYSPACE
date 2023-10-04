@@ -21,6 +21,7 @@ public class AccountController extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String path = "main/account";
 		ViewResolve.forward(request, response, path);
 	}

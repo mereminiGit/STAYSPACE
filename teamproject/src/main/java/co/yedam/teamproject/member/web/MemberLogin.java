@@ -42,6 +42,9 @@ public class MemberLogin extends HttpServlet {
 			session.setAttribute("memberName", vo.getMemberName());
 			
 			request.setAttribute("messageLogin", "successLogin");
+			
+			session.setAttribute("memberCK", vo.getMemberCheck());
+			
 		} else {
 			request.setAttribute("messageLogin", "failLogin");
 		}
