@@ -20,8 +20,10 @@
 				allEvents.push({
 					title : event.spaceName,
 					start : event.reserveStartDate,
-					end : event.reserveEndDate,
 					groupId : event.reserveId,
+					writer : event.memberId,
+					content : event.reserveImg,
+					id : event.reservePrice,
 					allDay: true
 				})
 			})
@@ -38,74 +40,65 @@
 					center : 'title',
 					right : 'dayGridMonth,timeGridWeek,timeGridDay'
 				},
-				initialDate : '2023-09-08',
+				initialDate : new Date(),
 				navLinks : true, // can click day/week names to navigate views
 				selectable : false,
 				selectMirror : true,
-				// select : function(arg) {
-				// 	var title = prompt('새 예약을 등록하세요.');
-				// 	if (title) {
-				// 		fetch('AjaxReserveInsert.do',{
-				// 			method: "POST",
-				// 			headers: {"Content-Type": "application/x-www-form-urlencoded"},
-				// 			body: 'title='+title+'&start='+arg.startStr+'&end='+arg.endStr
-				// 		})
-				// 		.then(resolve => resolve.json())
-				// 		.then(json => {
-				// 			if(json.retCode == "Success"){
-				// 				calendar.addEvent({
-				// 					title : title,
-				// 					start : arg.start,
-				// 					end : arg.end,
-				// 					allDay : arg.allDay,
-				// 				})
-				// 			}else{
-				// 				Swal.fire({
-				// 					  icon: 'error',
-				// 					  text: '처리 중 오류 발생',
-				// 					})
-				// 			}
-				// 		})
-				// 		.catch();
-				// 	}
-				// 	calendar.unselect()
-				// },
 				eventClick : function(arg) {
-					console.log(arg);
+					//console.log(arg);
 					Swal.fire({
-	      	            text: "해당 예약을 정말 삭제하시겠습니까?",
-	      	            icon: 'warning',
-	      	            showCancelButton: true,
-	      	            confirmButtonColor: '#3085d6',
+						title: "Reservation Information",
+						imageUrl: "image/space/"+arg.event.extendedProps.content,
+						imageWidth: 200,
+						imageHeight: 298,
+						html: "<br><div><strong>Space Name:&nbsp;&nbsp;&nbsp;</strong>"+arg.event.title+"</div><br>"
+							+"<div><strong>Reserved Date:&nbsp;&nbsp;&nbsp;</strong>"+dateToFormat(arg.event.start)+"</div><br>"
+							+"<div><strong>Member Id:&nbsp;&nbsp;&nbsp;</strong>"+arg.event.extendedProps.writer+"</div><br>"
+							+"<div><strong>Price:&nbsp;&nbsp;&nbsp;</strong>"+arg.event.id+"</div>",
+	      	            showCancelButton: false,
+	      	            confirmButtonColor: 'orange',
 	      	            cancelButtonColor: '#d33',
-	      	            confirmButtonText: 'Yes'
-	      	          }).then((result) => {
-						if (result.isConfirmed) {
-							//console.log(arg.event);
-							fetch('AjaxReserveDelete.do',{
-								method: "POST",
-								headers: {"Content-Type": "application/x-www-form-urlencoded"},
-								body: 'reserveId='+arg.event.groupId
-							})
-							.then(resolve => resolve.json())
-							.then(json => {
-								if(json.retCode == "Success"){
-									arg.event.remove()
-									Swal.fire({
-					 					  icon: 'success',
-					 					  text: '삭제 성공',
-					 					})
-								}else{
-									Swal.fire({
-					 					  icon: 'error',
-					 					  text: '처리 중 오류 발생',
-					 					})
-								}
-							})
-							.catch();
+	      	            confirmButtonText: 'OK'
+					})
+					
+					// .then((result)=>{
+					// 	if (result.isConfirmed) {
+					// Swal.fire({
+	      	        //     text: "해당 예약을 정말 삭제하시겠습니까?",
+	      	        //     icon: 'warning',
+	      	        //     showCancelButton: true,
+	      	        //     confirmButtonColor: '#3085d6',
+	      	        //     cancelButtonColor: '#d33',
+	      	        //     confirmButtonText: 'Yes'
+	      	        //   }).then((result) => {
+					// 	if (result.isConfirmed) {
+					// 		//console.log(arg.event);
+					// 		fetch('AjaxReserveDelete.do',{
+					// 			method: "POST",
+					// 			headers: {"Content-Type": "application/x-www-form-urlencoded"},
+					// 			body: 'reserveId='+arg.event.groupId
+					// 		})
+					// 		.then(resolve => resolve.json())
+					// 		.then(json => {
+					// 			if(json.retCode == "Success"){
+					// 				arg.event.remove()
+					// 				Swal.fire({
+					//  					  icon: 'success',
+					//  					  text: '삭제 성공',
+					//  					})
+					// 			}else{
+					// 				Swal.fire({
+					//  					  icon: 'error',
+					//  					  text: '처리 중 오류 발생',
+					//  					})
+					// 			}
+					// 		})
+					// 		.catch();
 	      	        	  
-	      	          }
-	      	          })
+					// 	 }
+	      	        //   })
+					// 	}
+					// })
 					},
 					eventBorderColor: '#343a40',
 					eventBackgroundColor : '#343a40',
@@ -118,6 +111,21 @@
 
 		});
 
+		function dateToFormat(date) {
+		    var year = date.getFullYear();
+	
+		    var month = date.getMonth() + 1;
+		    if (month < 10)  {
+		        month = '0' + month;
+		    }
+	
+		    var date = date.getDate();
+		    if (date < 10) {
+		        date = '0' + date;
+		    }
+		    
+		    return year + '/' + month + '/' + date;
+		}
 </script>
 <style>
 body {

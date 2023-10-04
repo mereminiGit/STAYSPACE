@@ -17,10 +17,10 @@
                     document.write(new Date().getFullYear());
                   </script>
                   , copyright ❤️ by
-                  <a href="#" target="_blank" class="footer-link fw-bolder">Stay Space</a>
+                  <a href="home.do" target="_blank" class="footer-link fw-bolder">Stay Space</a>
                 </div>
                 <div align="right">
-                	<p>business homepage</p>
+                	<p>host homepage</p>
                 </div>
               </div>
             </footer>

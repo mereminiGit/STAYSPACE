@@ -41,18 +41,18 @@
 							style="height: 200px; object-fit: cover; border-radius: 10px 10px 0 0;">
 						<h5 class="card-header">My Account Settings</h5>
 						<!-- Account -->
-						<div class="card-body">
-							<div class="d-flex align-items-start align-items-sm-center gap-4">
-								<c:if test="${empty m.memberImage}">
+						<!-- <div class="card-body">
+							  <div class="d-flex align-items-start align-items-sm-center gap-4">
+								  <c:if test="${empty m.memberImage}">
 									<img src="image/member/기본프로필.jpg" alt="기본프로필"
 										class="d-block rounded" height="100" width="100"
 										id="uploadedAvatar" />
-								</c:if>
+								</c:if> 
 								<c:if test="${not empty m.memberImage}">
 									<img src="image/member/${m.memberImage }" alt="user-Img"
 										class="d-block rounded" height="100" width="100"
 										id="uploadedAvatar" />
-								</c:if>
+								</c:if> 
 								<!-- <div class="button-wrapper">
 										<label for="upload" class="btn btn-secondary me-2 mb-4"
 											tabindex="0"> <span class="d-none d-sm-block">이미지
@@ -69,9 +69,9 @@
 
 										<p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max
 											size of 800K</p>
-									</div>  -->
-							</div>
-						</div>
+									</div>  
+							</div> 
+						</div> -->
 						<hr class="my-0" />
 						<div class="card-body">
 							<div class="row">
@@ -90,7 +90,7 @@
 										class="form-control" type="text" id="email" name="email"
 										value="${m.memberEmail }" />
 										<br>
-								<button type="button" class="btn btn-dark" id="emailCheck" value="No" onclick="emailCheck()">Email 중복체크</button>
+								<button type="button" class="btn btn-dark" id="emailCheck" value="No" onclick="emailCheck()" style="display:none">Email 중복체크</button>
 								</div>
 								<div class="mb-3 col-md-6">
 									<label class="form-label" for="phoneNumber">Phone
@@ -105,7 +105,7 @@
 						<hr class="my-0" />
 						<div class="card-body">
 							<div class="row">
-								<small style="color: red">* 비밀번호를 수정하시려면 새로운 비밀번호를 입력하시고
+								<small style="color: red">* 비밀번호를 수정하시려면 새로운 비밀번호(10자 이상)를 입력하시고
 									수정을 원하지 않으시면 기존 비밀번호를 입력하세요.</small> <br> <br>
 								<div class="mb-3 col-md-6">
 									<label for="password" class="form-label">PASSWORD</label> <input
@@ -246,7 +246,7 @@
            text: '비밀번호가 일치하지 않습니다.',
          })
          return false;
-       } else if($('#emailCheck').val() == 'No'){
+       } else if($('#emailCheck').val() == 'No' && $('input[name=email]').val() !== "${m.memberEmail}"){
     	   Swal.fire({
                icon: 'error',
                title: 'Oops...',
@@ -258,16 +258,23 @@
        }
      }
 		//이메일 체크
+//		$(document).ready(function(){
+//			document.getElementById("emailCheck").style.display = 'none';
+//		});
+		$('input[name=email]').on('change',function(e){
+			document.getElementById("emailCheck").style.display = 'block';
+		})
+		
 		function emailCheck(){//aJax사용
-		let url = "AjaxEmailCheck.do";
-		let payload = document.getElementById("email").value;
-		
-		url = url+"?email="+payload;
-		console.log(url);
-		
-		fetch(url) //get방식
-			.then(response => response.text()) 
-			.then(text => emailcheck(text)); 
+				let url = "AjaxEmailCheck.do";
+				let payload = document.getElementById("email").value;
+				
+				url = url+"?email="+payload;
+				console.log(url);
+				
+				fetch(url) //get방식
+					.then(response => response.text()) 
+					.then(text => emailcheck(text)); 
 	}
 	
 	function emailcheck(str){
@@ -277,7 +284,7 @@
 		           text: '사용 가능한 이메일 입니다.',
 		         })
 			document.getElementById("emailCheck").value = "Yes";
-			document.getElementById("emailCheck").disabled = true;
+			//document.getElementById("emailCheck").disabled = true;
 		}else{
 			Swal.fire({
 		           icon: 'error',
@@ -315,7 +322,7 @@
         		 }).then((result) => {
         		   if (result.isConfirmed) {
 			    	   $.ajax({
-			               url: "ajaxUserDelete.do?memberId="+ memberId,
+			               url: "AjaxAdminDelete.do?memberId="+ memberId,
 			               type: "post",
 			               datatype: "html",
 			               success: function (data) {}

@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.yedam.teamproject.common.ViewResolve;
 import co.yedam.teamproject.member.service.MemberService;
@@ -22,11 +23,12 @@ public class AdminMyPage extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		MemberService dao = new MemberServiceImpl();
+		String memberId = (String) session.getAttribute("memberId");
+
 		MemberVO vo = new MemberVO();
-		
-		vo.setMemberId("jiwon");
-		
+		vo.setMemberId(memberId);
 		vo = dao.memberSelect(vo);
 		
 		request.setAttribute("m", vo);

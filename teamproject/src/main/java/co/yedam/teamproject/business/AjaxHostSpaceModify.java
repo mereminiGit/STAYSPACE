@@ -16,6 +16,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import co.yedam.teamproject.common.ThumbNail;
+import co.yedam.teamproject.common.ViewResolve;
 import co.yedam.teamproject.space.service.SpaceService;
 import co.yedam.teamproject.space.service.SpaceVO;
 import co.yedam.teamproject.space.serviceImpl.SpaceServiceImpl;
@@ -23,12 +24,13 @@ import co.yedam.teamproject.space.serviceImpl.SpaceServiceImpl;
 @WebServlet("/AjaxHostSpaceModify.do")
 public class AjaxHostSpaceModify extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public AjaxHostSpaceModify() {
-        super();
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public AjaxHostSpaceModify() {
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		MultipartRequest multi = null;
 		ThumbNail thumbNail = new ThumbNail();
 		SpaceVO vo = new SpaceVO();
@@ -45,24 +47,31 @@ public class AjaxHostSpaceModify extends HttpServlet {
 		String saddress = multi.getParameter("saddress");
 		String sprice = multi.getParameter("sprice");
 		String stype = multi.getParameter("stype");
+		String scontent = multi.getParameter("scontent");
 
 		vo.setSpaceId(Integer.parseInt(sid));
 		vo.setSpaceName(sname);
 		vo.setSpaceAddress(saddress);
 		vo.setSpacePrice(Integer.parseInt(sprice));
 		vo.setSpaceType(stype);
+		vo.setSpaceContent(scontent);
 
-		String imgFileName = multi.getOriginalFileName("imgfile");
-		String realImg = multi.getFilesystemName("imgfile");
+		String imgFileName1 = multi.getOriginalFileName("imgfile1");
+		String realImg1 = multi.getFilesystemName("imgfile1");
+		String realImg2 = multi.getFilesystemName("imgfile2");
+		String realImg3 = multi.getFilesystemName("imgfile3");
 
-		if (imgFileName != null) {
+		vo.setSpaceImageSub1(realImg2);
+		vo.setSpaceImageSub2(realImg3);
 
-			vo.setSpaceImageMain(realImg);
+		if (imgFileName1 != null) {
 
-			System.out.println(imgFileName);
-			
-			String fileExt = imgFileName.substring(imgFileName.indexOf(".") + 1);
-			String thumb = thumbNail.makeThumbnail(saveDir + File.separator + imgFileName, imgFileName, fileExt,
+			vo.setSpaceImageMain(realImg1);
+
+			System.out.println(imgFileName1);
+
+			String fileExt = imgFileName1.substring(imgFileName1.indexOf(".") + 1);
+			String thumb = thumbNail.makeThumbnail(saveDir + File.separator + imgFileName1, imgFileName1, fileExt,
 					saveDir + File.separator);
 			thumb = thumb.substring(thumb.lastIndexOf("\\") + 1);
 			vo.setSpaceThumb(thumb);
@@ -73,32 +82,22 @@ public class AjaxHostSpaceModify extends HttpServlet {
 				vo.setSpaceAttech(attechFile);
 			}
 		}
-		
-		String retCode = "";
+
 		if (dao.spaceUpdate(vo) != 0) {
 			vo = dao.spaceSelect(vo);
-			resultMap.put("retCode", "Success");
-			resultMap.put("data", vo);
-			
-			retCode = "Success";
-			request.getSession().setAttribute("retCode", retCode);
-			response.sendRedirect("BusinessSpaceList.do");
+
+			request.setAttribute("retCode", "Success");
+//			response.sendRedirect("BusinessSpaceList.do");
 		} else {
-			resultMap.put("retCode", "Fail");
-			
-			retCode = "Fail";
-			request.getSession().setAttribute("retCode", retCode);
-			response.sendRedirect("BusinessSpaceList.do");
+			request.setAttribute("retCode", "Fail");
+//			response.sendRedirect("BusinessSpaceList.do");
 		}
-
-		ObjectMapper objectMapper = new ObjectMapper();
-		String json = objectMapper.writeValueAsString(resultMap);
-
-		response.setContentType("text/json; charset=UTF-8");
-		response.getWriter().append(json);
+		String page = "business/business/spacelist";
+		ViewResolve.forward(request, response, page);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

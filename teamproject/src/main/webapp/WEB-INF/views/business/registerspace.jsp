@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -111,28 +112,28 @@
 		</div>
 		<!-- / Content -->
 	</div>
+	<c:if test="${not empty retCode }">
+		<div id="${retCode }"></div>
+	</c:if>
 	<script>
-		$('.register').on('click',function(e){
-					if (<%=request.getParameter("retCode")%> !== 'Fail'){
-			$(document).ready(function() {
-						Swal.fire({
-							  icon: 'success',
-							  text: '등록되었습니다.',
-							})
-							setTimeout(function(){
-								location.reload();
-							}, 2000);
+		//등록시 알람창
+		if($('#Success').length){
+			Swal.fire({
+				  icon: 'success',
+				  text: '등록되었습니다.',
+				}).then(function () {
+					location.href = 'registerspace.do';
 				});
-					}else{
-						Swal.fire({
-							  icon: 'error',
-							  text: '처리 중 오류 발생',
-							})
-							setTimeout(function(){
-								location.reload();
-							}, 2000);
-					}
-		})
+		}
+		if($('#Fail').length){
+			Swal.fire({
+				  icon: 'error',
+				  text: '처리 중 오류 발생',
+				}).then(function () {
+					location.href = 'registerspace.do';
+				});
+		}
+		
 	</script>
 </body>
 </html>

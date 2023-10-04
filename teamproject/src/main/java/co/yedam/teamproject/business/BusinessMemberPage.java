@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.yedam.teamproject.common.ViewResolve;
 import co.yedam.teamproject.member.service.MemberService;
@@ -21,17 +22,27 @@ public class BusinessMemberPage extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		MemberService dao = new MemberServiceImpl();
 		MemberVO vo = new MemberVO();
+		String memberId = (String) session.getAttribute("memberId");
+
+		vo.setMemberId(memberId);
+		vo = dao.memberSelect(vo);
+		// System.out.println(vo.getMemberCheck());
+		try {
+			if (vo.getMemberCheck().equals("host")) {
+				request.setAttribute("b", vo);
+				String page = "business/business/businessmemberpage";
+				ViewResolve.forward(request, response, page);
+			} else {
+				response.sendRedirect("error.do");
+			}
+		} catch (Exception e) {
+			response.sendRedirect("error.do");
+		}
 		
-		vo.setMemberId("jiwon");
-		
-		vo= dao.memberSelect(vo);
-		request.setAttribute("b", vo);
-		System.out.println("비즈니스멤버 찍어봄"+vo);
-		
-		String page = "business/business/businessmemberpage";
-		ViewResolve.forward(request, response, page);
+		//System.out.println("비즈니스멤버 찍어봄"+vo);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

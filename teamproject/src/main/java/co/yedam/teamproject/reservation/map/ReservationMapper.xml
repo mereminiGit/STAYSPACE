@@ -5,20 +5,25 @@
 		SELECT * FROM RESERVATION
 	</select>
 	<select id="reservationSelectListSpace" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
-		SELECT * FROM RESERVATION WHERE SPACE_ID = #{spaceId}
+		SELECT * FROM RESERVATION WHERE SPACE_ID = #{spaceId} ORDER BY RESERVE_START_DATE DESC
 	</select>
 	<select id="reservationSelectListMember" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
 		SELECT * FROM RESERVATION WHERE MEMBER_ID = #{memberId}
+		AND RESERVE_CHECK = 1
+	</select>
+	<select id="reservationSelectListHost" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
+		SELECT * FROM RESERVATION WHERE HOST_ID = #{hostId}
 		AND RESERVE_CHECK = 1
 	</select>
 	<select id="reservationSelect" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
 		SELECT * FROM RESERVATION WHERE SPACE_NAME = #{spaceName}
 	</select>
 	<select id="reservationSelectMember" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
-		SELECT * FROM RESERVATION WHERE MEMBER_ID = #{memberId}
+		SELECT * FROM RESERVATION WHERE MEMBER_ID = #{memberId} ORDER BY RESERVE_START_DATE DESC
 	</select>
 	<select id="reservationSelectHost" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
 		SELECT * FROM RESERVATION WHERE HOST_ID = #{hostId}
+		ORDER BY RESERVE_CHECK
 	</select>
 
 	<select id="reservationHostTotalCount" resultType="int">
@@ -51,7 +56,7 @@
 	<update id="reservationUpdate" parameterType="co.yedam.teamproject.reservation.service.ReservationVO">
 		UPDATE RESERVATION
 		<set>
-		<if test="reserveCheck != null">RESERVE_CHECK = #{reserveCheck}</if>
+		<if test="reserveCheck != null">RESERVE_CHECK = #{reserveCheck}, RESERVE_CHECKOUT_DATE = SYSDATE</if>
 		</set>
 		  WHERE MEMBER_ID = #{memberId}
    		  AND SPACE_NAME = #{spaceName}
@@ -60,7 +65,7 @@
 	<update id="reservationListUpdate" parameterType="co.yedam.teamproject.reservation.service.ReservationVO">
 		UPDATE RESERVATION
 		<set>
-		RESERVE_CHECK = #{reserveCheck}
+		RESERVE_CHECK = #{reserveCheck}, RESERVE_CHECKOUT_DATE = SYSDATE
 		</set>	
 		WHERE HOST_ID=#{hostId}
 		AND RESERVE_ID=#{reserveId}
