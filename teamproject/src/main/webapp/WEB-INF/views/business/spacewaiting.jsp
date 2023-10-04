@@ -80,7 +80,7 @@ cursor: pointer;
 						<tbody class="table-border-bottom-0" id="myTbody">
 							<c:forEach items="${hostReserve }" var="h">
 								<tr>
-									<td>1</td>
+									<td>${h.spaceId }</td>
 									<td><img id="stayimg" src="image/space/${h.reserveImg }"
 										alt="space1"></td>
 									<td>${h.spaceName }</td>
@@ -164,9 +164,16 @@ cursor: pointer;
 		      shouldSwitch = false;
 		      x = rows[i].getElementsByTagName("TD")[num];
 		      y = rows[i + 1].getElementsByTagName("TD")[num];
-		      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-		        shouldSwitch = true;
-		        break;
+		      if(isNaN(x.innerHTML) && isNaN(y.innerHTML)){
+			      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+			        shouldSwitch = true;
+			        break;
+			      }
+		      }else{
+		    	  if (Number(x.innerHTML) > Number(y.innerHTML)) {
+				        shouldSwitch = true;
+				        break;
+				      }
 		      }
 		    }
 		    
@@ -192,9 +199,16 @@ cursor: pointer;
 			      shouldSwitch = false;
 			      x = rows[i].getElementsByTagName("TD")[num];
 			      y = rows[i + 1].getElementsByTagName("TD")[num];
-			      if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-			        shouldSwitch = true;
-			        break;
+			      if(isNaN(x.innerHTML) && isNaN(y.innerHTML)){
+				      if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+				        shouldSwitch = true;
+				        break;
+				      }
+			      }else{
+			    	  if (Number(x.innerHTML) < Number(y.innerHTML)) {
+					        shouldSwitch = true;
+					        break;
+					      }
 			      }
 			    }
 			    

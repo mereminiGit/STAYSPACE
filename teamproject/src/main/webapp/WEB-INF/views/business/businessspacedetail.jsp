@@ -335,9 +335,16 @@ cursor: pointer;
 	      shouldSwitch = false;
 	      x = rows[i].getElementsByTagName("TD")[num];
 	      y = rows[i + 1].getElementsByTagName("TD")[num];
-	      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-	        shouldSwitch = true;
-	        break;
+	      if(isNaN(x.innerHTML) && isNaN(y.innerHTML)){
+		      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+		        shouldSwitch = true;
+		        break;
+		      }
+	      }else{
+	    	  if (Number(x.innerHTML) > Number(y.innerHTML)) {
+			        shouldSwitch = true;
+			        break;
+			      }
 	      }
 	    }
 	    
@@ -363,9 +370,16 @@ cursor: pointer;
 		      shouldSwitch = false;
 		      x = rows[i].getElementsByTagName("TD")[num];
 		      y = rows[i + 1].getElementsByTagName("TD")[num];
-		      if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-		        shouldSwitch = true;
-		        break;
+		      if(isNaN(x.innerHTML) && isNaN(y.innerHTML)){
+			      if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+			        shouldSwitch = true;
+			        break;
+			      }
+		      }else{
+		    	  if (Number(x.innerHTML) < Number(y.innerHTML)) {
+				        shouldSwitch = true;
+				        break;
+				      }
 		      }
 		    }
 		    

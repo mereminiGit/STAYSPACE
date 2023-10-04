@@ -13,6 +13,27 @@ img.stayimg {
 	height: 80px;
 	border-radius: 10px;
 }
+.myInput {
+  background-image: url('sneat/assets/img/icons/unicons/searchicon.png');
+  background-size: 25px 25px;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 15px;
+  padding: 10px 20px 10px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  margin-right: 30px;
+}
+#float{
+  float: right;
+  width: 30%;
+  margin-right: 50px;
+}
+th:hover{
+background-color: beige;
+cursor: pointer;
+}
 </style>
 <!-- jquery -->
 <script
@@ -34,20 +55,26 @@ img.stayimg {
 			<div class="card">
 				<h5 class="card-header">Total Space List</h5>
 				<div class="table-responsive text-nowrap">
-					<table class="table table-hover">
+				<div id="float">
+				&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="text" class="myInput"
+						onkeyup="myFunction(0)" placeholder="Search for somethings.."
+						><br>
+						</div>
+					<table class="table table-hover myTable">
 						<thead>
 							<tr>
-								<th>Space ID</th>
+								<th onclick="sortTable(0,0)">Space ID</th>
 								<th>Img</th>
-								<th>Name</th>
-								<th>Address</th>
-								<th>Price</th>
-								<th>Type</th>
-								<th>Hit</th>
+								<th onclick="sortTable(0,2)">Name</th>
+								<th onclick="sortTable(0,3)">Address</th>
+								<th onclick="sortTable(0,4)">Price</th>
+								<th onclick="sortTable(0,5)">Type</th>
+								<th onclick="sortTable(0,7)">Hit</th>
 								<th>Action</th>
 							</tr>
 						</thead>
-						<tbody class="table-border-bottom-0">
+						<tbody class="table-border-bottom-0 myTbody">
 							<c:forEach items="${spaces }" var="s">
 								<tr sid="${s.spaceId }">
 									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceId }</td>
@@ -205,6 +232,101 @@ img.stayimg {
 	<div id="${retCode }"></div>
 	</c:if>
 	<script>
+			//테이블 소팅
+			function sortTable(tno,num) {
+			  var table, rows, switching, i, x, y, shouldSwitch, count;
+			  table = document.getElementsByClassName("myTable")[tno];
+			  switching = true;
+			  count = 0;
+			  while (switching) {
+			    switching = false;
+			    rows = table.rows;
+			    for (i = 1; i < (rows.length - 1); i++) {
+			      shouldSwitch = false;
+			      x = rows[i].getElementsByTagName("TD")[num];
+			      y = rows[i + 1].getElementsByTagName("TD")[num];
+			      if(isNaN(Number(x.innerHTML)) && isNaN(Number(y.innerHTML))){
+				      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+				        shouldSwitch = true;
+				        break;
+				      }
+			      }else{
+			    	  if (Number(x.innerHTML) > Number(y.innerHTML)) {
+					        shouldSwitch = true;
+					        break;
+					      }
+			      }
+			    }
+			    
+			    if (shouldSwitch) {
+			      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+			      count += 1;
+			      switching = true;
+			    }
+			  }
+			  if(count == 0){
+				  sortTableDesc(tno,num);
+			  }
+			}
+			
+			function sortTableDesc(tno,num) {
+				  var table, rows, switching, i, x, y, shouldSwitch;
+				  table = document.getElementsByClassName("myTable")[tno];
+				  switching = true;
+				  while (switching) {
+				    switching = false;
+				    rows = table.rows;
+				    for (i = 1; i < (rows.length - 1); i++) {
+				      shouldSwitch = false;
+				      x = rows[i].getElementsByTagName("TD")[num];
+				      y = rows[i + 1].getElementsByTagName("TD")[num];
+				      if(isNaN(x.innerHTML) && isNaN(y.innerHTML)){
+					      if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+					        shouldSwitch = true;
+					        break;
+					      }
+				      }else{
+				    	  if (Number(x.innerHTML) < Number(y.innerHTML)) {
+						        shouldSwitch = true;
+						        break;
+						      }
+				      }
+				    }
+				    
+				    if (shouldSwitch) {
+				      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+				      switching = true;
+				    }
+				  }
+				}
+			
+			//테이블 필터링
+			function myFunction(tno) {
+			  var input, filter, table, tr, td, i, txtValue;
+			  input = document.getElementsByClassName("myInput")[tno];
+			  filter = input.value.toUpperCase();
+			  tbody = document.getElementsByClassName("myTbody")[tno];
+			  tr = tbody.getElementsByTagName("tr");
+			  for (i = 0; i < tr.length; i++) {
+			  var arr = [];
+			  var tdArr = tr[0].getElementsByTagName("td");
+				  for(j=0; j<tdArr.length; j++){
+				    td = tr[i].getElementsByTagName("td")[j];
+				    if (td) {
+				      txtValue = td.textContent || td.innerText;
+				      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+				    	arr.push("exist");
+				      }
+				    }   
+				}
+				if(arr.indexOf("exist") > -1){
+				  tr[i].style.display = "";
+		      } else {
+		        tr[i].style.display = "none";
+			  }
+			}
+			}
+			
 			//수정시 알람창
 			if($('#Success').length){
 				Swal.fire({

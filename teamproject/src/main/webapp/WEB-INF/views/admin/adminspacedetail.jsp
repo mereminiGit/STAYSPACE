@@ -8,6 +8,29 @@
 <meta charset="UTF-8">
 <!-- 모달 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<style>
+.myInput {
+  background-image: url('sneat/assets/img/icons/unicons/searchicon.png');
+  background-size: 25px 25px;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 15px;
+  padding: 10px 20px 10px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  margin-right: 30px;
+}
+#float{
+  float: right;
+  width: 30%;
+  margin-right: 50px;
+}
+th:hover{
+background-color: beige;
+cursor: pointer;
+}
+</style>
 </head>
 <body>
 	<!-- Content wrapper -->
@@ -92,18 +115,24 @@
 									Count: ${replycount })</small></span>
 						</h5>
 						<div class="table-responsive text-nowrap">
-							<table class="table table-hover" style="table-layout: fixed;">
+							<div id="float">
+							&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="text" class="myInput"
+						onkeyup="myFunction(0)" placeholder="Search for somethings.."
+						><br>
+						</div>
+							<table class="table table-hover myTable" style="table-layout: fixed;">
 								<thead>
 									<tr>
 										<th>Img</th>
-										<th>Member Id</th>
-										<th style="width: 40%">Content</th>
-										<th>Write Date</th>
-										<th>Grade</th>
+										<th onclick="sortTable(0,1)">Member Id</th>
+										<th style="width: 40%" onclick="sortTable(0,2)">Content</th>
+										<th onclick="sortTable(0,3)">Write Date</th>
+										<th onclick="sortTable(0,4)">Grade</th>
 										<th>Action</th>
 									</tr>
 								</thead>
-								<tbody class="table-border-bottom-0">
+								<tbody class="table-border-bottom-0 myTbody">
 									<c:choose>
 										<c:when test="${empty reply }">
 											<tr>
@@ -168,18 +197,25 @@
 									Count: ${reservecount })</small></span>
 						</h5>
 						<div class="table-responsive text-nowrap">
-							<table class="table table-hover">
+						<div class="table-responsive text-nowrap">
+							<div id="float">
+							&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="text" class="myInput"
+						onkeyup="myFunction(1)" placeholder="Search for somethings.."
+						><br>
+						</div>
+							<table class="table table-hover myTable">
 								<thead>
 									<tr>
-										<th>Reserve Id</th>
-										<th>Member Id</th>
-										<th>Reserved Date</th>
-										<th>Reserve Check</th>
-										<th>Check Out Date</th>
+										<th onclick="sortTable(1,0)">Reserve Id</th>
+										<th onclick="sortTable(1,1)">Member Id</th>
+										<th onclick="sortTable(1,2)">Reserved Date</th>
+										<th onclick="sortTable(1,3)">Reserve Check</th>
+										<th onclick="sortTable(1,4)">Check Out Date</th>
 										<!-- <th>Action</th>  -->
 									</tr>
 								</thead>
-								<tbody class="table-border-bottom-0">
+								<tbody class="table-border-bottom-0 myTbody">
 									<c:choose>
 										<c:when test="${empty reserve }">
 											<tr>
@@ -246,6 +282,101 @@
 		</div>
 	</div>
 	<script>
+	//테이블 소팅
+	function sortTable(tno,num) {
+	  var table, rows, switching, i, x, y, shouldSwitch, count;
+	  table = document.getElementsByClassName("myTable")[tno];
+	  switching = true;
+	  count = 0;
+	  while (switching) {
+	    switching = false;
+	    rows = table.rows;
+	    for (i = 1; i < (rows.length - 1); i++) {
+	      shouldSwitch = false;
+	      x = rows[i].getElementsByTagName("TD")[num];
+	      y = rows[i + 1].getElementsByTagName("TD")[num];
+	      if(isNaN(Number(x.innerHTML)) && isNaN(Number(y.innerHTML))){
+		      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+		        shouldSwitch = true;
+		        break;
+		      }
+	      }else{
+	    	  if (Number(x.innerHTML) > Number(y.innerHTML)) {
+			        shouldSwitch = true;
+			        break;
+			      }
+	      }
+	    }
+	    
+	    if (shouldSwitch) {
+	      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+	      count += 1;
+	      switching = true;
+	    }
+	  }
+	  if(count == 0){
+		  sortTableDesc(tno,num);
+	  }
+	}
+	
+	function sortTableDesc(tno,num) {
+		  var table, rows, switching, i, x, y, shouldSwitch;
+		  table = document.getElementsByClassName("myTable")[tno];
+		  switching = true;
+		  while (switching) {
+		    switching = false;
+		    rows = table.rows;
+		    for (i = 1; i < (rows.length - 1); i++) {
+		      shouldSwitch = false;
+		      x = rows[i].getElementsByTagName("TD")[num];
+		      y = rows[i + 1].getElementsByTagName("TD")[num];
+		      if(isNaN(x.innerHTML) && isNaN(y.innerHTML)){
+			      if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+			        shouldSwitch = true;
+			        break;
+			      }
+		      }else{
+		    	  if (Number(x.innerHTML) < Number(y.innerHTML)) {
+				        shouldSwitch = true;
+				        break;
+				      }
+		      }
+		    }
+		    
+		    if (shouldSwitch) {
+		      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+		      switching = true;
+		    }
+		  }
+		}
+	
+	//테이블 필터링
+	function myFunction(tno) {
+	  var input, filter, table, tr, td, i, txtValue;
+	  input = document.getElementsByClassName("myInput")[tno];
+	  filter = input.value.toUpperCase();
+	  tbody = document.getElementsByClassName("myTbody")[tno];
+	  tr = tbody.getElementsByTagName("tr");
+	  for (i = 0; i < tr.length; i++) {
+	  var arr = [];
+	  var tdArr = tr[0].getElementsByTagName("td");
+		  for(j=0; j<tdArr.length; j++){
+		    td = tr[i].getElementsByTagName("td")[j];
+		    if (td) {
+		      txtValue = td.textContent || td.innerText;
+		      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+		    	arr.push("exist");
+		      }
+		    }   
+		}
+		if(arr.indexOf("exist") > -1){
+		  tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+	  }
+	}
+	}
+	
 	//후기 상세보기
 	$('.detailContent').on('click',function(e){
 		//console.log(e.target.parentElement.children[2].innerText);
