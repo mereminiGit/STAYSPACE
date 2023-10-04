@@ -216,8 +216,8 @@ function numberWithCommas(x) {
 						</div>
 						<div class="tab-pane fade" id="nav-information" role="tabpanel"
 							aria-labelledby="nav-information-tab">
-							<p
-								style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400; line-height: 180%; word-spacing: 2px;">${s.spaceContent }</p>
+							<pre
+								style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400; line-height: 180%; word-spacing: 2px;">${s.spaceContent }</pre>
 						</div>
 
 						<!-- 리뷰 -->
@@ -630,15 +630,7 @@ function numberWithCommas(x) {
 	<script type="text/javascript">
 	function url(page){
 		var currentUrl = window.location.href + "?spaceId=" + $('#pagespaceId').text();
-		if(currentUrl.includes("?")){
-			if(currentUrl.includes("page")){
 				location.href=currentUrl.split('page')[0]+"page="+page
-			}else{
-				location.href=currentUrl+"&page="+page
-			}
-		} else{
-			location.href=currentUrl+"?page="+page
-		}
 	}
 		
 	</script>

@@ -85,7 +85,7 @@ function numberWithCommas(x) {
 									<td class="align-middle border-0"><span
 										class="item-price text-primary fs-3 fw-medium">&#x20a9;<script>numberWithCommas(${c.spacePrice })</script></span></td>
 									<td class="align-middle border-0 cart-remove"><button type="button"
-										onclick="remove('${c.reserveId}')"> <svg width="32px" height="32px">
+										onclick="remove('${c.reserveId}')" style="border: none; background: none;"> <svg width="32px" height="32px">
                         <use xlink:href="#baseline-clear"></use>
                       </svg>
 									</button></td>
