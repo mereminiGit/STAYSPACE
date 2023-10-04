@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import co.yedam.teamproject.wishList.service.WishListService;
 import co.yedam.teamproject.wishList.service.WishListVO;
 import co.yedam.teamproject.wishList.serviceImpl.WishListServiceImpl;
-
+//위시리스트 삭제
 @WebServlet("/ajaxWishListDelete.do")
 public class ajaxWishListDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import co.yedam.teamproject.member.service.MemberService;
 import co.yedam.teamproject.member.service.MemberVO;
 import co.yedam.teamproject.member.serviceImpl.MemberServiceImpl;
-
+//마이페이지 회원 탈퇴
 @WebServlet("/ajaxUserDelete.do")
 public class ajaxUserDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
