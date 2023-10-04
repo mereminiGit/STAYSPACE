@@ -73,7 +73,7 @@ function numberWithCommas(x) {
 											</div>
 											<div class="card-detail ps-3">
 												<h5 class="card-title fs-3 text-capitalize" style="font-weight: 500; font-family: 'Noto Sans KR', sans-serif;">
-													<a href="#">${c.spaceName }</a>
+													<a href="#" onclick="selectSpace('${c.spaceId }')">${c.spaceName }</a>
 												</h5>
 												<%-- <span class="item-price text-primary fs-3 fw-light">${c.spacePrice }</span> --%>
 											</div>
@@ -118,10 +118,18 @@ function numberWithCommas(x) {
 					</div>
 				</div>
 			</div>
+			<form id="sform" action="shopdetail.do" method="post">
+				<input type="hidden" id="spaceId" name="spaceId">
+			</form>
 		</div>
 	</section>
 
 	<script>
+	function selectSpace(id) {
+		let form = document.getElementById("sform");
+		form.spaceId.value = id;
+		form.submit();
+	}
 	function remove(reserveId){
 		
 		Swal.fire({
