@@ -39,7 +39,9 @@
 						font-size: large;
 						float: left;
 					}
-
+					h5{
+						font-family: 'Noto Sans KR', sans-serif;
+					}
 					#withdrawal {
 						font-family: 'Noto Sans KR', sans-serif;
 					}
@@ -231,7 +233,7 @@
 																			<img class="card-img-top" id="wishImg" src="image/space/${w.spaceImage }"
 																				alt="Card image cap" />
 																			<div class="card-body">
-																				<h5 class="card-title">${w.spaceName }</h5>
+																				<h5 class="card-title" style="font-family: 'Noto Sans KR', sans-serif; text-align: center;">${w.spaceName }</h5>
 																				<p class="card-text">
 																					<!--숙소 콘텐트있던곳-->
 																					<br>
