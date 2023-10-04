@@ -39,12 +39,14 @@ public class CheckoutController extends HttpServlet {
 		HttpSession session = request.getSession();
 		String id=(String) session.getAttribute("memberId");
 		if(id!= null) {
-			if(request.getParameter("spaceId")!=null) {
+			if(request.getParameter("spaceId")==null) {
+				list = dao.cartListSelectList(vo);
+			} else {
 				SpaceService sdao = new SpaceServiceImpl();
 				SpaceVO svo = new SpaceVO();
 				svo.setSpaceId(Integer.parseInt(request.getParameter("spaceId")));
 				svo = sdao.spaceSelect(svo);
-
+				
 				vo.setMemberId(id); // 세션에 담긴 아이디 불러오기
 				vo.setSpaceName(svo.getSpaceName());
 				vo.setSpacePrice(svo.getSpacePrice());
@@ -53,10 +55,9 @@ public class CheckoutController extends HttpServlet {
 				vo.setSpaceStartDate(Date.valueOf(request.getParameter("spaceStartDate")));
 				vo.setSpaceId(Integer.valueOf(svo.getSpaceId()));
 				dao.cartListInsert(vo);
-				list = dao.cartListSelectList(vo);
-			} else {
-				vo.setMemberId(id); // 세션에 담긴 아이디 불러오기
-				list = dao.cartListSelectList(vo);
+				vo=dao.cartReserveIdSelect(vo);
+				System.out.println("spaceId="+request.getParameter("spaceId"));
+				list.add(dao.cartListSelect(vo));
 			}
 			MemberVO mvo= new MemberVO();
 			MemberService mdao = new MemberServiceImpl();

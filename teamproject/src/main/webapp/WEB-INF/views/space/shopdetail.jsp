@@ -491,8 +491,14 @@ function numberWithCommas(x) {
 		integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ=="
 		crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
 	<script>
-		
+	var disabledDays=[];
 	</script>
+	<c:forEach items="${reserved }" var="r">
+	<script>
+	disabledDays.push("${r.reserveStartDate}");
+	console.log(disabledDays);
+	</script>
+	</c:forEach>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script type="text/javascript">
 		function selectTo(id,go) {
@@ -518,6 +524,7 @@ function numberWithCommas(x) {
 		$('#datepicker').datepicker({
 			dateFormat : 'yy-mm-dd',
 			minDate : 0,
+			beforeShowDay: disableSomeDay,
 			onSelect : function(d) {
 				var date=$("#datepicker").val();
 				let form = document.getElementById("sform");
@@ -527,7 +534,20 @@ function numberWithCommas(x) {
 			event.preventDefault();
 			event.stopPropagation();
 		})
+		
+		function disableSomeDay(date){
+			var month=date.getMonth();
+			var dates=date.getDate();
+			var year=date.getFullYear();
+			for (i=0; i< disabledDays.length;i++){
+				if($.inArray(year+'-'+(month+1)+'-'+dates,disabledDays)!=-1){
+					return[false];
+				}
+			}
+				return[true];
+		}
 	</script>
+	
 	
 	<!-- 리뷰 script -->
 	<script type="text/javascript">

@@ -12,7 +12,11 @@
 		resultType="co.yedam.teamproject.cartList.service.CartListVO">
 		SELECT * FROM CARTLIST WHERE RESERVE_ID = #{reserveId}
 	</select>
-
+	
+	<select id="cartReserveIdSelect" resultType="co.yedam.teamproject.cartList.service.CartListVO">
+		SELECT RESERVE_ID FROM CARTLIST WHERE MEMBER_ID=#{memberId} AND SPACE_START_DATE=#{spaceStartDate} AND SPACE_ID=#{spaceId}
+	</select>
+	
 	<insert id="cartListInsert"
 		parameterType="co.yedam.teamproject.cartList.service.CartListVO">
 		<selectKey keyProperty="reserveId" resultType="int"
