@@ -47,7 +47,7 @@ cursor: pointer;
 			<div class="card-group mb-5">
 				<div class="card">
 					<img class="card-img-top" src="image/space/${s.spaceImageMain }"
-						alt="Card image cap" style="objcet-fit: cover; height: 459px;" /><small
+						alt="Card image cap" style="objcet-fit: cover; height: 500px;" /><small
 						class="text-muted" align="center">Main Image</small>
 					<div class="card-body">
 						<h5 class="card-title">
@@ -66,7 +66,7 @@ cursor: pointer;
 				</div>
 				<div class="card">
 					<img class="card-img-top" src="image/space/${s.spaceImageSub1 }"
-						alt="Card image cap" style="objcet-fit: cover; height: 459px;" /><small
+						alt="Card image cap" style="objcet-fit: cover; height: 500px;" /><small
 						class="text-muted" align="center">Sub Image1</small>
 					<div class="card-body">
 						<h5 class="card-title">
@@ -77,7 +77,7 @@ cursor: pointer;
 				</div>
 				<div class="card">
 					<img class="card-img-top" src="image/space/${s.spaceImageSub2 }"
-						alt="Card image cap" style="objcet-fit: cover; height: 459px;" /><small
+						alt="Card image cap" style="objcet-fit: cover; height: 500px;" /><small
 						class="text-muted" align="center">Sub Image2</small>
 					<div class="card-body">
 						<h5 class="card-title">
