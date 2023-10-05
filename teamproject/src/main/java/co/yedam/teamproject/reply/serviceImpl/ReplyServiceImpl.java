@@ -13,8 +13,6 @@ import co.yedam.teamproject.space.map.SpaceMapper;
 public class ReplyServiceImpl implements ReplyService {
 	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	ReplyMapper map = sqlSession.getMapper(ReplyMapper.class);
-	SpaceMapper smap= sqlSession.getMapper(SpaceMapper.class);
-	ReplyVO vo=new ReplyVO();
 	@Override
 	public List<ReplyVO> replySelectList(String s) {
 		return map.replySelectList(s);
@@ -27,19 +25,16 @@ public class ReplyServiceImpl implements ReplyService {
 
 	@Override
 	public int replyInsert(ReplyVO vo) {
-		smap.spaceStarUpdate(vo.getSpaceId());
 		return map.replyInsert(vo);
 	}
 
 	@Override
 	public int replyUpdate(ReplyVO vo) {
-		smap.spaceStarUpdate(vo.getSpaceId());
 		return map.replyUpdate(vo);
 	}
 
 	@Override
 	public int replyDelete(ReplyVO vo) {
-		smap.spaceStarUpdate(vo.getSpaceId());
 		return map.replyDelete(vo);
 	}
 
@@ -50,9 +45,6 @@ public class ReplyServiceImpl implements ReplyService {
 
 	@Override
 	public int replyDeleteId(int id) {
-		vo.setReplyId(id);
-		vo=map.replySelectbyReplyId(vo);
-		smap.spaceStarUpdate(vo.getSpaceId());
 		return map.replyDeleteId(id);
 	}
 
