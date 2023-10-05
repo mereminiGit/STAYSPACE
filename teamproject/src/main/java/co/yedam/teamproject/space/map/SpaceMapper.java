@@ -15,7 +15,6 @@ public interface SpaceMapper {
 	SpaceVO spaceSelect(SpaceVO vo);
 	int spaceInsert(SpaceVO vo);
 	int spaceUpdate(SpaceVO vo);
-	void spaceStarUpdate(int id);
 	int spaceDelete(int spaceId);
 	void spaceHitUpdate(int id);
 }

@@ -66,9 +66,6 @@
       </set>
       WHERE SPACE_ID=#{spaceId}
    </update>
-   <update id="spaceStarUpdate" parameterType="co.yedam.teamproject.space.service.SpaceVO">
-   	UPDATE SPACE SET SPACE_STAR=(SELECT AVG(REPLY_STAR) FROM REPLY WHERE SPACE_ID=#{spaceId}) WHERE SPACE_ID=#{spaceId}
-   </update>
    <delete id="spaceDelete"
       parameterType="co.yedam.teamproject.space.service.SpaceVO">
       DELETE FROM SPACE WHERE SPACE_ID=#{spaceId}
