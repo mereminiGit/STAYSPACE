@@ -484,8 +484,8 @@ function numberWithCommas(x) {
 				<c:forEach items="${relatedProduct }" var="r">
 					<div class="col-md-3 product-card position-relative mb-3">
 						<div class="image-holder zoom-effect">
-							<img src="image/space/${r.spaceImageMain }" alt="product-item"
-								class="img-fluid zoom-in">
+							<a href="shopdetail.do?spaceId=${r.spaceId }"><img src="image/space/${r.spaceImageMain }" alt="product-item"
+								class="img-fluid zoom-in"></a>
 						</div>
 						<div class="card-detail text-center pt-3 pb-2">
 							<h5 class="card-title fs-3 text-capitalize">

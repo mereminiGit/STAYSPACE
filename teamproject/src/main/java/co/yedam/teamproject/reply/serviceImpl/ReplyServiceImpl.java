@@ -8,7 +8,6 @@ import co.yedam.teamproject.common.DataSource;
 import co.yedam.teamproject.reply.map.ReplyMapper;
 import co.yedam.teamproject.reply.service.ReplyService;
 import co.yedam.teamproject.reply.service.ReplyVO;
-import co.yedam.teamproject.space.map.SpaceMapper;
 
 public class ReplyServiceImpl implements ReplyService {
 	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
