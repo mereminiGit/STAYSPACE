@@ -38,6 +38,7 @@
 	z-index: 0;
 	padding: 0;
 }
+
 </style>
 <script>
 function numberWithCommas(x) {
@@ -239,7 +240,7 @@ function numberWithCommas(x) {
 									<div class="review-item d-flex">
 										<div class="image-holder">
 											<img src="image/reply/${r.replyImage }" alt="review"
-												style="width: 160px; height: 160px">
+												style="width: 160px; height: 160px; margin-left: 10px;">
 										</div>
 										<div class="review-content">
 											<div class="rating-container d-flex align-items-center">
@@ -629,8 +630,14 @@ function numberWithCommas(x) {
 
 	<script type="text/javascript">
 	function url(page){
-		var currentUrl = window.location.href + "?spaceId=" + $('#pagespaceId').text();
-				location.href=currentUrl.split('page')[0]+"page="+page
+		var currentUrl = window.location.href;
+		if(currentUrl.includes("?")){
+			location.href = currentUrl.split('page')[0]+"&page="+page;			
+		} else {
+			currentUrl = window.location.href + "?spaceId=" + $('#pagespaceId').text();
+			location.href = currentUrl.split('page')[0]+"&page="+page;
+		}
+		/* + "?spaceId=" + $('#pagespaceId').text(); */
 	}
 		
 	</script>
