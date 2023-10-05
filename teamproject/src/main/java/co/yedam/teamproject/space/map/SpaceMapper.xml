@@ -54,7 +54,7 @@
       UPDATE SPACE
       <set>
          <if test="spaceName != null">SPACE_NAME=#{spaceName},</if>
-         <if test="spacePrice != null">SPACE_PRICE=#{spacePrice},</if>
+         <if test="spacePrice != 0">SPACE_PRICE=#{spacePrice},</if>
          <if test="spaceCity != null">SPACE_CITY=#{spaceCity},</if>
          <if test="spaceAddress !=null">SPACE_ADDRESS=#{spaceAddress},</if>
          <if test="spaceImageMain !=null">SPACE_IMAGE_MAIN=#{spaceImageMain},</if>
