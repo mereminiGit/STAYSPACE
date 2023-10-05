@@ -83,7 +83,7 @@ cursor: pointer;
 										alt="image"></td>
 									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceName }</td>
 									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceAddress }</td>
-									<td onclick="adminspacedetail('${s.spaceId }')">￦<span>${s.spacePrice }</span>
+									<td onclick="adminspacedetail('${s.spaceId }')">${s.spacePrice }
 									</td>
 									<td onclick="adminspacedetail('${s.spaceId }')">${s.spaceType }</td>
 									<td style="display: none">${s.spaceContent }</td>
