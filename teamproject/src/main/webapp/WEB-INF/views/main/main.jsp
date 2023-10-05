@@ -21,7 +21,7 @@
 								<div class="banner-content">
 									<!-- image slide 1 공간 네임 & 소개 글 -->
 									<h2 style="text-shadow: 1px 1px 15px rgb(235, 235, 235, 0.25);">Studio Space</h2>
-									<p class="fs-3" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400; text-shadow: 1px 1px 15px rgb(235, 235, 235, 0.25);">패션 촬영, 자연광으로 사진 잘 나오는 스튜디오는?</p>
+									<p class="fs-3" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400; text-shadow: 1px 1px 15px rgb(235, 235, 235, 0.25);">스냅 촬영, 하루종일 찍어도 질리지 않는 스튜디오는?</p>
 									<!-- image slide 1 상세 페이지 링크 (SpaceItem.do?name=\${space.spaceName}) -->
 									<a href="shoplist.do?spaceType=Studio" class="btn" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">Space Now</a>
 								</div>
