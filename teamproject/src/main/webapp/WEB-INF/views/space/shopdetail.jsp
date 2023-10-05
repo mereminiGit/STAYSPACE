@@ -38,6 +38,7 @@
 	z-index: 0;
 	padding: 0;
 }
+
 </style>
 <script>
 function numberWithCommas(x) {
@@ -223,23 +224,23 @@ function numberWithCommas(x) {
 						<!-- 리뷰 -->
 						<div class="tab-pane fade" id="nav-review" role="tabpanel"
 							aria-labelledby="nav-review-tab">
+							<c:if test="${empty replyes }">
+								<div class="review-content">
+									<p
+										style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400; margin: 0; text-align: center;">등록된
+										후기가 없습니다.</p>
+								</div>
+							</c:if>
 							<div
 								class="review-box review-style d-flex flex-wrap justify-content-between">
 
 								<!-- 리뷰 반복 -->
-								<c:if test="${empty replyes }">
-									<div class="review-content">
-										<p
-											style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400; margin: 0;">등록된
-											후기가 없습니다.</p>
-									</div>
-								</c:if>
 
 								<c:forEach items="${replyes }" var="r">
 									<div class="review-item d-flex">
 										<div class="image-holder">
 											<img src="image/reply/${r.replyImage }" alt="review"
-												style="width: 160px; height: 160px">
+												style="width: 160px; height: 160px; margin-left: 10px;">
 										</div>
 										<div class="review-content">
 											<div class="rating-container d-flex align-items-center">
@@ -629,8 +630,14 @@ function numberWithCommas(x) {
 
 	<script type="text/javascript">
 	function url(page){
-		var currentUrl = window.location.href + "?spaceId=" + $('#pagespaceId').text();
-				location.href=currentUrl.split('page')[0]+"page="+page
+		var currentUrl = window.location.href;
+		if(currentUrl.includes("?")){
+			location.href = currentUrl.split('page')[0]+"&page="+page;			
+		} else {
+			currentUrl = window.location.href + "?spaceId=" + $('#pagespaceId').text();
+			location.href = currentUrl.split('page')[0]+"&page="+page;
+		}
+		/* + "?spaceId=" + $('#pagespaceId').text(); */
 	}
 		
 	</script>

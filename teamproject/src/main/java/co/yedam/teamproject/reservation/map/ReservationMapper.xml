@@ -10,6 +10,7 @@
 	<select id="reservationSelectListMember" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
 		SELECT * FROM RESERVATION WHERE MEMBER_ID = #{memberId}
 		AND RESERVE_CHECK = 1
+		AND SPACE_ID = #{spaceId}
 	</select>
 	<select id="reservationSelectListHost" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
 		SELECT * FROM RESERVATION WHERE HOST_ID = #{hostId}

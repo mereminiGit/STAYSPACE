@@ -2,12 +2,14 @@ package co.yedam.teamproject.reservation.map;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import co.yedam.teamproject.reservation.service.ReservationVO;
 
 public interface ReservationMapper {
 	List<ReservationVO> reservationSelectList();
 	List<ReservationVO> reservationSelectListSpace(String spaceId);//공간Id로 Select
-	List<ReservationVO> reservationSelectListMember(String memberId); // memberId로 리스트 받기
+	List<ReservationVO> reservationSelectListMember(@Param("memberId")String memberId, @Param("spaceId")int spaceId); // memberId로 리스트 받기
 	List<ReservationVO> reservationSelectListHost(String hostId);
 	List<ReservationVO> reservationSelectMember(ReservationVO vo);
 	List<ReservationVO> reservationSelectHost(ReservationVO vo);

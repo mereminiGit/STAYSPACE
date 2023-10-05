@@ -118,7 +118,7 @@
 					<div class="image-holder mb-5" data-aos="fade"
 						data-aos-easing="ease-in" data-aos-duration="1500"
 						data-aos-once="true" style="margin-bottom: 0 !important;">
-						<img src="vaso-html/images/post-item3.jpg" alt="our-store" class="img-fluid">
+						<img src="image/main_sub5.jpg" alt="our-store" class="img-fluid">
 					</div>
 				</div>
 				<div class="col-lg-6">
@@ -127,7 +127,7 @@
 						data-aos-duration="1000" data-aos-once="true">
 						<div class="display-header">
 							<h3>Branch office</h3>
-							<p>문의사항을 저희 지사를 소개합니다.</p>
+							<p>아래의 연락처로 문의사항을 보내주세요.</p>
 						</div>
 						<div class="location-content d-flex flex-wrap">
 							<div class="col-lg-6 col-sm-12">
@@ -135,41 +135,41 @@
 									<h5
 										class="widget-title text-decoration-underline text-uppercase">daegu</h5>
 									<div class="contact-address pt-3">
-										<p>730 Glenstone Ave 65802, Springfield, US</p>
+										<p>403, Jungang-daero, Jung-gu, Daegu, KOREA</p>
 									</div>
 									<div class="contact-number">
 										<p>
-											<a href="#">+123 987 321</a>
+											<a href="#">+82 1111 2222</a>
 										</p>
 										<p>
-											<a href="#">+123 123 654</a>
+											<a href="#">+28 1212 2323</a>
 										</p>
 									</div>
 									<div class="email-address">
 										<p>
-											<a href="#">vaso@yourinfo.com</a>
+											<a href="#">yedamdaegu@yedam.com</a>
 										</p>
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-6 col-sm-12">
-								<div class="content-box">
+								<div class="content-box" style="padding-right: 24px">
 									<h5
 										class="widget-title text-decoration-underline text-uppercase">busan</h5>
 									<div class="contact-address pt-3">
-										<p>730 Glenstone Ave 65802, Springfield, US</p>
+										<p>403, Jungang-daero, Jung-gu, Busan, KOREA</p>
 									</div>
 									<div class="contact-number">
 										<p>
-											<a href="#">+123 987 321</a>
+											<a href="#">+82 9999 8888</a>
 										</p>
 										<p>
-											<a href="#">+123 123 654</a>
+											<a href="#">+82 9898 8787</a>
 										</p>
 									</div>
 									<div class="email-address">
 										<p>
-											<a href="#">vaso@yourinfo.com</a>
+											<a href="#">yedambusan@yedam.com</a>
 										</p>
 									</div>
 								</div>

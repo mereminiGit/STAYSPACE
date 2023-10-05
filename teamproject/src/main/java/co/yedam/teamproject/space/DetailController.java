@@ -100,12 +100,16 @@ public class DetailController extends HttpServlet {
 		if (session.getAttribute("memberId") == null) {
 			request.setAttribute("reservations", "");
 		} else {
-			System.out.println(session.getAttribute("memberId"));
+			/* System.out.println(session.getAttribute("memberId")); */
 			String memid = (String) session.getAttribute("memberId");
+			int spaid = Integer.parseInt(request.getParameter("spaceId"));
 			System.out.println(memid);
-			reservations = daoReservation.reservationSelectListMember(memid);
-			System.out.println(reservations);
-			request.setAttribute("reservations", reservations);
+			System.out.println(spaid);
+			reservations = daoReservation.reservationSelectListMember(memid, spaid);
+			if(reservations != null) {
+				System.out.println(reservations);
+				request.setAttribute("reservations", reservations);				
+			}
 		}
 		
 		request.setAttribute("memberId", session.getAttribute("memberId"));
