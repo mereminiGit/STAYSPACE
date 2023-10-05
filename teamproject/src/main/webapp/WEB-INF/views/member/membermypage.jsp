@@ -741,6 +741,10 @@
 						$('#editEmailCheck').attr('data-value', 'No');
 						console.log($('#editEmailCheck').attr('data-value'));
 					}
+					const entries = performance.getEntriesByType("navigation")[0];
+					if(entries.type ==="reload"){
+							location.href="memberreservationhome.do"
+						}
 				</script>
 			</body>
 
