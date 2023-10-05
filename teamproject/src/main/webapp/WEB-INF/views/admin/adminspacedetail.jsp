@@ -72,7 +72,7 @@ cursor: pointer;
 						<h5 class="card-title">
 							<strong>Content</strong>
 						</h5>
-						<p class="card-text">&nbsp; ${s.spaceContent }</p>
+						<p class="card-text" style="line-height: 180%; white-space: pre-wrap; font-size: 13px;">&nbsp; ${s.spaceContent }</p>
 					</div>
 				</div>
 				<div class="card">
@@ -229,7 +229,7 @@ cursor: pointer;
 													<td>${r.memberId }</td>
 													<td>${r.reserveStartDate }</td>
 													<c:if test="${r.reserveCheck eq 0}">
-														<td><a href="spacewaiting.do" style="color: red">예약대기</a></td>
+														<td>예약대기</td>
 														<td></td>
 													</c:if>
 													<c:if test="${r.reserveCheck eq 1}">

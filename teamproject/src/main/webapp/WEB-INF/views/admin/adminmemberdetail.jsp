@@ -34,6 +34,7 @@ cursor: pointer;
 </style>
 </head>
 <body>
+	<c:if test="${m.memberCheck eq 'user' }">
 	<!-- Content wrapper -->
 	<div class="content-wrapper">
 		<!-- Content -->
@@ -146,18 +147,18 @@ cursor: pointer;
 										<tr rid="${reply.replyId }">
 											<c:choose>
 												<c:when test="${reply.replyImage eq null}">
-													<td class="detailContent" data-bs-toggle="modal" data-bs-target="#modalScrollable"><img src="image/member/defaultimg.png"
+													<td class="detailContent"><img src="image/member/defaultimg.png"
 														class="rounded-circle" alt="default" style="width: 30px"></td>
 												</c:when>
 												<c:otherwise>
-													<td class="detailContent" data-bs-toggle="modal" data-bs-target="#modalScrollable"><img src="image/reply/${reply.replyImage }"
+													<td class="detailContent"><img src="image/reply/${reply.replyImage }"
 														class="rounded-circle" alt="default" style="width: 30px"></td>
 												</c:otherwise>
 											</c:choose>
-											<td class="detailContent" data-bs-toggle="modal" data-bs-target="#modalScrollable">${reply.spaceName }</td>
+											<td class="detailContent">${reply.spaceName }</td>
 											<td class="detailContent" data-bs-toggle="modal" data-bs-target="#modalScrollable" style="overflow: hidden; text-overflow: ellipsis;">${reply.replyContent }</td>
-											<td class="detailContent" data-bs-toggle="modal" data-bs-target="#modalScrollable">${reply.replyDate }</td>
-											<td class="detailContent" data-bs-toggle="modal" data-bs-target="#modalScrollable">
+											<td class="detailContent">${reply.replyDate }</td>
+											<td class="detailContent">
 											<c:forEach begin="1" end="${reply.replyStar }">
 											<span>★</span>
 											</c:forEach>
@@ -184,14 +185,14 @@ cursor: pointer;
 				</div>
 			</div>
 			<!-- Horizontal -->
-			<h5 class="card-header">Reservation  <span style="color:#aaa"><small>(Total Count: ${replycount })</small></span></h5>
+			<h5 class="card-header">Reservation  <span style="color:#aaa"><small>(Total Count: ${reservecount })</small></span></h5>
 			<c:forEach items="${reserve }" var="r">
 				<div class="card mb-3" style="float: left; margin-right: 1.5%; width:48%">
 					<div class="row g-0">
 						<div class="col-md-4">
 							<img class="card-img card-img-left"
 								src="image/space/${r.reserveImg }" alt="Card image"
-								style="height: 100%; object-fit: cover; width: 100%" />
+								style="height: 200px; object-fit: cover;" />
 						</div>
 						<div class="col-md-8">
 							<div class="card-body">
@@ -253,7 +254,246 @@ cursor: pointer;
         </div>
       </div>
     </div>
+    </c:if>
+    <c:if test="${m.memberCheck eq 'host' }">
+    <!-- Content wrapper -->
+	<div class="content-wrapper">
+		<!-- Content -->
+		<div class="container-xxl flex-grow-1 container-p-y">
+			<h4 class="fw-bold py-3 mb-4">
+				<span class="text-muted fw-light">Member</span> Detail
+			</h4>
+
+			<!-- Basic Layout -->
+			<div class="row">
+				<div class="col-xl">
+					<div class="card mb-4">
+						<div
+							class="card-header d-flex justify-content-between align-items-center">
+							<h5 class="mb-0">${m.memberId } Detail page</h5>
+							<small class="text-muted float-end"></small>
+						</div>
+							<hr style="margin: 0px">
+						<div class="card-body">
+							<form>
+								 <!--<div class="mb-3">
+									 <label class="form-label" for="basic-icon-default-fullname">Profile
+										 </label> <img src="image/member/defaultimg.png" alt="user-avatar"
+										class="d-block rounded" height="200" width="200"
+										id="uploadedAvatar" />  
+								</div> -->
+								<div class="mb-3" style="width: 48%; float: left; margin-right:2%;">
+									<label class="form-label" for="basic-icon-default-company">Member
+										Id</label>
+									<div class="input-group input-group-merge">
+										<span id="basic-icon-default-company2"
+											class="input-group-text"><i class="bx bx-buildings"></i></span>
+										<input type="text" id="basic-icon-default-company"
+											class="form-control" value="    ${m.memberId }"
+											aria-describedby="basic-icon-default-company2" readonly />
+									</div>
+								</div>
+								<div class="mb-3" style="width: 48%; float: left; margin-right:2%;">
+									<label class="form-label" for="basic-icon-default-fullname">Full
+										Name</label>
+									<div class="input-group input-group-merge">
+										<span id="basic-icon-default-fullname2"
+											class="input-group-text"><i class="bx bx-user"></i></span> <input
+											type="text" class="form-control"
+											id="basic-icon-default-fullname" value="    ${m.memberName }"
+											aria-describedby="basic-icon-default-fullname2" readonly />
+									</div>
+								</div>
+								<div class="mb-3" style="width: 48%; float: left; margin-right:2%;">
+									<label class="form-label" for="basic-icon-default-email">Email</label>
+									<div class="input-group input-group-merge">
+										<span class="input-group-text"><i
+											class="bx bx-envelope"></i></span> <input type="text"
+											id="basic-icon-default-email" class="form-control"
+											value="    ${m.memberEmail }"
+											aria-describedby="basic-icon-default-email2" readonly />
+									</div>
+								</div>
+								<div class="mb-3" style="width: 48%; float: left; margin-right:2%;">
+									<label class="form-label" for="basic-icon-default-phone">Phone
+										No</label>
+									<div class="input-group input-group-merge">
+										<span id="basic-icon-default-phone2" class="input-group-text"><i
+											class="bx bx-phone"></i></span> <input type="text"
+											id="basic-icon-default-phone" class="form-control phone-mask"
+											value="    ${m.memberTel }"
+											aria-describedby="basic-icon-default-phone2" readonly />
+									</div>
+								</div>
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+		<div class="container-xxl flex-grow-1 container-p-y">
+			<h5>Space List
+				<span style="color: #aaa"> (Total Count: ${count })</span>
+			</h5><hr>
+			<!-- Hoverable Table rows -->
+			<div class="row row-cols-1 row-cols-md-3 g-4 mb-5" id="list">
+				<c:forEach items="${spaces }" var="s">
+					<div class="col">
+						<div class="card h-100">
+							<img class="card-img-top" src="image/space/${s.spaceImageMain}"
+								alt="Card image cap" style="height: 250px; object-fit: cover;" />
+							<div class="card-body" sid="${s.spaceId }">
+								<h4 class="card-title" style="display: inline-block;">${s.spaceName }</h4>
+								<div class="dropdown" style="float: right">
+										<button type="button" class="dropdown-item spacedelete">
+											<i class="bx bx-trash me-1"></i>
+										</button>
+								</div>
+								<hr>
+								<p class="card-text">
+									<strong>ID:&nbsp;&nbsp;&nbsp;</strong><span>${s.spaceId }</span>
+								</p>
+								<p class="card-text">
+									<strong>ADDRESS:&nbsp;&nbsp;&nbsp;</strong><span>${s.spaceAddress }</span>
+								</p>
+								<p class="card-text">
+									<strong>PRICE:&nbsp;&nbsp;&nbsp;￦</strong><span>${s.spacePrice }</span>
+								</p>
+								<p class="card-text">
+									<strong>TYPE:&nbsp;&nbsp;&nbsp;</strong><span>${s.spaceType }</span>
+								</p>
+								<p class="card-text" style="display: none">
+									<strong>CONTENT:&nbsp;&nbsp;&nbsp;</strong><span>${s.spaceContent }</span>
+								</p>
+								<p class="card-text">
+									<strong>Hit:&nbsp;&nbsp;&nbsp;</strong><span>${s.spaceHit }</span>
+								</p>
+								<div align="center">
+									<button type="button" class="btn btn-outline-dark"
+										onclick="adminspacedetail('${s.spaceId }')">Show
+										Detail</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+			<!--/ Hoverable Table rows -->
+		</div>
+	</div>
+	<!-- pagination -->
+	<nav aria-label="Page navigation">
+		<ul class="pagination justify-content-center">
+			<!-- <li class="page-item prev">
+                              <a class="page-link" href="?page=${currentPage-1 }"
+                                ><i class="tf-icon bx bx-chevrons-left"></i
+                              ></a>
+                            </li> -->
+			<c:forEach var="page" begin="1" end="${pages }">
+				<c:if test="${page eq currentPage }">
+					<li class="page-item"><a class="page-link active"
+						href="?page=${page }&memberId=${m.memberId}">${page }</a></li>
+				</c:if>
+				<c:if test="${page ne currentPage }">
+					<li class="page-item"><a class="page-link"
+						href="?page=${page }&memberId=${m.memberId}">${page }</a></li>
+				</c:if>
+			</c:forEach>
+			<!-- <li class="page-item next">
+                              <a class="page-link" href="?page=${currentPage+1 }"
+                                ><i class="tf-icon bx bx-chevrons-right"></i
+                              ></a>
+                            </li> -->
+		</ul>
+	</nav>
+	<!--  -->
+	<form id="detailForm" action="AjaxSpaceDetail.do" method="post">
+		<input type="hidden" id="spaceId" name="spaceId">
+	</form>
+    </c:if>
+    <c:if test="${m.memberCheck eq 'admin' }">
+    <!-- Content wrapper -->
+	<div class="content-wrapper">
+		<!-- Content -->
+		<div class="container-xxl flex-grow-1 container-p-y">
+			<h4 class="fw-bold py-3 mb-4">
+				<span class="text-muted fw-light">Member</span> Detail
+			</h4>
+
+			<!-- Basic Layout -->
+			<div class="row">
+				<div class="col-xl">
+					<div class="card mb-4">
+						<div
+							class="card-header d-flex justify-content-between align-items-center">
+							<h5 class="mb-0">${m.memberId } Detail page</h5>
+							<small class="text-muted float-end"></small>
+						</div>
+							<hr style="margin: 0px">
+						<div class="card-body">
+							<form>
+								 <!--<div class="mb-3">
+									 <label class="form-label" for="basic-icon-default-fullname">Profile
+										 </label> <img src="image/member/defaultimg.png" alt="user-avatar"
+										class="d-block rounded" height="200" width="200"
+										id="uploadedAvatar" />  
+								</div> -->
+								<div class="mb-3" style="width: 48%;">
+									<label class="form-label" for="basic-icon-default-company">Member
+										Id</label>
+									<div class="input-group input-group-merge">
+										<span id="basic-icon-default-company2"
+											class="input-group-text"><i class="bx bx-buildings"></i></span>
+										<input type="text" id="basic-icon-default-company"
+											class="form-control" value="    ${m.memberId }"
+											aria-describedby="basic-icon-default-company2" readonly />
+									</div>
+								</div>
+								<div class="mb-3" style="width: 48%;">
+									<label class="form-label" for="basic-icon-default-fullname">Full
+										Name</label>
+									<div class="input-group input-group-merge">
+										<span id="basic-icon-default-fullname2"
+											class="input-group-text"><i class="bx bx-user"></i></span> <input
+											type="text" class="form-control"
+											id="basic-icon-default-fullname" value="    ${m.memberName }"
+											aria-describedby="basic-icon-default-fullname2" readonly />
+									</div>
+								</div>
+								<div class="mb-3" style="width: 48%;">
+									<label class="form-label" for="basic-icon-default-email">Email</label>
+									<div class="input-group input-group-merge">
+										<span class="input-group-text"><i
+											class="bx bx-envelope"></i></span> <input type="text"
+											id="basic-icon-default-email" class="form-control"
+											value="    ${m.memberEmail }"
+											aria-describedby="basic-icon-default-email2" readonly />
+									</div>
+								</div>
+								<div class="mb-3" style="width: 48%;">
+									<label class="form-label" for="basic-icon-default-phone">Phone
+										No</label>
+									<div class="input-group input-group-merge">
+										<span id="basic-icon-default-phone2" class="input-group-text"><i
+											class="bx bx-phone"></i></span> <input type="text"
+											id="basic-icon-default-phone" class="form-control phone-mask"
+											value="    ${m.memberTel }"
+											aria-describedby="basic-icon-default-phone2" readonly />
+									</div>
+								</div>
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</c:if>
 	<script>
+	//user
 	//테이블 소팅
 	function sortTable(tno,num) {
 	  var table, rows, switching, i, x, y, shouldSwitch, count;
@@ -397,6 +637,57 @@ cursor: pointer;
             .then(result => callback(result))
             .catch();
         }
+	
+	//Host
+	//공간 상세보기
+	  function adminspacedetail(id){
+		  let form = $('#detailForm');
+		  $('input[name=spaceId]').val(id);
+		  form.submit();
+	  }
+    //삭제 이벤트 
+    $('.spacedelete').on('click', function(e){
+		let sid = e.target.parentElement.parentElement.getAttribute('sid');
+		Swal.fire({
+            text: "대여공간을 삭제하시겠습니까?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+          }).then((result) => {
+        	  if(result.isConfirmed){
+    			spaceRemove(sid,function(result){
+    				if(result.retCode == 'Success'){
+    					e.target.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
+    					Swal.fire({
+							  icon: 'success',
+							  text: '삭제 성공',
+							}).then((result)=>{
+			                	  location.href = "BusinessSpaceList.do";
+			                  })
+  				}else if(result.retCode == 'Fail'){
+						Swal.fire({
+						  icon: 'error',
+						  text: '처리 중 에러 발생',
+						})
+  				}else{
+  					Swal.fire({
+						  icon: 'error',
+						  text: '잘못된 코드 반환',
+						})
+  				}
+	        	  })
+	          }
+        })
+			})
+  
+    function spaceRemove(spaceId, callback){
+  	  fetch('AjaxSpaceDelete.do?sid='+spaceId)
+  	  .then(resolve => resolve.json())
+  	  .then(result => callback(result))
+  	  .catch();
+    }
      </script>
 </body>
 </html>
