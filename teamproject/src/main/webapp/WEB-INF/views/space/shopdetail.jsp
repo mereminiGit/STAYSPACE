@@ -259,27 +259,30 @@ function numberWithCommas(x) {
 												&nbsp;&nbsp;&nbsp;&nbsp;
 												<!-- 수정버튼 -->
 												<c:if test="${not empty reservations }">
-													<span class="label-body"> <a type="button"
-														data-bs-toggle="modal" data-bs-target="#EditReplyModal"
-														onclick="ResetUpdateModal(this.id)"
-														class="btn btn-primary me-2 mb-2"
-														id="EditReply${r.replyId }" data-value="${r.replyId }"
-														style="padding: 5px 10px 5px 10px; margin-top: 8px; border-radius: 30px;">
-															EDIT</a>
-													</span>
-
+													<c:if test="${r.memberId eq memberId}">											
+														<span class="label-body"> <a type="button"
+															data-bs-toggle="modal" data-bs-target="#EditReplyModal"
+															onclick="ResetUpdateModal(this.id)"
+															class="btn btn-primary me-2 mb-2"
+															id="EditReply${r.replyId }" data-value="${r.replyId }"
+															style="padding: 5px 10px 5px 10px; margin-top: 8px; border-radius: 30px;">
+																EDIT</a>
+														</span>
+													</c:if>
 												</c:if>
 
 												&nbsp;&nbsp;
 												<!-- 삭제버튼 -->
 												<c:if test="${not empty reservations }">
-													<span class="label-body"> <a type="button"
-														id="DeleteReply${r.replyId }"
-														onclick="DeleteReplyDo(this.id)"
-														class="btn btn-dark me-2 mb-2" data-value="${r.replyId }"
-														style="padding: 5px 10px 5px 10px; margin-top: 8px; border-radius: 30px;">
-															DELETE</a>
-													</span>
+													<c:if test="${r.memberId eq memberId}">		
+														<span class="label-body"> <a type="button"
+															id="DeleteReply${r.replyId }"
+															onclick="DeleteReplyDo(this.id)"
+															class="btn btn-dark me-2 mb-2" data-value="${r.replyId }"
+															style="padding: 5px 10px 5px 10px; margin-top: 8px; border-radius: 30px;">
+																DELETE</a>
+														</span>													
+													</c:if>
 												</c:if>
 											</div>
 
