@@ -2,6 +2,7 @@ package co.yedam.teamproject.reservation.serviceImpl;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 
 import co.yedam.teamproject.common.DataSource;
@@ -54,9 +55,9 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 
 	@Override
-	public List<ReservationVO> reservationSelectListMember(String memberId) {
+	public List<ReservationVO> reservationSelectListMember(String memberId, int spaceId) {
 
-		return map.reservationSelectListMember(memberId);
+		return map.reservationSelectListMember(memberId, spaceId);
 	}
 
 	@Override
