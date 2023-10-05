@@ -619,9 +619,9 @@
 										'success'
 									)
 									setTimeout(function () {
-										location.href = "home.do";
+										//location.href = "home.do";
+										location.href = "account.do";
 									}, 2000);
-
 								}
 							})
 							return true;
