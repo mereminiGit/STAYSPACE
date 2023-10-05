@@ -32,10 +32,10 @@
 				</div>
 				<!-- image slide 2 -->
 				<div class="swiper-slide"
-					style="background-image: url(vaso-html/images/banner_image.jpg); background-size: cover; background-repeat: no-repeat; height: 100vh; background-position: center;">
+					style="background-image: url(image/main2.jpg); background-size: cover; background-repeat: no-repeat; height: 100vh; background-position: center;">
 					<div class="container">
 						<div class="row">
-							<div class="offset-md-1 col-md-6">
+							<div class="offset-md-7 col-md-6">
 								<div class="banner-content">
 									<!-- image slide 2 공간 네임 & 소개 글 -->
 									<h2 style="text-shadow: 1px 1px 15px rgb(235, 235, 235, 0.25);">House Space</h2>
@@ -50,10 +50,10 @@
 				</div>
 				<!-- image slide 3 -->
 				<div class="swiper-slide"
-					style="background-image: url(vaso-html/images/banner_image2.jpg); background-size: cover; background-repeat: no-repeat; height: 100vh; background-position: center;">
+					style="background-image: url(image/main3.jpg); background-size: cover; background-repeat: no-repeat; height: 100vh; background-position: center;">
 					<div class="container">
 						<div class="row">
-							<div class="offset-md-6 col-md-6">
+							<div class="offset-md-0 col-md-6">
 								<div class="banner-content">
 									<!-- image slide 3 공간 네임 & 소개 글 -->
 									<h2 style="text-shadow: 1px 1px 15px rgb(235, 235, 235, 0.25);">Commercial Space</h2>
