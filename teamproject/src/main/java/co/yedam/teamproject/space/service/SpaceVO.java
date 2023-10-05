@@ -13,7 +13,7 @@ public class SpaceVO {
 	private String spaceImageMain;
 	private String spaceContent;
 	private String memberId;
-	private int spaceStar;
+	private double spaceStar;
 	private String spaceImageSub1;
 	private String spaceImageSub2;
 	private int spaceHit;

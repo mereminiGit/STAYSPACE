@@ -117,6 +117,7 @@ function numberWithCommas(x) {
 									<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 								</div>
 							</div>
+								<span>(${s.spaceStar})</span>
 							<div class="product-price my-3">
 								<span class="fs-1 text-primary"
 									style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">&#8361;<script>numberWithCommas(${s.spacePrice })</script></span>
