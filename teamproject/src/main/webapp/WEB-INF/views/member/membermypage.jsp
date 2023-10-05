@@ -145,7 +145,7 @@
 																		<tr>
 																			<td><i
 																					class="fab fa-angular fa-lg text-danger me-3"></i><a
-																					href="#"><img id="stayimg"
+																					href="shopdetail.do?spaceId=${r.spaceId }"><img id="stayimg"
 																						alt="stay"
 																						src="image/space/${r.reserveImg }"
 																						style="width: 200px; height: 120px;"></a>
@@ -216,14 +216,14 @@
 													style="font-family: 'Noto Sans KR', sans-serif; padding: 30px 16px 30px 16px; text-align: center">
 													Wish list</h4>
 												<!-- Examples -->
-													<div class="row mb-5" id="wishlist">
+													<div class="row" id="wishlist">
 														<c:choose>
 															<c:when test="${empty wishList }">
-																<p id="nowish">Wish List가 비어있습니다.</p>
+																<p id="nowish" style="padding-top: 24px; padding-bottom: 24px; margin-bottom: 0;">Wish List가 비어있습니다.</p>
 															</c:when>
 															<c:otherwise>
 																<c:forEach items="${wishList}" var="w">
-																	<div class="col-md-6 col-lg-4 mb-3" class="cartlist" id="cartid_${w.wishListId}">
+																	<div class="col-md-6 col-lg-4 mb-3" class="cartlist" id="cartid_${w.wishListId}" style="padding-top: 24px; padding-bottom: 24px">
 																		<input type="hidden" id="memberId" name="memberId" value="${w.memberId }">
 																		<input type="hidden" id="spaceId" name="spaceId" value="${w.spaceId}">
 																		<input type="hidden" id="wishListId" name="wishListId" value="${w.wishListId}">

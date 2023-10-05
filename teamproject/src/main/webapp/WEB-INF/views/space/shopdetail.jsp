@@ -223,17 +223,17 @@ function numberWithCommas(x) {
 						<!-- 리뷰 -->
 						<div class="tab-pane fade" id="nav-review" role="tabpanel"
 							aria-labelledby="nav-review-tab">
+							<c:if test="${empty replyes }">
+								<div class="review-content">
+									<p
+										style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400; margin: 0; text-align: center;">등록된
+										후기가 없습니다.</p>
+								</div>
+							</c:if>
 							<div
 								class="review-box review-style d-flex flex-wrap justify-content-between">
 
 								<!-- 리뷰 반복 -->
-								<c:if test="${empty replyes }">
-									<div class="review-content">
-										<p
-											style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400; margin: 0;">등록된
-											후기가 없습니다.</p>
-									</div>
-								</c:if>
 
 								<c:forEach items="${replyes }" var="r">
 									<div class="review-item d-flex">
