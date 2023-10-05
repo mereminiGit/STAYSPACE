@@ -663,7 +663,7 @@
 											showConfirmButton: false,
 											timer: 1500
 										}).then(function () {
-											location.href = 'memberreservationhome.do';
+											//location.href = 'memberreservationhome.do';
 										});
 									}
 								});
