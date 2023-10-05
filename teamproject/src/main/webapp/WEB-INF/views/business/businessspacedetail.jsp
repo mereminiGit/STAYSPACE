@@ -72,7 +72,7 @@ cursor: pointer;
 						<h5 class="card-title">
 							<strong>Content</strong>
 						</h5>
-						<p class="card-text">&nbsp; ${s.spaceContent }</p>
+						<p class="card-text" style="line-height: 180%; white-space: pre-wrap; font-size: 13px;">&nbsp; ${s.spaceContent }</p>
 					</div>
 				</div>
 				<div class="card">
