@@ -74,6 +74,10 @@ public class SpaceServiceImpl implements SpaceService {
 		return map.spaceSelectCity(vo);
 	}
 
+	@Override
+	public void spaceStarUpdate(int id) {
+	}
+
 
 
 

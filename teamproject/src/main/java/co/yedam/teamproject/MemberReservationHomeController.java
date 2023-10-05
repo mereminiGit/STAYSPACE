@@ -1,6 +1,7 @@
 package co.yedam.teamproject;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import co.yedam.teamproject.cartList.service.CartListService;
 import co.yedam.teamproject.cartList.service.CartListVO;
@@ -23,7 +22,9 @@ import co.yedam.teamproject.member.serviceImpl.MemberServiceImpl;
 import co.yedam.teamproject.reservation.service.ReservationService;
 import co.yedam.teamproject.reservation.service.ReservationVO;
 import co.yedam.teamproject.reservation.serviceImpl.ReservationServiceImpl;
+import co.yedam.teamproject.space.service.SpaceService;
 import co.yedam.teamproject.space.service.SpaceVO;
+import co.yedam.teamproject.space.serviceImpl.SpaceServiceImpl;
 import co.yedam.teamproject.wishList.service.WishListService;
 import co.yedam.teamproject.wishList.service.WishListVO;
 import co.yedam.teamproject.wishList.serviceImpl.WishListServiceImpl;
@@ -76,25 +77,34 @@ public class MemberReservationHomeController extends HttpServlet {
 
 			// 결제내역..?
 
-			if (request.getParameter("name") != null) { // 예약입력
-				CartListService cdao = new CartListServiceImpl();
-				CartListVO cvo = new CartListVO();
-				cvo.setMemberId((String) session.getAttribute("memberId"));
-				List<CartListVO> list = new ArrayList<>();
+			if(request.getParameter("name")!=null) {
+			CartListService cdao = new CartListServiceImpl();
+			CartListVO cvo = new CartListVO();
+			cvo.setMemberId((String) session.getAttribute("memberId"));
+			List<CartListVO> list = new ArrayList<>();
+			if (Integer.parseInt(request.getParameter("name"))> 1) { // 예약입력
 				list = cdao.cartListSelectList(cvo);
-				for (CartListVO c : list) {
-					vo.setSpaceName(c.getSpaceName());
-					vo.setReserveStartDate(c.getSpaceStartDate());
-					vo.setReservePrice(c.getSpacePrice());
-					vo.setReserveCheck(0);
-					vo.setReserveId(c.getReserveId());
-					vo.setReserveImg(c.getSpaceImageMain());
-					vo.setSpaceId(c.getSpaceId());
-					vo.setHostId(c.getHostId());
-					dao.reservationInsert(vo);
-				}
+			} else if(Integer.parseInt(request.getParameter("name")) == 1){
+				cvo.setSpaceId(Integer.parseInt(request.getParameter("Id")));
+				cvo.setSpaceStartDate(Date.valueOf(request.getParameter("spaceStartDate")));
+				cvo=cdao.cartReserveIdSelect(cvo);
+				System.out.println(cvo);
+				list.add(cdao.cartListSelect(cvo));
 			}
-
+			System.out.println("list="+list);
+			for (CartListVO c : list) {
+				vo.setSpaceName(c.getSpaceName());
+				vo.setReserveStartDate(c.getSpaceStartDate());
+				vo.setReservePrice(c.getSpacePrice());
+				vo.setReserveCheck(0);
+				vo.setReserveId(c.getReserveId());
+				vo.setReserveImg(c.getSpaceImageMain());
+				vo.setSpaceId(c.getSpaceId());
+				vo.setHostId(c.getHostId());
+				dao.reservationInsert(vo);
+				cdao.cartListDelete(c);
+			}
+			}
 			// vo.setMemberId("jiwon"); // 세션에 저장된 아이디를 들고와야함.
 
 			int num = dao.reservationMemberTotalCount(vo.getMemberId());

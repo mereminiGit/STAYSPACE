@@ -207,7 +207,7 @@ function numberWithCommas(x) {
 					confirmButtonText:'OK'
 				}).then((result)=>{
 					if(result.isConfirmed){
-						location.href="memberreservationhome.do?name=1"
+						location.href="memberreservationhome.do?name=${cart.size()}&Id=${cart[0].spaceId}&spaceStartDate=${cart[0].spaceStartDate}"
 					}
 				})
 			} else {
