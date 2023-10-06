@@ -403,7 +403,7 @@ cursor: pointer;
             	  let spaceid = tr.children[0].innerText;
             	  let spacename = tr.children[2].innerText;
             	  let spaceaddress = tr.children[3].innerText;
-            	  let spaceprice = tr.children[4].children[0].innerText;
+            	  let spaceprice = tr.children[4].innerText;
             	  let spacetype = tr.children[5].innerText;
             	  let spacecontent = tr.children[6].innerText;
             	  //console.log(spacetype);
