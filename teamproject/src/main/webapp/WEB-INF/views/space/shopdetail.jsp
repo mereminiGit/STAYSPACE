@@ -117,7 +117,7 @@ function numberWithCommas(x) {
 									<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 								</div>
 							</div>
-								<span>(${s.spaceStar})</span>
+								<span id="starcount">(${s.spaceStar})</span>
 							<div class="product-price my-3">
 								<span class="fs-1 text-primary"
 									style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">&#8361;<script>numberWithCommas(${s.spacePrice })</script></span>
@@ -770,6 +770,14 @@ function numberWithCommas(x) {
 			}
 		});
 	}
+	
+	// 별점 소수점
+	let starCount = ${s.spaceStar};
+		/* $('#starcount').text(); */
+	console.log(starCount);
+	let result = starCount.toFixed(1);
+	console.log(result);
+	$('#starcount').text('('+result+')');
 	</script>
 
 </body>
