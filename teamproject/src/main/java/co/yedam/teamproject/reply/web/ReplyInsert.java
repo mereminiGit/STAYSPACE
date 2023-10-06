@@ -33,10 +33,12 @@ public class ReplyInsert extends HttpServlet {
 		
 		MultipartRequest multi = new MultipartRequest(request, saveDir, maxSize, "utf-8", new DefaultFileRenamePolicy());
 		
+
 		// reply image
 		String attech = multi.getOriginalFileName("replyFile");
+		String attechFile = multi.getFilesystemName("replyFile");
+
 		if (attech != null) {
-			String attechFile = multi.getFilesystemName("replyFile");
 			vo.setReplyImage(attechFile);
 		} else {
 			vo.setReplyImage("reply-default.jpg");
