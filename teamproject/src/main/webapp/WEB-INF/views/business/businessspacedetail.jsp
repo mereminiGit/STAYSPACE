@@ -138,17 +138,17 @@ cursor: pointer;
 												<tr rid="${reply.replyId }">
 													<c:choose>
 														<c:when test="${reply.replyImage eq null}">
-															<td class="detailContent" data-bs-toggle="modal" data-bs-target="#modalScrollable"><img src="image/member/defaultimg.png"
-																class="rounded-circle" alt="default" style="width: 30px"></td>
+															<td class="detailContent"><img src="image/member/defaultimg.png"
+																alt="default" style="width: 100px; height: 50px; object-fit: cover;"></td>
 														</c:when>
 														<c:otherwise>
-															<td class="detailContent" data-bs-toggle="modal" data-bs-target="#modalScrollable"><img src="image/reply/${reply.replyImage }"
-																class="rounded-circle" alt="default" style="width: 30px"></td>
+															<td class="detailContent"><img src="image/reply/${reply.replyImage }"
+																alt="default" style="width: 100px; height: 50px; object-fit: cover;"></td>
 														</c:otherwise>
 													</c:choose>
-													<td class="detailContent" data-bs-toggle="modal" data-bs-target="#modalScrollable">${reply.memberId }</td>
+													<td class="detailContent">${reply.memberId }</td>
 													<td class="detailContent" data-bs-toggle="modal" data-bs-target="#modalScrollable" style="overflow: hidden; text-overflow: ellipsis;">${reply.replyContent }</td>
-													<td class="detailContent" data-bs-toggle="modal" data-bs-target="#modalScrollable">${reply.replyDate }</td>
+													<td class="detailContent">${reply.replyDate }</td>
 													<td>
 														<c:forEach begin="1" end="${reply.replyStar }">
 															<span>★</span>
