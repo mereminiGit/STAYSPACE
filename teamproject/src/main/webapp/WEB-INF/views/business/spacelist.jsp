@@ -277,7 +277,7 @@ img.stayimg {
               //수정 이벤트
               $('.spaceedit').on('click',function(e){
             	  let tr = e.target.parentElement.parentElement.parentElement.parentElement;
-            	  console.log(e.target.parentElement.parentElement.parentElement.parentElement);
+            	  console.log(tr);
             	  
             	  let spaceid = tr.children[1].children[3].children[1].innerText;
             	  let spacename = tr.children[1].children[0].innerText;
