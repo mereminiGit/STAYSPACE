@@ -620,8 +620,7 @@
 									)
 									setTimeout(function () {
 										location.href = "home.do";
-									}, 2000);
-
+									}, 1000);
 								}
 							})
 							return true;
