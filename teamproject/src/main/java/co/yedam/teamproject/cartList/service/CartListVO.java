@@ -1,9 +1,7 @@
 package co.yedam.teamproject.cartList.service;
 
 
-
 import java.sql.Date;
-
 import lombok.Getter;
 import lombok.Setter;
 @Setter
@@ -15,9 +13,8 @@ public class CartListVO {
 	private String spaceCity;
 	private String spaceImageMain;
 	private Date spaceStartDate;
-
+	private Date spaceEndDate;
 	private int spaceId;
-
 	private int reserveId;
 	private String hostId;
 
