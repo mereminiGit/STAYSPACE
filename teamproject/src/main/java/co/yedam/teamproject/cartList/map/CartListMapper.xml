@@ -1,28 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="co.yedam.teamproject.cartList.map.CartListMapper">
-    <select id="cartListSelectList" resultType="co.yedam.teamproject.cartList.service.CartListVO">
-		SELECT * FROM CARTLIST WHERE MEMBER_ID = #{memberId}
+<mapper
+	namespace="co.yedam.teamproject.cartList.map.CartListMapper">
+	<select id="cartListSelectList"
+		resultType="co.yedam.teamproject.cartList.service.CartListVO">
+		SELECT * FROM CARTLIST WHERE MEMBER_ID = #{memberId} ORDER
+		BY SPACE_START_DATE
 	</select>
 
 	<select id="cartListSelect"
 		resultType="co.yedam.teamproject.cartList.service.CartListVO">
 		SELECT * FROM CARTLIST WHERE RESERVE_ID = #{reserveId}
 	</select>
-
+	
+	<select id="cartReserveIdSelect" resultType="co.yedam.teamproject.cartList.service.CartListVO">
+		SELECT RESERVE_ID FROM CARTLIST WHERE MEMBER_ID=#{memberId} AND SPACE_START_DATE=#{spaceStartDate} AND SPACE_ID=#{spaceId}
+	</select>
+	
 	<insert id="cartListInsert"
 		parameterType="co.yedam.teamproject.cartList.service.CartListVO">
-		<selectKey keyProperty="reserveId" resultType="int" order="BEFORE">
-		SELECT NVL(MAX(RESERVE_ID),0)+1
-		FROM CARTLIST
+		<selectKey keyProperty="reserveId" resultType="int"
+			order="BEFORE">
+			SELECT NVL(MAX(RESERVE_ID),0)+1
+			FROM CARTLIST
 		</selectKey>
-		INSERT INTO CARTLIST 
-		VALUES(#{reserveId},
-		#{memberId},#{spaceName},#{spacePrice},#{spaceCity},#{spaceImageMain},#{spaceStartDate},#{spaceEndDate})
+		INSERT INTO CARTLIST
+		VALUES(
+		#{memberId},#{spaceName},#{spacePrice},#{spaceCity},#{spaceImageMain},#{spaceStartDate},#{reserveId},#{spaceId},#{hostId})
 	</insert>
 
 	<delete id="cartListDelete"
 		parameterType="co.yedam.teamproject.cartList.service.CartListVO">
-		DELETE FROM CARTLIST WHERE RESERVE_ID=#{reserveId}
+		DELETE FROM CARTLIST WHERE RESERVE_ID = #{reserveId}
+		<if test="memberId !=null">
+			AND MEMBER_ID = #{memberId}
+		</if>
 	</delete>
 </mapper>

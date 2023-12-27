@@ -12,10 +12,9 @@ import co.yedam.teamproject.reply.service.ReplyVO;
 public class ReplyServiceImpl implements ReplyService {
 	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	ReplyMapper map = sqlSession.getMapper(ReplyMapper.class);
-
 	@Override
-	public List<ReplyVO> replySelectList() {
-		return map.replySelectList();
+	public List<ReplyVO> replySelectList(String s) {
+		return map.replySelectList(s);
 	}
 
 	@Override
@@ -36,6 +35,40 @@ public class ReplyServiceImpl implements ReplyService {
 	@Override
 	public int replyDelete(ReplyVO vo) {
 		return map.replyDelete(vo);
+	}
+
+	@Override
+	public List<ReplyVO> replySelectListMember(String m) {
+		return map.replySelectListMember(m);
+	}
+
+	@Override
+	public int replyDeleteId(int id) {
+		return map.replyDeleteId(id);
+	}
+
+	@Override
+	public List<ReplyVO> replySelectListId(int spaceId) {
+		return map.replySelectListId(spaceId);
+	}
+
+	@Override
+	public List<ReplyVO> replySelectListRecent() {
+		return map.replySelectListRecent();
+	}
+
+	@Override
+	public ReplyVO replySelectbyReplyId(ReplyVO vo) {
+		return map.replySelectbyReplyId(vo);
+  }
+  @Override
+	public int replyCountSpace(int spaceId) {
+		return map.replyCountSpace(spaceId);
+	}
+
+	@Override
+	public int replyCountMember(String memberId) {
+		return map.replyCountMember(memberId);
 	}
 
 }

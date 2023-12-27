@@ -1,290 +1,184 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
- <title>Vaso Ecommerce Template</title>
+<title>Vaso Ecommerce Template</title>
+<style>
+.star-ratings {
+	color: #aaa9a9;
+	position: relative;
+	unicode-bidi: bidi-override;
+	width: max-content;
+	-webkit-text-fill-color: transparent;
+	/* Will override color (regardless of order) */
+	-webkit-text-stroke-width: 1.3px;
+	-webkit-text-stroke-color: #2b2a29;
+}
+
+.star-ratings-fill {
+	color: #fff58c;
+	padding: 0;
+	position: absolute;
+	z-index: 1;
+	display: flex;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	-webkit-text-fill-color: black;
+}
+
+.star-ratings-base {
+	z-index: 0;
+	padding: 0;
+}
+
+/* #cityList li{
+	float: left;
+	margin: 0 45px 10px 0;
+} */
+</style>
+<script>
+function numberWithCommas(x) {
+	document.write(x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","));
+	}
+</script>
 </head>
 <body>
-<section class="hero-section jarallax d-flex align-items-center justify-content-center padding-medium pb-5" style="background: url(vaso-html/images/hero-img.jpg) no-repeat;">
-      <div class="hero-content">
-        <div class="container">
-          <div class="row">
-            <div class="text-center padding-large no-padding-bottom">
-              <h1>Spaces</h1>
-              <div class="breadcrumbs">
-                <span class="item">
-                  <a href="index.html">Home ></a>
-                </span>
-                <span class="item">Spaces</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <div class="shopify-grid padding-large" style="padding-bottom: 0;">
-      <div class="container">
-        <div class="row">
-          <main class="col-md-9">
-            <div class="filter-shop d-flex flex-wrap justify-content-between">
-              <div class="showing-product">
-                <p>Showing 1-9 of 55 results</p>
-              </div>
-              <div class="sort-by">
-                <select id="input-sort" class="form-control" data-filter-sort="" data-filter-order="">
-                  <option value="">Default sorting</option>
-                  <option value="">Name (A - Z)</option>
-                  <option value="">Name (Z - A)</option>
-                  <option value="">Price (Low-High)</option>
-                  <option value="">Price (High-Low)</option>
-                  <option value="">Rating (Highest)</option>
-                  <option value="">Rating (Lowest)</option>
-                  <option value="">Model (A - Z)</option>
-                  <option value="">Model (Z - A)</option>   
-                </select>
-              </div>
-            </div>
-            <div class="row product-content product-store">
-              <div class="col-lg-4 col-md-6">
-                <div class="product-card mb-3 position-relative">
-                  <div class="image-holder zoom-effect">
-                    <img src="vaso-html/images/StaySpace_commercial_1(1).jpg" alt="product-item" class="img-fluid zoom-in">
-                    <div class="cart-concern position-absolute">
-                      <div class="cart-button">
-                        <a href="cart.do" class="btn">Add To Cart</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-detail text-center pt-3 pb-2">
-                    <h5 class="card-title fs-3 text-capitalize">
-                      <a href="shopdetail.do">[분당/판교] 미드센츄리모던 빈티지 가구들로 꾸며진 카페</a>
-                    </h5>
-                    <span class="item-price text-primary fs-3 fw-light">89,000원~127,000원<small>/시간</small></span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="product-card position-relative mb-3">
-                  <div class="image-holder zoom-effect">
-                    <img src="vaso-html/images/StaySpace_house_2(1).jpg" alt="product-item" class="img-fluid zoom-in">
-                    <div class="cart-concern position-absolute">
-                      <div class="cart-button">
-                        <a href="cart.do" class="btn">Add to Cart</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-detail text-center pt-3 pb-2">
-                    <h5 class="card-title fs-3 text-capitalize">
-                      <a href="#">[분당/판교] 미드센츄리모던 빈티지 가구들로 꾸며진 카페</a>
-                    </h5>
-                    <span class="item-price text-primary fs-3 fw-light">$750</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="product-card position-relative mb-3">
-                  <div class="image-holder zoom-effect">
-                    <img src="vaso-html/images/StaySpace_studio_2(1).jpg" alt="product-item" class="img-fluid zoom-in">
-                    <div class="cart-concern position-absolute">
-                      <div class="cart-button">
-                        <a href="#" class="btn">Add to Cart</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-detail text-center pt-3 pb-2">
-                    <h5 class="card-title fs-3 text-capitalize">
-                      <a href="#">Vintage With Handle</a>
-                    </h5>
-                    <span class="item-price text-primary fs-3 fw-light">$750</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="product-card position-relative mb-3">
-                  <div class="image-holder zoom-effect">
-                    <img src="vaso-html/images/StaySpace_commercial_2(1).jpg" alt="product-item" class="img-fluid zoom-in">
-                    <div class="cart-concern position-absolute">
-                      <div class="cart-button">
-                        <a href="#" class="btn">Add to Cart</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-detail text-center pt-3 pb-2">
-                    <h5 class="card-title fs-3 text-capitalize">
-                      <a href="#">Opposite Pattern</a>
-                    </h5>
-                    <span class="item-price text-primary fs-3 fw-light">$750</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="product-card position-relative mb-3">
-                  <div class="image-holder zoom-effect">
-                    <img src="vaso-html/images/StaySpace_house_3(1).jpg" alt="product-item" class="img-fluid zoom-in">
-                    <div class="cart-concern position-absolute">
-                      <div class="cart-button">
-                        <a href="#" class="btn">Add to Cart</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-detail text-center pt-3 pb-2">
-                    <h5 class="card-title fs-3 text-capitalize">
-                      <a href="#">Shell Shape</a>
-                    </h5>
-                    <span class="item-price text-primary fs-3 fw-light">$750</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="product-card position-relative mb-3">
-                  <div class="image-holder zoom-effect">
-                    <img src="vaso-html/images/StaySpace_house_4(1).jpg" alt="product-item" class="img-fluid zoom-in">
-                    <div class="cart-concern position-absolute">
-                      <div class="cart-button">
-                        <a href="#" class="btn">Add to Cart</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-detail text-center pt-3 pb-2">
-                    <h5 class="card-title fs-3 text-capitalize">
-                      <a href="#">Matt Black</a>
-                    </h5>
-                    <span class="item-price text-primary fs-3 fw-light">$750</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="product-card position-relative mb-3">
-                  <div class="image-holder zoom-effect">
-                    <img src="vaso-html/images/StaySpace_commercial_3(1).jpg" alt="product-item" class="img-fluid zoom-in">
-                    <div class="cart-concern position-absolute">
-                      <div class="cart-button">
-                        <a href="#" class="btn">Add to Cart</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-detail text-center pt-3 pb-2">
-                    <h5 class="card-title fs-3 text-capitalize">
-                      <a href="#">Oldie Off-White</a>
-                    </h5>
-                    <span class="item-price text-primary fs-3 fw-light">$750</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="product-card position-relative mb-3">
-                  <div class="image-holder zoom-effect">
-                    <img src="vaso-html/images/StaySpace_studio_3(1).jpeg" alt="product-item" class="img-fluid zoom-in">
-                    <div class="cart-concern position-absolute">
-                      <div class="cart-button">
-                        <a href="#" class="btn">Add to Cart</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-detail text-center pt-3 pb-2">
-                    <h5 class="card-title fs-3 text-capitalize">
-                      <a href="#">Matt Black</a>
-                    </h5>
-                    <span class="item-price text-primary fs-3 fw-light">$750</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="product-card position-relative mb-3">
-                  <div class="image-holder zoom-effect">
-                    <img src="vaso-html/images/StaySpace_studio_4(1).jpg" alt="product-item" class="img-fluid zoom-in">
-                    <div class="cart-concern position-absolute">
-                      <div class="cart-button">
-                        <a href="#" class="btn">Add to Cart</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-detail text-center pt-3 pb-2">
-                    <h5 class="card-title fs-3 text-capitalize">
-                      <a href="#">Opposite Pattern</a>
-                    </h5>
-                    <span class="item-price text-primary fs-3 fw-light">$750</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <nav class="navigation paging-navigation text-center padding-medium" role="navigation" style="padding-bottom: 0;">
-              <div class="pagination loop-pagination d-flex justify-content-center align-items-center">
-                <a href="#" class="d-flex pe-2">
-                  <svg width="24" height="24"><use xlink:href="#angle-left"></use></svg>
-                </a>
-                <span aria-current="page" class="page-numbers current pe-3">1</span>
-                <a class="page-numbers pe-3" href="#">2</a>
-                <a class="page-numbers pe-3" href="#">3</a>
-                <a class="page-numbers pe-3" href="#">4</a>
-                <a class="page-numbers" href="#">5</a>
-                <a href="#" class="d-flex ps-2">
-                  <svg width="24" height="24"><use xlink:href="#angle-right"></use></svg>
-                </a>
-              </div>
-            </nav>
-          </main>
-          <aside class="col-md-3">
-            <div class="sidebar">
-              <div class="widget-menu">
-                <div class="widget-search-bar">
-                  <form role="search" method="get" class="position-relative d-flex justify-content-between align-items-center border-bottom border-dark py-1">
-                    <input class="search-field" placeholder="Search" type="search">
-                    <div class="search-icon position-absolute end-0">
-                      <a href="#">
-                        <svg width="26" height="26" class="search">
+	<section
+		class="hero-section jarallax d-flex align-items-center justify-content-center padding-medium pb-5"
+		style="background: url(image/space/hero-img.jpg) no-repeat;">
+		<div class="hero-content">
+			<div class="container">
+				<div class="row">
+					<div class="text-center padding-large no-padding-bottom">
+						<h1>Spaces</h1>
+						<div class="breadcrumbs">
+							<span class="item"> <a href="home.do">Home ></a>
+							</span> <span class="item">Spaces</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<div class="shopify-grid padding-large" style="padding-bottom: 0;">
+		<div class="container">
+			<div class="row">
+				<main class="col-md-9">
+					<div class="filter-shop d-flex flex-wrap justify-content-between">
+						<div class="showing-product">
+							<p style="font-family: 'Noto Sans KR', sans-serif;">Showing 1-${pages } of ${results } results</p>
+						</div>
+						<!-- <div class="sort-by">
+							<select id="input-sort" class="form-control" data-filter-sort=""
+								data-filter-order="" name="sorting">
+								<option value="all">Default sorting</option>
+								<option value="price">Price (Low-High)</option>
+								<option value="ratinr">Rating (Highest)</option>
+							</select>
+						</div> -->
+					</div>
+					<div class="row product-content product-store">
+						<c:forEach items="${spaces }" var="s">
+							<div class="col-lg-4 col-md-6" style="margin-bottom: 10px;">
+								<div class="product-card mb-3 position-relative">
+									<div class="image-holder zoom-effect">
+										<a href="#" onclick="selectSpace('${s.spaceId}')"><img src="image/space/${s.spaceImageMain}" alt="product-item"
+											class="img-fluid zoom-in"></a>
+									</div>
+									<div class="card-detail text-center pt-3 pb-2">
+										<h5 class="card-title fs-3 text-capitalize">
+											<a href="#" onclick="selectSpace('${s.spaceId}')" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">${s.spaceName }</a>
+										</h5>
+										<span class="item-price text-primary" id="price" style="font-family: 'Noto Sans KR', sans-serif; font-size: medium; font-weight: 400;">${s.spaceCity }
+											· &#x20a9;<script>numberWithCommas(${s.spacePrice })</script><small>/일</small>
+										</span>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+					</div>
+					<nav
+						class="navigation paging-navigation text-center padding-medium"
+						role="navigation" style="padding-bottom: 0; padding-top: 25px">
+						<div
+							class="pagination loop-pagination d-flex justify-content-center align-items-center">
+							<c:forEach var="page" begin="1" end="${pages}">
+							<c:if test="${page eq currentPage}">
+							<a class="page-numbers current pe-3" href="javascript:void(0);" onclick=url(${page})>${page }</a>
+							</c:if>
+							<c:if test="${page ne currentPage}">
+							<a class="page-numbers pe-3" href="javascript:void(0);" onclick=url(${page})>${page }</a>
+							</c:if>
+							</c:forEach>	
+						</div>
+					</nav>
+				</main>
+				<aside class="col-md-3">
+					<div class="sidebar">
+						<div class="widget-menu">
+							<div class="widget-search-bar" style="margin-top: 30px;">
+								<form role="search" method="get"
+									class="position-relative d-flex justify-content-between align-items-center border-bottom border-dark py-1"
+									action="shoplist.do">
+									<input class="search-field" id="spaceName" name="spaceName"
+										placeholder="Search" type="search">
+									<div class="search-icon position-absolute end-0">
+										<a href="#"> <svg width="26" height="26" class="search">
                           <use xlink:href="#search"></use>
                         </svg>
-                      </a>
-                    </div>
-                  </form>
-                </div> 
-              </div>
-              <div class="widget-product-categories pt-5">
-                <h5 class="widget-title text-decoration-underline text-uppercase">Cities</h5>
-                <ul class="product-categories sidebar-list list-unstyled">
-                  <li class="cat-item">
-                    <a href="/collections/categories">All</a>
-                  </li>
-                  <li class="cat-item">
-                    <a href="">Seoul</a>
-                  </li>
-                  <li class="cat-item">
-                    <a href="">Busan</a>
-                  </li>
-                  <li class="cat-item">
-                    <a href="">Daegu</a>
-                  </li>
-                  <li class="cat-item">
-                    <a href="">Gwangjoo</a>
-                  </li>
-                </ul>
-              </div>
+										</a>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="widget-product-categories pt-5" style="padding-top: 45px;">
+							<h5 class="widget-title text-decoration-underline text-uppercase">Find City</h5>
+							<ul id="cityList" class="product-categories sidebar-list list-unstyled" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">
+								<li class="cat-item"><a href="shoplist.do">전체</a></li>
+								<li class="cat-item"><a href="?spaceCity=제주">제주</a></li>
+								<li class="cat-item"><a href="?spaceCity=서울">서울</a></li>
+								<li class="cat-item"><a href="?spaceCity=경기">경기</a></li>
+								<li class="cat-item"><a href="?spaceCity=인천">인천</a></li>
+								<li class="cat-item"><a href="?spaceCity=강원">강원</a></li>
+								<li class="cat-item"><a href="?spaceCity=충청">충청</a></li>
+								<li class="cat-item"><a href="?spaceCity=대전">대전</a></li>
+								<li class="cat-item"><a href="?spaceCity=경상">경상</a></li>
+								<li class="cat-item"><a href="?spaceCity=대구">대구</a></li>
+								<li class="cat-item"><a href="?spaceCity=울산">울산</a></li>
+								<li class="cat-item"><a href="?spaceCity=부산">부산</a></li>
+								<li class="cat-item"><a href="?spaceCity=전라">전라</a></li>
+								<li class="cat-item"><a href="?spaceCity=광주">광주</a></li>
+							</ul>
+						</div>
+						<h5 class="widget-title text-decoration-underline text-uppercase" style="clear: both; padding-top: 45px; margin-bottom: 0;">
+							Find Date</h5>
+							<input type="text" id="datepicker" name="spaceStartDate" style="font-family: 'Noto Sans KR', sans-serif; font-size: large; font-weight: 400; padding-top: 15px" placeholder="날짜를 선택하세요">
+						<div class="widget-product-tags" style="padding-top: 45px;">
+							<h5 class="widget-title text-decoration-underline text-uppercase">Find Type</h5>
+							<ul class="product-tags sidebar-list list-unstyled">
+								<li class="cat-item"><a href="shoplist.do">All</a></li>
+								<li class="tags-item"><a href="?spaceType=House">House</a></li>
+								<li class="tags-item"><a href="?spaceType=Studio">Studio</a></li>
+								<li class="tags-item"><a href="?spaceType=Commercial">Commercial</a></li>
+							</ul>
+						</div>
+					</div>
+				</aside>
+			</div>
+		</div>
+		<div>
+			<form id="sform" action="shopdetail.do" method="post">
+				<input type="hidden" id="spaceId" name="spaceId">
+			</form>
+		</div>
 
-              <h5 class="widget-title text-decoration-underline text-uppercase">Date <input type="text" id="datepicker"></h5>
-              <div class="widget-product-tags pt-3">
-                <h5 class="widget-title text-decoration-underline text-uppercase">Space for</h5>
-                <ul class="product-tags sidebar-list list-unstyled">
-                  <li class="tags-item">
-                    <a href="">Commercial</a>
-                  </li>
-                  <li class="tags-item">
-                    <a href="">House</a>
-                  </li>
-                  <li class="tags-item">
-                    <a href="">Studio</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </div>
-    
-  <!--   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	</div>
+
+	<!--   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
     $( function() {
@@ -294,15 +188,40 @@
       });
     } );
     </script> -->
-    
-    <script type="text/javascript">
-			$('#datepicker').datepicker({
-			  format: 'yyyy-mm-dd'
-			}).on('hide', function(event) {
-			  event.preventDefault();
-			  event.stopPropagation();
-			});
-		</script>
-    
+	<script type="text/javascript">
+		function selectSpace(id) {
+			let form = document.getElementById("sform");
+			form.spaceId.value = id;
+			form.submit();
+		}
+		function url(page){
+			var currentUrl = window.location.href;
+			if(currentUrl.includes("?")){
+				if(currentUrl.includes("page")){
+					location.href=currentUrl.split('page')[0]+"page="+page
+				}else{
+					location.href=currentUrl+"&page="+page
+				}
+			} else{
+				location.href=currentUrl+"?page="+page
+			}
+		}
+		
+
+		$('#datepicker').datepicker({
+			dateFormat:'yy-mm-dd',
+	        minDate:0,
+	        onSelect : function(d) {
+	        	var date=$("#datepicker").val();
+
+	        	location.href="?spaceStartDate="+date;
+
+			}
+		}).on('hide', function(event) {
+			event.preventDefault();
+			event.stopPropagation();
+		});
+	</script>
+
 </body>
 </html>

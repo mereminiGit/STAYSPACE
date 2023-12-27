@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,10 +20,10 @@
 							<div class="offset-md-1 col-md-6">
 								<div class="banner-content">
 									<!-- image slide 1 공간 네임 & 소개 글 -->
-									<h2 style="text-shadow: 1px 1px 5px rgb(255, 255, 255, 0.5);">Studio Space</h2>
-									<p class="fs-3" style="font-weight: bold; text-shadow: 1px 1px 5px rgb(255, 255, 255, 0.5);">패션 촬영, 자연광으로 사진 잘 나오는 스튜디오는?</p>
+									<h2 style="text-shadow: 1px 1px 15px rgb(235, 235, 235, 0.25);">Studio Space</h2>
+									<p class="fs-3" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400; text-shadow: 1px 1px 15px rgb(235, 235, 235, 0.25);">스냅 촬영, 하루종일 찍어도 질리지 않는 스튜디오는?</p>
 									<!-- image slide 1 상세 페이지 링크 (SpaceItem.do?name=\${space.spaceName}) -->
-									<a href="single-product.html" class="btn">Space Now</a>
+									<a href="shoplist.do?spaceType=Studio" class="btn" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">Space Now</a>
 								</div>
 							</div>
 							<div class="col-md-5"></div>
@@ -31,16 +32,16 @@
 				</div>
 				<!-- image slide 2 -->
 				<div class="swiper-slide"
-					style="background-image: url(vaso-html/images/banner_image.jpg); background-size: cover; background-repeat: no-repeat; height: 100vh; background-position: center;">
+					style="background-image: url(image/main2.jpg); background-size: cover; background-repeat: no-repeat; height: 100vh; background-position: center;">
 					<div class="container">
 						<div class="row">
-							<div class="offset-md-1 col-md-6">
+							<div class="offset-md-7 col-md-6">
 								<div class="banner-content">
 									<!-- image slide 2 공간 네임 & 소개 글 -->
-									<h2 style="text-shadow: 1px 1px 5px rgb(255, 255, 255, 0.5);">House Space</h2>
-									<p class="fs-3" style="font-weight: bold; text-shadow: 1px 1px 5px rgb(255, 255, 255, 0.5);">제품 촬영, 가구 배치 가능한 스튜디오는 없을까?</p>
+									<h2 style="text-shadow: 1px 1px 15px rgb(235, 235, 235, 0.25);">House Space</h2>
+									<p class="fs-3" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400; text-shadow: 1px 1px 15px rgb(235, 235, 235, 0.25);">제품 촬영, 가구 배치 가능한 스튜디오는 없을까?</p>
 									<!-- image slide 2 상세 페이지 링크 -->
-									<a href="single-product.html" class="btn">Space Now</a>
+									<a href="shoplist.do?spaceType=House" class="btn" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">Space Now</a>
 								</div>
 							</div>
 							<div class="col-md-5"></div>
@@ -49,16 +50,16 @@
 				</div>
 				<!-- image slide 3 -->
 				<div class="swiper-slide"
-					style="background-image: url(vaso-html/images/banner_image2.jpg); background-size: cover; background-repeat: no-repeat; height: 100vh; background-position: center;">
+					style="background-image: url(image/main3.jpg); background-size: cover; background-repeat: no-repeat; height: 100vh; background-position: center;">
 					<div class="container">
 						<div class="row">
-							<div class="offset-md-6 col-md-6">
+							<div class="offset-md-0 col-md-6">
 								<div class="banner-content">
 									<!-- image slide 3 공간 네임 & 소개 글 -->
-									<h2 style="text-shadow: 1px 1px 5px rgb(255, 255, 255, 0.5);">Commercial Space</h2>
-									<p class="fs-3" style="font-weight: bold; text-shadow: 1px 1px 5px rgb(255, 255, 255, 0.5);">유튜브 콘텐츠 찍기 좋은 감성 카페는?</p>
+									<h2 style="text-shadow: 1px 1px 15px rgb(235, 235, 235, 0.25);">Commercial Space</h2>
+									<p class="fs-3" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400; text-shadow: 1px 1px 15px rgb(235, 235, 235, 0.25);">유튜브 콘텐츠 찍기 좋은 감성 카페는?</p>
 									<!-- image slide 3 상세 페이지 링크 -->
-									<a href="single-product.html" class="btn">Space Now</a>
+									<a href="shoplist.do?spaceType=Commercial" class="btn" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">Space Now</a>
 								</div>
 							</div>
 							<div class="col-md-5"></div>
@@ -96,7 +97,7 @@
 		</div>
 	</section>
 	<!-- 플랫폼 소개 about section end -->
-
+	
 	<!-- Best Space section start -->
 	<section id="products" class="product-store position-relative">
 		<div
@@ -104,7 +105,7 @@
 			<h3 class="mt-3">Best Space</h3>
 			<div class="btn-right d-flex flex-wrap align-items-center">
 				<!-- space 목록 페이지로 이동 -->
-				<a href="shop.html" class="btn me-5">View all spaces</a>
+				<a href="shoplist.do" class="btn me-5" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400">View all spaces</a>
 				<!-- 왼쪽, 오른쪽 화살표 -->
 				<div class="swiper-buttons">
 					<button class="swiper-prev product-carousel-prev me-2">
@@ -124,32 +125,35 @@
 			<div class="swiper-wrapper">
 
 				<!-- 공간사진 & 공간네임 & 공간가격 반복 -->
-				<div class="swiper-slide">
-					<div class="product-card position-relative">
-						<div class="image-holder zoom-effect">
-							<!-- 공간 사진 넣는 곳 -->
-							<img src="vaso-html/images/product-item1.jpg" alt="product-item"
-								class="img-fluid zoom-in">
-							<!-- 공간 상세페이지로 이동하는 버튼 -->
-							<div class="cart-concern position-absolute">
-								<div class="cart-button">
-									<a href="#" class="btn">Go to Space</a>
+				<c:forEach items="${bestSpace }" var="best" varStatus="status" begin="0" end="7">	
+					<div class="swiper-slide">
+						<div class="product-card position-relative">
+							<div class="image-holder zoom-effect">
+								<!-- 공간 사진 넣는 곳 -->
+								<img src="image/space/${best.spaceImageMain }" alt="product-item"
+									class="img-fluid zoom-in" style="height: 500px">
+								<!-- 공간 상세페이지로 이동하는 버튼 -->
+								<div class="cart-concern position-absolute">
+									<div class="cart-button">
+										<a href="shopdetail.do?spaceId=${best.spaceId }" class="btn" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400">Go to Space</a>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="card-detail text-center pt-3 pb-2">
-							<!-- 공간네임 (네임 클릭시 해당 공간 상세페이지로) -->
-							<h5 class="card-title fs-3 text-capitalize">
-								<a href="single-product.html">Matt Black</a>
-							</h5>
-							<!-- 공간가격 -->
-							<span class="item-price text-primary fs-3 fw-light">$870</span>
+							<div class="card-detail text-center pt-3 pb-2">
+								<!-- 공간네임 (네임 클릭시 해당 공간 상세페이지로) -->
+								<h5 class="card-title fs-3 text-capitalize">
+									<a href="shopdetail.do?spaceId=${best.spaceId }" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400">${best.spaceName }</a>
+								</h5>
+								<!-- 공간가격 -->
+								<span class="item-price text-primary fw-light" id="space${status.index }" style="font-family: 'Noto Sans KR', sans-serif; font-size: medium;">${best.spaceCity } · &#x20a9;${best.spacePrice }</span>
+							</div>
 						</div>
 					</div>
-				</div>
+				</c:forEach>
+				
 				<!-- 공간사진 & 공간네임 & 공간가격 반복 -->
 
-				<div class="swiper-slide">
+<!-- 				<div class="swiper-slide">
 					<div class="product-card position-relative">
 						<div class="image-holder zoom-effect">
 							<img src="vaso-html/images/product-item2.jpg" alt="product-item"
@@ -167,9 +171,9 @@
 							<span class="item-price text-primary fs-3 fw-light">$680</span>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- ==================================================================== -->
-				<div class="swiper-slide">
+<!-- 				<div class="swiper-slide">
 					<div class="product-card position-relative">
 						<div class="image-holder zoom-effect">
 							<img src="vaso-html/images/product-item3.jpg" alt="product-item"
@@ -187,9 +191,9 @@
 							<span class="item-price text-primary fs-3 fw-light">$750</span>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- ==================================================================== -->
-				<div class="swiper-slide">
+<!-- 				<div class="swiper-slide">
 					<div class="product-card position-relative">
 						<div class="image-holder zoom-effect">
 							<img src="vaso-html/images/product-item4.jpg" alt="product-item"
@@ -207,9 +211,9 @@
 							<span class="item-price text-primary fs-3 fw-light">$650</span>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- ==================================================================== -->
-				<div class="swiper-slide">
+<!-- 				<div class="swiper-slide">
 					<div class="product-card position-relative">
 						<div class="image-holder zoom-effect">
 							<img src="vaso-html/images/product-item5.jpg" alt="product-item"
@@ -227,9 +231,9 @@
 							<span class="item-price text-primary fs-3 fw-light">$750</span>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- ==================================================================== -->
-				<div class="swiper-slide">
+<!-- 				<div class="swiper-slide">
 					<div class="product-card position-relative">
 						<div class="image-holder zoom-effect">
 							<img src="vaso-html/images/product-item2.jpg" alt="product-item"
@@ -247,9 +251,9 @@
 							<span class="item-price text-primary fs-3 fw-light">$750</span>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- ==================================================================== -->
-				<div class="swiper-slide">
+<!-- 				<div class="swiper-slide">
 					<div class="product-card position-relative">
 						<div class="image-holder zoom-effect">
 							<img src="vaso-html/images/product-item4.jpg" alt="product-item"
@@ -267,9 +271,9 @@
 							<span class="item-price text-primary fs-3 fw-light">$750</span>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- ==================================================================== -->
-				<div class="swiper-slide">
+<!-- 				<div class="swiper-slide">
 					<div class="product-card position-relative">
 						<div class="image-holder zoom-effect">
 							<img src="vaso-html/images/product-item3.jpg" alt="product-item"
@@ -287,7 +291,7 @@
 							<span class="item-price text-primary fs-3 fw-light">$750</span>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- ==================================================================== -->
 			</div>
 		</div>
@@ -310,23 +314,22 @@
 						<div class="swiper testimonial-swiper">
 							<div class="swiper-wrapper">
 								<!-- 후기 반복 -->
-								<div
-									class="swiper-slide text-center d-flex justify-content-center">
-									<div class="review-item">
-										<!-- 후기 메세지 -->
-										<blockquote class="fs-1 fw-light">“A pellen
-											tesque pretium feugiat vel morbi sagittis lorem habi tasse
-											cursus. Suspen dise tempus oncu enim pellen tesque este
-											pretium in neque, elit morbi sagittis lorem habi mattis.”</blockquote>
-										<!-- 후기 작성자 -->
-										<div class="author-detail">
-											<div class="name fw-bold text-uppercase pt-2">Anna
-												garcia</div>
+								<c:forEach items="${recentReply }" var="recent" begin="0" end="2">								
+									<div
+										class="swiper-slide text-center d-flex justify-content-center">
+										<div class="review-item">
+											<!-- 후기 메세지 -->
+											<blockquote class="fs-1 fw-light" style="font-family: 'Noto Sans KR'; font-size: larger !important;">${recent.replyContent }</blockquote>
+											<!-- 후기 작성자 -->
+											<div class="author-detail">
+												<div class="name fw-bold text-uppercase pt-2" style="font-family: 'Noto Sans KR'">${recent.memberId }</div>
+											</div>
 										</div>
 									</div>
-								</div>
+								</c:forEach>
+								
 								<!-- ==================================================================== -->
-								<div
+								<!-- <div
 									class="swiper-slide text-center d-flex justify-content-center">
 									<div class="review-item">
 										<blockquote class="fs-1 fw-light">“A pellen
@@ -338,9 +341,9 @@
 												garcia</div>
 										</div>
 									</div>
-								</div>
+								</div> -->
 								<!-- ==================================================================== -->
-								<div
+								<!-- <div
 									class="swiper-slide text-center d-flex justify-content-center">
 									<div class="review-item">
 										<blockquote class="fs-1 fw-light">“A pellen
@@ -352,7 +355,7 @@
 												garcia</div>
 										</div>
 									</div>
-								</div>
+								</div> -->
 								<!-- ==================================================================== -->
 							</div>
 						</div>
@@ -524,7 +527,7 @@
 				data-aos-delay="1000" data-aos-easing="ease-in"
 				data-aos-duration="1000" data-aos-once="true">
 				<h2>House</h2>
-				<a href="shop.html" class="btn">Go see it now</a>
+				<a href="shoplist.do?spaceType=House" class="btn" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">Go see it now</a>
 			</div>
 		</div>
 
@@ -535,7 +538,7 @@
 				data-aos-delay="1000" data-aos-easing="ease-in"
 				data-aos-duration="1000" data-aos-once="true">
 				<h2>Studio</h2>
-				<a href="shop.html" class="btn">Go to space</a>
+				<a href="shoplist.do?spaceType=Studio" class="btn" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">Go to space</a>
 			</div>
 		</div>
 		
@@ -546,7 +549,7 @@
 				data-aos-delay="1000" data-aos-easing="ease-in"
 				data-aos-duration="1000" data-aos-once="true">
 				<h2>Commercial</h2>
-				<a href="shop.html" class="btn">Go to space</a>
+				<a href="shoplist.do?spaceType=Commercial" class="btn" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">Go to space</a>
 			</div>
 		</div>
 	</section>
@@ -574,6 +577,21 @@
 
 		</div>
 	</div>
-
+	
+	<!-- 가격에 , 넣기 -->
+	<script type="text/javascript">
+		let price = '';
+		let result = '';
+		for (let i = 0; i < 8; i++){
+			price = document.getElementById("space"+i).innerText;
+			result = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+			console.log(result);
+			document.getElementById("space"+i).innerText = result;
+		}
+		
+/* 		console.log("${bestSpace }");
+		console.log("${bestSpace[0] }");
+		console.log("${bestSpace[0].spaceId }"); */
+	</script>
 </body>
 </html>

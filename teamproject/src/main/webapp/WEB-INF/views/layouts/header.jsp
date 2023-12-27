@@ -57,6 +57,7 @@
 
 				.cityElement a {
 					font-weight: 500;
+					font-family: 'Noto Sans KR', sans-serif;
 				}
 
 				.cityElement:nth-child(7n) {
@@ -72,15 +73,17 @@
 					padding-right: 15px;
 				}
 
-				/* .ui-datepicker {
-		    margin: 0 auto;
-		} */
 				.ui-datepicker {
 					/* margin-left: 230px; */
 					z-index: 999999 !important;
 				}
 				.dropdown-menu[data-bs-popper] {
 					right:-12.5%;
+				}
+				
+				.nav-item a {
+					font-family: 'Noto Sans KR', sans-serif;
+					/* font-weight: 450; */
 				}
 			</style>
 		</head>
@@ -96,7 +99,7 @@
 						</a>
 						<button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button"
 							data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar"
-							aria-expanded="false" aria-label="Toggle navigation">Menu</button>
+							aria-expanded="false" aria-label="Toggle navigation" style="font-weight: 600;">Menu</button>
 						<div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar"
 							aria-labelledby="bdNavbarOffcanvasLabel">
 							<div class="offcanvas-header px-4 pb-0">
@@ -117,11 +120,11 @@
 										<!-- About NAV -->
 										<li class="nav-item"><a class="nav-link ms-0" href="about.do">About</a></li>
 										<!-- Find Where -->
-										<li class="nav-item"><a class="nav-link ms-0" a type="button"
+										<li class="nav-item"><a class="nav-link ms-0" type="button"
 												data-bs-toggle="modal" data-bs-target="#findWhereModal" id="findWhere" style="width: 100%">
 												Find Where</a></li>
 										<!-- Find When -->
-										<li class="nav-item"><a class="nav-link ms-0" a type="button"
+										<li class="nav-item"><a class="nav-link ms-0" type="button"
 												data-bs-toggle="modal" data-bs-target="#findWhenModal" id="findWhen" style="width: 100%">
 												Find When</a></li>
 										<!-- pages NAV -->
@@ -192,28 +195,32 @@
 										<!-- Space NAV end -->
 
 										<!-- Account NAV -->
-										<c:if test="${empty memberId }">
+										<c:choose>
+										<c:when test="${empty memberId }">
 											<li class="nav-item"><a class="nav-link me-0" href="account.do">Account</a>
 											</li>
-										</c:if>
-										<c:if test="${not empty memberId }">
+										</c:when>
+										<c:when test="${not empty memberId }">
 											<li class="nav-item dropdown"><a class="nav-link dropdown-toggle me-0"
 													data-bs-toggle="dropdown" href="home.do" role="button"
 													aria-expanded="false">Account<svg class="bi" width="18" height="18">
 													<use xlink:href="#chevron-down"></use>
 													</svg></a>
 												<ul class="dropdown-menu" style="text-align: center;">
-													<li><a href="memberhome.do" class="dropdown-item fs-5 fw-medium">My
+													<li><a href="memberreservationhome.do" class="dropdown-item fs-5 fw-medium">My
 													page</a></li>
-													<li><a href="cart.do" class="dropdown-item fs-5 fw-medium">Cart</a>
-													</li>
+													<c:if test="${memberCK eq 'user' }">
+														<li><a href="cart.do" class="dropdown-item fs-5 fw-medium">Cart</a>
+														</li>
+													</c:if>
 													<li><a href="memberlogout.do"
 													class="dropdown-item fs-5 fw-medium">Logout</a></li>
 												</ul>
 											</li>
-										</c:if>
-										<!-- Search NAV start -->
-										<li class="nav-item search-item" style="margin-right: 7px">
+										</c:when>
+										</c:choose>
+										<!--##### Search NAV start #####-->
+										<!-- <li class="nav-item search-item" style="margin-right: 7px">
 											<div id="search-bar" class="border-right d-none d-lg-block">
 												<form action="" autocomplete="off">
 													<input id="search" class="text-dark" name="search" type="text"
@@ -221,7 +228,8 @@
 														class="nav-link me-0" href="about.do">Search</a>
 												</form>
 											</div>
-										</li>
+										</li> -->
+										<li class="nav-item"><a class="nav-link me-0" href="contactcontroller.do">Contact</a></li>
 										<!-- Search NAV end -->
 										<!-- ### right NAV end ### -->
 
@@ -279,7 +287,7 @@
 					</div>
 
 					<!-- Find Where 모달 -->
-					<form id="findWhereForm" action="spacelist.do" method="get">
+					<!-- <form id="findWhereForm" action="shoplist.do?spaceCity=Seoul" method="get"> -->
 						<div class="modal fade" id="findWhereModal" tabindex="-1" role="dialog" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
@@ -301,72 +309,73 @@
 											<div class="form-group py-3" id="cityBox">
 												<ul id="cityList">
 													<li class="cityElement">
-														<button type="button">
+
+														<button type="button" id="All" onclick="cityClick(this)">
 															<a>전체</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button">
+														<button type="button" id="제주" onclick="cityClick(this)">
 															<a>제주</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button">
+														<button type="button" id="서울" onclick="cityClick(this)">
 															<a>서울</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button">
+														<button type="button" id="경기" onclick="cityClick(this)">
 															<a>경기</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button">
+														<button type="button" id="인천" onclick="cityClick(this)">
 															<a>인천</a>
 														</button>
 													</li>
-													<li class="cityElement">
-														<button type="button">
+													<li class="cityElement" >
+														<button type="button" id="강원" onclick="cityClick(this)">
 															<a>강원</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button">
+														<button type="button" id="충청" onclick="cityClick(this)">
 															<a>충청</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button">
+														<button type="button" id="대전" onclick="cityClick(this)">
 															<a>대전</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button">
+														<button type="button" id="경상" onclick="cityClick(this)">
 															<a>경상</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button">
+														<button type="button" id="대구" onclick="cityClick(this)">
 															<a>대구</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button">
+														<button type="button" id="울산" onclick="cityClick(this)">
 															<a>울산</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button">
+														<button type="button" id="부산" onclick="cityClick(this)">
 															<a>부산</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button">
+														<button type="button" id="전라" onclick="cityClick(this)">
 															<a>전라</a>
 														</button>
 													</li>
 													<li class="cityElement">
-														<button type="button">
+														<button type="button" id="광주" onclick="cityClick(this)">
 															<a>광주</a>
 														</button>
 													</li>
@@ -376,24 +385,24 @@
 									</div>
 									<!-- Modal footer -->
 									<div class="modal-footer">
-										<button type="submit" class="btn btn-primary" id="idBtn"
-											style="margin: 20px auto; display: block;">search</button>
+										<button type="button" class="btn btn-primary" id="findWhereBtn"
+											style="margin: 20px auto; display: block;" onclick="findformcheck()">search</button>
 									</div>
 								</div>
 							</div>
 						</div>
-					</form>
+					<!-- </form> -->
 
 					<!-- Find When 모달 -->
-					<form id="findWhenForm" action="spacelist.do" method="get">
+					<form id="findWhenForm" action="shoplist.do" method="get">
 						<div class="modal fade" id="findWhenModal" tabindex="-1" role="dialog" aria-hidden="true">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 
 									<!-- Modal Header -->
-									<div class="modal-header">
+									<div class="modal-header" style="margin: 0 15px;">
 										<h4 class="modal-title"
-											style="font-family: 'Noto Sans KR', sans-serif; font-weight: 600;  margin: 10px 0;">
+											style="font-family: 'Noto Sans KR', sans-serif; font-weight: 750;">
 											언제 떠날까요?</h4>
 										<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 									</div>
@@ -410,20 +419,19 @@
 										<!--   <input type="text" class="form-control" data-toggle="datepicker"> -->
 										<div class="form-group py-3" style="text-align: center;">
 											<input type="text" class="form-control"
-												style="display: inline-block; text-align: center; width:300px"
-												placeholder="날짜를 선택하세요">
+												style="display: inline-block; font-family: 'Noto Sans KR', sans-serif; text-align: center; width:300px"
+												placeholder="날짜를 선택하세요" id="finddatepicker" name="spaceStartDate">
 										</div>
 									</div>
 									<!-- Modal footer -->
 									<div class="modal-footer">
 										<button type="submit" class="btn btn-primary" id="idBtn"
-											style="margin: 20px auto; display: block;">search</button>
+											style="margin: 20px auto; display: block;" onclick="findWhencheck()">search</button>
 									</div>
 								</div>
 							</div>
 						</div>
 					</form>
-
 				</nav>
 			</header>
 			
@@ -439,12 +447,29 @@
 			<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 			<!-- <input class="datepicker"> -->
 			<script type="text/javascript">
-				$('.modal-body input').datepicker({
+			/* .modal-body input */
+				/* $('#datepicker').datepicker({
 					format: 'yyyy-mm-dd'
+					minDate: 0;
 				}).on('hide', function (event) {
 					event.preventDefault();
 					event.stopPropagation();
+				}); 
+				
+				/* var dateToday = new Date(); */
+				$("#finddatepicker").datepicker({
+				  /*   defaultDate: "+1w",
+				    changeMonth: true,
+				    numberOfMonths: 3, */
+				    dateFormat:'yy-mm-dd',
+				    minDate: 0,
 				});
+				   /*  onSelect: function(selectedDate) {
+				        var option = this.id == "from" ? "minDate" : "maxDate",
+				            instance = $(this).data("datepicker"),
+				            date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+				        dates.not(this).datepicker("option", option, date);
+				    } */
 			</script>
 			
 			<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -465,6 +490,32 @@
 							location.href='home.do';
 						});
 				}
+			</script>
+			
+			<!-- Find where -->
+			<script type="text/javascript">
+			
+			let selectCity = '';
+			
+			function cityClick(e) {
+				/* this.children.innerText; */
+				console.log($(e).attr('id'));
+				selectCity = $(e).attr('id');
+			}
+			
+			function findformcheck() {
+				if (selectCity == 'All') {
+					window.location.href = 'shoplist.do';
+					/* $("#findWhereForm").attr("action", "shoplist.do"); */
+				} else if (selectCity == '') {
+					window.location.href = 'shoplist.do';
+				} else {
+					window.location.href = 'shoplist.do?spaceCity=' + selectCity;
+					/* $("#findWhereForm").attr("action", "shoplist.do?spaceCity="+selectCity); */
+					/* console.log($("#findWhereForm").attr('action')); */
+				}
+			}
+			
 			</script>
 		</body>
 

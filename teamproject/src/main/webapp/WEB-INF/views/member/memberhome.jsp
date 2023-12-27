@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 
 		<!DOCTYPE html>
 		<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default"
@@ -13,6 +15,13 @@
 
 
 			<meta name="description" content="" />
+			
+			<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    		<style type="text/css">
+			    *{
+			     font-family: 'Noto Sans KR', sans-serif; 
+			    }
+    		</style>
 
 		</head>
 
@@ -64,11 +73,11 @@
 														<c:forEach items="${reserve}" var="r">
 															<tr>
 																<td><i class="fab fa-angular fa-lg text-danger me-3"></i><a href="#"><img id="stayimg"
-																			alt="stay" src="member/image/${r.reserveImg }"></a></td>
+																			alt="stay" src="image/space/${r.reserveImg }"></a></td>
 																<td>${r.spaceName }</td>
 																<td>${r.reserveStartDate }</td>
 																<td>${r.reserveCheckoutDate }</td>
-																<td>${r.reservePrice }</td>
+																<td><fmt:formatNumber value="${r.reservePrice }" type="currency" currencySymbol="￦"/></td>
 																<td ><span class="badge bg-label-primary me-1"><strong id="reservation_${r.reserveId }">
 																			<c:choose>
 																				<c:when test="${r.reserveCheck == 0}">
@@ -93,6 +102,9 @@
 																</td>
 															</tr>
 														</c:forEach>
+															<caption style="padding-left: 20px">
+																<b>Total:${count }
+															</caption>
 													</c:otherwise>
 												</c:choose>
 											</tbody>
@@ -151,15 +163,7 @@
 						});
 					}
 
-					function displayDate(millis) {
-						// 2023-09-05 13:22:11
-						let today = new Date(millis);
-						let yyyy = today.getFullYear(); // 2023
-						let mm = ('0' + (today.getMonth() + 1)).slice(-2); // 09
-						let dd = ('0' + today.getDate()).slice(-2);
-
-						return yyyy + "-" + mm + "-" + dd + " ";
-					}
+				
 					
 
 					

@@ -30,12 +30,13 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
+	<link href="vaso-html/images/STAYSPACE_logo.png" rel="shortcut icon" type="image/x-icon">
     <title><tiles:getAsString name="title"/> </title>
 
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="sneat/assets/img/favicon/favicon.ico" />
+    <!-- <link rel="icon" type="image/x-icon" href="sneat/assets/img/favicon/favicon.ico" />  -->
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -82,9 +83,6 @@
 
         <!-- Layout container -->
         <div class="layout-page">
-          <!-- Navbar -->
-
-          <!-- / Navbar -->
 
           <!-- Content wrapper -->
           
@@ -93,7 +91,7 @@
             <!-- / Content -->
 
             <!-- Footer -->
-            
+            <tiles:insertAttribute name="footer" />
             <!-- / Footer -->
 
             <div class="content-backdrop fade"></div>
@@ -104,7 +102,7 @@
       </div>
       
       <!-- footer start -->
-		<tiles:insertAttribute name="footer" />
+		
 	<!-- footer end -->
 
       <!-- Overlay -->

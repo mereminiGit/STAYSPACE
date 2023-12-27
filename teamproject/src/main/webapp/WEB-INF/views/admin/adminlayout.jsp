@@ -30,12 +30,13 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title><tiles:getAsString name="title"/> </title>
+	<link href="vaso-html/images/STAYSPACE_logo.png" rel="shortcut icon" type="image/x-icon">
+    <title><tiles:getAsString name="title"/></title>
 
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="sneat/assets/img/favicon/favicon.ico" />
+    <!-- <link rel="icon" type="image/x-icon" href="sneat/assets/img/favicon/favicon.ico" />  -->
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -66,6 +67,8 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="sneat/assets/js/config.js"></script>
+    <style>
+    </style>
   </head>
 
   <body>
@@ -78,9 +81,6 @@
 
         <!-- Layout container -->
         <div class="layout-page">
-          <!-- Navbar -->
-
-          <!-- / Navbar -->
 
           <!-- Content wrapper -->
           
@@ -89,7 +89,7 @@
             <!-- / Content -->
 
             <!-- Footer -->
-            
+            <tiles:insertAttribute name="footer"/>
             <!-- / Footer -->
 
             <div class="content-backdrop fade"></div>

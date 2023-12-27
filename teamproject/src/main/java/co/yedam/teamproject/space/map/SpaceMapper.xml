@@ -1,39 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.yedam.teamproject.space.map.SpaceMapper">
-	<select id="spaceSelectList"
+   <select id="totalSpaceSelectList" resultType="co.yedam.teamproject.space.service.SpaceVO">
+      SELECT * FROM SPACE ORDER BY SPACE_HIT DESC
+   </select>
+   <select id="spaceSelectList"
+      resultType="co.yedam.teamproject.space.service.SpaceVO">
+      SELECT * FROM SPACE
+         <if test="spaceCity !=null">where space_city=#{spaceCity}</if>
+         <if test="spaceType !=null">where space_type=#{spaceType}</if>
+         <if test="spaceName !=null">where space_name like '%' || #{spaceName}|| '%'</if>
+   </select>
+   <select id="spaceSelectCity" resultType="co.yedam.teamproject.space.service.SpaceVO">
+      SELECT * FROM SPACE WHERE SPACE_CITY=#{spaceCity} AND SPACE_ID!=#{spaceId} ORDER BY SPACE_HIT DESC
+   </select>
+   <select id="spaceSelect"
+      resultType="co.yedam.teamproject.space.service.SpaceVO">
+      SELECT * FROM SPACE WHERE SPACE_ID=#{spaceId}
+   </select>
+   <select id="spaceSelectCount" resultType="int">
+   		SELECT COUNT(*) FROM SPACE
+   </select>
+   <select id="spaceSelectListMember" resultType="co.yedam.teamproject.space.service.SpaceVO">
+   		SELECT * FROM SPACE WHERE MEMBER_ID = #{memberId}
+   		ORDER BY SPACE_HIT DESC
+   </select>
+   <select id="spaceSelectCountMember" resultType="int">
+   		SELECT COUNT(*) FROM SPACE WHERE MEMBER_ID = #{memberId}
+   </select>
+   <select id="spaceSelectDate"
 		resultType="co.yedam.teamproject.space.service.SpaceVO">
 		SELECT * FROM SPACE
+		WHERE SPACE_ID !=
+		NVL((SELECT SPACE_ID FROM RESERVATION WHERE to_char(reserve_start_date,'YYYY-MM-DD') = #{reserveStartDate} AND reserve_check=1),0)
 	</select>
-	<select id="spaceSelect"
-		resultType="co.yedam.teamproject.space.service.SpaceVO">
-		SELECT * FROM SPACE WHERE SPACE_NAME=#{spaceName}
-	</select>
-	<insert id="spaceInsert"
-		parameterType="co.yedam.teamproject.space.service.SpaceVO">
-		INSERT INTO SPACE
-		(SPACE_NAME,SPACE_PRICE,SPACE_CITY,SPACE_ADDRESS,SPACE_IMAGE_MAIN,SPACE_CONTENT,SPACE_START_DATE,SPACE_END_DATE,MEMBER_ID,SPACE_IMAGE_SUB1,SPACE_IMAGE_SUB2)
-		VALUES(#{spaceName},#{spacePrice},#{spaceCity},#{spaceAddress},#{spaceImageMain},#{spaceContent},#{spaceStartDate},#{spaceEndDate},#{memberId},#{spaceImageSub1},#{spaceImageSub2})
-	</insert>
-	<update id="spaceUpdate"
-		parameterType="co.yedam.teamproject.space.service.SpaceVO">
-		UPDATE SPACE 
-		<set>
-			<if test="spaceName != null">SPACE_NAME=#{spaceName}</if>
-			<if test="spacePrice !==0">SPACE_PRICE=#{spacePrice}</if>
-			<if test="spaceCity !==null">SPACE_CITY=#{spaceCity}</if>
-			<if test="spaceAddress !==null">SPACE_ADDRESS=#{spaceAddress}</if>
-			<if test="spaceImageMain !==null">SPACE_IMAGE_MAIN=#{spaceImageMain}</if>
-			<if test="spaceContent !==null">SPACE_CONTENT=#{spaceContent}</if>
-			<if test="spaceStartDate !==null">SPACE_START_DATE=#{spaceStartDate}</if>
-			<if test="spaceEndDate !==null">SPACE_END_DATE=#{spaceEndDate}</if>
-			<if test="spacePrice !==null">SPACE_PRICE=#{spacePrice}</if>
-			<if test="spaceImageSub1 !==null">SPACE_IMAGE_SUB1=#{spaceImageSub1}</if>
-			<if test="spaceImageSub2 !==null">SPACE_IMAGE_SUB2=#{spaceImageSub2}</if>
-		</set>
+   <insert id="spaceInsert"
+      parameterType="co.yedam.teamproject.space.service.SpaceVO">
+      <selectKey keyProperty="spaceId" resultType="int" order="BEFORE">
+         SELECT NVL(MAX(SPACE_ID),0)+1
+         FROM SPACE
+      </selectKey>
+      INSERT INTO SPACE
+
+      (SPACE_ID, SPACE_NAME,SPACE_PRICE,SPACE_CITY,SPACE_ADDRESS,SPACE_IMAGE_MAIN,SPACE_CONTENT,MEMBER_ID,SPACE_STAR,SPACE_IMAGE_SUB1,SPACE_IMAGE_SUB2,SPACE_THUMB,SPACE_ATTECH,SPACE_TYPE)
+      VALUES(#{spaceId}, #{spaceName},#{spacePrice},#{spaceCity},#{spaceAddress},#{spaceImageMain},#{spaceContent},#{memberId},
+      (SELECT AVG(REPLY_STAR) 
+      FROM REPLY 
+      WHERE SPACE_ID=#{spaceId}),
+      #{spaceImageSub1},#{spaceImageSub2},#{spaceThumb},#{spaceAttech},#{spaceType})
+   </insert>
+   <update id="spaceUpdate"
+      parameterType="co.yedam.teamproject.space.service.SpaceVO">
+      UPDATE SPACE
+      <set>
+         <if test="spaceName != null">SPACE_NAME=#{spaceName},</if>
+         <if test="spacePrice != 0">SPACE_PRICE=#{spacePrice},</if>
+         <if test="spaceCity != null">SPACE_CITY=#{spaceCity},</if>
+         <if test="spaceAddress !=null">SPACE_ADDRESS=#{spaceAddress},</if>
+         <if test="spaceImageMain !=null">SPACE_IMAGE_MAIN=#{spaceImageMain},</if>
+         <if test="spaceContent !=null">SPACE_CONTENT=#{spaceContent},</if>
+         SPACE_STAR=(SELECT AVG(REPLY_STAR) FROM REPLY WHERE SPACE_ID=#{spaceId}),
+         <if test="spaceImageSub1 !=null">SPACE_IMAGE_SUB1=#{spaceImageSub1},</if>
+         <if test="spaceImageSub2 !=null">SPACE_IMAGE_SUB2=#{spaceImageSub2},</if>
+         <if test="spaceType !=null">SPACE_TYPE=#{spaceType}</if>
+      </set>
+      WHERE SPACE_ID=#{spaceId}
+   </update>
+   <delete id="spaceDelete"
+      parameterType="co.yedam.teamproject.space.service.SpaceVO">
+      DELETE FROM SPACE WHERE SPACE_ID=#{spaceId}
+   </delete>
+   
+   <update id="spaceHitUpdate">
+		update space set space_hit = space_hit+1
+		where space_id = #{spaceId}
 	</update>
-	<delete id="spaceDelete"
-		parameterType="co.yedam.teamproject.space.service.SpaceVO">
-		DELETE * FROM SPACE WHERE SPACE_NAME=#{spaceName}
-	</delete>
+	
 </mapper>

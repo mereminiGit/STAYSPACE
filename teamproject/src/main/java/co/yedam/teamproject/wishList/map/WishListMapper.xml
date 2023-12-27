@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.yedam.teamproject.wishList.map.WishListMapper">
+	<select id="wishListSelectList" resultType="co.yedam.teamproject.wishList.service.WishListVO">
+	    SELECT * FROM WISHLIST WHERE MEMBER_ID = #{memberId} ORDER BY WISHLIST_ID DESC
+	</select>
+	
+	<select id="wishListSelect">
+	    SELECT * FROM WISHLIST WHERE MEMBER_ID = #{memberId}
+	</select>
+	
+	<insert id="wishListInsert" parameterType="co.yedam.teamproject.wishList.service.WishListVO">
+	<selectKey keyProperty="wishListId" resultType="int" order="BEFORE">
+		SELECT NVL(MAX(WISHLIST_ID),0)+1
+		FROM WISHLIST
+	</selectKey>
+		INSERT INTO WISHLIST
+		VALUES(#{spaceName},#{spacePrice},#{spaceImage},#{memberId},#{wishListStartDate},#{wishListId},#{spaceId})		
+	</insert>
+	
+	<delete id="wishListDelete" parameterType="co.yedam.teamproject.wishList.service.WishListVO">
+		DELETE FROM WISHLIST WHERE WISHLIST_ID=#{wishListId}
+		<if test="memberId != null">
+		AND MEMBER_ID = #{memberId}
+		</if>
+	</delete>
+	
+</mapper>

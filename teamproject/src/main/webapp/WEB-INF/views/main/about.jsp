@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -135,7 +136,22 @@
 						data-aos-once="true">
 						<div class="swiper testimonial-swiper">
 							<div class="swiper-wrapper">
-								<div
+								<!-- 후기 반복 -->
+								<c:forEach items="${recentReply }" var="recent" begin="0" end="2">								
+									<div
+										class="swiper-slide text-center d-flex justify-content-center">
+										<div class="review-item">
+											<!-- 후기 메세지 -->
+											<blockquote class="fs-1 fw-light" style="font-family: 'Noto Sans KR'; font-size: larger !important;">${recent.replyContent }</blockquote>
+											<!-- 후기 작성자 -->
+											<div class="author-detail">
+												<div class="name fw-bold text-uppercase pt-2" style="font-family: 'Noto Sans KR'">${recent.memberId }</div>
+											</div>
+										</div>
+									</div>
+								</c:forEach>
+								
+								<!-- <div
 									class="swiper-slide text-center d-flex justify-content-center">
 									<div class="review-item">
 										<blockquote class="fs-1 fw-light">“A pellen
@@ -147,8 +163,9 @@
 												garcia</div>
 										</div>
 									</div>
-								</div>
-								<div
+								</div> -->
+								
+								<!-- <div
 									class="swiper-slide text-center d-flex justify-content-center">
 									<div class="review-item">
 										<blockquote class="fs-1 fw-light">“A pellen
@@ -160,20 +177,8 @@
 												garcia</div>
 										</div>
 									</div>
-								</div>
-								<div
-									class="swiper-slide text-center d-flex justify-content-center">
-									<div class="review-item">
-										<blockquote class="fs-1 fw-light">“A pellen
-											tesque pretium feugiat vel morbi sagittis lorem habi tasse
-											cursus. Suspen dise tempus oncu enim pellen tesque este
-											pretium in neque, elit morbi sagittis lorem habi mattis.”</blockquote>
-										<div class="author-detail">
-											<div class="name fw-bold text-uppercase pt-2">Anna
-												garcia</div>
-										</div>
-									</div>
-								</div>
+								</div> -->
+								
 							</div>
 						</div>
 					</div>

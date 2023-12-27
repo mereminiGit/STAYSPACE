@@ -1,24 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.yedam.teamproject.reply.map.ReplyMapper">
-	<select id="replySelectList" resultType="co.yedam.teamproject.reply.service.ReplyVO">
-		SELECT * FROM REPLY
+	<select id="replySelectListRecent" resultType="co.yedam.teamproject.reply.service.ReplyVO">
+		SELECT * FROM REPLY ORDER BY REPLY_DATE DESC
 	</select>
-	<select id="replySelect" resultType="co.yedam.teamproject.reply.service.ReplyVO">
+	<select id="replySelectListMember" resultType="co.yedam.teamproject.reply.service.ReplyVO">
+		SELECT * FROM REPLY WHERE MEMBER_ID = #{memberId} ORDER BY REPLY_DATE DESC
+	</select>
+	<select id="replySelectListId" resultType="co.yedam.teamproject.reply.service.ReplyVO">
+		SELECT * FROM REPLY WHERE SPACE_ID = #{spaceId} ORDER BY REPLY_DATE DESC
+	</select>
+	<select id="replySelectList" resultType="co.yedam.teamproject.reply.service.ReplyVO">
 		SELECT * FROM REPLY WHERE SPACE_NAME = #{spaceName}
 	</select>
+	<select id="replySelect" resultType="co.yedam.teamproject.reply.service.ReplyVO">
+		SELECT * FROM REPLY WHERE SPACE_ID = #{spaceId}
+	</select>
+	<select id="replySelectbyReplyId" resultType="co.yedam.teamproject.reply.service.ReplyVO">
+		SELECT * FROM REPLY WHERE REPLY_ID = #{replyId}
+  </select>
+	<select id="replyCountSpace" resultType="int">
+		SELECT COUNT(*) FROM REPLY WHERE SPACE_ID = #{spaceId}
+	</select>
+	<select id="replyCountMember" resultType="int">
+		SELECT COUNT(*) FROM REPLY WHERE MEMBER_ID = #{memberId}
+	</select>
 	<insert id="replyInsert" parameterType="co.yedam.teamproject.reply.service.ReplyVO">
-		INSERT INTO REPLY
-		VALUES (#{memberId}, #{spaceName}, #{replyContent}, SYSDATE, SYSDATE, #{replyStar})
+		<selectKey keyProperty="replyId" resultType="int" order="BEFORE">
+        	 SELECT NVL(MAX(REPLY_ID),0)+1
+        	 FROM REPLY
+      	</selectKey>
+		INSERT INTO REPLY (MEMBER_ID, SPACE_NAME, REPLY_CONTENT, REPLY_DATE, REPLY_STAR, REPLY_IMAGE, SPACE_ID, REPLY_ID)
+		VALUES (#{memberId}, #{spaceName}, #{replyContent}, SYSDATE, #{replyStar}, #{replyImage}, #{spaceId}, #{replyId})
 	</insert>
 	<update id="replyUpdate" parameterType="co.yedam.teamproject.reply.service.ReplyVO">
-		UPDATE REPLY SET REPLY_CONTENT = #{replyContent}, REPLY_STAR = #{replyStar}, REPLY_UPDATE_DATE = SYSDATE
-		WHERE MEMBER_ID = #{memberId}
-		AND SPACE_NAME = #{spaceName}
+		UPDATE REPLY 
+		<set>
+			<if test="replyContent != null">REPLY_CONTENT = #{replyContent},</if>
+			<if test="replyStar != null">REPLY_STAR = #{replyStar},</if>
+			<if test="replyImage != null">REPLY_IMAGE = #{replyImage},</if>
+			REPLY_DATE = SYSDATE
+		</set>
+		WHERE REPLY_ID = #{replyId}
 	</update>
 	<delete id="replyDelete" parameterType="co.yedam.teamproject.reply.service.ReplyVO">
 		DELETE FROM REPLY
 		WHERE MEMBER_ID = #{memberId}
 		AND SPACE_NAME = #{spaceName}
+	</delete>
+	<delete id="replyDeleteId" parameterType="co.yedam.teamproject.reply.service.ReplyVO">
+		DELETE FROM REPLY
+		WHERE REPLY_ID = #{replyId}
 	</delete>
 </mapper>

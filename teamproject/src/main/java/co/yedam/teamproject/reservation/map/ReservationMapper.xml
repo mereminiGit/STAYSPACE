@@ -4,31 +4,76 @@
 	<select id="reservationSelectList" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
 		SELECT * FROM RESERVATION
 	</select>
+	<select id="reservationSelectListSpace" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
+		SELECT * FROM RESERVATION WHERE SPACE_ID = #{spaceId} ORDER BY RESERVE_START_DATE DESC
+	</select>
+	<select id="reservationSelectListMember" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
+		SELECT * FROM RESERVATION WHERE MEMBER_ID = #{memberId}
+		AND RESERVE_CHECK = 1
+		AND SPACE_ID = #{spaceId}
+	</select>
+	<select id="reservationSelectListHost" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
+		SELECT * FROM RESERVATION WHERE HOST_ID = #{hostId}
+		AND RESERVE_CHECK = 1
+	</select>
 	<select id="reservationSelect" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
 		SELECT * FROM RESERVATION WHERE SPACE_NAME = #{spaceName}
 	</select>
 	<select id="reservationSelectMember" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
-		SELECT * FROM RESERVATION WHERE MEMBER_ID = #{memberId}
+		SELECT * FROM RESERVATION WHERE MEMBER_ID = #{memberId} ORDER BY RESERVE_START_DATE DESC
+	</select>
+	<select id="reservationSelectHost" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
+		SELECT * FROM RESERVATION WHERE HOST_ID = #{hostId}
+		ORDER BY RESERVE_CHECK
+	</select>
+
+	<select id="reservationHostTotalCount" resultType="int">
+		SELECT COUNT(*) FROM RESERVATION WHERE HOST_ID = #{hostId}
+	</select>
+	<select id="reservationMemberTotalCount" resultType="int">
+		SELECT COUNT(*) FROM RESERVATION WHERE MEMBER_ID = #{memberId}
+	</select>
+	<select id="reservationCountSpace" resultType="int">
+		SELECT COUNT(*) FROM RESERVATION WHERE SPACE_ID = #{spaceId}
+	</select>
+	<select id="reservationSelectDate"
+		resultType="co.yedam.teamproject.cartList.service.CartListVO">
+		SELECT * FROM SPACE
+		WHERE SPACE_ID=
+		(SELECT SPACE_ID FROM RESERVATION WHERE reserve_start_date = #{reserveStartDate}) AND reserve_check=1
+	</select>
+	<select id="reservationSelectListCheck" resultType="co.yedam.teamproject.reservation.service.ReservationVO">
+		SELECT * FROM RESERVATION WHERE RESERVE_CHECK = 1
+
 	</select>
 	<insert id="reservationInsert" parameterType="co.yedam.teamproject.reservation.service.ReservationVO">
 		<selectKey keyProperty="reserveId" resultType="int" order="BEFORE">
 			SELECT NVL(MAX(RESERVE_ID),0) + 1 AS ID
 			FROM RESERVATION
 		</selectKey>
-		INSERT INTO RESERVATION
-		VALUES (#{memberId}, #{spaceName}, #{reserveStartDate}, #{reserveEndDate}, #{reservePrice}, #{reserveCheck})
+		INSERT INTO RESERVATION (MEMBER_ID, SPACE_NAME, RESERVE_START_DATE,RESERVE_PRICE, RESERVE_CHECK, RESERVE_ID, RESERVE_IMG, SPACE_ID, HOST_ID) 
+		VALUES (#{memberId}, #{spaceName}, #{reserveStartDate}, #{reservePrice}, #{reserveCheck}, #{reserveId}, #{reserveImg},#{spaceId},#{hostId})
 	</insert>
 	<update id="reservationUpdate" parameterType="co.yedam.teamproject.reservation.service.ReservationVO">
 		UPDATE RESERVATION
 		<set>
-		<if test="reserveCheck != null">RESERVE_CHECK = #{reserveCheck}</if>
+		<if test="reserveCheck != null">RESERVE_CHECK = #{reserveCheck}, RESERVE_CHECKOUT_DATE = SYSDATE</if>
 		</set>
 		  WHERE MEMBER_ID = #{memberId}
    		  AND SPACE_NAME = #{spaceName}
+   		  AND RESERVE_ID = #{reserveId}
+	</update>
+	<update id="reservationListUpdate" parameterType="co.yedam.teamproject.reservation.service.ReservationVO">
+		UPDATE RESERVATION
+		<set>
+		RESERVE_CHECK = #{reserveCheck}, RESERVE_CHECKOUT_DATE = SYSDATE
+		</set>	
+		WHERE HOST_ID=#{hostId}
+		AND RESERVE_ID=#{reserveId}
 	</update>
 	<delete id="reservationDelete" parameterType="co.yedam.teamproject.reservation.service.ReservationVO">
 		DELETE FROM RESERVATION
-		WHERE MEMBER_ID = #{memberId}
-		AND SPACE_NAME = #{spaceName}
+		WHERE RESERVE_ID = #{reserveId}
+		OR SPACE_NAME = #{spaceName}
 	</delete>
 </mapper>

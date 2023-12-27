@@ -7,6 +7,12 @@
   <head>
     <meta charset="UTF-8">
     <title>Insert title here</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style type="text/css">
+    *{
+     font-family: 'Noto Sans KR', sans-serif; 
+    }
+    </style>
   </head>
 
   <body>
@@ -42,7 +48,7 @@
         </li>
         <br>
         <li class="menu-item">
-          <a href="memberedit.do" class="menu-link menu-toggle">
+          <a href="#" class="menu-link menu-toggle" onclick="memberClick('jiwon');">
             <i class="menu-icon tf-icons bx bx-detail"></i>
             <div data-i18n="Form Elements">Profile</div>
           </a>
@@ -55,7 +61,10 @@
     <form id="sform" action="memberreservelist.do" method="post">
     <input type= "hidden" id="memberId" name="memberId">
     </form>
-    <form id="aform" action="membercartlist.do" method="post">
+    <form id="aform" action="wishListhome.do" method="post">
+    <input type= "hidden" id="memberId" name="memberId">
+    </form>
+     <form id="mform" action="memberedit.do" method="post">
     <input type= "hidden" id="memberId" name="memberId">
     </form>
     <script>
@@ -68,6 +77,12 @@
     function cartClick(id){
         console.log(id);
     	let form = document.getElementById("aform");
+    	form.memberId.value=id;
+    	form.submit();
+    }
+    function memberClick(id){
+        console.log(id);
+    	let form = document.getElementById("mform");
     	form.memberId.value=id;
     	form.submit();
     }

@@ -11,8 +11,8 @@ import co.yedam.teamproject.member.service.MemberVO;
 
 public class MemberServiceImpl implements MemberService {
 	
-	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
-	private MemberMapper map = sqlSession.getMapper(MemberMapper.class);
+	SqlSession sqlSession = DataSource.getInstance().openSession(true);
+	MemberMapper map = sqlSession.getMapper(MemberMapper.class);
 	
 	// 멤버 전체 조회
 	@Override
@@ -42,12 +42,19 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int memberDelete(String memberId) {
 		return map.memberDelete(memberId);
+
 	}
 
 	// 멤버 이메일 조회 (아이디, 비밀번호 변경시 사용)
 	@Override
 	public MemberVO memberSelectEmail(MemberVO vo) {
 		return map.memberSelectEmail(vo);
+
+	}
+
+	@Override
+	public int memberSelectCount() {
+		return map.memberSelectCount();
 	}
 
 }

@@ -8,6 +8,7 @@
 </head>
 <body>
 	<footer id="footer" class="overflow-hidden padding-xlarge pb-0">
+	<!-- style="padding-top: 150px -->
 		<div class="container">
 			<div class="row">
 				<div class="footer-top-area pb-5">
@@ -34,11 +35,11 @@
 							<div class="footer-menu" style="margin-top: 7px">
 								<!-- 링크 4개 -->
 								<h4 class="widget-title pb-2">Quick Links</h4>
-								<ul class="menu-list list-unstyled">
+								<ul class="menu-list list-unstyled" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400">
 									<!-- about 링크 -->
 									<li class="menu-item pb-2"><a href="about.do">About</a></li>
 									<!-- space 목록 링크 -->
-									<li class="menu-item pb-2"><a href="spaceshop.do">Space</a></li>
+									<li class="menu-item pb-2"><a href="contactcontroller.do">Contact</a></li>
 									<!-- Account 링크 -->
 									<li class="menu-item pb-2"><a href="account.do">Account</a></li>
 								</ul>
@@ -52,7 +53,7 @@
 							<div class="footer-menu contact-item" style="margin-top: 7px">
 								<!-- 플랫폼 정보 -->
 								<h4 class="widget-title pb-2">Contact info</h4>
-								<ul class="menu-list list-unstyled">
+								<ul class="menu-list list-unstyled" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400">
 									<!-- 플랫폼 위치 -->
 									<li class="menu-item pb-2"><a type="button" data-bs-toggle="modal" data-bs-target="#mapModal" id="myBtn">
 									대구광역시 중구 중앙대로 403</a></li>																		
@@ -98,7 +99,7 @@
 														width="72" height="16" alt="카카오맵"
 														style="display: block; width: 72px; height: 16px"></a>
 													<div
-														style="float: right; position: relative; top: 1px; font-size: 11px;">
+														style="float: right; position: relative; top: 1px; font-size: 11px; font-family: 'Noto Sans KR', sans-serif;">
 														<a target="_blank"
 															href="https://map.kakao.com/?from=roughmap&amp;srcid=19776924&amp;confirmid=19776924&amp;q=%EC%98%88%EB%8B%B4%EC%A7%81%EC%97%85%EC%A0%84%EB%AC%B8%ED%95%99%EA%B5%90&amp;rv=on"
 															style="float: left; height: 15px; padding-top: 1px; line-height: 15px; color: #000; text-decoration: none;">로드뷰</a><span
@@ -128,7 +129,7 @@
 							<div class="footer-menu" style="margin-top: 7px">
 								<!-- footer 4th -->
 								<h4 class="widget-title pb-2">Social info</h4>
-								<p>You can follow us on our social platforms to get updates.</p>
+								<p style="font-family: 'Noto Sans KR', sans-serif; font-weight: 350">You can follow us on our social platforms to get updates.</p>
 								<div class="social-links">
 									<ul class="d-flex list-unstyled">
 										<li><a href="#"> <svg class="facebook">
@@ -164,7 +165,7 @@
 			<div class="row d-flex flex-wrap justify-content-between">
 				<div class="col-12">
 					<div class="copyright">
-						<p>
+						<p style="font-family: 'Noto Sans KR', sans-serif;">
 							© Copyright 2023 StaySpace. 
 							<!-- Design by <a href="https://templatesjungle.com/" target="_blank"><b>TemplatesJungle</b></a> -->
 						</p>

@@ -19,16 +19,16 @@
 		<put-attribute name="header" value="" />
 		<put-attribute name="menu" value="/WEB-INF/views/admin/adminmenu.jsp" />
 		<put-attribute name="body" value="" />
-		<put-attribute name="footer" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/admin/adminfooter.jsp" />
 	</definition>
 
 	<definition name="businesshome"
 		template="/WEB-INF/views/business/businesslayout.jsp">
-		<put-attribute name="title" value="스테이스페이스_business" />
+		<put-attribute name="title" value="스테이스페이스_host" />
 		<put-attribute name="header" value="" />
 		<put-attribute name="menu" value="/WEB-INF/views/business/businessmenu.jsp" />
 		<put-attribute name="body" value="" />
-		<put-attribute name="footer" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/business/businessfooter.jsp" />
 	</definition>
 	
 	<definition name="memberhome"
